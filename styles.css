@@ -1,0 +1,404 @@
+/* ===========================================================
+   Michael — Product Design Portfolio
+   Shared design system
+   =========================================================== */
+
+:root {
+  --bg: #faf9f6;
+  --bg-alt: #f1efe9;
+  --ink: #16181d;
+  --ink-soft: #4a4f58;
+  --ink-faint: #8b8f98;
+  --line: #e2dfd7;
+  --accent: #24467a;
+  --accent-soft: #eef1f6;
+  --accent-bright: #3a63a8;
+  --tag-shipped: #2f6b4f;
+  --tag-shipped-bg: #e8f2ec;
+  --tag-unlaunched: #8a5a1f;
+  --tag-unlaunched-bg: #f6ede0;
+  --max-width: 780px;
+  --radius: 4px;
+  font-size: 17px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3, h4 {
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 0.5em;
+}
+
+p { margin: 0 0 1.2em; }
+
+/* ---------- Layout shells ---------- */
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(250, 249, 246, 0.92);
+  backdrop-filter: saturate(180%) blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-nav .wrap {
+  max-width: 920px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.site-nav .name {
+  font-family: Georgia, serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-nav nav a {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin-left: 22px;
+}
+
+.site-nav nav a:hover { color: var(--accent); }
+
+footer.site-footer {
+  border-top: 1px solid var(--line);
+  margin-top: 80px;
+  padding: 36px 0 60px;
+}
+
+footer.site-footer .wrap {
+  max-width: 920px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+footer.site-footer p {
+  margin: 0;
+  color: var(--ink-faint);
+  font-size: 0.88rem;
+}
+
+/* ---------- Home / hero ---------- */
+
+.hero {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 72px 24px 48px;
+}
+
+.hero .eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  max-width: 15ch;
+}
+
+.hero p.lede {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+.hero .bio {
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+/* ---------- Case study cards ---------- */
+
+.case-grid {
+  max-width: 920px;
+  margin: 40px auto 0;
+  padding: 0 24px 40px;
+  display: grid;
+  gap: 18px;
+}
+
+.case-card {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 28px;
+  background: #fff;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.case-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.case-card .tags { margin-bottom: 10px; }
+
+.tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 9px;
+  border-radius: 20px;
+  margin-right: 6px;
+}
+
+.tag.shipped { background: var(--tag-shipped-bg); color: var(--tag-shipped); }
+.tag.unlaunched { background: var(--tag-unlaunched-bg); color: var(--tag-unlaunched); }
+.tag.neutral { background: var(--accent-soft); color: var(--accent); }
+
+.case-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.case-card p {
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  margin-bottom: 0;
+}
+
+/* ---------- Case study page ---------- */
+
+.cs-header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 56px 24px 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.cs-header .tags { margin-bottom: 16px; }
+
+.cs-header h1 {
+  font-size: clamp(1.7rem, 3.6vw, 2.3rem);
+}
+
+.cs-header .lede {
+  font-size: 1.08rem;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.meta-grid dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  margin-bottom: 4px;
+}
+
+.meta-grid dd {
+  margin: 0;
+  font-size: 0.94rem;
+  color: var(--ink);
+}
+
+.cs-body {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 8px 24px 40px;
+}
+
+.cs-body section {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.cs-body section:last-of-type { border-bottom: none; }
+
+.cs-body h2 {
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+}
+
+.cs-body h3 {
+  font-size: 1.05rem;
+  margin: 24px 0 8px;
+  color: var(--ink);
+}
+
+.cs-body ul, .cs-body ol {
+  padding-left: 1.3em;
+  color: var(--ink-soft);
+}
+
+.cs-body li { margin-bottom: 8px; }
+
+.decision-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 18px;
+  background: #fff;
+}
+
+.decision-card h4 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: var(--accent);
+}
+
+.decision-card dl { margin: 0; }
+.decision-card dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-faint);
+  margin-top: 12px;
+}
+.decision-card dt:first-of-type { margin-top: 0; }
+.decision-card dd {
+  margin: 4px 0 0;
+  color: var(--ink-soft);
+}
+
+.placeholder {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent-bright);
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  color: var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 10px 0;
+}
+
+.placeholder::before {
+  content: "TO FILL IN — ";
+  font-weight: 700;
+}
+
+/* ---------- Password gate ---------- */
+
+.gate-box {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  background: var(--bg-alt);
+  margin-top: 8px;
+}
+
+.gate-box.unlocked {
+  border-style: solid;
+  background: #fff;
+}
+
+.gate-box h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.gate-box .gate-note {
+  font-size: 0.86rem;
+  color: var(--ink-faint);
+  margin-bottom: 16px;
+}
+
+.gate-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.gate-form input[type="password"] {
+  flex: 1 1 200px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.94rem;
+  background: #fff;
+}
+
+.gate-form button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.94rem;
+  cursor: pointer;
+}
+
+.gate-form button:hover { background: var(--accent-bright); }
+
+.gate-error {
+  color: #a33;
+  font-size: 0.86rem;
+  margin-top: 10px;
+  display: none;
+}
+
+.gate-content {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.gate-content[hidden] { display: none; }
+
+/* ---------- Contact ---------- */
+
+#contact {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 60px 24px 20px;
+}
+
+#contact h2 { font-size: 1.4rem; }
+
+#contact a.email {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 560px) {
+  .site-nav nav a { margin-left: 14px; font-size: 0.86rem; }
+  .hero { padding-top: 52px; }
+}
