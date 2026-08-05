@@ -24,16 +24,19 @@ Either option is genuinely free with no time limit for a small static site like 
 
 ## The password gate — read this before sharing the link
 
-Each case study page has a "Private / interview version" section gated behind a
-password (currently: `fieldnotes26`, set in each page's `.gate-box` element).
+The whole site sits behind one password (currently: `fieldnotes26`). Nothing renders —
+not even the homepage — until the correct password is entered on `gate.js`'s prompt.
+Once unlocked in a browser, it stays unlocked on that browser (via localStorage), so
+visitors only have to enter it once, not on every page.
 
-This is **soft protection, not real security** — the password and gated content are
+This is **soft protection, not real security** — the password and the page content are
 both shipped to the browser (base64-encoded, not encrypted), so anyone who inspects the
-page source can extract them. It's fine for keeping casual visitors from stumbling onto
-interview-only detail. It is not fine for information you'd be genuinely harmed by a
-stranger reading. Keep anything truly sensitive (exact dollar figures under NDA, internal
-system names, etc.) out of the gated content entirely and share it verbally in interviews
-instead — this is already how the placeholder content in each page's private section is framed.
+page source can extract them without ever typing the password. It's fine for keeping the
+site out of search engines and off casual/public browsing, and for controlling who you
+hand the link to. It is not fine for information you'd be genuinely harmed by a specific
+person — even one you gave the password to — deciding to screenshot or share. Keep
+anything truly sensitive (info under NDA, etc.) out of the site entirely and save it for
+verbal discussion in interviews.
 
 To change the password: pick a new one, then run (in Terminal):
 
@@ -41,5 +44,5 @@ To change the password: pick a new one, then run (in Terminal):
 echo -n 'yournewpassword' | base64
 ```
 
-Paste the output into the `data-password="..."` attribute on the `.gate-box` div in
-each HTML file you want to update.
+Paste the output into the `PASSWORD_B64` variable near the top of `gate.js` (one file,
+shared by all pages).

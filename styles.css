@@ -316,7 +316,45 @@ footer.site-footer p {
   font-weight: 700;
 }
 
-/* ---------- Password gate ---------- */
+/* ---------- Site-wide password gate ---------- */
+
+.site-gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.site-gate-box {
+  max-width: 360px;
+  width: 100%;
+  text-align: left;
+}
+
+.site-gate-box .eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.74rem;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
+}
+
+.site-gate-box h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.site-gate-box .gate-note {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+}
+
+/* ---------- Password gate (shared form styling) ---------- */
 
 .gate-box {
   border: 1px dashed var(--line);

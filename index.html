@@ -9,80 +9,22 @@
 </head>
 <body>
 
-<header class="site-nav">
-  <div class="wrap">
-    <a class="name" href="index.html">Michael</a>
-    <nav>
-      <a href="index.html#work">Work</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
+<div id="site-gate-overlay" class="site-gate-overlay">
+  <div class="site-gate-box">
+    <p class="eyebrow">Private portfolio</p>
+    <h1>Enter password</h1>
+    <p class="gate-note">This portfolio is shared privately. Enter the password you were given to continue.</p>
+    <form class="gate-form" id="site-gate-form">
+      <input type="password" id="site-gate-input" placeholder="Password" required autofocus>
+      <button type="submit">Enter</button>
+    </form>
+    <p class="gate-error" id="site-gate-error">Incorrect password — try again, or reach out for access.</p>
   </div>
-</header>
+</div>
 
-<section class="hero">
-  <p class="eyebrow">Product Design — Financial Services</p>
-  <h1>Designing for high-stakes financial moments, at institutional scale.</h1>
-  <p class="lede">
-    I'm a senior product designer coming out of Bank of America / Merrill Edge, currently
-    exploring Staff/Lead roles in fintech. My work sits at the intersection of service design,
-    accessibility, and large-scale consolidation — the kind of problems where the hard part
-    isn't the screen, it's the system underneath it.
-  </p>
-  <p class="bio">
-    <span class="placeholder">One or two sentences of career narrative — years of experience,
-    what you specialize in, what draws you to fintech specifically (Affirm/Circle-relevant framing).</span>
-  </p>
-</section>
+<script type="text/plain" id="site-content-payload">PGhlYWRlciBjbGFzcz0ic2l0ZS1uYXYiPgogIDxkaXYgY2xhc3M9IndyYXAiPgogICAgPGEgY2xhc3M9Im5hbWUiIGhyZWY9ImluZGV4Lmh0bWwiPk1pY2hhZWw8L2E+CiAgICA8bmF2PgogICAgICA8YSBocmVmPSJpbmRleC5odG1sI3dvcmsiPldvcms8L2E+CiAgICAgIDxhIGhyZWY9ImluZGV4Lmh0bWwjY29udGFjdCI+Q29udGFjdDwvYT4KICAgIDwvbmF2PgogIDwvZGl2Pgo8L2hlYWRlcj4KCjxzZWN0aW9uIGNsYXNzPSJoZXJvIj4KICA8cCBjbGFzcz0iZXllYnJvdyI+UHJvZHVjdCBEZXNpZ24g4oCUIEZpbmFuY2lhbCBTZXJ2aWNlczwvcD4KICA8aDE+RGVzaWduaW5nIGZvciBoaWdoLXN0YWtlcyBmaW5hbmNpYWwgbW9tZW50cywgYXQgaW5zdGl0dXRpb25hbCBzY2FsZS48L2gxPgogIDxwIGNsYXNzPSJsZWRlIj4KICAgIEknbSBhIHNlbmlvciBwcm9kdWN0IGRlc2lnbmVyIGNvbWluZyBvdXQgb2YgQmFuayBvZiBBbWVyaWNhIC8gTWVycmlsbCBFZGdlLCBjdXJyZW50bHkKICAgIGV4cGxvcmluZyBTdGFmZi9MZWFkIHJvbGVzIGluIGZpbnRlY2guIE15IHdvcmsgc2l0cyBhdCB0aGUgaW50ZXJzZWN0aW9uIG9mIHNlcnZpY2UgZGVzaWduLAogICAgYWNjZXNzaWJpbGl0eSwgYW5kIGxhcmdlLXNjYWxlIGNvbnNvbGlkYXRpb24g4oCUIHRoZSBraW5kIG9mIHByb2JsZW1zIHdoZXJlIHRoZSBoYXJkIHBhcnQKICAgIGlzbid0IHRoZSBzY3JlZW4sIGl0J3MgdGhlIHN5c3RlbSB1bmRlcm5lYXRoIGl0LgogIDwvcD4KICA8cCBjbGFzcz0iYmlvIj4KICAgIE92ZXIgdGhlIHBhc3QgZml2ZSB5ZWFycywgSSd2ZSBzcGVjaWFsaXplZCBpbiBmaW5hbmNpYWwgVUkvVVggc3RyYXRlZ3kgaW5zaWRlCiAgICBoaWdoLXJpc2ssIGhpZ2gtc2VjdXJpdHksIGhpZ2gtc2NydXRpbnkgc2VjdG9ycy4gVGhhdCBiYWNrZ3JvdW5kIGlzIHdoYXQgbWFrZXMgbWUgYQogICAgc3Ryb25nIGZpdCBmb3IgZmludGVjaHMgdGhhdCBuZWVkIHNvbWVvbmUgd2hvIHVuZGVyc3RhbmRzIGhvdyB0byB1bmlmeSBmaW5hbmNpYWwKICAgIHN5c3RlbXMgd2l0aCBkaWdpdGFsIGV4cGVyaWVuY2UsIG5vdCBqdXN0IGRlc2lnbiBvbiB0b3Agb2YgdGhlbS4KICA8L3A+Cjwvc2VjdGlvbj4KCjxzZWN0aW9uIGlkPSJ3b3JrIiBjbGFzcz0iY2FzZS1ncmlkIj4KCiAgPGEgY2xhc3M9ImNhc2UtY2FyZCIgaHJlZj0idG9hLmh0bWwiPgogICAgPGRpdiBjbGFzcz0idGFncyI+CiAgICAgIDxzcGFuIGNsYXNzPSJ0YWcgdW5sYXVuY2hlZCI+VW5sYXVuY2hlZDwvc3Bhbj4KICAgICAgPHNwYW4gY2xhc3M9InRhZyBuZXV0cmFsIj5EZXNpZ24gTGVhZGVyc2hpcDwvc3Bhbj4KICAgIDwvZGl2PgogICAgPGgzPlRyYW5zZmVyIG9mIEFzc2V0czwvaDM+CiAgICA8cD5MZWFkaW5nIGRlc2lnbiBvbiBhIGhpZ2gtdm9sdW1lICh+MTAwSy95ZWFyKSBhc3NldCB0cmFuc2ZlciBmbG93IOKAlCB1bmRlciBsZWdhY3kKICAgICAgc3lzdGVtIGNvbnN0cmFpbnRzLCBjcm9zcy1vcmcgc3Rha2Vob2xkZXIgY29tcGxleGl0eSwgYW5kIHJlYWwgYW1iaWd1aXR5IGFib3V0IHdoYXQKICAgICAgZGF0YSB0aGUgdGVhbSB3b3VsZCBldmVuIGhhdmUgYWNjZXNzIHRvLjwvcD4KICA8L2E+CgogIDxhIGNsYXNzPSJjYXNlLWNhcmQiIGhyZWY9ImRhcC5odG1sIj4KICAgIDxkaXYgY2xhc3M9InRhZ3MiPgogICAgICA8c3BhbiBjbGFzcz0idGFnIHVubGF1bmNoZWQiPkluIHN0YWdlZCByZWxlYXNlPC9zcGFuPgogICAgICA8c3BhbiBjbGFzcz0idGFnIG5ldXRyYWwiPkFjY2Vzc2liaWxpdHk8L3NwYW4+CiAgICA8L2Rpdj4KICAgIDxoMz5EQVAgMi4yIOKAlCBBY2Nlc3NpYmlsaXR5ICZhbXA7IFJhdGlvbmFsaXphdGlvbjwvaDM+CiAgICA8cD5Pd25pbmcgdGhlIGFzc2V0IGFsbG9jYXRpb24gcG9ydGlvbiBvZiBhICQ0LjdNLCBsZWdhbGx5LWRyaXZlbiBhY2Nlc3NpYmlsaXR5CiAgICAgIHJlbWVkaWF0aW9uIHByb2dyYW0gYWNyb3NzIDM0IHByb3BlcnRpZXMg4oCUIGZ1bGx5IHJlbWVkaWF0ZWQsIG5vdyBpbiBzdGFnZWQgcm9sbG91dC48L3A+CiAgPC9hPgoKICA8YSBjbGFzcz0iY2FzZS1jYXJkIiBocmVmPSJiZW5lZmljaWFyeS5odG1sIj4KICAgIDxkaXYgY2xhc3M9InRhZ3MiPgogICAgICA8c3BhbiBjbGFzcz0idGFnIHNoaXBwZWQiPlNoaXBwZWQ8L3NwYW4+CiAgICAgIDxzcGFuIGNsYXNzPSJ0YWcgbmV1dHJhbCI+TmV3IEV4cGVyaWVuY2U8L3NwYW4+CiAgICA8L2Rpdj4KICAgIDxoMz5SZXRpcmVtZW50IEJlbmVmaWNpYXJ5IERlc2lnbmF0aW9uPC9oMz4KICAgIDxwPkRpZ2l0aXppbmcgYSBwYXBlci1vbmx5IHByb2Nlc3Mg4oCUIGRlc2lnbmluZyBhIG5ldC1uZXcsIHNoaXBwZWQgZXhwZXJpZW5jZSBmb3IKICAgICAgZGVzaWduYXRpbmcgYW5kIG1hbmFnaW5nIHJldGlyZW1lbnQgYWNjb3VudCBiZW5lZmljaWFyaWVzIGZyb20gc2NyYXRjaC48L3A+CiAgPC9hPgoKPC9zZWN0aW9uPgoKPHNlY3Rpb24gaWQ9ImNvbnRhY3QiPgogIDxoMj5HZXQgaW4gdG91Y2g8L2gyPgogIDxwPkJlc3Qgd2F5IHRvIHJlYWNoIG1lIGlzIGVtYWlsIOKAlCBoYXBweSB0byB3YWxrIHRocm91Z2ggYW55IG9mIHRoZXNlIGNhc2Ugc3R1ZGllcwogICAgZGlyZWN0bHkuPC9wPgogIDxwPjxhIGNsYXNzPSJlbWFpbCIgaHJlZj0ibWFpbHRvOmxlZWxlZS5taWNoYWVsLmxlZWxlZUBnbWFpbC5jb20iPmxlZWxlZS5taWNoYWVsLmxlZWxlZUBnbWFpbC5jb208L2E+PC9wPgo8L3NlY3Rpb24+Cgo8Zm9vdGVyIGNsYXNzPSJzaXRlLWZvb3RlciI+CiAgPGRpdiBjbGFzcz0id3JhcCI+CiAgICA8cD4mY29weTsgMjAyNiBNaWNoYWVsLiBDYXNlIHN0dWRpZXMgcmVmbGVjdCBpbmRlcGVuZGVudCBkZXNpZ24gd29yazsgZGV0YWlscyBhcmUKICAgICAgZ2VuZXJhbGl6ZWQgd2hlcmUgY29uZmlkZW50aWFsaXR5IHJlcXVpcmVzLjwvcD4KICA8L2Rpdj4KPC9mb290ZXI+Cg==</script>
+<div id="site-content" hidden></div>
 
-<section id="work" class="case-grid">
-
-  <a class="case-card" href="toa.html">
-    <div class="tags">
-      <span class="tag unlaunched">Unlaunched</span>
-      <span class="tag neutral">Design Leadership</span>
-    </div>
-    <h3>Transfer of Assets</h3>
-    <p>Leading design on a high-volume, high-anxiety asset transfer flow — under legacy
-      system constraints, cross-org stakeholder complexity, and real ambiguity about what
-      data the team would even have access to.</p>
-  </a>
-
-  <a class="case-card" href="dap.html">
-    <div class="tags">
-      <span class="tag unlaunched">Unlaunched</span>
-      <span class="tag neutral">Accessibility</span>
-    </div>
-    <h3>DAP 2.2 — Accessibility &amp; Rationalization</h3>
-    <p>Owning the asset allocation portion of a multi-million dollar, legally-driven
-      accessibility remediation program spanning dozens of legacy properties.</p>
-  </a>
-
-  <a class="case-card" href="oneapp.html">
-    <div class="tags">
-      <span class="tag shipped">Shipped</span>
-      <span class="tag neutral">Consolidation</span>
-    </div>
-    <h3>Bank of America "1 App"</h3>
-    <p>Unifying five separate mobile experiences — five information architectures, five
-      visual languages — into one coherent, shipped product.</p>
-  </a>
-
-</section>
-
-<section id="contact">
-  <h2>Get in touch</h2>
-  <p>Best way to reach me is email — happy to walk through the private/interview version
-    of any of these case studies directly.</p>
-  <p><a class="email" href="mailto:leelee.michael.leelee@gmail.com">leelee.michael.leelee@gmail.com</a></p>
-  <p class="placeholder">Add LinkedIn / resume link here if you want them alongside email.</p>
-</section>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <p>&copy; 2026 Michael. Case studies reflect independent design work; details are
-      generalized where confidentiality requires.</p>
-  </div>
-</footer>
-
+<script src="gate.js"></script>
 </body>
 </html>

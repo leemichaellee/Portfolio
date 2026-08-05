@@ -8,173 +8,21 @@
 </head>
 <body>
 
-<header class="site-nav">
-  <div class="wrap">
-    <a class="name" href="index.html">Michael</a>
-    <nav>
-      <a href="index.html#work">Work</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
+<div id="site-gate-overlay" class="site-gate-overlay">
+  <div class="site-gate-box">
+    <p class="eyebrow">Private portfolio</p>
+    <h1>Enter password</h1>
+    <p class="gate-note">This portfolio is shared privately. Enter the password you were given to continue.</p>
+    <form class="gate-form" id="site-gate-form">
+      <input type="password" id="site-gate-input" placeholder="Password" required autofocus>
+      <button type="submit">Enter</button>
+    </form>
+    <p class="gate-error" id="site-gate-error">Incorrect password — try again, or reach out for access.</p>
   </div>
-</header>
-
-<header class="cs-header">
-  <div class="tags">
-    <span class="tag unlaunched">Unlaunched</span>
-    <span class="tag neutral">Design Leadership</span>
-  </div>
-  <h1>Transfer of Assets</h1>
-  <p class="lede">
-    Leading design on the flow that handles a high volume of incoming and outgoing digital
-    asset transfers — one of the highest-anxiety actions a person takes with their money —
-    across legacy systems, cross-org stakeholders, and real ambiguity about what data the
-    team would ultimately have access to.
-  </p>
-  <dl class="meta-grid">
-    <div><dt>Role</dt><dd>Design Lead (XD Principal), directing 1 designer + 1 content strategist</dd></div>
-    <div><dt>Status</dt><dd>In development, unlaunched</dd></div>
-    <div><dt>Scale</dt><dd>High-volume, industry-wide financial transaction type</dd></div>
-    <div><dt>Timeframe</dt><dd><span class="placeholder">add dates</span></dd></div>
-  </dl>
-</header>
-
-<div class="cs-body">
-
-  <section id="problem">
-    <h2>Problem framing</h2>
-    <p>
-      A transfer of assets moves a person's brokerage or retirement holdings from one
-      institution to another. It's functionally simple to describe and extraordinarily
-      high-stakes to experience — users are moving their life savings, often without a
-      clear sense of what's happening to their money mid-transfer.
-    </p>
-    <p>
-      For the business, transfers are a major driver of support cost and friction, and a
-      competitive lever: institutions win and lose assets based on how trustworthy and
-      frictionless this moment feels.
-    </p>
-    <p>
-      This was a design leadership problem rather than a UX problem specifically because
-      the flow crossed systems, teams, and compliance boundaries that no single stakeholder
-      owned end-to-end. Someone had to hold the whole picture and make the flow feel coherent
-      despite that fragmentation.
-    </p>
-    <div class="placeholder">Add the specific triggering event/mandate for the project and
-      what existed before (legacy flow, manual/paper-based process, call-center dependency).</div>
-  </section>
-
-  <section id="constraints">
-    <h2>Constraints</h2>
-
-    <h3>Legacy systems and technical debt</h3>
-    <p class="placeholder">Add what specifically was inflexible in the underlying systems,
-      and what it ruled out as a design option.</p>
-
-    <h3>Cross-org stakeholder complexity</h3>
-    <p class="placeholder">Add who the stakeholders were (compliance, ops, multiple
-      engineering teams, adjacent design leads) and where interests conflicted.</p>
-
-    <h3>User trust and anxiety</h3>
-    <p>Moving a life savings is not a neutral transaction. Tone, transparency, and error
-      handling all had to be designed around the emotional stakes of the action, not just
-      its mechanics.</p>
-
-    <h3>Ambiguity in data access</h3>
-    <p>At the time of design, it wasn't fully known what data the team would ultimately be
-      able to surface — transfer status, custodian information, and similar details were
-      still being negotiated with upstream systems. The flow had to stay coherent and
-      trustworthy across multiple possible data-availability scenarios, not just the ideal one.</p>
-    <div class="placeholder">Add a concrete example — e.g. a specific messaging pattern
-      designed to hold up whether or not certain status data was available.</div>
-  </section>
-
-  <section id="decisions">
-    <h2>Decisions</h2>
-
-    <div class="decision-card">
-      <h4>Decision 1</h4>
-      <dl>
-        <dt>The question</dt><dd class="placeholder">What was actually in dispute or unresolved</dd>
-        <dt>Options considered</dt><dd class="placeholder">What you weighed</dd>
-        <dt>The call</dt><dd class="placeholder">What was decided</dd>
-        <dt>Why</dt><dd class="placeholder">Reasoning, tied to the constraints above</dd>
-        <dt>How I led it</dt><dd class="placeholder">What you did specifically as design lead</dd>
-      </dl>
-    </div>
-
-    <div class="decision-card">
-      <h4>Decision 2</h4>
-      <dl>
-        <dt>The question</dt><dd class="placeholder">—</dd>
-        <dt>Options considered</dt><dd class="placeholder">—</dd>
-        <dt>The call</dt><dd class="placeholder">—</dd>
-        <dt>Why</dt><dd class="placeholder">—</dd>
-        <dt>How I led it</dt><dd class="placeholder">—</dd>
-      </dl>
-    </div>
-
-    <div class="decision-card">
-      <h4>Decision 3</h4>
-      <dl>
-        <dt>The question</dt><dd class="placeholder">—</dd>
-        <dt>Options considered</dt><dd class="placeholder">—</dd>
-        <dt>The call</dt><dd class="placeholder">—</dd>
-        <dt>Why</dt><dd class="placeholder">—</dd>
-        <dt>How I led it</dt><dd class="placeholder">—</dd>
-      </dl>
-    </div>
-  </section>
-
-  <section id="leadership">
-    <h2>Leadership &amp; team</h2>
-    <p>I directed a team of one designer and one content strategist, and operated as the
-      primary design voice across a cross-functional org that included compliance, operations,
-      and engineering — without formal authority over those disciplines.</p>
-    <div class="placeholder">Add one concrete story of mentorship, unblocking the team, or
-      aligning a cross-org disagreement.</div>
-  </section>
-
-  <section id="success">
-    <h2>Success measures</h2>
-    <p>Because this flow hasn't launched yet, success here is defined rather than measured —
-      the targets the team committed to before launch, and how we planned to validate them.</p>
-    <div class="placeholder">Add the actual pre-launch KPI targets (e.g. projected
-      straight-through completion rate, reduction in "not in good order" errors, reduction
-      in support call volume, time-to-complete) and how they were derived.</div>
-  </section>
-
-  <section id="reflection">
-    <h2>Reflection</h2>
-    <div class="placeholder">Add what's still unresolved or a known risk heading into launch,
-      what you'd do differently, and a closing 2–3 sentences on what this project demonstrates
-      about how you operate at a staff/lead level.</div>
-  </section>
-
-  <section id="private">
-    <h2>Private / interview version</h2>
-    <div class="gate-box" data-password="ZmllbGRub3RlczI2">
-      <h3>Additional detail available with password</h3>
-      <p class="gate-note">This section includes real scale figures, more specific
-        constraint and decision detail, and pre-launch targets. Ask me for the password
-        directly if you're reviewing this as part of an interview process.</p>
-      <form class="gate-form">
-        <input type="password" placeholder="Password" required>
-        <button type="submit">Unlock</button>
-      </form>
-      <p class="gate-error">Incorrect password — try again, or reach out for access.</p>
-      <div class="gate-content" hidden></div>
-      <script type="text/plain" class="gate-payload">PGg0PlNjYWxlICZhbXA7IHJvbGUgZGV0YWlsPC9oND4KPHA+VGhlIGZsb3cgaGFuZGxlcyBhcHByb3hpbWF0ZWx5IDEwMCwwMDAgZGlnaXRhbCBhc3NldCB0cmFuc2ZlcnMgYW5udWFsbHkuIEkgbGVkIGRlc2lnbiBhcwphbiBYRCBQcmluY2lwYWwsIGRpcmVjdGluZyBvbmUgZGVzaWduZXIgYW5kIG9uZSBjb250ZW50IHN0cmF0ZWdpc3QsIGFuZCBzZXJ2ZWQgYXMgdGhlCnByaW1hcnkgZGVzaWduIHZvaWNlIGluIGNyb3NzLW9yZyBwbGFubmluZyB3aXRoIGNvbXBsaWFuY2UsIG9wZXJhdGlvbnMsIGFuZCBlbmdpbmVlcmluZy48L3A+Cgo8aDQ+VW5maWx0ZXJlZCBjb25zdHJhaW50IGRldGFpbDwvaDQ+CjxkaXYgY2xhc3M9InBsYWNlaG9sZGVyIj5BZGQgcmVhbCBzeXN0ZW0vdmVuZG9yIG5hbWVzLCB0aGUgc3BlY2lmaWMgc3Rha2Vob2xkZXIgY29uZmxpY3QocykKd2l0aCBjb21wbGlhbmNlIG9yIG9wcywgYW5kIHRoZSBjb25jcmV0ZSBleGFtcGxlIG9mIGRlc2lnbmluZyB1bmRlciBBUEktZGF0YSBhbWJpZ3VpdHkuPC9kaXY+Cgo8aDQ+RmxvdyAmYW1wOyBkZWNpc2lvbiBkZXRhaWw8L2g0Pgo8ZGl2IGNsYXNzPSJwbGFjZWhvbGRlciI+QWRkIHRoZSBhY3R1YWwgZmxvdyBkaWFncmFtcywgZGVjaXNpb24gcmF0aW9uYWxlLCBhbmQgYW55IHNjcmVlbi1sZXZlbApkZXRhaWwgeW91J3JlIGNvbWZvcnRhYmxlIHNoYXJpbmcgdW5kZXIgcGFzc3dvcmQgKHN0aWxsIG5vdCBmaW5hbCBVSSwgYnV0IG1vcmUgdGhhbiB0aGUKcHVibGljIHZlcnNpb24gc2hvd3MpLjwvZGl2PgoKPGg0PlByZS1sYXVuY2ggdGFyZ2V0IEtQSXM8L2g0Pgo8ZGl2IGNsYXNzPSJwbGFjZWhvbGRlciI+QWRkIHRoZSByZWFsIHRhcmdldCBtZXRyaWNzIHRoZSB0ZWFtIHNldCAoZS5nLiBwcm9qZWN0ZWQKc3RyYWlnaHQtdGhyb3VnaCBjb21wbGV0aW9uIHJhdGUsIE5JR08gZXJyb3IgcmVkdWN0aW9uIHRhcmdldCwgc3VwcG9ydCBjYWxsIHJlZHVjdGlvbiB0YXJnZXQpLjwvZGl2Pgo=</script>
-    </div>
-  </section>
-
 </div>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <p>&copy; 2026 Michael.</p>
-    <p><a href="index.html">&larr; Back to all work</a></p>
-  </div>
-</footer>
+<script type="text/plain" id="site-content-payload">PGhlYWRlciBjbGFzcz0ic2l0ZS1uYXYiPgogIDxkaXYgY2xhc3M9IndyYXAiPgogICAgPGEgY2xhc3M9Im5hbWUiIGhyZWY9ImluZGV4Lmh0bWwiPk1pY2hhZWw8L2E+CiAgICA8bmF2PgogICAgICA8YSBocmVmPSJpbmRleC5odG1sI3dvcmsiPldvcms8L2E+CiAgICAgIDxhIGhyZWY9ImluZGV4Lmh0bWwjY29udGFjdCI+Q29udGFjdDwvYT4KICAgIDwvbmF2PgogIDwvZGl2Pgo8L2hlYWRlcj4KCjxoZWFkZXIgY2xhc3M9ImNzLWhlYWRlciI+CiAgPGRpdiBjbGFzcz0idGFncyI+CiAgICA8c3BhbiBjbGFzcz0idGFnIHVubGF1bmNoZWQiPlVubGF1bmNoZWQ8L3NwYW4+CiAgICA8c3BhbiBjbGFzcz0idGFnIG5ldXRyYWwiPkRlc2lnbiBMZWFkZXJzaGlwPC9zcGFuPgogIDwvZGl2PgogIDxoMT5UcmFuc2ZlciBvZiBBc3NldHM8L2gxPgogIDxwIGNsYXNzPSJsZWRlIj4KICAgIExlYWRpbmcgZGVzaWduIG9uIHRoZSBmbG93IHRoYXQgaGFuZGxlcyByb3VnaGx5IDEwMCwwMDAgaW5jb21pbmcgYW5kIG91dGdvaW5nIGRpZ2l0YWwKICAgIGFzc2V0IHRyYW5zZmVycyBhbm51YWxseSDigJQgb25lIG9mIHRoZSBoaWdoZXN0LWFueGlldHkgYWN0aW9ucyBhIHBlcnNvbiB0YWtlcyB3aXRoIHRoZWlyCiAgICBtb25leSDigJQgYWNyb3NzIGxlZ2FjeSBzeXN0ZW1zLCBjcm9zcy1vcmcgc3Rha2Vob2xkZXJzLCBhbmQgcmVhbCBhbWJpZ3VpdHkgYWJvdXQgd2hhdAogICAgZGF0YSB0aGUgdGVhbSB3b3VsZCB1bHRpbWF0ZWx5IGhhdmUgYWNjZXNzIHRvLgogIDwvcD4KICA8ZGwgY2xhc3M9Im1ldGEtZ3JpZCI+CiAgICA8ZGl2PjxkdD5Sb2xlPC9kdD48ZGQ+U3IuIFByb2R1Y3QgRGVzaWduZXIsIGRpcmVjdGluZyAxIGRlc2lnbmVyICsgMSBjb250ZW50IHN0cmF0ZWdpc3QsIGFsb25nc2lkZSBhbiBYRCBQcmluY2lwYWw8L2RkPjwvZGl2PgogICAgPGRpdj48ZHQ+U3RhdHVzPC9kdD48ZGQ+SW4gZGV2ZWxvcG1lbnQsIHVubGF1bmNoZWQ8L2RkPjwvZGl2PgogICAgPGRpdj48ZHQ+U2NhbGU8L2R0PjxkZD5+MTAwLDAwMCBkaWdpdGFsIHRyYW5zZmVycyBhbm51YWxseTwvZGQ+PC9kaXY+CiAgICA8ZGl2PjxkdD5UaW1lZnJhbWU8L2R0PjxkZD5TdGFydGVkIFEyIDIwMjUgwrcgTVZQIE1heSAyMDI3IMK3IEZ1bGwgcmVsZWFzZSBOb3YgMjAyN+KAk0ZlYiAyMDI4PC9kZD48L2Rpdj4KICA8L2RsPgo8L2hlYWRlcj4KCjxkaXYgY2xhc3M9ImNzLWJvZHkiPgoKICA8c2VjdGlvbiBpZD0icHJvYmxlbSI+CiAgICA8aDI+UHJvYmxlbSBmcmFtaW5nPC9oMj4KICAgIDxwPgogICAgICBBIHRyYW5zZmVyIG9mIGFzc2V0cyBtb3ZlcyBhIHBlcnNvbidzIGJyb2tlcmFnZSBvciByZXRpcmVtZW50IGhvbGRpbmdzIGZyb20gb25lCiAgICAgIGluc3RpdHV0aW9uIHRvIGFub3RoZXIuIEl0J3MgZnVuY3Rpb25hbGx5IHNpbXBsZSB0byBkZXNjcmliZSBhbmQgZXh0cmFvcmRpbmFyaWx5CiAgICAgIGhpZ2gtc3Rha2VzIHRvIGV4cGVyaWVuY2Ug4oCUIHVzZXJzIGFyZSBtb3ZpbmcgdGhlaXIgbGlmZSBzYXZpbmdzLCBvZnRlbiB3aXRob3V0IGEKICAgICAgY2xlYXIgc2Vuc2Ugb2Ygd2hhdCdzIGhhcHBlbmluZyB0byB0aGVpciBtb25leSBtaWQtdHJhbnNmZXIuCiAgICA8L3A+CiAgICA8cD4KICAgICAgRm9yIHRoZSBidXNpbmVzcywgdHJhbnNmZXJzIGFyZSBhIG1ham9yIGRyaXZlciBvZiBzdXBwb3J0IGNvc3QgYW5kIGZyaWN0aW9uLCBhbmQgYQogICAgICBjb21wZXRpdGl2ZSBsZXZlcjogaW5zdGl0dXRpb25zIHdpbiBhbmQgbG9zZSBhc3NldHMgYmFzZWQgb24gaG93IHRydXN0d29ydGh5IGFuZAogICAgICBmcmljdGlvbmxlc3MgdGhpcyBtb21lbnQgZmVlbHMuCiAgICA8L3A+CiAgICA8cD4KICAgICAgVGhpcyB3YXMgYSBkZXNpZ24gbGVhZGVyc2hpcCBwcm9ibGVtIHJhdGhlciB0aGFuIGEgVVggcHJvYmxlbSBzcGVjaWZpY2FsbHkgYmVjYXVzZQogICAgICB0aGUgZmxvdyBjcm9zc2VkIHN5c3RlbXMsIHRlYW1zLCBhbmQgY29tcGxpYW5jZSBib3VuZGFyaWVzIHRoYXQgbm8gc2luZ2xlIHN0YWtlaG9sZGVyCiAgICAgIG93bmVkIGVuZC10by1lbmQuIFNvbWVvbmUgaGFkIHRvIGhvbGQgdGhlIHdob2xlIHBpY3R1cmUgYW5kIG1ha2UgdGhlIGZsb3cgZmVlbCBjb2hlcmVudAogICAgICBkZXNwaXRlIHRoYXQgZnJhZ21lbnRhdGlvbi4KICAgIDwvcD4KICAgIDxwPgogICAgICBUaGUgcHJvamVjdCB3YXMgZHJpdmVuIGJ5IGEgY29tYmluYXRpb24gb2YgY29tcGV0aXRpdmUgcHJlc3N1cmUgYW5kIGFuIGludGVybmFsCiAgICAgIGNvbXBsaWFuY2UgcmVxdWlyZW1lbnQg4oCUIGJyaW5naW5nIHRoZSBmbG93IGluIGxpbmUgd2l0aCBhbiB1cGRhdGVkIGRlc2lnbiBzeXN0ZW0uCiAgICAgIFRvZGF5J3MgZGlnaXRhbCB0cmFuc2ZlciBvZiBhc3NldHMgZmxvdyBzdGlsbCBydW5zIG9uIHRoZSBsZWdhY3kgZGVzaWduIHN5c3RlbTogaXQncwogICAgICBkaXNqb2ludGVkIGFuZCBoZWF2aWx5IGRlcGVuZGVudCBvbiBtYW51YWwsIG1pZGRsZS1vZmZpY2UgaW50ZXJ2ZW50aW9uLiBUaGUgYnJvYWRlcgogICAgICBzaGlmdCBpcyB0b3dhcmQgb3BlbiBmaW5hbmNlIOKAlCB1c2luZyBBUEkgZGF0YSBzY3JhcGVzIHRvIHByZWZpbGwgcGVyc29uYWwsIGFjY291bnQsCiAgICAgIGFuZCBhc3NldCBpbmZvcm1hdGlvbiDigJQgdG8gYXV0b21hdGUgYXMgbXVjaCBvZiB0aGUgcHJvY2VzcyBhcyBwb3NzaWJsZS4KICAgIDwvcD4KICA8L3NlY3Rpb24+CgogIDxzZWN0aW9uIGlkPSJjb25zdHJhaW50cyI+CiAgICA8aDI+Q29uc3RyYWludHM8L2gyPgoKICAgIDxoMz5MZWdhY3kgc3lzdGVtcyBhbmQgdGVjaG5pY2FsIGRlYnQ8L2gzPgogICAgPHA+VGhlIGNvcmUgaXNzdWUgd2Fzbid0IGEgc2luZ2xlIGluZmxleGlibGUgc3lzdGVtIGludGVncmF0aW9uIHNvIG11Y2ggYXMgdGhlIGFic2VuY2UKICAgICAgb2YgYSBkZWZpbmVkIGRlc2lnbiBzeXN0ZW0gaW4gdGhlIGxlZ2FjeSBmbG93LiBUaGVyZSB3YXMgbm8gY29uc2lzdGVudCBwYXR0ZXJuCiAgICAgIGxhbmd1YWdlIHRvIGJ1aWxkIGZyb20g4oCUIHBhcnQgb2YgdGhlIHdvcmsgd2FzIGVzdGFibGlzaGluZyBuZXcgaW50ZXJhY3Rpb24gYW5kCiAgICAgIHZpc3VhbCBzdGFuZGFyZHMgYXMgcGFydCBvZiB0aGUgcmVkZXNpZ24gaXRzZWxmLCBub3QganVzdCBhcHBseWluZyBhbiBleGlzdGluZyBvbmUuPC9wPgoKICAgIDxoMz5Dcm9zcy1vcmcgc3Rha2Vob2xkZXIgY29tcGxleGl0eTwvaDM+CiAgICA8cD5TdGFrZWhvbGRlcnMgaW5jbHVkZWQgcHJvZHVjdCBwYXJ0bmVycyBhbmQgZGV2ZWxvcG1lbnQgdGVhbXMuIEludGVyZXN0cyBkaWRuJ3QKICAgICAgY29uZmxpY3QgaGVhdmlseSwgYnV0IHJlYWwgY29uc3RyYWludHMgZXhpc3RlZCBhcm91bmQgZnVuZGluZyBhbmQgYXJvdW5kIHdoaWNoCiAgICAgIGRldmljZS9wbGF0Zm9ybSB0byBwcmlvcml0aXplIGZvciBNVlAuIFRoZSB0ZWFtIGRlY2lkZWQgTVZQIHdvdWxkIGJlIG1vYmlsZS1maXJzdDoKICAgICAgbW9iaWxlIGNvdWxkIGJlIGlmcmFtZWQgaW50byB0aGUgZXhpc3RpbmcgYXBwIGZvciBhIG1vcmUgc2VhbWxlc3MgZXhwZXJpZW5jZSwgYW5kIGEKICAgICAgbW9iaWxlLWZpcnN0IGRlc2lnbiBjb3ZlcnMgdGhlIG1vc3QgZ3JvdW5kLCBzaW5jZSBpdCBleHRlbmRzIHRvIHRoZSBkZXNrdG9wCiAgICAgIGV4cGVyaWVuY2UgYXMgd2VsbC48L3A+CgogICAgPGgzPlVzZXIgdHJ1c3QgYW5kIGFueGlldHk8L2gzPgogICAgPHA+TW92aW5nIGEgbGlmZSBzYXZpbmdzIGlzIG5vdCBhIG5ldXRyYWwgdHJhbnNhY3Rpb24uIFRvbmUsIHRyYW5zcGFyZW5jeSwgYW5kIGVycm9yCiAgICAgIGhhbmRsaW5nIGFsbCBoYWQgdG8gYmUgZGVzaWduZWQgYXJvdW5kIHRoZSBlbW90aW9uYWwgc3Rha2VzIG9mIHRoZSBhY3Rpb24sIG5vdCBqdXN0CiAgICAgIGl0cyBtZWNoYW5pY3MuPC9wPgoKICAgIDxoMz5BbWJpZ3VpdHkgaW4gZGF0YSBhY2Nlc3M8L2gzPgogICAgPHA+QXQgdGhlIHRpbWUgb2YgZGVzaWduLCBpdCB3YXNuJ3QgZnVsbHkga25vd24gd2hhdCBkYXRhIHRoZSB0ZWFtIHdvdWxkIHVsdGltYXRlbHkgYmUKICAgICAgYWJsZSB0byBzdXJmYWNlIOKAlCB0cmFuc2ZlciBzdGF0dXMsIGN1c3RvZGlhbiBpbmZvcm1hdGlvbiwgYW5kIHNpbWlsYXIgZGV0YWlscyB3ZXJlCiAgICAgIHN0aWxsIGJlaW5nIG5lZ290aWF0ZWQgd2l0aCB1cHN0cmVhbSBzeXN0ZW1zLiBUaGUgZmxvdyBoYWQgdG8gc3RheSBjb2hlcmVudCBhbmQKICAgICAgdHJ1c3R3b3J0aHkgYWNyb3NzIG11bHRpcGxlIHBvc3NpYmxlIGRhdGEtYXZhaWxhYmlsaXR5IHNjZW5hcmlvcywgbm90IGp1c3QgdGhlIGlkZWFsIG9uZS48L3A+CiAgICA8cD5UaGlzIGNvbnN0cmFpbnQgcGxheWVkIG91dCBjb25jcmV0ZWx5IHRocm91Z2ggd2hhdCB0aGUgdGVhbSBjYWxscyB0aGUgIkJhbmsKICAgICAgTGluayIgc2NyZWVucyDigJQgYWxyZWFkeS1kZXNpZ25lZCBzY3JlZW5zIHdob3NlIFVJIGNhbid0IGJlIGNoYW5nZWQgYmV5b25kIG1pbm9yIGNvcHkKICAgICAgZWRpdHMuIEZvciBNVlAsIG91ciBBUEkgcHJvdmlkZXIgY29ubmVjdHMgdG8gdGhlIGZvdXIgbW9zdCBjb21tb24gZXh0ZXJuYWwgZmluYW5jaWFsCiAgICAgIGluc3RpdHV0aW9ucyB0byBwdWxsIGRhdGEgZnJvbSAob3BlbmluZyB1cCB0byBtb3JlIGNvdW50ZXJwYXJ0aWVzIGF0IGZ1bGwgcmVsZWFzZSkuCiAgICAgIFdoYXRldmVyIGRhdGEgY29tZXMgYmFjayBnZXRzIHByZWZpbGxlZCBhdXRvbWF0aWNhbGx5OyB0aGUgY2xpZW50IG9ubHkgaGFzIHRvIGZpbGwgaW4KICAgICAgdGhlIGdhcHMuIERlc2lnbi13aXNlLCB0aGF0IG1lYW50IGJ1aWxkaW5nIHNvbWV0aGluZyB0aGF0IGxldmVyYWdlcyB0aGUgZGVzaWduCiAgICAgIHN5c3RlbSdzIGlucHV0IGZpZWxkIHR5cGVzIHRvIHNjYWxlIHRvIGFueSBudW1iZXIgb2YgbWlzc2luZyBmaWVsZHMsIHNpbmNlIHRoZSBleGFjdAogICAgICBnYXBzIHZhcnkgZGVwZW5kaW5nIG9uIHdoYXQgdGhlIEFQSSB3YXMgYWJsZSB0byByZXR1cm4gZm9yIGEgZ2l2ZW4gaW5zdGl0dXRpb24uPC9wPgogIDwvc2VjdGlvbj4KCiAgPHNlY3Rpb24gaWQ9ImRlY2lzaW9ucyI+CiAgICA8aDI+RGVjaXNpb25zPC9oMj4KCiAgICA8ZGl2IGNsYXNzPSJkZWNpc2lvbi1jYXJkIj4KICAgICAgPGg0PkRlY2lzaW9uIDEg4oCUIE1vdmluZyBkb2N1bWVudCB1cGxvYWQgYmVmb3JlIHN1Ym1pc3Npb248L2g0PgogICAgICA8ZGw+CiAgICAgICAgPGR0PlRoZSBxdWVzdGlvbjwvZHQ+PGRkPkluIHRoZSBsZWdhY3kgKEJBVSkgZXhwZXJpZW5jZSwgY2xpZW50cyB1cGxvYWQgcmVxdWlyZWQKICAgICAgICAgIGRvY3VtZW50YXRpb24g4oCUIGEgc2lnbmVkIHRyYW5zZmVyIGZvcm0sIGlkZW50aXR5IHZlcmlmaWNhdGlvbiwgYW5kIHNpbWlsYXIg4oCUCiAgICAgICAgICBhZnRlciB0aGV5IHN1Ym1pdCB0aGUgdHJhbnNmZXIgcmVxdWVzdC4gV2hlbiB0aGF0IGRvY3VtZW50YXRpb24gaXMgbWlzc2luZyBvcgogICAgICAgICAgd3JvbmcsIHRoZSB0cmFuc2ZlciBiZWNvbWVzICJOb3QgSW4gR29vZCBPcmRlciIgKE5JR08pOiBpdCBkb2Vzbid0IGdvIHRocm91Z2gsCiAgICAgICAgICBhbmQgaXQgc2l0cyBpbiBhIHBpbGUsIGdlbmVyYXRpbmcgZnJpY3Rpb24gZm9yIHRoZSBjbGllbnQgYW5kIG1hbnVhbCBmb2xsb3ctdXAKICAgICAgICAgIHdvcmsgZm9yIG1pZGRsZSBvZmZpY2UuIFNob3VsZCB0aGUgbmV3IGZsb3cga2VlcCB0aGF0IG9yZGVyaW5nPzwvZGQ+CiAgICAgICAgPGR0Pk9wdGlvbnMgY29uc2lkZXJlZDwvZHQ+PGRkPktlZXAgdGhlIEJBVSBwYXR0ZXJuIChjb2xsZWN0IGRvY3VtZW50cyBhZnRlcgogICAgICAgICAgc3VibWlzc2lvbiwgY2hhc2UgbWlzc2luZyBvbmVzIGFmdGVyIHRoZSBmYWN0KSB2cy4gbW92ZSBkb2N1bWVudCB1cGxvYWQgZWFybGllciwKICAgICAgICAgIGJlZm9yZSB0aGUgdHJhbnNmZXIgcmVxdWVzdCBjYW4gYmUgc3VibWl0dGVkIGF0IGFsbC48L2RkPgogICAgICAgIDxkdD5UaGUgY2FsbDwvZHQ+PGRkPlJlcXVpcmUgZG9jdW1lbnQgdXBsb2FkIHByaW9yIHRvIHRyYW5zZmVyIHJlcXVlc3Qgc3VibWlzc2lvbi48L2RkPgogICAgICAgIDxkdD5XaHk8L2R0PjxkZD5BIHRyYW5zZmVyIGNhbid0IGVudGVyIGEgc3RhbGxlZCwgTklHTyBzdGF0ZSBpZiBpdCBjYW4ndCBiZSBzdWJtaXR0ZWQKICAgICAgICAgIHdpdGhvdXQgaXRzIHJlcXVpcmVkIGRvY3VtZW50YXRpb24gaW4gdGhlIGZpcnN0IHBsYWNlIOKAlCB0aGlzIHJlbW92ZXMgdGhlIGZhaWx1cmUKICAgICAgICAgIG1vZGUgYXQgaXRzIHNvdXJjZSByYXRoZXIgdGhhbiBoYW5kbGluZyBpdCBhZnRlciB0aGUgZmFjdC48L2RkPgogICAgICAgIDxkdD5Ib3cgSSBsZWQgaXQ8L2R0PjxkZD5JIHB1c2hlZCBmb3IgdGhpcyByZW9yZGVyaW5nIGFzIGEgc3RyYXRlZ2ljIG1vdmUsIGFnYWluc3QKICAgICAgICAgIHRoZSBncmFpbiBvZiB0aGUgZXhpc3RpbmcgQkFVIHBhdHRlcm4uPC9kZD4KICAgICAgPC9kbD4KICAgIDwvZGl2PgoKICAgIDxkaXYgY2xhc3M9ImRlY2lzaW9uLWNhcmQiPgogICAgICA8aDQ+RGVjaXNpb24gMiDigJQgU2NvcGluZyB0aGUgZm9ybSB0byBvbmx5IHdoYXQncyBtaXNzaW5nPC9oND4KICAgICAgPGRsPgogICAgICAgIDxkdD5UaGUgcXVlc3Rpb248L2R0PjxkZD5XaGVuIHRoZSBBUEkgcmV0dXJucyBpbmNvbXBsZXRlIGRhdGEgZm9yIGEgZ2l2ZW4KICAgICAgICAgIGluc3RpdHV0aW9uIOKAlCBhIG1pc3NpbmcgZnVsbCBhY2NvdW50IG51bWJlciwgYWNjb3VudCB0eXBlLCBvciBqb2ludCBhY2NvdW50CiAgICAgICAgICBob2xkZXIgbmFtZXMg4oCUIGhvdyBtdWNoIHNob3VsZCB0aGUgY2xpZW50IGJlIGFza2VkIHRvIGZpbGwgaW4/PC9kZD4KICAgICAgICA8ZHQ+T3B0aW9ucyBjb25zaWRlcmVkPC9kdD48ZGQ+U2hvdyBhIGZ1bGwsIHN0YW5kYXJkIGZvcm0gcmVnYXJkbGVzcyBvZiB3aGF0IGRhdGEKICAgICAgICAgIGNhbWUgYmFjaywgdnMuIGR5bmFtaWNhbGx5IHNjb3BlIHRoZSBmb3JtIHRvIG9ubHkgdGhlIHNwZWNpZmljIGZpZWxkcyB0aGF0IGFyZQogICAgICAgICAgYWN0dWFsbHkgbWlzc2luZywgcHJlZmlsbGluZyBldmVyeXRoaW5nIGVsc2UgZnJvbSBkYXRhIGFscmVhZHkgb24gZmlsZS48L2RkPgogICAgICAgIDxkdD5UaGUgY2FsbDwvZHQ+PGRkPk9ubHkgc3VyZmFjZSBpbnB1dCBmaWVsZHMgZm9yIHRoZSBtaXNzaW5nIGRhdGEgcG9pbnRzLCBwcmVmaWxsZWQKICAgICAgICAgIHdpdGggd2hhdGV2ZXIgaXMgYWxyZWFkeSBrbm93biBmcm9tIGV4aXN0aW5nIHJlY29yZHMuPC9kZD4KICAgICAgICA8ZHQ+V2h5PC9kdD48ZGQ+SXQgcmVkdWNlcyBjb2duaXRpdmUgbG9hZCBvbiB0aGUgY2xpZW50IOKAlCB0aGV5J3JlIG5ldmVyIHJlLWVudGVyaW5nCiAgICAgICAgICBpbmZvcm1hdGlvbiB0aGUgaW5zdGl0dXRpb24gYWxyZWFkeSBoYXMsIGFuZCB0aGUgYW1vdW50IG9mIG1hbnVhbCBlbnRyeSBzY2FsZXMKICAgICAgICAgIHdpdGggaG93IG11Y2ggdGhlIEFQSSB3YXMgYWN0dWFsbHkgYWJsZSB0byByZXR1cm4uPC9kZD4KICAgICAgICA8ZHQ+SG93IEkgbGVkIGl0PC9kdD48ZGQ+SSBkZWZpbmVkIHRoaXMgYXMgdGhlIGdvdmVybmluZyBwYXR0ZXJuIGZvciB0aGUgZm9ybSwKICAgICAgICAgIGJ1aWxkaW5nIGl0IHRvIHNjYWxlIHRvIGFueSBudW1iZXIgb2YgbWlzc2luZyBmaWVsZHMgdXNpbmcgdGhlIGRlc2lnbiBzeXN0ZW0ncwogICAgICAgICAgaW5wdXQgZmllbGQgdHlwZXMuPC9kZD4KICAgICAgPC9kbD4KICAgIDwvZGl2PgoKICA8L3NlY3Rpb24+CgogIDxzZWN0aW9uIGlkPSJsZWFkZXJzaGlwIj4KICAgIDxoMj5MZWFkZXJzaGlwICZhbXA7IHRlYW08L2gyPgogICAgPHA+SSBkaXJlY3RlZCBhIHRlYW0gb2Ygb25lIGRlc2lnbmVyIGFuZCBvbmUgY29udGVudCBzdHJhdGVnaXN0LCBhbmQgb3BlcmF0ZWQgYXMgdGhlCiAgICAgIHByaW1hcnkgZGVzaWduIHZvaWNlIGFjcm9zcyBhIGNyb3NzLWZ1bmN0aW9uYWwgb3JnIHRoYXQgaW5jbHVkZWQgY29tcGxpYW5jZSwgb3BlcmF0aW9ucywKICAgICAgYW5kIGVuZ2luZWVyaW5nIOKAlCB3aXRob3V0IGZvcm1hbCBhdXRob3JpdHkgb3ZlciB0aG9zZSBkaXNjaXBsaW5lcy4gSSB3b3JrZWQgY2xvc2VseSB3aXRoCiAgICAgIGFuIFhEIFByaW5jaXBhbCBvbiB0aGUgZWZmb3J0LCB3aG8gb3BlcmF0ZWQgaW4gYSBwcm9qZWN0LW1hbmFnZW1lbnQtbGlrZSBjYXBhY2l0eTsKICAgICAgZGVzaWduIGRpcmVjdGlvbiB3YXMgbWluZSB0byBzZXQuPC9wPgogICAgPHA+T25lIHVuYmxvY2sgcmVhY2hlZCBiZXlvbmQgdGhpcyBwcm9qZWN0IHRvIG90aGVyIGRlc2lnbmVyczogaG93IGVycm9yIHN0YXRlcyBnZXQKICAgICAgaGFuZGVkIG9mZiB0byBkZXZlbG9wbWVudC4gVGhlIGZsb3cgaXMgZm9ybS1oZWF2eSwgYW5kIG1hbnkgZmllbGRzIGNhbiBjYXJyeSBhbnl3aGVyZQogICAgICBmcm9tIG9uZSB0byBmaXZlIGRpZmZlcmVudCBlcnJvciBzY2VuYXJpb3Mg4oCUIG1vY2tpbmcgZXZlcnkgcGVybXV0YXRpb24gZm9yIGV2ZXJ5CiAgICAgIHNjcmVlbiB3YXMgc2xvdyBhbmQgZGlkbid0IHNjYWxlLiBJIGNyZWF0ZWQgYSBuZXcgZ3VpZGVsaW5lOiBidWlsZCBvbmUgZXJyb3Itc3RhdGUKICAgICAgdmFyaWF0aW9uIHBlciBzY3JlZW4gdG8gc2hvdyB0aGUgVUkgcGF0dGVybiwgdGhlbiB1c2UgRmlnbWEgYW5ub3RhdGlvbnMgdG8gc3BlbGwgb3V0CiAgICAgIHRoZSBzcGVjaWZpYyBlcnJvciBjb3B5IG5lZWRlZCBieSBkZXYgYW5kIFFBIGZvciBlYWNoIHNjZW5hcmlvLiBBdCBsZWFzdCBvbmUgb3RoZXIKICAgICAgcHJvamVjdCBoYXMgc2luY2UgYWRvcHRlZCBpdC48L3A+CiAgICA8cD5PbiBkaXJlY3QgbWVudG9yc2hpcDogb3VyIGRlc2lnbmVyIG5lZWRlZCBzdXBwb3J0IGJ1aWxkaW5nIGEgZGVlcGVyIHVuZGVyc3RhbmRpbmcgb2YKICAgICAgdGhlIHByb2plY3QncyBjb25zdHJhaW50cyBhbmQgdGhlIGNvbXBsZXhpdHkgb2YgdGhlIGZsb3dzIGludm9sdmVkLiBQYXJ0IG9mIHRoZSBqb2IKICAgICAgd2FzIHVudGFuZ2xpbmcgdGhhdCBjb21wbGV4aXR5IGZvciB0aGVtIHNvIHRoZXkgY291bGQgZGVzaWduIG1vcmUgZWZmZWN0aXZlbHkg4oCUCiAgICAgIHJhdGhlciB0aGFuIGxlYXZpbmcgdGhlbSB0byB3b3JrIGl0IG91dCB1bmFzc2lzdGVkIGFnYWluc3QgYSBkZWFkbGluZS48L3A+CiAgPC9zZWN0aW9uPgoKICA8c2VjdGlvbiBpZD0ic3VjY2VzcyI+CiAgICA8aDI+U3VjY2VzcyBtZWFzdXJlczwvaDI+CiAgICA8cD5CZWNhdXNlIHRoaXMgZmxvdyBoYXNuJ3QgbGF1bmNoZWQgeWV0LCBzdWNjZXNzIGhlcmUgaXMgZGVmaW5lZCByYXRoZXIgdGhhbiBtZWFzdXJlZCDigJQKICAgICAgdGhlIHRhcmdldHMgdGhlIHRlYW0gY29tbWl0dGVkIHRvIGJlZm9yZSBsYXVuY2gsIGFuZCBob3cgd2UgcGxhbm5lZCB0byB2YWxpZGF0ZSB0aGVtLjwvcD4KICAgIDxwPlR3byB0YXJnZXRzIGFuY2hvciB0aGlzOiBhIDxzdHJvbmc+MzAlIHJlZHVjdGlvbiBpbiBOSUdPczwvc3Ryb25nPiDigJQgZHJpdmVuIGRpcmVjdGx5CiAgICAgIGJ5IG1vdmluZyBkb2N1bWVudCBjb2xsZWN0aW9uIGFoZWFkIG9mIHN1Ym1pc3Npb24g4oCUIGFuZCBhIDxzdHJvbmc+MTUlIGluY3JlYXNlIGluCiAgICAgIHRyYW5zZmVyIGNvbXBsZXRpb24gcmF0ZTwvc3Ryb25nPiwgZHJpdmVuIGJ5IHRoZSBjb21iaW5hdGlvbiBvZiBOSUdPIHJlZHVjdGlvbiBhbmQgdGhlCiAgICAgIHJlZHVjZWQgZnJpY3Rpb24gb2YgYSBmb3JtIHRoYXQgb25seSBhc2tzIGZvciB3aGF0J3MgYWN0dWFsbHkgbWlzc2luZy48L3A+CiAgPC9zZWN0aW9uPgoKICA8c2VjdGlvbiBpZD0icmVmbGVjdGlvbiI+CiAgICA8aDI+UmVmbGVjdGlvbjwvaDI+CiAgICA8cD5UaGUgcGxhbiBpcyBzb2xpZCwgYW5kIG1vc3Qgc2NyZWVucyBhcmUgYWxyZWFkeSBkZXNpZ25lZC4gVGhlIHJlYWwgcmlza3MgaGVhZGluZwogICAgICBpbnRvIE1WUCBhcmUgbWFraW5nIHN1cmUgZXZlcnkgc2NyZWVuIGxhbmRzIGZ1bGx5IEhlbGl4IGFuZCBBREEgY29tcGxpYW50LCBhbmQgaG93CiAgICAgIG11Y2ggZGF0YSB0aGUgQVBJIGludGVncmF0aW9uIGFjdHVhbGx5IGVuZHMgdXAgYmVpbmcgYWJsZSB0byByZXR1cm4g4oCUIHRoZSBkZXNpZ25zCiAgICAgIGFjY291bnQgZm9yIGJvdGgsIGJ1dCBob3cgbXVjaCB0aGUgZXhwZXJpZW5jZSBnZW51aW5lbHkgaW1wcm92ZXMgZGVwZW5kcyBvbiBob3cKICAgICAgbGl0dGxlIG1hbnVhbCBlbnRyeSBjbGllbnRzIGVuZCB1cCBuZWVkaW5nLCB3aGljaCBpc24ndCBmdWxseSBpbiBvdXIgY29udHJvbCB5ZXQuPC9wPgogICAgPHA+SWYgSSB3ZXJlIGRvaW5nIHRoaXMgYWdhaW4sIEknZCBzcGVuZCBtb3JlIHRpbWUgb24gc3RyYXRlZ2ljIGRlc2lnbiBkaXJlY3Rpb24KICAgICAgZWFybGllciBhbmQgbGVzcyB0aW1lIGVhZ2VyIHRvIGdldCBpbnRvIHRoZSB3ZWVkcyBvZiBkZXNpZ25pbmcgZXZlcnkgaW5kaXZpZHVhbAogICAgICBzY3JlZW4uIFRoYXQncyBhIGRlbGliZXJhdGUgc2hpZnQgYXMgSSBwdXNoIHRvd2FyZCBtb3JlIGxlYWQtbGV2ZWwgd29yazogYSBncmVhdGVyCiAgICAgIGVtcGhhc2lzIG9uIGRlc2lnbiBkaXJlY3Rpb24sIGdyb3VuZGVkIGluIGEgZGVlcGVyIHVuZGVyc3RhbmRpbmcgb2YgdGhlIHByb2R1Y3QgYW5kCiAgICAgIHRoZSBleHBlcmllbmNlLCBiZWZvcmUgZGl2aW5nIGludG8gc2NyZWVucy48L3A+CiAgPC9zZWN0aW9uPgoKPC9kaXY+Cgo8Zm9vdGVyIGNsYXNzPSJzaXRlLWZvb3RlciI+CiAgPGRpdiBjbGFzcz0id3JhcCI+CiAgICA8cD4mY29weTsgMjAyNiBNaWNoYWVsLjwvcD4KICAgIDxwPjxhIGhyZWY9ImluZGV4Lmh0bWwiPiZsYXJyOyBCYWNrIHRvIGFsbCB3b3JrPC9hPjwvcD4KICA8L2Rpdj4KPC9mb290ZXI+Cg==</script>
+<div id="site-content" hidden></div>
 
 <script src="gate.js"></script>
 </body>

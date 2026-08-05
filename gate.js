@@ -1,61 +1,75 @@
 /* ===========================================================
-   Soft password gate for private / interview-detail sections.
+   Site-wide password gate.
 
-   IMPORTANT — read before relying on this:
-   This is presentation-layer obfuscation, NOT real security.
-   The password and the gated content are both shipped to the
-   browser (base64-encoded, not encrypted) inside the page's
-   source. Anyone reasonably technical who inspects the page
-   source or network payload can extract both. Do not put
-   anything here you would be genuinely harmed by a stranger
-   reading — keep truly sensitive figures (exact dollar amounts,
-   internal system names, anything under NDA) out of this file
-   entirely and share those verbally in interviews instead.
+   How it works: every page's real content is stored base64-encoded
+   inside a <script type="text/plain" id="site-content-payload"> tag,
+   NOT in the visible DOM. Nothing renders until the correct password
+   is entered, at which point the payload is decoded and injected into
+   #site-content. Once unlocked, the browser remembers via localStorage
+   so you don't have to re-enter the password on every page.
 
-   What this DOES do: keep casual visitors from stumbling onto
-   interview-only detail, and let you share a single link + a
-   password with a specific recruiter/hiring manager without
-   needing a backend.
+   IMPORTANT — read before relying on this for anything truly sensitive:
+   This keeps the site out of search engines, off-the-cuff link sharing,
+   and casual browsing. It is NOT real security. The password (base64,
+   not encrypted) and the encoded content both ship to the browser in
+   the page source — anyone reasonably technical who inspects it can
+   extract both without ever typing the password. Don't put information
+   here you'd be genuinely harmed by a specific person deciding to leak
+   or screenshot, even if they're someone you gave the password to.
 
-   To change a page's password: edit the data-password attribute
-   on that page's .gate-box element. It must be base64-encoded —
-   from a terminal: node -e "console.log(btoa('yourpassword'))"
-   or `echo -n 'yourpassword' | base64`.
+   To change the password: from a terminal, run
+     echo -n 'yournewpassword' | base64
+   and paste the result into PASSWORD_B64 below, on every page (or just
+   in this shared file, since all pages load it).
    =========================================================== */
 
-function b64decode(str) {
-  try {
-    return new TextDecoder().decode(Uint8Array.from(atob(str), (c) => c.charCodeAt(0)));
-  } catch (e) {
-    return "";
+(function () {
+  var STORAGE_KEY = "portfolio_unlocked_v1";
+  var PASSWORD_B64 = "ZmllbGRub3RlczI2"; // "fieldnotes26" — change me, see DEPLOY.md
+
+  function b64decode(str) {
+    try {
+      return new TextDecoder().decode(Uint8Array.from(atob(str), function (c) {
+        return c.charCodeAt(0);
+      }));
+    } catch (e) {
+      return "";
+    }
   }
-}
 
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".gate-box").forEach(function (box) {
-    const form = box.querySelector(".gate-form");
-    const input = form ? form.querySelector('input[type="password"]') : null;
-    const error = box.querySelector(".gate-error");
-    const content = box.querySelector(".gate-content");
-    const payload = box.querySelector(".gate-payload");
-    const correctRaw = box.getAttribute("data-password") || "";
-    const correct = b64decode(correctRaw);
+  function reveal() {
+    var overlay = document.getElementById("site-gate-overlay");
+    var payload = document.getElementById("site-content-payload");
+    var content = document.getElementById("site-content");
+    if (payload && content && !content.dataset.filled) {
+      content.innerHTML = b64decode(payload.textContent.trim());
+      content.dataset.filled = "1";
+    }
+    if (overlay) overlay.hidden = true;
+    if (content) content.hidden = false;
+  }
 
-    if (!form || !input || !content) return;
+  document.addEventListener("DOMContentLoaded", function () {
+    if (localStorage.getItem(STORAGE_KEY) === "1") {
+      reveal();
+      return;
+    }
+
+    var form = document.getElementById("site-gate-form");
+    var input = document.getElementById("site-gate-input");
+    var error = document.getElementById("site-gate-error");
+    var correct = b64decode(PASSWORD_B64);
+
+    if (!form || !input) return;
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (input.value.trim() !== "" && input.value === correct) {
-        if (payload) {
-          content.innerHTML = b64decode(payload.textContent.trim());
-        }
-        content.hidden = false;
-        box.classList.add("unlocked");
-        form.hidden = true;
-        if (error) error.style.display = "none";
-      } else {
-        if (error) error.style.display = "block";
+      if (input.value === correct) {
+        localStorage.setItem(STORAGE_KEY, "1");
+        reveal();
+      } else if (error) {
+        error.style.display = "block";
       }
     });
   });
-});
+})();
