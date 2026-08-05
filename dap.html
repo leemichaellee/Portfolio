@@ -8,22 +8,183 @@
 </head>
 <body>
 
-<div id="site-gate-overlay" class="site-gate-overlay">
-  <div class="site-gate-box">
-    <p class="eyebrow">Private portfolio</p>
-    <h1>Enter password</h1>
-    <p class="gate-note">This portfolio is shared privately. Enter the password you were given to continue.</p>
-    <form class="gate-form" id="site-gate-form">
-      <input type="password" id="site-gate-input" placeholder="Password" required autofocus>
-      <button type="submit">Enter</button>
-    </form>
-    <p class="gate-error" id="site-gate-error">Incorrect password — try again, or reach out for access.</p>
+<header class="site-nav">
+  <div class="wrap">
+    <a class="name" href="index.html">Michael</a>
+    <nav>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
   </div>
+</header>
+
+<header class="cs-header">
+  <div class="tags">
+    <span class="tag unlaunched">In staged release</span>
+    <span class="tag neutral">Accessibility</span>
+  </div>
+  <h1>DAP 2.2 — Accessibility &amp; Rationalization</h1>
+  <p class="lede">
+    Owning the asset allocation portion of a $4.7M, legally-driven accessibility
+    remediation and rationalization program spanning 34 legacy properties — where the hard
+    problem wasn't designing from scratch, but renegotiating an entrenched visual pattern
+    under a compliance deadline.
+  </p>
+  <dl class="meta-grid">
+    <div><dt>Role</dt><dd>Led asset allocation workstream, working alongside an XD Principal as a collaborator</dd></div>
+    <div><dt>Status</dt><dd>All 34 URLs remediated; staged public release in progress</dd></div>
+    <div><dt>Scale</dt><dd>$4.7M program · 34 URLs/properties</dd></div>
+    <div><dt>Driver</dt><dd>ADA / WCAG legal and regulatory exposure</dd></div>
+    <div><dt>Timeframe</dt><dd>Program started Q1 2024 · I joined Q3 2024 · rolled off Q2 2026 · staged release continues into 2026</dd></div>
+  </dl>
+</header>
+
+<div class="cs-body">
+
+  <section id="problem">
+    <h2>Problem framing</h2>
+    <p>
+      This program existed because of legal exposure, not as a discretionary redesign —
+      ADA/WCAG compliance risk was the forcing function across the whole initiative.
+    </p>
+    <p>
+      My portion focused on asset allocation: a full page within the Merrill digital
+      experience that gives clients a breakdown of their portfolio construction — used to
+      assess risk and diversification, validate balance and composition, and do an overall
+      portfolio health check. The original experience carried a high cognitive load: dense,
+      unprioritized data with no clear visual or information hierarchy, split across two
+      tabs — a pie chart for a high-level overview, and a separate data table that dove into
+      each individual security or holding. The chart's specific accessibility failure was
+      color contrast.
+    </p>
+    <p>
+      The core tension: remediating for accessibility meant changing a visual pattern that
+      had been in production and in the brand system for years. This wasn't a blank-canvas
+      design problem — it was renegotiating an existing, entrenched pattern under a legal
+      deadline, in a way that stayed usable and on-brand.
+    </p>
+  </section>
+
+  <section id="constraints">
+    <h2>Constraints</h2>
+
+    <h3>Accessibility vs. existing brand/visual patterns</h3>
+    <p>We pushed for new visual design colors for the allocation chart, which then became
+      part of the shared design system — now used to denote specific asset classes across
+      Merrill (cash = green, equities = dark blue, fixed income = purple, alternative
+      investments = orange). There was no real pushback from brand or visual stakeholders
+      on this change.</p>
+
+    <h3>Scale and consistency across legacy tech stacks</h3>
+    <p>The properties in scope ran on different platforms and templates, so a pattern that
+      worked on one didn't necessarily ship the same way everywhere. Part of the job was
+      defining a standard that could actually be implemented consistently despite that.</p>
+
+    <h3>Budget and scope pressure</h3>
+    <p>As a high-visibility, high-cost program, decisions were scrutinized closely, which
+      shaped where we could pursue the ideal fix versus a phased or scoped-down one.</p>
+
+    <h3>Regulatory deadline</h3>
+    <p>WCAG conformance isn't negotiable on timeline the way typical feature work is —
+      that urgency changed how decisions got made: faster, more top-down, less room for
+      iteration than a standard design process would allow.</p>
+  </section>
+
+  <section id="decisions">
+    <h2>Decisions</h2>
+
+    <div class="decision-card">
+      <h4>Decision 1 — Restructuring around an "inverse pyramid"</h4>
+      <dl>
+        <dt>The question</dt><dd>The original page split allocation data across two
+          separate tabs — a chart and a data table — with no clear hierarchy and a high
+          cognitive load. How should the page be restructured to fix that, accessibly?</dd>
+        <dt>Options considered</dt><dd>Keep the two-tab structure and remediate each in
+          place, vs. consolidate into a single page with a deliberate information hierarchy.</dd>
+        <dt>The call</dt><dd>Landed on an "inverse pyramid" structure: high-level overview
+          information at the top, with the ability to drill down into individual data
+          points (security quantity, price, value, and so on) further down. The two tabs
+          were consolidated into one page — chart at the top, data table underneath.</dd>
+        <dt>Why</dt><dd>It replaces implicit tab-switching with a natural top-to-bottom
+          scan, giving users the high-level picture first and depth on demand — which
+          reduces cognitive load and establishes the visual/information hierarchy the
+          original page lacked.</dd>
+        <dt>How I led it</dt><dd>I designed this restructuring directly.</dd>
+      </dl>
+    </div>
+
+    <div class="decision-card">
+      <h4>Decision 2 — Atomizing the design system for data-dense pages</h4>
+      <dl>
+        <dt>The question</dt><dd>Keeping a unified feel across 34 URLs running on
+          inconsistent legacy tech stacks, without going off-brand or building a parallel
+          design system from scratch, was a real challenge. How do you standardize
+          something you can't implement identically everywhere?</dd>
+        <dt>Options considered</dt><dd>Apply the existing HELIX design system's components
+          as-is (risk: not flexible enough for how data-dense these pages needed to be) vs.
+          break HELIX down to its atomic level and build a local design language on top of it.</dd>
+        <dt>The call</dt><dd>Broke HELIX down to atoms — its smallest variations — and used
+          that to create a local design language for account-details pages specifically
+          (asset allocation, holdings, activity, and position details).</dd>
+        <dt>Why</dt><dd>This kept a unified feel across related pages without going
+          off-brand, while staying flexible enough to handle screens far more data-dense
+          than most HELIX components were originally built for.</dd>
+        <dt>How I led it</dt><dd>I played a pivotal role designing components with enhanced
+          functionality beyond their original HELIX counterparts — including expandable
+          cards with header areas that scale to data-dense headers, and "billboards" used
+          across these account-details pages to surface high-level overview values.</dd>
+      </dl>
+    </div>  </section>
+
+  <section id="leadership">
+    <h2>Leadership &amp; collaboration</h2>
+    <p>I worked alongside an XD Principal on the account-details work, as a collaborator —
+      not as their report, and not a title I held myself on this project — owning the asset
+      allocation portion specifically.</p>
+    <p>This is something I repeat to other teams at the bank when the subject comes up.
+      Because I work on the consumer investing side, I regularly deal with digital
+      experiences that are extremely data-dense — the pattern I push for is to keep
+      stretching the boundaries of the existing design system so it scales to hold up to
+      5x the data most components were originally built for. In practice that means
+      adjusting spacing, type hierarchy, and grid layout, then feeding those adaptations
+      back into the shared system so other teams facing the same density problem can use
+      them too.</p>
+  </section>
+
+  <section id="success">
+    <h2>Success measures</h2>
+    <p>Since this program hasn't launched, success is defined through pre-set conformance
+      targets plus audit and usability evidence, rather than shipped metrics.</p>
+    <p>The target is <strong>WCAG 2.2 Level AA conformance</strong>, audited by our
+      dedicated ADA partners, who we worked closely with throughout the process. All 34
+      URLs have been remediated as of now. Release is staged rather than pushed live all
+      at once, so the team can closely monitor how clients react to what are, in places,
+      major UI and UX changes before expanding further.</p>
+  </section>
+
+  <section id="reflection">
+    <h2>Reflection</h2>
+    <p>The biggest open risk is adoption: even though functionality stayed the same,
+      these are major visual changes, and it will take clients time to adjust. I'm
+      confident the changes improve the experience and help modernize the platform against
+      other financial institutions — but that's still playing out as the staged release
+      continues.</p>
+    <p>In hindsight, I'd have thought about component scalability from day one rather than
+      adapting to it as the program grew — given the scale of this project, designing
+      Figma components built to scale from the start would have saved real rework later.
+      That ties to the same broader lesson as the rest of this work: a deeper upfront
+      understanding of how clients actually use the asset allocation page, and the full
+      range of screen variations, would have made the early design decisions stronger.</p>
+  </section>
+
 </div>
 
-<script type="text/plain" id="site-content-payload">PGhlYWRlciBjbGFzcz0ic2l0ZS1uYXYiPgogIDxkaXYgY2xhc3M9IndyYXAiPgogICAgPGEgY2xhc3M9Im5hbWUiIGhyZWY9ImluZGV4Lmh0bWwiPk1pY2hhZWw8L2E+CiAgICA8bmF2PgogICAgICA8YSBocmVmPSJpbmRleC5odG1sI3dvcmsiPldvcms8L2E+CiAgICAgIDxhIGhyZWY9ImluZGV4Lmh0bWwjY29udGFjdCI+Q29udGFjdDwvYT4KICAgIDwvbmF2PgogIDwvZGl2Pgo8L2hlYWRlcj4KCjxoZWFkZXIgY2xhc3M9ImNzLWhlYWRlciI+CiAgPGRpdiBjbGFzcz0idGFncyI+CiAgICA8c3BhbiBjbGFzcz0idGFnIHVubGF1bmNoZWQiPkluIHN0YWdlZCByZWxlYXNlPC9zcGFuPgogICAgPHNwYW4gY2xhc3M9InRhZyBuZXV0cmFsIj5BY2Nlc3NpYmlsaXR5PC9zcGFuPgogIDwvZGl2PgogIDxoMT5EQVAgMi4yIOKAlCBBY2Nlc3NpYmlsaXR5ICZhbXA7IFJhdGlvbmFsaXphdGlvbjwvaDE+CiAgPHAgY2xhc3M9ImxlZGUiPgogICAgT3duaW5nIHRoZSBhc3NldCBhbGxvY2F0aW9uIHBvcnRpb24gb2YgYSAkNC43TSwgbGVnYWxseS1kcml2ZW4gYWNjZXNzaWJpbGl0eQogICAgcmVtZWRpYXRpb24gYW5kIHJhdGlvbmFsaXphdGlvbiBwcm9ncmFtIHNwYW5uaW5nIDM0IGxlZ2FjeSBwcm9wZXJ0aWVzIOKAlCB3aGVyZSB0aGUgaGFyZAogICAgcHJvYmxlbSB3YXNuJ3QgZGVzaWduaW5nIGZyb20gc2NyYXRjaCwgYnV0IHJlbmVnb3RpYXRpbmcgYW4gZW50cmVuY2hlZCB2aXN1YWwgcGF0dGVybgogICAgdW5kZXIgYSBjb21wbGlhbmNlIGRlYWRsaW5lLgogIDwvcD4KICA8ZGwgY2xhc3M9Im1ldGEtZ3JpZCI+CiAgICA8ZGl2PjxkdD5Sb2xlPC9kdD48ZGQ+TGVkIGFzc2V0IGFsbG9jYXRpb24gd29ya3N0cmVhbSwgd29ya2luZyBhbG9uZ3NpZGUgYW4gWEQgUHJpbmNpcGFsIGFzIGEgY29sbGFib3JhdG9yPC9kZD48L2Rpdj4KICAgIDxkaXY+PGR0PlN0YXR1czwvZHQ+PGRkPkFsbCAzNCBVUkxzIHJlbWVkaWF0ZWQ7IHN0YWdlZCBwdWJsaWMgcmVsZWFzZSBpbiBwcm9ncmVzczwvZGQ+PC9kaXY+CiAgICA8ZGl2PjxkdD5TY2FsZTwvZHQ+PGRkPiQ0LjdNIHByb2dyYW0gwrcgMzQgVVJMcy9wcm9wZXJ0aWVzPC9kZD48L2Rpdj4KICAgIDxkaXY+PGR0PkRyaXZlcjwvZHQ+PGRkPkFEQSAvIFdDQUcgbGVnYWwgYW5kIHJlZ3VsYXRvcnkgZXhwb3N1cmU8L2RkPjwvZGl2PgogICAgPGRpdj48ZHQ+VGltZWZyYW1lPC9kdD48ZGQ+UHJvZ3JhbSBzdGFydGVkIFExIDIwMjQgwrcgSSBqb2luZWQgUTMgMjAyNCDCtyByb2xsZWQgb2ZmIFEyIDIwMjYgwrcgc3RhZ2VkIHJlbGVhc2UgY29udGludWVzIGludG8gMjAyNjwvZGQ+PC9kaXY+CiAgPC9kbD4KPC9oZWFkZXI+Cgo8ZGl2IGNsYXNzPSJjcy1ib2R5Ij4KCiAgPHNlY3Rpb24gaWQ9InByb2JsZW0iPgogICAgPGgyPlByb2JsZW0gZnJhbWluZzwvaDI+CiAgICA8cD4KICAgICAgVGhpcyBwcm9ncmFtIGV4aXN0ZWQgYmVjYXVzZSBvZiBsZWdhbCBleHBvc3VyZSwgbm90IGFzIGEgZGlzY3JldGlvbmFyeSByZWRlc2lnbiDigJQKICAgICAgQURBL1dDQUcgY29tcGxpYW5jZSByaXNrIHdhcyB0aGUgZm9yY2luZyBmdW5jdGlvbiBhY3Jvc3MgdGhlIHdob2xlIGluaXRpYXRpdmUuCiAgICA8L3A+CiAgICA8cD4KICAgICAgTXkgcG9ydGlvbiBmb2N1c2VkIG9uIGFzc2V0IGFsbG9jYXRpb246IGEgZnVsbCBwYWdlIHdpdGhpbiB0aGUgTWVycmlsbCBkaWdpdGFsCiAgICAgIGV4cGVyaWVuY2UgdGhhdCBnaXZlcyBjbGllbnRzIGEgYnJlYWtkb3duIG9mIHRoZWlyIHBvcnRmb2xpbyBjb25zdHJ1Y3Rpb24g4oCUIHVzZWQgdG8KICAgICAgYXNzZXNzIHJpc2sgYW5kIGRpdmVyc2lmaWNhdGlvbiwgdmFsaWRhdGUgYmFsYW5jZSBhbmQgY29tcG9zaXRpb24sIGFuZCBkbyBhbiBvdmVyYWxsCiAgICAgIHBvcnRmb2xpbyBoZWFsdGggY2hlY2suIFRoZSBvcmlnaW5hbCBleHBlcmllbmNlIGNhcnJpZWQgYSBoaWdoIGNvZ25pdGl2ZSBsb2FkOiBkZW5zZSwKICAgICAgdW5wcmlvcml0aXplZCBkYXRhIHdpdGggbm8gY2xlYXIgdmlzdWFsIG9yIGluZm9ybWF0aW9uIGhpZXJhcmNoeSwgc3BsaXQgYWNyb3NzIHR3bwogICAgICB0YWJzIOKAlCBhIHBpZSBjaGFydCBmb3IgYSBoaWdoLWxldmVsIG92ZXJ2aWV3LCBhbmQgYSBzZXBhcmF0ZSBkYXRhIHRhYmxlIHRoYXQgZG92ZSBpbnRvCiAgICAgIGVhY2ggaW5kaXZpZHVhbCBzZWN1cml0eSBvciBob2xkaW5nLiBUaGUgY2hhcnQncyBzcGVjaWZpYyBhY2Nlc3NpYmlsaXR5IGZhaWx1cmUgd2FzCiAgICAgIGNvbG9yIGNvbnRyYXN0LgogICAgPC9wPgogICAgPHA+CiAgICAgIFRoZSBjb3JlIHRlbnNpb246IHJlbWVkaWF0aW5nIGZvciBhY2Nlc3NpYmlsaXR5IG1lYW50IGNoYW5naW5nIGEgdmlzdWFsIHBhdHRlcm4gdGhhdAogICAgICBoYWQgYmVlbiBpbiBwcm9kdWN0aW9uIGFuZCBpbiB0aGUgYnJhbmQgc3lzdGVtIGZvciB5ZWFycy4gVGhpcyB3YXNuJ3QgYSBibGFuay1jYW52YXMKICAgICAgZGVzaWduIHByb2JsZW0g4oCUIGl0IHdhcyByZW5lZ290aWF0aW5nIGFuIGV4aXN0aW5nLCBlbnRyZW5jaGVkIHBhdHRlcm4gdW5kZXIgYSBsZWdhbAogICAgICBkZWFkbGluZSwgaW4gYSB3YXkgdGhhdCBzdGF5ZWQgdXNhYmxlIGFuZCBvbi1icmFuZC4KICAgIDwvcD4KICA8L3NlY3Rpb24+CgogIDxzZWN0aW9uIGlkPSJjb25zdHJhaW50cyI+CiAgICA8aDI+Q29uc3RyYWludHM8L2gyPgoKICAgIDxoMz5BY2Nlc3NpYmlsaXR5IHZzLiBleGlzdGluZyBicmFuZC92aXN1YWwgcGF0dGVybnM8L2gzPgogICAgPHA+V2UgcHVzaGVkIGZvciBuZXcgdmlzdWFsIGRlc2lnbiBjb2xvcnMgZm9yIHRoZSBhbGxvY2F0aW9uIGNoYXJ0LCB3aGljaCB0aGVuIGJlY2FtZQogICAgICBwYXJ0IG9mIHRoZSBzaGFyZWQgZGVzaWduIHN5c3RlbSDigJQgbm93IHVzZWQgdG8gZGVub3RlIHNwZWNpZmljIGFzc2V0IGNsYXNzZXMgYWNyb3NzCiAgICAgIE1lcnJpbGwgKGNhc2ggPSBncmVlbiwgZXF1aXRpZXMgPSBkYXJrIGJsdWUsIGZpeGVkIGluY29tZSA9IHB1cnBsZSwgYWx0ZXJuYXRpdmUKICAgICAgaW52ZXN0bWVudHMgPSBvcmFuZ2UpLiBUaGVyZSB3YXMgbm8gcmVhbCBwdXNoYmFjayBmcm9tIGJyYW5kIG9yIHZpc3VhbCBzdGFrZWhvbGRlcnMKICAgICAgb24gdGhpcyBjaGFuZ2UuPC9wPgoKICAgIDxoMz5TY2FsZSBhbmQgY29uc2lzdGVuY3kgYWNyb3NzIGxlZ2FjeSB0ZWNoIHN0YWNrczwvaDM+CiAgICA8cD5UaGUgcHJvcGVydGllcyBpbiBzY29wZSByYW4gb24gZGlmZmVyZW50IHBsYXRmb3JtcyBhbmQgdGVtcGxhdGVzLCBzbyBhIHBhdHRlcm4gdGhhdAogICAgICB3b3JrZWQgb24gb25lIGRpZG4ndCBuZWNlc3NhcmlseSBzaGlwIHRoZSBzYW1lIHdheSBldmVyeXdoZXJlLiBQYXJ0IG9mIHRoZSBqb2Igd2FzCiAgICAgIGRlZmluaW5nIGEgc3RhbmRhcmQgdGhhdCBjb3VsZCBhY3R1YWxseSBiZSBpbXBsZW1lbnRlZCBjb25zaXN0ZW50bHkgZGVzcGl0ZSB0aGF0LjwvcD4KCiAgICA8aDM+QnVkZ2V0IGFuZCBzY29wZSBwcmVzc3VyZTwvaDM+CiAgICA8cD5BcyBhIGhpZ2gtdmlzaWJpbGl0eSwgaGlnaC1jb3N0IHByb2dyYW0sIGRlY2lzaW9ucyB3ZXJlIHNjcnV0aW5pemVkIGNsb3NlbHksIHdoaWNoCiAgICAgIHNoYXBlZCB3aGVyZSB3ZSBjb3VsZCBwdXJzdWUgdGhlIGlkZWFsIGZpeCB2ZXJzdXMgYSBwaGFzZWQgb3Igc2NvcGVkLWRvd24gb25lLjwvcD4KCiAgICA8aDM+UmVndWxhdG9yeSBkZWFkbGluZTwvaDM+CiAgICA8cD5XQ0FHIGNvbmZvcm1hbmNlIGlzbid0IG5lZ290aWFibGUgb24gdGltZWxpbmUgdGhlIHdheSB0eXBpY2FsIGZlYXR1cmUgd29yayBpcyDigJQKICAgICAgdGhhdCB1cmdlbmN5IGNoYW5nZWQgaG93IGRlY2lzaW9ucyBnb3QgbWFkZTogZmFzdGVyLCBtb3JlIHRvcC1kb3duLCBsZXNzIHJvb20gZm9yCiAgICAgIGl0ZXJhdGlvbiB0aGFuIGEgc3RhbmRhcmQgZGVzaWduIHByb2Nlc3Mgd291bGQgYWxsb3cuPC9wPgogIDwvc2VjdGlvbj4KCiAgPHNlY3Rpb24gaWQ9ImRlY2lzaW9ucyI+CiAgICA8aDI+RGVjaXNpb25zPC9oMj4KCiAgICA8ZGl2IGNsYXNzPSJkZWNpc2lvbi1jYXJkIj4KICAgICAgPGg0PkRlY2lzaW9uIDEg4oCUIFJlc3RydWN0dXJpbmcgYXJvdW5kIGFuICJpbnZlcnNlIHB5cmFtaWQiPC9oND4KICAgICAgPGRsPgogICAgICAgIDxkdD5UaGUgcXVlc3Rpb248L2R0PjxkZD5UaGUgb3JpZ2luYWwgcGFnZSBzcGxpdCBhbGxvY2F0aW9uIGRhdGEgYWNyb3NzIHR3bwogICAgICAgICAgc2VwYXJhdGUgdGFicyDigJQgYSBjaGFydCBhbmQgYSBkYXRhIHRhYmxlIOKAlCB3aXRoIG5vIGNsZWFyIGhpZXJhcmNoeSBhbmQgYSBoaWdoCiAgICAgICAgICBjb2duaXRpdmUgbG9hZC4gSG93IHNob3VsZCB0aGUgcGFnZSBiZSByZXN0cnVjdHVyZWQgdG8gZml4IHRoYXQsIGFjY2Vzc2libHk/PC9kZD4KICAgICAgICA8ZHQ+T3B0aW9ucyBjb25zaWRlcmVkPC9kdD48ZGQ+S2VlcCB0aGUgdHdvLXRhYiBzdHJ1Y3R1cmUgYW5kIHJlbWVkaWF0ZSBlYWNoIGluCiAgICAgICAgICBwbGFjZSwgdnMuIGNvbnNvbGlkYXRlIGludG8gYSBzaW5nbGUgcGFnZSB3aXRoIGEgZGVsaWJlcmF0ZSBpbmZvcm1hdGlvbiBoaWVyYXJjaHkuPC9kZD4KICAgICAgICA8ZHQ+VGhlIGNhbGw8L2R0PjxkZD5MYW5kZWQgb24gYW4gImludmVyc2UgcHlyYW1pZCIgc3RydWN0dXJlOiBoaWdoLWxldmVsIG92ZXJ2aWV3CiAgICAgICAgICBpbmZvcm1hdGlvbiBhdCB0aGUgdG9wLCB3aXRoIHRoZSBhYmlsaXR5IHRvIGRyaWxsIGRvd24gaW50byBpbmRpdmlkdWFsIGRhdGEKICAgICAgICAgIHBvaW50cyAoc2VjdXJpdHkgcXVhbnRpdHksIHByaWNlLCB2YWx1ZSwgYW5kIHNvIG9uKSBmdXJ0aGVyIGRvd24uIFRoZSB0d28gdGFicwogICAgICAgICAgd2VyZSBjb25zb2xpZGF0ZWQgaW50byBvbmUgcGFnZSDigJQgY2hhcnQgYXQgdGhlIHRvcCwgZGF0YSB0YWJsZSB1bmRlcm5lYXRoLjwvZGQ+CiAgICAgICAgPGR0PldoeTwvZHQ+PGRkPkl0IHJlcGxhY2VzIGltcGxpY2l0IHRhYi1zd2l0Y2hpbmcgd2l0aCBhIG5hdHVyYWwgdG9wLXRvLWJvdHRvbQogICAgICAgICAgc2NhbiwgZ2l2aW5nIHVzZXJzIHRoZSBoaWdoLWxldmVsIHBpY3R1cmUgZmlyc3QgYW5kIGRlcHRoIG9uIGRlbWFuZCDigJQgd2hpY2gKICAgICAgICAgIHJlZHVjZXMgY29nbml0aXZlIGxvYWQgYW5kIGVzdGFibGlzaGVzIHRoZSB2aXN1YWwvaW5mb3JtYXRpb24gaGllcmFyY2h5IHRoZQogICAgICAgICAgb3JpZ2luYWwgcGFnZSBsYWNrZWQuPC9kZD4KICAgICAgICA8ZHQ+SG93IEkgbGVkIGl0PC9kdD48ZGQ+SSBkZXNpZ25lZCB0aGlzIHJlc3RydWN0dXJpbmcgZGlyZWN0bHkuPC9kZD4KICAgICAgPC9kbD4KICAgIDwvZGl2PgoKICAgIDxkaXYgY2xhc3M9ImRlY2lzaW9uLWNhcmQiPgogICAgICA8aDQ+RGVjaXNpb24gMiDigJQgQXRvbWl6aW5nIHRoZSBkZXNpZ24gc3lzdGVtIGZvciBkYXRhLWRlbnNlIHBhZ2VzPC9oND4KICAgICAgPGRsPgogICAgICAgIDxkdD5UaGUgcXVlc3Rpb248L2R0PjxkZD5LZWVwaW5nIGEgdW5pZmllZCBmZWVsIGFjcm9zcyAzNCBVUkxzIHJ1bm5pbmcgb24KICAgICAgICAgIGluY29uc2lzdGVudCBsZWdhY3kgdGVjaCBzdGFja3MsIHdpdGhvdXQgZ29pbmcgb2ZmLWJyYW5kIG9yIGJ1aWxkaW5nIGEgcGFyYWxsZWwKICAgICAgICAgIGRlc2lnbiBzeXN0ZW0gZnJvbSBzY3JhdGNoLCB3YXMgYSByZWFsIGNoYWxsZW5nZS4gSG93IGRvIHlvdSBzdGFuZGFyZGl6ZQogICAgICAgICAgc29tZXRoaW5nIHlvdSBjYW4ndCBpbXBsZW1lbnQgaWRlbnRpY2FsbHkgZXZlcnl3aGVyZT88L2RkPgogICAgICAgIDxkdD5PcHRpb25zIGNvbnNpZGVyZWQ8L2R0PjxkZD5BcHBseSB0aGUgZXhpc3RpbmcgSEVMSVggZGVzaWduIHN5c3RlbSdzIGNvbXBvbmVudHMKICAgICAgICAgIGFzLWlzIChyaXNrOiBub3QgZmxleGlibGUgZW5vdWdoIGZvciBob3cgZGF0YS1kZW5zZSB0aGVzZSBwYWdlcyBuZWVkZWQgdG8gYmUpIHZzLgogICAgICAgICAgYnJlYWsgSEVMSVggZG93biB0byBpdHMgYXRvbWljIGxldmVsIGFuZCBidWlsZCBhIGxvY2FsIGRlc2lnbiBsYW5ndWFnZSBvbiB0b3Agb2YgaXQuPC9kZD4KICAgICAgICA8ZHQ+VGhlIGNhbGw8L2R0PjxkZD5Ccm9rZSBIRUxJWCBkb3duIHRvIGF0b21zIOKAlCBpdHMgc21hbGxlc3QgdmFyaWF0aW9ucyDigJQgYW5kIHVzZWQKICAgICAgICAgIHRoYXQgdG8gY3JlYXRlIGEgbG9jYWwgZGVzaWduIGxhbmd1YWdlIGZvciBhY2NvdW50LWRldGFpbHMgcGFnZXMgc3BlY2lmaWNhbGx5CiAgICAgICAgICAoYXNzZXQgYWxsb2NhdGlvbiwgaG9sZGluZ3MsIGFjdGl2aXR5LCBhbmQgcG9zaXRpb24gZGV0YWlscykuPC9kZD4KICAgICAgICA8ZHQ+V2h5PC9kdD48ZGQ+VGhpcyBrZXB0IGEgdW5pZmllZCBmZWVsIGFjcm9zcyByZWxhdGVkIHBhZ2VzIHdpdGhvdXQgZ29pbmcKICAgICAgICAgIG9mZi1icmFuZCwgd2hpbGUgc3RheWluZyBmbGV4aWJsZSBlbm91Z2ggdG8gaGFuZGxlIHNjcmVlbnMgZmFyIG1vcmUgZGF0YS1kZW5zZQogICAgICAgICAgdGhhbiBtb3N0IEhFTElYIGNvbXBvbmVudHMgd2VyZSBvcmlnaW5hbGx5IGJ1aWx0IGZvci48L2RkPgogICAgICAgIDxkdD5Ib3cgSSBsZWQgaXQ8L2R0PjxkZD5JIHBsYXllZCBhIHBpdm90YWwgcm9sZSBkZXNpZ25pbmcgY29tcG9uZW50cyB3aXRoIGVuaGFuY2VkCiAgICAgICAgICBmdW5jdGlvbmFsaXR5IGJleW9uZCB0aGVpciBvcmlnaW5hbCBIRUxJWCBjb3VudGVycGFydHMg4oCUIGluY2x1ZGluZyBleHBhbmRhYmxlCiAgICAgICAgICBjYXJkcyB3aXRoIGhlYWRlciBhcmVhcyB0aGF0IHNjYWxlIHRvIGRhdGEtZGVuc2UgaGVhZGVycywgYW5kICJiaWxsYm9hcmRzIiB1c2VkCiAgICAgICAgICBhY3Jvc3MgdGhlc2UgYWNjb3VudC1kZXRhaWxzIHBhZ2VzIHRvIHN1cmZhY2UgaGlnaC1sZXZlbCBvdmVydmlldyB2YWx1ZXMuPC9kZD4KICAgICAgPC9kbD4KICAgIDwvZGl2PiAgPC9zZWN0aW9uPgoKICA8c2VjdGlvbiBpZD0ibGVhZGVyc2hpcCI+CiAgICA8aDI+TGVhZGVyc2hpcCAmYW1wOyBjb2xsYWJvcmF0aW9uPC9oMj4KICAgIDxwPkkgd29ya2VkIGFsb25nc2lkZSBhbiBYRCBQcmluY2lwYWwgb24gdGhlIGFjY291bnQtZGV0YWlscyB3b3JrLCBhcyBhIGNvbGxhYm9yYXRvciDigJQKICAgICAgbm90IGFzIHRoZWlyIHJlcG9ydCwgYW5kIG5vdCBhIHRpdGxlIEkgaGVsZCBteXNlbGYgb24gdGhpcyBwcm9qZWN0IOKAlCBvd25pbmcgdGhlIGFzc2V0CiAgICAgIGFsbG9jYXRpb24gcG9ydGlvbiBzcGVjaWZpY2FsbHkuPC9wPgogICAgPHA+VGhpcyBpcyBzb21ldGhpbmcgSSByZXBlYXQgdG8gb3RoZXIgdGVhbXMgYXQgdGhlIGJhbmsgd2hlbiB0aGUgc3ViamVjdCBjb21lcyB1cC4KICAgICAgQmVjYXVzZSBJIHdvcmsgb24gdGhlIGNvbnN1bWVyIGludmVzdGluZyBzaWRlLCBJIHJlZ3VsYXJseSBkZWFsIHdpdGggZGlnaXRhbAogICAgICBleHBlcmllbmNlcyB0aGF0IGFyZSBleHRyZW1lbHkgZGF0YS1kZW5zZSDigJQgdGhlIHBhdHRlcm4gSSBwdXNoIGZvciBpcyB0byBrZWVwCiAgICAgIHN0cmV0Y2hpbmcgdGhlIGJvdW5kYXJpZXMgb2YgdGhlIGV4aXN0aW5nIGRlc2lnbiBzeXN0ZW0gc28gaXQgc2NhbGVzIHRvIGhvbGQgdXAgdG8KICAgICAgNXggdGhlIGRhdGEgbW9zdCBjb21wb25lbnRzIHdlcmUgb3JpZ2luYWxseSBidWlsdCBmb3IuIEluIHByYWN0aWNlIHRoYXQgbWVhbnMKICAgICAgYWRqdXN0aW5nIHNwYWNpbmcsIHR5cGUgaGllcmFyY2h5LCBhbmQgZ3JpZCBsYXlvdXQsIHRoZW4gZmVlZGluZyB0aG9zZSBhZGFwdGF0aW9ucwogICAgICBiYWNrIGludG8gdGhlIHNoYXJlZCBzeXN0ZW0gc28gb3RoZXIgdGVhbXMgZmFjaW5nIHRoZSBzYW1lIGRlbnNpdHkgcHJvYmxlbSBjYW4gdXNlCiAgICAgIHRoZW0gdG9vLjwvcD4KICA8L3NlY3Rpb24+CgogIDxzZWN0aW9uIGlkPSJzdWNjZXNzIj4KICAgIDxoMj5TdWNjZXNzIG1lYXN1cmVzPC9oMj4KICAgIDxwPlNpbmNlIHRoaXMgcHJvZ3JhbSBoYXNuJ3QgbGF1bmNoZWQsIHN1Y2Nlc3MgaXMgZGVmaW5lZCB0aHJvdWdoIHByZS1zZXQgY29uZm9ybWFuY2UKICAgICAgdGFyZ2V0cyBwbHVzIGF1ZGl0IGFuZCB1c2FiaWxpdHkgZXZpZGVuY2UsIHJhdGhlciB0aGFuIHNoaXBwZWQgbWV0cmljcy48L3A+CiAgICA8cD5UaGUgdGFyZ2V0IGlzIDxzdHJvbmc+V0NBRyAyLjIgTGV2ZWwgQUEgY29uZm9ybWFuY2U8L3N0cm9uZz4sIGF1ZGl0ZWQgYnkgb3VyCiAgICAgIGRlZGljYXRlZCBBREEgcGFydG5lcnMsIHdobyB3ZSB3b3JrZWQgY2xvc2VseSB3aXRoIHRocm91Z2hvdXQgdGhlIHByb2Nlc3MuIEFsbCAzNAogICAgICBVUkxzIGhhdmUgYmVlbiByZW1lZGlhdGVkIGFzIG9mIG5vdy4gUmVsZWFzZSBpcyBzdGFnZWQgcmF0aGVyIHRoYW4gcHVzaGVkIGxpdmUgYWxsCiAgICAgIGF0IG9uY2UsIHNvIHRoZSB0ZWFtIGNhbiBjbG9zZWx5IG1vbml0b3IgaG93IGNsaWVudHMgcmVhY3QgdG8gd2hhdCBhcmUsIGluIHBsYWNlcywKICAgICAgbWFqb3IgVUkgYW5kIFVYIGNoYW5nZXMgYmVmb3JlIGV4cGFuZGluZyBmdXJ0aGVyLjwvcD4KICA8L3NlY3Rpb24+CgogIDxzZWN0aW9uIGlkPSJyZWZsZWN0aW9uIj4KICAgIDxoMj5SZWZsZWN0aW9uPC9oMj4KICAgIDxwPlRoZSBiaWdnZXN0IG9wZW4gcmlzayBpcyBhZG9wdGlvbjogZXZlbiB0aG91Z2ggZnVuY3Rpb25hbGl0eSBzdGF5ZWQgdGhlIHNhbWUsCiAgICAgIHRoZXNlIGFyZSBtYWpvciB2aXN1YWwgY2hhbmdlcywgYW5kIGl0IHdpbGwgdGFrZSBjbGllbnRzIHRpbWUgdG8gYWRqdXN0LiBJJ20KICAgICAgY29uZmlkZW50IHRoZSBjaGFuZ2VzIGltcHJvdmUgdGhlIGV4cGVyaWVuY2UgYW5kIGhlbHAgbW9kZXJuaXplIHRoZSBwbGF0Zm9ybSBhZ2FpbnN0CiAgICAgIG90aGVyIGZpbmFuY2lhbCBpbnN0aXR1dGlvbnMg4oCUIGJ1dCB0aGF0J3Mgc3RpbGwgcGxheWluZyBvdXQgYXMgdGhlIHN0YWdlZCByZWxlYXNlCiAgICAgIGNvbnRpbnVlcy48L3A+CiAgICA8cD5JbiBoaW5kc2lnaHQsIEknZCBoYXZlIHRob3VnaHQgYWJvdXQgY29tcG9uZW50IHNjYWxhYmlsaXR5IGZyb20gZGF5IG9uZSByYXRoZXIgdGhhbgogICAgICBhZGFwdGluZyB0byBpdCBhcyB0aGUgcHJvZ3JhbSBncmV3IOKAlCBnaXZlbiB0aGUgc2NhbGUgb2YgdGhpcyBwcm9qZWN0LCBkZXNpZ25pbmcKICAgICAgRmlnbWEgY29tcG9uZW50cyBidWlsdCB0byBzY2FsZSBmcm9tIHRoZSBzdGFydCB3b3VsZCBoYXZlIHNhdmVkIHJlYWwgcmV3b3JrIGxhdGVyLgogICAgICBUaGF0IHRpZXMgdG8gdGhlIHNhbWUgYnJvYWRlciBsZXNzb24gYXMgdGhlIHJlc3Qgb2YgdGhpcyB3b3JrOiBhIGRlZXBlciB1cGZyb250CiAgICAgIHVuZGVyc3RhbmRpbmcgb2YgaG93IGNsaWVudHMgYWN0dWFsbHkgdXNlIHRoZSBhc3NldCBhbGxvY2F0aW9uIHBhZ2UsIGFuZCB0aGUgZnVsbAogICAgICByYW5nZSBvZiBzY3JlZW4gdmFyaWF0aW9ucywgd291bGQgaGF2ZSBtYWRlIHRoZSBlYXJseSBkZXNpZ24gZGVjaXNpb25zIHN0cm9uZ2VyLjwvcD4KICA8L3NlY3Rpb24+Cgo8L2Rpdj4KCjxmb290ZXIgY2xhc3M9InNpdGUtZm9vdGVyIj4KICA8ZGl2IGNsYXNzPSJ3cmFwIj4KICAgIDxwPiZjb3B5OyAyMDI2IE1pY2hhZWwuPC9wPgogICAgPHA+PGEgaHJlZj0iaW5kZXguaHRtbCI+JmxhcnI7IEJhY2sgdG8gYWxsIHdvcms8L2E+PC9wPgogIDwvZGl2Pgo8L2Zvb3Rlcj4K</script>
-<div id="site-content" hidden></div>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Michael.</p>
+    <p><a href="index.html">&larr; Back to all work</a></p>
+  </div>
+</footer>
 
-<script src="gate.js"></script>
 </body>
 </html>

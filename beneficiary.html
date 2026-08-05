@@ -8,22 +8,176 @@
 </head>
 <body>
 
-<div id="site-gate-overlay" class="site-gate-overlay">
-  <div class="site-gate-box">
-    <p class="eyebrow">Private portfolio</p>
-    <h1>Enter password</h1>
-    <p class="gate-note">This portfolio is shared privately. Enter the password you were given to continue.</p>
-    <form class="gate-form" id="site-gate-form">
-      <input type="password" id="site-gate-input" placeholder="Password" required autofocus>
-      <button type="submit">Enter</button>
-    </form>
-    <p class="gate-error" id="site-gate-error">Incorrect password — try again, or reach out for access.</p>
+<header class="site-nav">
+  <div class="wrap">
+    <a class="name" href="index.html">Michael</a>
+    <nav>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
   </div>
+</header>
+
+<header class="cs-header">
+  <div class="tags">
+    <span class="tag shipped">Shipped</span>
+    <span class="tag neutral">New Experience</span>
+  </div>
+  <h1>Retirement Beneficiary Designation</h1>
+  <p class="lede">
+    Digitizing a process that had always lived on paper — letting clients designate and
+    manage retirement account beneficiaries directly in their digital experience, with no
+    existing pattern to build from and a legal/compliance domain I had to learn from
+    scratch.
+  </p>
+  <dl class="meta-grid">
+    <div><dt>Role</dt><dd>Sr. Product Designer — inherited as lead designer mid-project, directing 1 content strategist, delivered to dev</dd></div>
+    <div><dt>Status</dt><dd>Launched, live (Nov 2024)</dd></div>
+    <div><dt>Scale</dt><dd>$5M project</dd></div>
+    <div><dt>Timeframe</dt><dd>Q4 2023 – Q4 2024 (launched Nov 2024)</dd></div>
+  </dl>
+</header>
+
+<div class="cs-body">
+
+  <section id="problem">
+    <h2>Problem framing</h2>
+    <p>
+      Before this project, designating a beneficiary on a retirement account was a paper
+      process — clients filled out and submitted a physical form, disconnected entirely
+      from their digital account experience. My job was to digitize it: design a net-new
+      experience with no existing digital pattern in the product to build from.
+    </p>
+    <p>
+      The domain itself was the first real challenge. Beneficiary designation carries a lot
+      of legal and compliance weight, and it was a topic I was largely unfamiliar with
+      going in — data validation rules around beneficiary names and share percentages,
+      how to structure the information architecture for something this legally sensitive,
+      and what "correct" even looks like from a compliance standpoint all had to be learned
+      as part of doing the work.
+    </p>
+  </section>
+
+  <section id="constraints">
+    <h2>Constraints</h2>
+
+    <h3>Unfamiliar legal and compliance domain</h3>
+    <p>Beneficiary designations come with real legal weight, and the rules governing them
+      (validation of beneficiary information, how allocations must work) weren't things
+      the design team already had deep expertise in — a meaningful part of the work was
+      learning the domain well enough to design it correctly.</p>
+
+    <h3>No existing pattern to build from</h3>
+    <p>Because this had only ever existed on paper, there was no prior digital IA or
+      interaction pattern to adapt — the structure had to be designed from first
+      principles rather than evolved from something that already existed.</p>
+
+    <h3>Data validation complexity</h3>
+    <p>Beneficiary share percentages across multiple people must sum to exactly 100% for a
+      designation to be valid — a constraint that had to be designed for clearly, so
+      clients could self-correct rather than submit an invalid designation.</p>
+  </section>
+
+  <section id="decisions">
+    <h2>Decisions</h2>
+
+    <div class="decision-card">
+      <h4>Decision 1 — A dedicated beneficiary designations homepage</h4>
+      <dl>
+        <dt>The question</dt><dd>With no existing pattern to build from, what should the
+          entry point into beneficiary management actually contain, given clients often
+          have multiple accounts and may be doing this for the first time?</dd>
+        <dt>Options considered</dt><dd>A minimal, single-flow entry point directly into the
+          designation form, vs. a dedicated homepage that orients clients before they start
+          and gives them visibility across all their accounts.</dd>
+        <dt>The call</dt><dd>Built a dedicated homepage with a "What you'll need" section
+          to prepare clients before they start, plus a card giving an overview of all the
+          client's accounts and their current beneficiaries, with the ability to manage or
+          update from there.</dd>
+        <dt>Why</dt><dd>Beneficiary designation is unfamiliar and legally weighty for most
+          clients — orienting them first, and giving them an at-a-glance view across every
+          account rather than forcing an account-by-account flow, matches how people
+          actually think about this task.</dd>
+        <dt>How I led it</dt><dd>I defined this structure and content as I took over as
+          lead designer on the project.</dd>
+      </dl>
+    </div>
+
+    <div class="decision-card">
+      <h4>Decision 2 — Enforcing exact 100% allocation</h4>
+      <dl>
+        <dt>The question</dt><dd>How do you guide clients to submit a valid, legally
+          correct allocation across multiple beneficiaries without confusion or error?</dd>
+        <dt>Options considered</dt><dd>Freeform percentage entry with validation only at
+          submission, vs. designing the flow to make the 100%-total requirement clear and
+          self-correctable as the client enters allocations.</dd>
+        <dt>The call</dt><dd>Designed the allocation step to enforce that share percentages
+          across all named beneficiaries sum to exactly 100% before a client can proceed.</dd>
+        <dt>Why</dt><dd>This is a hard legal requirement, not a soft validation — catching
+          it clearly during entry prevents clients from submitting a designation that would
+          later be rejected or create downstream compliance issues.</dd>
+        <dt>How I led it</dt><dd>I designed the validation pattern for this step.</dd>
+      </dl>
+    </div>
+
+    <div class="decision-card">
+      <h4>Decision 3 — Applying designations across accounts</h4>
+      <dl>
+        <dt>The question</dt><dd>Clients frequently want the same beneficiaries across
+          multiple accounts. Should they have to re-enter the same information for every
+          account?</dd>
+        <dt>Options considered</dt><dd>Require full re-entry per account (the simpler build)
+          vs. letting clients apply an existing account's beneficiary settings to a new
+          account.</dd>
+        <dt>The call</dt><dd>Built the ability for clients to apply beneficiary designation
+          settings from an existing account directly to a new one.</dd>
+        <dt>Why</dt><dd>This was one of the biggest streamlining opportunities in the whole
+          project — it removes repetitive, error-prone re-entry for what's likely the most
+          common real-world case.</dd>
+        <dt>How I led it</dt><dd>I identified and pushed for this as a priority feature
+          rather than a nice-to-have.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <h2>Leadership &amp; team</h2>
+    <p>I started as one of two designers on this project, with an Associate Director as
+      lead. Partway through, I inherited the project and stepped into the lead designer
+      role myself — directing a content strategist and carrying the work through delivery
+      to the development team, while partnering closely with product throughout.</p>
+  </section>
+
+  <section id="results">
+    <h2>Results</h2>
+    <p>This shipped and went live in November 2024 — a $5M project that replaced a fully
+      paper-based process with a self-service digital experience. I don't have adoption or
+      completion metrics to share for this one; the outcome I can speak to directly is the
+      shift itself: beneficiary designation went from a disconnected, manual paper process
+      to something clients can complete and manage entirely within their digital account
+      experience.</p>
+  </section>
+
+  <section id="reflection">
+    <h2>Reflection</h2>
+    <p>Same lesson as the other work on this site: I'd have pushed for broader UX
+      strategy thinking earlier, and a deeper understanding of beneficiary designation's
+      legal implications and constraints, before getting into the detail of individual
+      screens.</p>
+    <p>Across this project and the other two here, there's a consistent throughline in how
+      I'm growing as a designer — moving from strength in execution toward strength in
+      direction: understanding a domain and a product deeply enough to set the strategy,
+      not just design the screens that follow from it.</p>
+  </section>
+
 </div>
 
-<script type="text/plain" id="site-content-payload">PGhlYWRlciBjbGFzcz0ic2l0ZS1uYXYiPgogIDxkaXYgY2xhc3M9IndyYXAiPgogICAgPGEgY2xhc3M9Im5hbWUiIGhyZWY9ImluZGV4Lmh0bWwiPk1pY2hhZWw8L2E+CiAgICA8bmF2PgogICAgICA8YSBocmVmPSJpbmRleC5odG1sI3dvcmsiPldvcms8L2E+CiAgICAgIDxhIGhyZWY9ImluZGV4Lmh0bWwjY29udGFjdCI+Q29udGFjdDwvYT4KICAgIDwvbmF2PgogIDwvZGl2Pgo8L2hlYWRlcj4KCjxoZWFkZXIgY2xhc3M9ImNzLWhlYWRlciI+CiAgPGRpdiBjbGFzcz0idGFncyI+CiAgICA8c3BhbiBjbGFzcz0idGFnIHNoaXBwZWQiPlNoaXBwZWQ8L3NwYW4+CiAgICA8c3BhbiBjbGFzcz0idGFnIG5ldXRyYWwiPk5ldyBFeHBlcmllbmNlPC9zcGFuPgogIDwvZGl2PgogIDxoMT5SZXRpcmVtZW50IEJlbmVmaWNpYXJ5IERlc2lnbmF0aW9uPC9oMT4KICA8cCBjbGFzcz0ibGVkZSI+CiAgICBEaWdpdGl6aW5nIGEgcHJvY2VzcyB0aGF0IGhhZCBhbHdheXMgbGl2ZWQgb24gcGFwZXIg4oCUIGxldHRpbmcgY2xpZW50cyBkZXNpZ25hdGUgYW5kCiAgICBtYW5hZ2UgcmV0aXJlbWVudCBhY2NvdW50IGJlbmVmaWNpYXJpZXMgZGlyZWN0bHkgaW4gdGhlaXIgZGlnaXRhbCBleHBlcmllbmNlLCB3aXRoIG5vCiAgICBleGlzdGluZyBwYXR0ZXJuIHRvIGJ1aWxkIGZyb20gYW5kIGEgbGVnYWwvY29tcGxpYW5jZSBkb21haW4gSSBoYWQgdG8gbGVhcm4gZnJvbQogICAgc2NyYXRjaC4KICA8L3A+CiAgPGRsIGNsYXNzPSJtZXRhLWdyaWQiPgogICAgPGRpdj48ZHQ+Um9sZTwvZHQ+PGRkPlNyLiBQcm9kdWN0IERlc2lnbmVyIOKAlCBpbmhlcml0ZWQgYXMgbGVhZCBkZXNpZ25lciBtaWQtcHJvamVjdCwgZGlyZWN0aW5nIDEgY29udGVudCBzdHJhdGVnaXN0LCBkZWxpdmVyZWQgdG8gZGV2PC9kZD48L2Rpdj4KICAgIDxkaXY+PGR0PlN0YXR1czwvZHQ+PGRkPkxhdW5jaGVkLCBsaXZlIChOb3YgMjAyNCk8L2RkPjwvZGl2PgogICAgPGRpdj48ZHQ+U2NhbGU8L2R0PjxkZD4kNU0gcHJvamVjdDwvZGQ+PC9kaXY+CiAgICA8ZGl2PjxkdD5UaW1lZnJhbWU8L2R0PjxkZD5RNCAyMDIzIOKAkyBRNCAyMDI0IChsYXVuY2hlZCBOb3YgMjAyNCk8L2RkPjwvZGl2PgogIDwvZGw+CjwvaGVhZGVyPgoKPGRpdiBjbGFzcz0iY3MtYm9keSI+CgogIDxzZWN0aW9uIGlkPSJwcm9ibGVtIj4KICAgIDxoMj5Qcm9ibGVtIGZyYW1pbmc8L2gyPgogICAgPHA+CiAgICAgIEJlZm9yZSB0aGlzIHByb2plY3QsIGRlc2lnbmF0aW5nIGEgYmVuZWZpY2lhcnkgb24gYSByZXRpcmVtZW50IGFjY291bnQgd2FzIGEgcGFwZXIKICAgICAgcHJvY2VzcyDigJQgY2xpZW50cyBmaWxsZWQgb3V0IGFuZCBzdWJtaXR0ZWQgYSBwaHlzaWNhbCBmb3JtLCBkaXNjb25uZWN0ZWQgZW50aXJlbHkKICAgICAgZnJvbSB0aGVpciBkaWdpdGFsIGFjY291bnQgZXhwZXJpZW5jZS4gTXkgam9iIHdhcyB0byBkaWdpdGl6ZSBpdDogZGVzaWduIGEgbmV0LW5ldwogICAgICBleHBlcmllbmNlIHdpdGggbm8gZXhpc3RpbmcgZGlnaXRhbCBwYXR0ZXJuIGluIHRoZSBwcm9kdWN0IHRvIGJ1aWxkIGZyb20uCiAgICA8L3A+CiAgICA8cD4KICAgICAgVGhlIGRvbWFpbiBpdHNlbGYgd2FzIHRoZSBmaXJzdCByZWFsIGNoYWxsZW5nZS4gQmVuZWZpY2lhcnkgZGVzaWduYXRpb24gY2FycmllcyBhIGxvdAogICAgICBvZiBsZWdhbCBhbmQgY29tcGxpYW5jZSB3ZWlnaHQsIGFuZCBpdCB3YXMgYSB0b3BpYyBJIHdhcyBsYXJnZWx5IHVuZmFtaWxpYXIgd2l0aAogICAgICBnb2luZyBpbiDigJQgZGF0YSB2YWxpZGF0aW9uIHJ1bGVzIGFyb3VuZCBiZW5lZmljaWFyeSBuYW1lcyBhbmQgc2hhcmUgcGVyY2VudGFnZXMsCiAgICAgIGhvdyB0byBzdHJ1Y3R1cmUgdGhlIGluZm9ybWF0aW9uIGFyY2hpdGVjdHVyZSBmb3Igc29tZXRoaW5nIHRoaXMgbGVnYWxseSBzZW5zaXRpdmUsCiAgICAgIGFuZCB3aGF0ICJjb3JyZWN0IiBldmVuIGxvb2tzIGxpa2UgZnJvbSBhIGNvbXBsaWFuY2Ugc3RhbmRwb2ludCBhbGwgaGFkIHRvIGJlIGxlYXJuZWQKICAgICAgYXMgcGFydCBvZiBkb2luZyB0aGUgd29yay4KICAgIDwvcD4KICA8L3NlY3Rpb24+CgogIDxzZWN0aW9uIGlkPSJjb25zdHJhaW50cyI+CiAgICA8aDI+Q29uc3RyYWludHM8L2gyPgoKICAgIDxoMz5VbmZhbWlsaWFyIGxlZ2FsIGFuZCBjb21wbGlhbmNlIGRvbWFpbjwvaDM+CiAgICA8cD5CZW5lZmljaWFyeSBkZXNpZ25hdGlvbnMgY29tZSB3aXRoIHJlYWwgbGVnYWwgd2VpZ2h0LCBhbmQgdGhlIHJ1bGVzIGdvdmVybmluZyB0aGVtCiAgICAgICh2YWxpZGF0aW9uIG9mIGJlbmVmaWNpYXJ5IGluZm9ybWF0aW9uLCBob3cgYWxsb2NhdGlvbnMgbXVzdCB3b3JrKSB3ZXJlbid0IHRoaW5ncwogICAgICB0aGUgZGVzaWduIHRlYW0gYWxyZWFkeSBoYWQgZGVlcCBleHBlcnRpc2UgaW4g4oCUIGEgbWVhbmluZ2Z1bCBwYXJ0IG9mIHRoZSB3b3JrIHdhcwogICAgICBsZWFybmluZyB0aGUgZG9tYWluIHdlbGwgZW5vdWdoIHRvIGRlc2lnbiBpdCBjb3JyZWN0bHkuPC9wPgoKICAgIDxoMz5ObyBleGlzdGluZyBwYXR0ZXJuIHRvIGJ1aWxkIGZyb208L2gzPgogICAgPHA+QmVjYXVzZSB0aGlzIGhhZCBvbmx5IGV2ZXIgZXhpc3RlZCBvbiBwYXBlciwgdGhlcmUgd2FzIG5vIHByaW9yIGRpZ2l0YWwgSUEgb3IKICAgICAgaW50ZXJhY3Rpb24gcGF0dGVybiB0byBhZGFwdCDigJQgdGhlIHN0cnVjdHVyZSBoYWQgdG8gYmUgZGVzaWduZWQgZnJvbSBmaXJzdAogICAgICBwcmluY2lwbGVzIHJhdGhlciB0aGFuIGV2b2x2ZWQgZnJvbSBzb21ldGhpbmcgdGhhdCBhbHJlYWR5IGV4aXN0ZWQuPC9wPgoKICAgIDxoMz5EYXRhIHZhbGlkYXRpb24gY29tcGxleGl0eTwvaDM+CiAgICA8cD5CZW5lZmljaWFyeSBzaGFyZSBwZXJjZW50YWdlcyBhY3Jvc3MgbXVsdGlwbGUgcGVvcGxlIG11c3Qgc3VtIHRvIGV4YWN0bHkgMTAwJSBmb3IgYQogICAgICBkZXNpZ25hdGlvbiB0byBiZSB2YWxpZCDigJQgYSBjb25zdHJhaW50IHRoYXQgaGFkIHRvIGJlIGRlc2lnbmVkIGZvciBjbGVhcmx5LCBzbwogICAgICBjbGllbnRzIGNvdWxkIHNlbGYtY29ycmVjdCByYXRoZXIgdGhhbiBzdWJtaXQgYW4gaW52YWxpZCBkZXNpZ25hdGlvbi48L3A+CiAgPC9zZWN0aW9uPgoKICA8c2VjdGlvbiBpZD0iZGVjaXNpb25zIj4KICAgIDxoMj5EZWNpc2lvbnM8L2gyPgoKICAgIDxkaXYgY2xhc3M9ImRlY2lzaW9uLWNhcmQiPgogICAgICA8aDQ+RGVjaXNpb24gMSDigJQgQSBkZWRpY2F0ZWQgYmVuZWZpY2lhcnkgZGVzaWduYXRpb25zIGhvbWVwYWdlPC9oND4KICAgICAgPGRsPgogICAgICAgIDxkdD5UaGUgcXVlc3Rpb248L2R0PjxkZD5XaXRoIG5vIGV4aXN0aW5nIHBhdHRlcm4gdG8gYnVpbGQgZnJvbSwgd2hhdCBzaG91bGQgdGhlCiAgICAgICAgICBlbnRyeSBwb2ludCBpbnRvIGJlbmVmaWNpYXJ5IG1hbmFnZW1lbnQgYWN0dWFsbHkgY29udGFpbiwgZ2l2ZW4gY2xpZW50cyBvZnRlbgogICAgICAgICAgaGF2ZSBtdWx0aXBsZSBhY2NvdW50cyBhbmQgbWF5IGJlIGRvaW5nIHRoaXMgZm9yIHRoZSBmaXJzdCB0aW1lPzwvZGQ+CiAgICAgICAgPGR0Pk9wdGlvbnMgY29uc2lkZXJlZDwvZHQ+PGRkPkEgbWluaW1hbCwgc2luZ2xlLWZsb3cgZW50cnkgcG9pbnQgZGlyZWN0bHkgaW50byB0aGUKICAgICAgICAgIGRlc2lnbmF0aW9uIGZvcm0sIHZzLiBhIGRlZGljYXRlZCBob21lcGFnZSB0aGF0IG9yaWVudHMgY2xpZW50cyBiZWZvcmUgdGhleSBzdGFydAogICAgICAgICAgYW5kIGdpdmVzIHRoZW0gdmlzaWJpbGl0eSBhY3Jvc3MgYWxsIHRoZWlyIGFjY291bnRzLjwvZGQ+CiAgICAgICAgPGR0PlRoZSBjYWxsPC9kdD48ZGQ+QnVpbHQgYSBkZWRpY2F0ZWQgaG9tZXBhZ2Ugd2l0aCBhICJXaGF0IHlvdSdsbCBuZWVkIiBzZWN0aW9uCiAgICAgICAgICB0byBwcmVwYXJlIGNsaWVudHMgYmVmb3JlIHRoZXkgc3RhcnQsIHBsdXMgYSBjYXJkIGdpdmluZyBhbiBvdmVydmlldyBvZiBhbGwgdGhlCiAgICAgICAgICBjbGllbnQncyBhY2NvdW50cyBhbmQgdGhlaXIgY3VycmVudCBiZW5lZmljaWFyaWVzLCB3aXRoIHRoZSBhYmlsaXR5IHRvIG1hbmFnZSBvcgogICAgICAgICAgdXBkYXRlIGZyb20gdGhlcmUuPC9kZD4KICAgICAgICA8ZHQ+V2h5PC9kdD48ZGQ+QmVuZWZpY2lhcnkgZGVzaWduYXRpb24gaXMgdW5mYW1pbGlhciBhbmQgbGVnYWxseSB3ZWlnaHR5IGZvciBtb3N0CiAgICAgICAgICBjbGllbnRzIOKAlCBvcmllbnRpbmcgdGhlbSBmaXJzdCwgYW5kIGdpdmluZyB0aGVtIGFuIGF0LWEtZ2xhbmNlIHZpZXcgYWNyb3NzIGV2ZXJ5CiAgICAgICAgICBhY2NvdW50IHJhdGhlciB0aGFuIGZvcmNpbmcgYW4gYWNjb3VudC1ieS1hY2NvdW50IGZsb3csIG1hdGNoZXMgaG93IHBlb3BsZQogICAgICAgICAgYWN0dWFsbHkgdGhpbmsgYWJvdXQgdGhpcyB0YXNrLjwvZGQ+CiAgICAgICAgPGR0PkhvdyBJIGxlZCBpdDwvZHQ+PGRkPkkgZGVmaW5lZCB0aGlzIHN0cnVjdHVyZSBhbmQgY29udGVudCBhcyBJIHRvb2sgb3ZlciBhcwogICAgICAgICAgbGVhZCBkZXNpZ25lciBvbiB0aGUgcHJvamVjdC48L2RkPgogICAgICA8L2RsPgogICAgPC9kaXY+CgogICAgPGRpdiBjbGFzcz0iZGVjaXNpb24tY2FyZCI+CiAgICAgIDxoND5EZWNpc2lvbiAyIOKAlCBFbmZvcmNpbmcgZXhhY3QgMTAwJSBhbGxvY2F0aW9uPC9oND4KICAgICAgPGRsPgogICAgICAgIDxkdD5UaGUgcXVlc3Rpb248L2R0PjxkZD5Ib3cgZG8geW91IGd1aWRlIGNsaWVudHMgdG8gc3VibWl0IGEgdmFsaWQsIGxlZ2FsbHkKICAgICAgICAgIGNvcnJlY3QgYWxsb2NhdGlvbiBhY3Jvc3MgbXVsdGlwbGUgYmVuZWZpY2lhcmllcyB3aXRob3V0IGNvbmZ1c2lvbiBvciBlcnJvcj88L2RkPgogICAgICAgIDxkdD5PcHRpb25zIGNvbnNpZGVyZWQ8L2R0PjxkZD5GcmVlZm9ybSBwZXJjZW50YWdlIGVudHJ5IHdpdGggdmFsaWRhdGlvbiBvbmx5IGF0CiAgICAgICAgICBzdWJtaXNzaW9uLCB2cy4gZGVzaWduaW5nIHRoZSBmbG93IHRvIG1ha2UgdGhlIDEwMCUtdG90YWwgcmVxdWlyZW1lbnQgY2xlYXIgYW5kCiAgICAgICAgICBzZWxmLWNvcnJlY3RhYmxlIGFzIHRoZSBjbGllbnQgZW50ZXJzIGFsbG9jYXRpb25zLjwvZGQ+CiAgICAgICAgPGR0PlRoZSBjYWxsPC9kdD48ZGQ+RGVzaWduZWQgdGhlIGFsbG9jYXRpb24gc3RlcCB0byBlbmZvcmNlIHRoYXQgc2hhcmUgcGVyY2VudGFnZXMKICAgICAgICAgIGFjcm9zcyBhbGwgbmFtZWQgYmVuZWZpY2lhcmllcyBzdW0gdG8gZXhhY3RseSAxMDAlIGJlZm9yZSBhIGNsaWVudCBjYW4gcHJvY2VlZC48L2RkPgogICAgICAgIDxkdD5XaHk8L2R0PjxkZD5UaGlzIGlzIGEgaGFyZCBsZWdhbCByZXF1aXJlbWVudCwgbm90IGEgc29mdCB2YWxpZGF0aW9uIOKAlCBjYXRjaGluZwogICAgICAgICAgaXQgY2xlYXJseSBkdXJpbmcgZW50cnkgcHJldmVudHMgY2xpZW50cyBmcm9tIHN1Ym1pdHRpbmcgYSBkZXNpZ25hdGlvbiB0aGF0IHdvdWxkCiAgICAgICAgICBsYXRlciBiZSByZWplY3RlZCBvciBjcmVhdGUgZG93bnN0cmVhbSBjb21wbGlhbmNlIGlzc3Vlcy48L2RkPgogICAgICAgIDxkdD5Ib3cgSSBsZWQgaXQ8L2R0PjxkZD5JIGRlc2lnbmVkIHRoZSB2YWxpZGF0aW9uIHBhdHRlcm4gZm9yIHRoaXMgc3RlcC48L2RkPgogICAgICA8L2RsPgogICAgPC9kaXY+CgogICAgPGRpdiBjbGFzcz0iZGVjaXNpb24tY2FyZCI+CiAgICAgIDxoND5EZWNpc2lvbiAzIOKAlCBBcHBseWluZyBkZXNpZ25hdGlvbnMgYWNyb3NzIGFjY291bnRzPC9oND4KICAgICAgPGRsPgogICAgICAgIDxkdD5UaGUgcXVlc3Rpb248L2R0PjxkZD5DbGllbnRzIGZyZXF1ZW50bHkgd2FudCB0aGUgc2FtZSBiZW5lZmljaWFyaWVzIGFjcm9zcwogICAgICAgICAgbXVsdGlwbGUgYWNjb3VudHMuIFNob3VsZCB0aGV5IGhhdmUgdG8gcmUtZW50ZXIgdGhlIHNhbWUgaW5mb3JtYXRpb24gZm9yIGV2ZXJ5CiAgICAgICAgICBhY2NvdW50PzwvZGQ+CiAgICAgICAgPGR0Pk9wdGlvbnMgY29uc2lkZXJlZDwvZHQ+PGRkPlJlcXVpcmUgZnVsbCByZS1lbnRyeSBwZXIgYWNjb3VudCAodGhlIHNpbXBsZXIgYnVpbGQpCiAgICAgICAgICB2cy4gbGV0dGluZyBjbGllbnRzIGFwcGx5IGFuIGV4aXN0aW5nIGFjY291bnQncyBiZW5lZmljaWFyeSBzZXR0aW5ncyB0byBhIG5ldwogICAgICAgICAgYWNjb3VudC48L2RkPgogICAgICAgIDxkdD5UaGUgY2FsbDwvZHQ+PGRkPkJ1aWx0IHRoZSBhYmlsaXR5IGZvciBjbGllbnRzIHRvIGFwcGx5IGJlbmVmaWNpYXJ5IGRlc2lnbmF0aW9uCiAgICAgICAgICBzZXR0aW5ncyBmcm9tIGFuIGV4aXN0aW5nIGFjY291bnQgZGlyZWN0bHkgdG8gYSBuZXcgb25lLjwvZGQ+CiAgICAgICAgPGR0PldoeTwvZHQ+PGRkPlRoaXMgd2FzIG9uZSBvZiB0aGUgYmlnZ2VzdCBzdHJlYW1saW5pbmcgb3Bwb3J0dW5pdGllcyBpbiB0aGUgd2hvbGUKICAgICAgICAgIHByb2plY3Qg4oCUIGl0IHJlbW92ZXMgcmVwZXRpdGl2ZSwgZXJyb3ItcHJvbmUgcmUtZW50cnkgZm9yIHdoYXQncyBsaWtlbHkgdGhlIG1vc3QKICAgICAgICAgIGNvbW1vbiByZWFsLXdvcmxkIGNhc2UuPC9kZD4KICAgICAgICA8ZHQ+SG93IEkgbGVkIGl0PC9kdD48ZGQ+SSBpZGVudGlmaWVkIGFuZCBwdXNoZWQgZm9yIHRoaXMgYXMgYSBwcmlvcml0eSBmZWF0dXJlCiAgICAgICAgICByYXRoZXIgdGhhbiBhIG5pY2UtdG8taGF2ZS48L2RkPgogICAgICA8L2RsPgogICAgPC9kaXY+CiAgPC9zZWN0aW9uPgoKICA8c2VjdGlvbiBpZD0ibGVhZGVyc2hpcCI+CiAgICA8aDI+TGVhZGVyc2hpcCAmYW1wOyB0ZWFtPC9oMj4KICAgIDxwPkkgc3RhcnRlZCBhcyBvbmUgb2YgdHdvIGRlc2lnbmVycyBvbiB0aGlzIHByb2plY3QsIHdpdGggYW4gQXNzb2NpYXRlIERpcmVjdG9yIGFzCiAgICAgIGxlYWQuIFBhcnR3YXkgdGhyb3VnaCwgSSBpbmhlcml0ZWQgdGhlIHByb2plY3QgYW5kIHN0ZXBwZWQgaW50byB0aGUgbGVhZCBkZXNpZ25lcgogICAgICByb2xlIG15c2VsZiDigJQgZGlyZWN0aW5nIGEgY29udGVudCBzdHJhdGVnaXN0IGFuZCBjYXJyeWluZyB0aGUgd29yayB0aHJvdWdoIGRlbGl2ZXJ5CiAgICAgIHRvIHRoZSBkZXZlbG9wbWVudCB0ZWFtLCB3aGlsZSBwYXJ0bmVyaW5nIGNsb3NlbHkgd2l0aCBwcm9kdWN0IHRocm91Z2hvdXQuPC9wPgogIDwvc2VjdGlvbj4KCiAgPHNlY3Rpb24gaWQ9InJlc3VsdHMiPgogICAgPGgyPlJlc3VsdHM8L2gyPgogICAgPHA+VGhpcyBzaGlwcGVkIGFuZCB3ZW50IGxpdmUgaW4gTm92ZW1iZXIgMjAyNCDigJQgYSAkNU0gcHJvamVjdCB0aGF0IHJlcGxhY2VkIGEgZnVsbHkKICAgICAgcGFwZXItYmFzZWQgcHJvY2VzcyB3aXRoIGEgc2VsZi1zZXJ2aWNlIGRpZ2l0YWwgZXhwZXJpZW5jZS4gSSBkb24ndCBoYXZlIGFkb3B0aW9uIG9yCiAgICAgIGNvbXBsZXRpb24gbWV0cmljcyB0byBzaGFyZSBmb3IgdGhpcyBvbmU7IHRoZSBvdXRjb21lIEkgY2FuIHNwZWFrIHRvIGRpcmVjdGx5IGlzIHRoZQogICAgICBzaGlmdCBpdHNlbGY6IGJlbmVmaWNpYXJ5IGRlc2lnbmF0aW9uIHdlbnQgZnJvbSBhIGRpc2Nvbm5lY3RlZCwgbWFudWFsIHBhcGVyIHByb2Nlc3MKICAgICAgdG8gc29tZXRoaW5nIGNsaWVudHMgY2FuIGNvbXBsZXRlIGFuZCBtYW5hZ2UgZW50aXJlbHkgd2l0aGluIHRoZWlyIGRpZ2l0YWwgYWNjb3VudAogICAgICBleHBlcmllbmNlLjwvcD4KICA8L3NlY3Rpb24+CgogIDxzZWN0aW9uIGlkPSJyZWZsZWN0aW9uIj4KICAgIDxoMj5SZWZsZWN0aW9uPC9oMj4KICAgIDxwPlNhbWUgbGVzc29uIGFzIHRoZSBvdGhlciB3b3JrIG9uIHRoaXMgc2l0ZTogSSdkIGhhdmUgcHVzaGVkIGZvciBicm9hZGVyIFVYCiAgICAgIHN0cmF0ZWd5IHRoaW5raW5nIGVhcmxpZXIsIGFuZCBhIGRlZXBlciB1bmRlcnN0YW5kaW5nIG9mIGJlbmVmaWNpYXJ5IGRlc2lnbmF0aW9uJ3MKICAgICAgbGVnYWwgaW1wbGljYXRpb25zIGFuZCBjb25zdHJhaW50cywgYmVmb3JlIGdldHRpbmcgaW50byB0aGUgZGV0YWlsIG9mIGluZGl2aWR1YWwKICAgICAgc2NyZWVucy48L3A+CiAgICA8cD5BY3Jvc3MgdGhpcyBwcm9qZWN0IGFuZCB0aGUgb3RoZXIgdHdvIGhlcmUsIHRoZXJlJ3MgYSBjb25zaXN0ZW50IHRocm91Z2hsaW5lIGluIGhvdwogICAgICBJJ20gZ3Jvd2luZyBhcyBhIGRlc2lnbmVyIOKAlCBtb3ZpbmcgZnJvbSBzdHJlbmd0aCBpbiBleGVjdXRpb24gdG93YXJkIHN0cmVuZ3RoIGluCiAgICAgIGRpcmVjdGlvbjogdW5kZXJzdGFuZGluZyBhIGRvbWFpbiBhbmQgYSBwcm9kdWN0IGRlZXBseSBlbm91Z2ggdG8gc2V0IHRoZSBzdHJhdGVneSwKICAgICAgbm90IGp1c3QgZGVzaWduIHRoZSBzY3JlZW5zIHRoYXQgZm9sbG93IGZyb20gaXQuPC9wPgogIDwvc2VjdGlvbj4KCjwvZGl2PgoKPGZvb3RlciBjbGFzcz0ic2l0ZS1mb290ZXIiPgogIDxkaXYgY2xhc3M9IndyYXAiPgogICAgPHA+JmNvcHk7IDIwMjYgTWljaGFlbC48L3A+CiAgICA8cD48YSBocmVmPSJpbmRleC5odG1sIj4mbGFycjsgQmFjayB0byBhbGwgd29yazwvYT48L3A+CiAgPC9kaXY+CjwvZm9vdGVyPgo=</script>
-<div id="site-content" hidden></div>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Michael.</p>
+    <p><a href="index.html">&larr; Back to all work</a></p>
+  </div>
+</footer>
 
-<script src="gate.js"></script>
 </body>
 </html>
