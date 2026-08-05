@@ -63,9 +63,8 @@ p {
 
 .wrap {
   max-width: var(--max-width);
-  margin: 0;
-  margin-left: var(--gutter);
-  padding: 0 var(--gutter) 0 0;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
 }
 
 .site-nav {
@@ -125,7 +124,6 @@ footer.site-footer .wrap {
   align-items: baseline;
   flex-wrap: wrap;
   gap: 12px;
-  padding-right: var(--gutter);
 }
 
 footer.site-footer p {
@@ -147,9 +145,8 @@ footer.site-footer a {
 
 .hero {
   max-width: var(--wide);
-  margin: 0;
-  padding: 64px var(--gutter) 56px 0;
-  margin-left: var(--gutter);
+  margin: 0 auto;
+  padding: 64px var(--gutter) 56px;
   border-bottom: 2px solid var(--ink);
 }
 
@@ -187,9 +184,8 @@ footer.site-footer a {
 
 .case-grid {
   max-width: var(--wide);
-  margin: 0;
-  margin-left: var(--gutter);
-  padding: 0 var(--gutter) 0 0;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
   display: block;
   counter-reset: case;
 }
@@ -264,9 +260,8 @@ footer.site-footer a {
 
 .cs-header {
   max-width: var(--wide);
-  margin: 0;
-  margin-left: var(--gutter);
-  padding: 56px var(--gutter) 40px 0;
+  margin: 0 auto;
+  padding: 56px var(--gutter) 40px;
   border-bottom: 2px solid var(--ink);
 }
 
@@ -288,12 +283,12 @@ footer.site-footer a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 0;
-  margin-top: 32px;
+  margin-top: 40px;
   border-top: 1px solid var(--line-soft);
 }
 
 .meta-grid > div {
-  padding: 14px 20px 14px 0;
+  padding: 24px 20px 24px 0;
   border-right: 1px solid var(--line-soft);
 }
 
@@ -317,9 +312,8 @@ footer.site-footer a {
 
 .cs-body {
   max-width: var(--wide);
-  margin: 0;
-  margin-left: var(--gutter);
-  padding: 0 var(--gutter) 40px 0;
+  margin: 0 auto;
+  padding: 0 var(--gutter) 40px;
   counter-reset: section;
 }
 
@@ -372,8 +366,8 @@ footer.site-footer a {
   border: none;
   border-top: 1px solid var(--ink-faint);
   border-radius: 0;
-  padding: 20px 0 4px;
-  margin-bottom: 32px;
+  padding: 28px 0 8px;
+  margin-bottom: 36px;
   background: none;
 }
 
@@ -535,9 +529,8 @@ footer.site-footer a {
 
 #contact {
   max-width: var(--wide);
-  margin: 0;
-  margin-left: var(--gutter);
-  padding: 56px var(--gutter) 20px 0;
+  margin: 0 auto;
+  padding: 56px var(--gutter) 20px;
 }
 
 #contact h2 {
