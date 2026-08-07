@@ -22,9 +22,9 @@
   --tint-accent: #f4ddc4;
   --tint-ink: #e9e6df;
   --max-width: 760px;
-  --wide: 980px;
-  --gutter: max(6vw, 24px);
-  font-size: 17px;
+  --wide: none;
+  --gutter: max(4.5vw, 32px);
+  font-size: 18px;
 }
 
 * { box-sizing: border-box; }
@@ -86,8 +86,8 @@ p {
 
 .site-nav .name {
   font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
   color: var(--ink);
   text-decoration: none;
   text-transform: uppercase;
@@ -160,13 +160,14 @@ footer.site-footer a {
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 6.4vw, 4.4rem);
-  max-width: 16ch;
-  margin-bottom: 0.4em;
+  font-size: clamp(3rem, 8vw, 6.4rem);
+  letter-spacing: -0.035em;
+  max-width: 18ch;
+  margin-bottom: 0.35em;
 }
 
 .hero p.lede {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   color: var(--ink);
   max-width: 58ch;
   margin-bottom: 1.4em;
@@ -220,7 +221,8 @@ footer.site-footer a {
 
 .case-card h3 {
   grid-column: 2;
-  font-size: 1.6rem;
+  font-size: 2.1rem;
+  letter-spacing: -0.02em;
   margin-bottom: 8px;
   color: var(--ink);
   transition: color 0.1s ease;
@@ -268,7 +270,8 @@ footer.site-footer a {
 .cs-header .tags { margin-bottom: 20px; }
 
 .cs-header h1 {
-  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  font-size: clamp(2.6rem, 6.4vw, 5rem);
+  letter-spacing: -0.03em;
   max-width: 20ch;
 }
 
@@ -282,13 +285,13 @@ footer.site-footer a {
 .meta-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 0;
+  gap: 0 24px;
   margin-top: 40px;
   border-top: 1px solid var(--line-soft);
 }
 
 .meta-grid > div {
-  padding: 24px 20px 24px 0;
+  padding: 24px 24px 24px 0;
   border-right: 1px solid var(--line-soft);
 }
 
@@ -338,10 +341,10 @@ footer.site-footer a {
 .cs-body section:last-of-type { border-bottom: none; }
 
 .cs-body h2 {
-  font-size: 1.7rem;
+  font-size: 2.1rem;
   margin-bottom: 22px;
   text-transform: uppercase;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .cs-body h3 {
@@ -398,13 +401,13 @@ footer.site-footer a {
 .stat-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 0;
+  gap: 0 24px;
   margin: 20px 0 10px;
   border-top: 1px solid var(--line-soft);
 }
 
 .stat-grid > div {
-  padding: 22px 20px 22px 0;
+  padding: 22px 24px 22px 0;
   border-right: 1px solid var(--line-soft);
 }
 
@@ -599,13 +602,15 @@ footer.site-footer a {
 }
 
 #contact h2 {
-  font-size: 1.7rem;
+  font-size: 2.1rem;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
 #contact a.email {
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--ink);
   border-bottom: 2px solid var(--accent);
 }
