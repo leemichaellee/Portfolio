@@ -148,10 +148,6 @@ footer.site-footer a {
   margin: 0 auto;
   padding: 64px var(--gutter) 56px;
   border-bottom: 2px solid var(--ink);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 400px);
-  gap: 56px;
-  align-items: end;
 }
 
 .hero .eyebrow {
@@ -166,41 +162,24 @@ footer.site-footer a {
 .hero h1 {
   font-size: clamp(3rem, 8vw, 6.4rem);
   letter-spacing: -0.035em;
-  max-width: 18ch;
-  margin-bottom: 0.35em;
+  max-width: 20ch;
+  margin-bottom: 0.5em;
 }
 
 .hero p.lede {
   font-size: 1.35rem;
   color: var(--ink);
-  max-width: 58ch;
-  margin-bottom: 0;
-}
-
-.hero-aside {
-  border-left: 1px solid var(--line-soft);
-  padding-left: 32px;
+  max-width: 68ch;
+  margin-bottom: 22px;
 }
 
 .hero .bio {
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   color: var(--ink-soft);
-  max-width: 40ch;
+  max-width: 68ch;
   margin-bottom: 0;
-}
-
-@media (max-width: 860px) {
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-  .hero-aside {
-    border-left: none;
-    border-top: 1px solid var(--line-soft);
-    padding-left: 0;
-    padding-top: 24px;
-  }
-  .hero .bio { max-width: 58ch; }
+  padding-top: 22px;
+  border-top: 1px solid var(--line-soft);
 }
 
 /* ---------- Case study list (homepage) ---------- */
@@ -257,7 +236,7 @@ footer.site-footer a {
   font-size: 1.02rem;
   margin-bottom: 0;
   padding-top: 6px;
-  max-width: 52ch;
+  max-width: none;
 }
 
 @media (max-width: 880px) {
@@ -311,7 +290,7 @@ footer.site-footer a {
   grid-column: 2;
   font-size: 1.2rem;
   color: var(--ink-soft);
-  max-width: 56ch;
+  max-width: none;
   margin-top: 0;
   padding-top: 4px;
 }
@@ -395,6 +374,7 @@ footer.site-footer a {
 
 .cs-body section > :not(h2) {
   grid-column: 3;
+  max-width: none;
 }
 
 @media (max-width: 900px) {
@@ -451,7 +431,7 @@ footer.site-footer a {
 .decision-card dd {
   margin: 4px 0 0;
   color: var(--ink-soft);
-  max-width: 62ch;
+  max-width: none;
 }
 
 .stat-grid {
