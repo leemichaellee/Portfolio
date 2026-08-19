@@ -3,15 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Michael — Product Design</title>
-<meta name="description" content="Product design portfolio — service design, accessibility, and consolidation work in financial services.">
+<title>Michael Lee — UX &amp; Product Design</title>
+<meta name="description" content="Product design portfolio — financial product strategy, systems design, and visual/web design work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="top">
 
 <header class="site-nav">
-  <div class="wrap">
-    <a class="name" href="index.html">Michael</a>
+  <div class="wrap" data-reveal>
+    <div class="logo-group">
+      <a class="name" href="index.html">Michael Lee</a>
+      <span class="logo-divider"></span>
+      <span class="role-tag">UX &amp; Product</span>
+    </div>
     <nav>
       <a href="index.html#work">Work</a>
       <a href="index.html#contact">Contact</a>
@@ -19,71 +26,183 @@
   </div>
 </header>
 
-<section class="hero">
-  <p class="eyebrow">Product Design — Financial Services</p>
-  <h1>Designing for high-stakes financial moments, at institutional scale.</h1>
-  <p class="lede">
-    I'm a senior product designer coming out of Bank of America / Merrill Edge, currently
-    exploring Staff/Lead roles in fintech. My work sits at the intersection of service design,
-    accessibility, and large-scale consolidation — the kind of problems where the hard part
-    isn't the screen, it's the system underneath it.
-  </p>
-  <p class="bio">
-    Over the past five years, I've specialized in financial UI/UX strategy inside
-    high-risk, high-security, high-scrutiny sectors. That background is what makes me a
-    strong fit for fintechs that need someone who understands how to unify financial
-    systems with digital experience, not just design on top of them.
-  </p>
+<section class="hero-section">
+  <div class="hero-typography" data-reveal>
+    <h1>Designing systems that clarify, interfaces that perform.</h1>
+    <p class="subhead">Over the past five years, I've specialized in financial product strategy inside high-risk, high-security, high-scrutiny sectors. That background is what makes me a strong fit for businesses that need someone who understands how to leverage complex data to create meaningful digital experiences, not just design on top of them.</p>
+  </div>
+  <div class="scroll-indicator" data-reveal>
+    <span class="chevron-down">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+    </span>
+    <span>Selected Case Studies</span>
+  </div>
 </section>
 
-<section id="work" class="case-grid">
-
-  <a class="case-card" href="toa.html">
-    <div class="tags">
-      <span class="tag unlaunched">Unlaunched</span>
-      <span class="tag neutral">Design Leadership</span>
+<section id="work" class="featured-studies">
+  <div class="section-header" data-reveal>
+    <div>
+      <div class="section-eyebrow">
+        <span class="accent-dot"></span>
+        <span>Featured Work</span>
+      </div>
+      <h2>Case Studies</h2>
     </div>
-    <h3>Transfer of Assets</h3>
-    <p>Leading design on a high-volume (~100K/year) asset transfer flow — under legacy
-      system constraints, cross-org stakeholder complexity, and real ambiguity about what
-      data the team would even have access to.</p>
+    <p class="section-desc">Deep dives into complex digital architecture, systematic scaling, and high-fidelity interaction details.</p>
+  </div>
+
+  <a class="hero-case-study" href="toa.html" data-reveal>
+    <div class="left-media">
+      <div class="thumb placeholder-photo" data-asset="hero-toa" data-asset-size="2336×1024">
+      </div>
+    </div>
+    <div class="right-content">
+      <div>
+        <div class="case-meta-row">
+          <span class="category">Wealth Management</span>
+          <span class="dot">•</span>
+          <span class="role">Lead Designer</span>
+          <span class="dot">•</span>
+          <span class="status-unlaunched">Unlaunched</span>
+        </div>
+        <h3>Transfer of Assets</h3>
+        <p class="desc">Leading design on the flow that handles roughly 100,000 incoming and outgoing digital asset transfers annually — one of the highest-anxiety actions a person takes with their money.</p>
+      </div>
+      <div class="pill-row">
+        <span class="pill">UX Design</span>
+        <span class="pill">Cross-Org Collaboration</span>
+        <span class="pill">Legacy Systems</span>
+      </div>
+      <span class="view-case-link">
+        View case study
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </span>
+    </div>
   </a>
 
-  <a class="case-card" href="dap.html">
-    <div class="tags">
-      <span class="tag unlaunched">In staged release</span>
-      <span class="tag neutral">Accessibility</span>
-    </div>
-    <h3>DAP 2.2 — Accessibility &amp; Rationalization</h3>
-    <p>Owning the asset allocation portion of a $4.7M, legally-driven accessibility
-      remediation program across 34 properties — fully remediated, now in staged rollout.</p>
-  </a>
+  <div class="split-grid" data-reveal-stagger>
+    <a class="case-study-card" href="dap.html">
+      <div class="thumb placeholder-photo" data-asset="thumb-dap" data-asset-size="1176×492"></div>
+      <div>
+        <div class="case-meta-row">
+          <span class="category">Accessibility</span>
+          <span class="dot">•</span>
+          <span class="role">Lead Designer</span>
+          <span class="dot">•</span>
+          <span class="status-staged">Staged Release</span>
+        </div>
+        <h3>DAP 2.2 Accessibility &amp; Rationalization</h3>
+        <p class="desc">Owning the asset allocation portion of a $4.7M, legally-driven accessibility remediation and rationalization program spanning 34 legacy properties.</p>
+      </div>
+      <span class="view-case-link">
+        View case study
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </span>
+    </a>
 
-  <a class="case-card" href="beneficiary.html">
-    <div class="tags">
-      <span class="tag shipped">Shipped</span>
-      <span class="tag neutral">New Experience</span>
-    </div>
-    <h3>Retirement Beneficiary Designation</h3>
-    <p>Digitizing a paper-only process — designing a net-new, shipped experience for
-      designating and managing retirement account beneficiaries from scratch.</p>
-  </a>
-
+    <a class="case-study-card" href="beneficiary.html">
+      <div class="thumb placeholder-photo" data-asset="thumb-beneficiary" data-asset-size="1209×546"></div>
+      <div>
+        <div class="case-meta-row">
+          <span class="category">Retirement</span>
+          <span class="dot">•</span>
+          <span class="role">Lead Designer</span>
+          <span class="dot">•</span>
+          <span class="status-live">Live</span>
+        </div>
+        <h3>Retirement Beneficiary Designation</h3>
+        <p class="desc">Digitizing a process that had always lived on paper — letting clients designate and manage retirement account beneficiaries directly in their digital experience.</p>
+      </div>
+      <span class="view-case-link">
+        View case study
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </span>
+    </a>
+  </div>
 </section>
 
-<section id="contact">
-  <h2>Get in touch</h2>
-  <p>Best way to reach me is email — happy to walk through any of these case studies
-    directly.</p>
-  <p><a class="email" href="mailto:leelee.michael.leelee@gmail.com">leelee.michael.leelee@gmail.com</a></p>
+<section class="additional-work">
+  <div data-reveal>
+    <div class="section-eyebrow">
+      <span class="accent-dot"></span>
+      <span>Secondary Gallery</span>
+    </div>
+    <h2>Additional work</h2>
+  </div>
+
+  <div class="archive-grid" data-reveal-stagger>
+    <a class="archive-card" href="videoamp.html">
+      <div class="thumb placeholder-photo" data-asset="thumb-videoamp" data-asset-size="592×392"></div>
+      <div>
+        <h4>VideoAmp</h4>
+        <p class="desc">Cross-platform measurement &amp; currency</p>
+      </div>
+    </a>
+    <a class="archive-card" href="nomi-health.html">
+      <div class="thumb placeholder-photo" data-asset="thumb-nomi-health" data-asset-size="592×392"></div>
+      <div>
+        <h4>Nomi Health</h4>
+        <p class="desc">Direct healthcare marketplace</p>
+      </div>
+    </a>
+    <a class="archive-card" href="skysafe.html">
+      <div class="thumb placeholder-photo" data-asset="thumb-skysafe" data-asset-size="592×392"></div>
+      <div>
+        <h4>Skysafe</h4>
+        <p class="desc">Airspace security &amp; drone defense</p>
+      </div>
+    </a>
+    <a class="archive-card" href="pixel-perfect.html">
+      <div class="thumb placeholder-photo" data-asset="thumb-pixel-perfect" data-asset-size="592×392"></div>
+      <div>
+        <h4>Pixel Perfect</h4>
+        <p class="desc">Design tool for precision layouts</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div data-reveal>
+    <div class="section-eyebrow">
+      <span class="accent-dot"></span>
+      <span>Get In Touch</span>
+    </div>
+    <h2>Let's design cohesive platforms together.</h2>
+    <p class="contact-desc">Open to long-term consulting roles, enterprise system audits, and high-agency product contracts. Let's start with an introductory call.</p>
+  </div>
+
+  <a class="email-cta-button" href="mailto:leelee.michael.leelee@gmail.com" data-reveal>
+    Email: leelee.michael.leelee@gmail.com
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+  </a>
+
+  <div class="social-links" data-reveal>
+    <a href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 0 0-4 0"/></svg>
+      LinkedIn
+    </a>
+    <a href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+      Read.cv
+    </a>
+  </div>
 </section>
 
 <footer class="site-footer">
-  <div class="wrap">
-    <p>&copy; 2026 Michael. Case studies reflect independent design work; details are
-      generalized where confidentiality requires.</p>
+  <div class="wrap" data-reveal>
+    <div class="foot-left">
+      <p>© 2025 Michael Lee. Built with precision.</p>
+      <span class="foot-divider"></span>
+      <p>Glad you're here!</p>
+    </div>
+    <a class="back-to-top" href="#top">
+      Back to top
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+    </a>
   </div>
 </footer>
 
+<script src="reveal.js"></script>
 </body>
 </html>
