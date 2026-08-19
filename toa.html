@@ -3,14 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Transfer of Assets — Michael</title>
+<title>Transfer of Assets — Michael Lee</title>
+<meta name="description" content="Transfer of Assets — redesigning a flow that handles ~100K annual transfers. Case study by Michael Lee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="top">
 
 <header class="site-nav">
-  <div class="wrap">
-    <a class="name" href="index.html">Michael</a>
+  <div class="wrap" data-reveal>
+    <div class="logo-group">
+      <a class="name" href="index.html">Michael Lee</a>
+      <span class="logo-divider"></span>
+      <span class="role-tag">UX &amp; Product</span>
+    </div>
     <nav>
       <a href="index.html#work">Work</a>
       <a href="index.html#contact">Contact</a>
@@ -18,192 +26,350 @@
   </div>
 </header>
 
-<header class="cs-header">
-  <div class="tags">
-    <span class="tag unlaunched">Unlaunched</span>
-    <span class="tag neutral">Design Leadership</span>
+<section class="cs2-hero">
+  <div class="category-header" data-reveal>
+    <span class="category-pill">Wealth Management</span>
+    <span class="meta-dot">•</span>
+    <span class="role-label">Design Lead</span>
+    <span class="meta-dot">•</span>
+    <span class="status-unlaunched">Unlaunched</span>
   </div>
-  <h1>Transfer of Assets</h1>
-  <p class="lede">
-    Leading design on the flow that handles roughly 100,000 incoming and outgoing digital
-    asset transfers annually — one of the highest-anxiety actions a person takes with their
-    money — across legacy systems, cross-org stakeholders, and real ambiguity about what
-    data the team would ultimately have access to.
-  </p>
-  <dl class="meta-grid">
-    <div><dt>Role</dt><dd>Sr. Product Designer, directing 1 designer + 1 content strategist, alongside an XD Principal</dd></div>
-    <div><dt>Status</dt><dd>In development, unlaunched</dd></div>
-    <div><dt>Scale</dt><dd>~100,000 digital transfers annually</dd></div>
-    <div><dt>Timeframe</dt><dd>Started Q2 2025 · MVP May 2027 · Full release Nov 2027–Feb 2028</dd></div>
-  </dl>
-</header>
+  <div data-reveal>
+    <h1>Transfer of Assets</h1>
+    <p class="summary">Redesigning a flow that handles ~100K annual transfers and targeting a 30% reduction in stalled requests — across legacy systems, cross-org stakeholders, and real ambiguity about what data we'd ultimately have access to.</p>
+  </div>
 
-<div class="cs-body">
+  <div class="cs2-hero-visual" data-reveal>
+    <div class="transfer-schematic">
+      <div class="flow-card source">
+        <div class="flow-card-top">
+          <span class="flow-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+          <span class="flow-card-label">Source</span>
+        </div>
+        <p class="flow-card-name">Fidelity Growth Fund</p>
+        <div class="flow-card-meta"><span class="acct">••••4821</span><span class="amt">$145,230.00</span></div>
+      </div>
 
-  <section id="problem">
-    <h2>Problem framing</h2>
-    <p>
-      A transfer of assets moves a person's brokerage or retirement holdings from one
-      institution to another. It's functionally simple to describe and extraordinarily
-      high-stakes to experience — users are moving their life savings, often without a
-      clear sense of what's happening to their money mid-transfer.
-    </p>
-    <p>
-      For the business, transfers are a major driver of support cost and friction, and a
-      competitive lever: institutions win and lose assets based on how trustworthy and
-      frictionless this moment feels.
-    </p>
-    <p>
-      This was a design leadership problem rather than a UX problem specifically because
-      the flow crossed systems, teams, and compliance boundaries that no single stakeholder
-      owned end-to-end. Someone had to hold the whole picture and make the flow feel coherent
-      despite that fragmentation.
-    </p>
-    <p>
-      The project was driven by a combination of competitive pressure and an internal
-      compliance requirement — bringing the flow in line with an updated design system.
-      Today's digital transfer of assets flow still runs on the legacy design system: it's
-      disjointed and heavily dependent on manual, middle-office intervention. The broader
-      shift is toward open finance — using API data scrapes to prefill personal, account,
-      and asset information — to automate as much of the process as possible.
-    </p>
-  </section>
+      <span class="flow-arrow right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+      <span class="flow-arrow left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></span>
 
-  <section id="constraints">
-    <h2>Constraints</h2>
+      <div class="flow-card destination">
+        <div class="flow-card-top">
+          <span class="flow-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+          <span class="flow-card-label">Destination</span>
+        </div>
+        <p class="flow-card-name">Merrill Brokerage</p>
+        <div class="flow-card-meta"><span class="acct">••••4821</span><span class="amt">$110,800.00</span></div>
+      </div>
 
-    <h3>Legacy systems and technical debt</h3>
-    <p>The core issue wasn't a single inflexible system integration so much as the absence
-      of a defined design system in the legacy flow. There was no consistent pattern
-      language to build from — part of the work was establishing new interaction and
-      visual standards as part of the redesign itself, not just applying an existing one.</p>
+      <span class="asset-pill" style="left:calc(50% - 80px); top:calc(50% - 22px);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg><span class="sym">AAPL</span><span class="val">$24,500</span></span>
+      <span class="asset-pill" style="left:calc(50% - 88px); top:calc(50% + 22px);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="sym">Cash</span><span class="val">$12,300</span></span>
+      <span class="asset-pill" style="left:calc(50% + 20px); top:calc(50% + 22px);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="sym">MSFT</span><span class="val">$28,900</span></span>
+      <span class="asset-pill" style="left:calc(50% + 15px); top:calc(50% - 22px);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg><span class="sym">VTI</span><span class="val">$45,100</span></span>
+    </div>
+    <p class="caption">Screens shown are representative sketches — original work is under NDA and has not yet launched.</p>
+  </div>
+</section>
 
-    <h3>Cross-org stakeholder complexity</h3>
-    <p>Stakeholders included product partners and development teams. Interests didn't
-      conflict heavily, but real constraints existed around funding and around which
-      device/platform to prioritize for MVP. The team decided MVP would be mobile-first:
-      mobile could be iframed into the existing app for a more seamless experience, and a
-      mobile-first design covers the most ground, since it extends to the desktop
-      experience as well.</p>
+<section class="cs2-overview">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Project Overview &amp; Context</span>
+  </div>
+  <div class="overview-grid" data-reveal-stagger>
+    <div class="overview-col">
+      <span class="ov-label">My Role</span>
+      <span class="ov-value">Design Lead</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Timeline</span>
+      <span class="ov-value">Q2 2025 → MVP May 2027</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Team</span>
+      <div class="team-tags">
+        <span class="team-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>Designer</span>
+        <span class="team-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>Content Strategist</span>
+        <span class="team-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>XD Principal</span>
+        <span class="team-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Engineering</span>
+        <span class="team-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>Compliance</span>
+      </div>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Core Stack</span>
+      <span class="ov-value">Figma, Helix Design System, Open Finance APIs</span>
+    </div>
+  </div>
+</section>
 
-    <h3>User trust and anxiety</h3>
-    <p>Moving a life savings is not a neutral transaction. Tone, transparency, and error
-      handling all had to be designed around the emotional stakes of the action, not just
-      its mechanics.</p>
+<section class="cs2-problem-goal">
+  <div class="pg-block" data-reveal>
+    <div class="pg-eyebrow challenge">
+      <span class="dot"></span>
+      <span>The Challenge</span>
+    </div>
+    <h3>The Challenge</h3>
+    <p>The existing flow ran on a legacy design system with no pattern language, required integrating BankLink — an external institution-selection screen outside our control — and sat on top of an Open Finance API layer that returned messy, incomplete data. The result: transfers routinely stalled from missing documents, driving support costs and eroding client trust.</p>
+  </div>
+  <div class="pg-block" data-reveal>
+    <div class="pg-eyebrow objective">
+      <span class="dot"></span>
+      <span>Strategic Directive</span>
+    </div>
+    <h3>Strategic Objective</h3>
+    <p>Create a cohesive, trust-building transfer experience that eliminates failure modes at their source — moving document collection ahead of submission to prevent stalled transfers, and dynamically scoping forms to only what's missing to reduce cognitive load.</p>
+  </div>
+</section>
 
-    <h3>Ambiguity in data access</h3>
-    <p>At the time of design, it wasn't fully known what data the team would ultimately be
-      able to surface — transfer status, custodian information, and similar details were
-      still being negotiated with upstream systems. The flow had to stay coherent and
-      trustworthy across multiple possible data-availability scenarios, not just the ideal one.</p>
-    <p>This constraint played out concretely through what the team calls the "Bank
-      Link" screens — already-designed screens whose UI can't be changed beyond minor copy
-      edits. For MVP, our API provider connects to the four most common external financial
-      institutions to pull data from (opening up to more counterparties at full release).
-      Whatever data comes back gets prefilled automatically; the client only has to fill in
-      the gaps. Design-wise, that meant building something that leverages the design
-      system's input field types to scale to any number of missing fields, since the exact
-      gaps vary depending on what the API was able to return for a given institution.</p>
-  </section>
-
-  <section id="decisions">
-    <h2>Decisions</h2>
-
-    <div class="decision-card">
-      <h4>Decision 1 — Moving document upload before submission</h4>
-      <dl>
-        <dt>The question</dt><dd>In the legacy (BAU) experience, clients upload required
-          documentation — a signed transfer form, identity verification, and similar —
-          after they submit the transfer request. When that documentation is missing or
-          wrong, the transfer becomes "Not In Good Order" (NIGO): it doesn't go through,
-          and it sits in a pile, generating friction for the client and manual follow-up
-          work for middle office. Should the new flow keep that ordering?</dd>
-        <dt>Options considered</dt><dd>Keep the BAU pattern (collect documents after
-          submission, chase missing ones after the fact) vs. move document upload earlier,
-          before the transfer request can be submitted at all.</dd>
-        <dt>The call</dt><dd>Require document upload prior to transfer request submission.</dd>
-        <dt>Why</dt><dd>A transfer can't enter a stalled, NIGO state if it can't be submitted
-          without its required documentation in the first place — this removes the failure
-          mode at its source rather than handling it after the fact.</dd>
-        <dt>How I led it</dt><dd>I pushed for this reordering as a strategic move, against
-          the grain of the existing BAU pattern.</dd>
-      </dl>
+<section class="cs2-process">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Process</span>
+  </div>
+  <div class="steps-grid" data-reveal-stagger>
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 01</span>
+      <div>
+        <h4>Constraints &amp; Problem Framing</h4>
+        <ul>
+          <li>Legacy system with no design pattern language to build on</li>
+          <li>Client frustration driven by NIGO rejections from missing documents</li>
+          <li>Open Finance API returning external account data unusable from a legal and compliance perspective</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-tree">
+          <span class="hub">Transfer Flow</span>
+          <div class="branches">
+            <span class="branch">Legacy System<br>No Pattern Language</span>
+            <span class="branch">NIGO Rejections<br>Missing Docs</span>
+            <span class="branch">Open Finance API<br>Unusable Data</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="decision-card">
-      <h4>Decision 2 — Scoping the form to only what's missing</h4>
-      <dl>
-        <dt>The question</dt><dd>When the API returns incomplete data for a given
-          institution — a missing full account number, account type, or joint account
-          holder names — how much should the client be asked to fill in?</dd>
-        <dt>Options considered</dt><dd>Show a full, standard form regardless of what data
-          came back, vs. dynamically scope the form to only the specific fields that are
-          actually missing, prefilling everything else from data already on file.</dd>
-        <dt>The call</dt><dd>Only surface input fields for the missing data points, prefilled
-          with whatever is already known from existing records.</dd>
-        <dt>Why</dt><dd>It reduces cognitive load on the client — they're never re-entering
-          information the institution already has, and the amount of manual entry scales
-          with how much the API was actually able to return.</dd>
-        <dt>How I led it</dt><dd>I defined this as the governing pattern for the form,
-          building it to scale to any number of missing fields using the design system's
-          input field types.</dd>
-      </dl>
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 02</span>
+      <div>
+        <h4>Analysis</h4>
+        <ul>
+          <li>Leveraged existing design system to identify gaps — negotiating with DS and dev teams for what we needed</li>
+          <li>Spoke with middle-office staff handling NIGOs to pinpoint where the experience created bottlenecks</li>
+          <li>Analyzed raw API data to determine the most common use cases to design for</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-rows">
+          <div class="row"><span class="node strong">Design System</span><span class="connector"></span><span class="node muted">Identify Gaps &amp; Negotiate</span></div>
+          <div class="row"><span class="node strong">Middle-Office Interviews</span><span class="connector"></span><span class="node muted">Map Bottlenecks</span></div>
+          <div class="row"><span class="node strong">Raw API Data</span><span class="connector"></span><span class="node muted">Common Use Cases</span></div>
+        </div>
+      </div>
     </div>
 
-  </section>
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 03</span>
+      <div>
+        <h4>Strategic Design Decisions</h4>
+        <ul>
+          <li>Pushed for custom-built expandable cards that leverage the design system's visual language</li>
+          <li>Moved document upload before submission to eliminate NIGO failures at the source</li>
+          <li>Dynamic forms that surface only missing fields, prefilling everything the API returns</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-flow">
+          <span class="flow-node"><span class="box">Custom Expandable Cards</span><span class="caption-sm">New DS Components</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">Doc Upload Before Submit</span><span class="caption-sm">Eliminate NIGOs</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">Dynamic Missing-Field Forms</span><span class="caption-sm">Prefill from API</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="leadership">
-    <h2>Leadership &amp; team</h2>
-    <p>I directed a team of one designer and one content strategist, and operated as the
-      primary design voice across a cross-functional org that included compliance, operations,
-      and engineering — without formal authority over those disciplines. I worked closely with
-      an XD Principal on the effort, who operated in a project-management-like capacity;
-      design direction was mine to set.</p>
-    <p>One unblock reached beyond this project to other designers: how error states get
-      handed off to development. The flow is form-heavy, and many fields can carry anywhere
-      from one to five different error scenarios — mocking every permutation for every
-      screen was slow and didn't scale. I created a new guideline: build one error-state
-      variation per screen to show the UI pattern, then use Figma annotations to spell out
-      the specific error copy needed by dev and QA for each scenario. At least one other
-      project has since adopted it.</p>
-    <p>On direct mentorship: our designer needed support building a deeper understanding of
-      the project's constraints and the complexity of the flows involved. Part of the job
-      was untangling that complexity for them so they could design more effectively —
-      rather than leaving them to work it out unassisted against a deadline.</p>
-  </section>
+<section class="cs2-screens">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Representative Wireframe Flows</span>
+  </div>
 
-  <section id="success">
-    <h2>Success measures</h2>
-    <p>Because this flow hasn't launched yet, success here is defined rather than measured —
-      the targets the team committed to before launch, and how we planned to validate them.</p>
-    <p>Two targets anchor this: a <strong>30% reduction in NIGOs</strong> — driven directly
-      by moving document collection ahead of submission — and a <strong>15% increase in
-      transfer completion rate</strong>, driven by the combination of NIGO reduction and the
-      reduced friction of a form that only asks for what's actually missing.</p>
-  </section>
+  <div class="screens-group" data-reveal>
+    <div class="phone-row">
+      <div class="phone-mock">
+        <span class="notch"></span>
+        <div class="phone-screen">
+          <span class="phone-header">Select receiving account</span>
+          <div class="phone-card">
+            <span class="pc-title">Brokerage ••4821</span>
+            <span class="pc-sub">Total: $145,230.00</span>
+          </div>
+          <div class="phone-card">
+            <span class="pc-title">Trad. IRA ••4821</span>
+            <span class="pc-sub">Total: $145,230.00</span>
+          </div>
+          <div class="phone-spacer"></div>
+          <span class="phone-btn secondary">Back</span>
+        </div>
+      </div>
+      <div class="phone-mock">
+        <span class="notch"></span>
+        <div class="phone-screen">
+          <span class="phone-header">Select institution</span>
+          <div class="phone-card"><span class="pc-title">Fidelity</span><span class="pc-sub">Brokerage &amp; retirement</span></div>
+          <div class="phone-card"><span class="pc-title">Schwab</span><span class="pc-sub">Brokerage &amp; retirement</span></div>
+          <div class="phone-spacer"></div>
+          <span class="phone-btn">Next</span>
+        </div>
+      </div>
+      <div class="phone-mock">
+        <span class="notch"></span>
+        <div class="phone-screen">
+          <span class="phone-header">Select assets</span>
+          <div class="phone-row-line"><span class="k">AAPL · 150 sh</span><span class="v">$24,500</span></div>
+          <div class="phone-row-line"><span class="k">MSFT · 85 sh</span><span class="v">$28,900</span></div>
+          <div class="phone-row-line"><span class="k">VTI · 200 sh</span><span class="v">$45,100</span></div>
+          <div class="phone-row-line"><span class="k">BND · 120 sh</span><span class="v">$12,300</span></div>
+          <div class="phone-spacer"></div>
+          <span class="phone-btn">Next</span>
+        </div>
+      </div>
+      <div class="phone-mock">
+        <span class="notch"></span>
+        <div class="phone-screen">
+          <span class="phone-header">Complete missing info</span>
+          <div class="phone-card"><span class="pc-title">Account holder</span><span class="pc-sub">Required for transfer</span></div>
+          <div class="phone-card"><span class="pc-title">Tax withholding</span><span class="pc-sub">Optional</span></div>
+          <div class="phone-spacer"></div>
+          <span class="phone-btn">Next</span>
+        </div>
+      </div>
+      <div class="phone-mock">
+        <span class="notch"></span>
+        <div class="phone-screen">
+          <span class="phone-header">Review your transfer</span>
+          <div class="phone-row-line"><span class="k">From</span><span class="v">Fidelity Growth Fund</span></div>
+          <div class="phone-row-line"><span class="k">To</span><span class="v">Merrill Brokerage</span></div>
+          <div class="phone-row-line"><span class="k">Assets</span><span class="v">4 positions</span></div>
+          <div class="phone-row-line"><span class="k">Est. value</span><span class="v">$110,800</span></div>
+          <div class="phone-spacer"></div>
+          <span class="phone-btn">Submit Transfer</span>
+        </div>
+      </div>
+    </div>
+    <div class="screen-caption">
+      <h4>Transfer Initiation Flow</h4>
+      <p>The entry point where clients begin an incoming or outgoing transfer — with Bank Link integration that prefills personal, account, and asset data.</p>
+      <p class="nda-note">Screens shown are representative sketches — original work is under NDA and has not yet launched.</p>
+    </div>
+  </div>
 
-  <section id="reflection">
-    <h2>Reflection</h2>
-    <p>The plan is solid, and most screens are already designed. The real risks heading
-      into MVP are making sure every screen lands fully Helix and ADA compliant, and how
-      much data the API integration actually ends up being able to return — the designs
-      account for both, but how much the experience genuinely improves depends on how
-      little manual entry clients end up needing, which isn't fully in our control yet.</p>
-    <p>If I were doing this again, I'd spend more time on strategic design direction
-      earlier and less time eager to get into the weeds of designing every individual
-      screen. That's a deliberate shift as I push toward more lead-level work: a greater
-      emphasis on design direction, grounded in a deeper understanding of the product and
-      the experience, before diving into screens.</p>
-  </section>
+  <div class="screens-group" data-reveal>
+    <div class="phone-row">
+      <div class="phone-mock">
+        <span class="notch"></span>
+        <div class="phone-screen">
+          <span class="phone-header">We need additional documentation</span>
+          <span class="phone-sub">Upload multiple files — PDF, JPG, PNG, DOCX. Max size 10MB.</span>
+          <div class="phone-card"><span class="pc-title">Fidelity acct statement</span><span class="pc-sub">Upload a PDF or image</span></div>
+          <div class="phone-card"><span class="pc-title">Government issued ID</span><span class="pc-sub">Passport, license, or state ID</span></div>
+          <div class="phone-spacer"></div>
+          <span class="phone-btn secondary">Back</span>
+        </div>
+      </div>
+      <div class="phone-mock">
+        <span class="notch"></span>
+        <div class="phone-screen">
+          <span class="phone-header">Select a file</span>
+          <div class="phone-card"><span class="pc-title">Documents</span><span class="pc-sub">12 items</span></div>
+          <div class="phone-card"><span class="pc-title">Downloads</span><span class="pc-sub">8 items</span></div>
+          <div class="phone-card"><span class="pc-title">Recent</span><span class="pc-sub">5 items</span></div>
+          <div class="phone-spacer"></div>
+          <span class="phone-btn">Open</span>
+        </div>
+      </div>
+      <div class="phone-mock">
+        <span class="notch"></span>
+        <div class="phone-screen">
+          <span class="phone-header">We need additional documentation</span>
+          <span class="phone-sub">✓ Document uploaded successfully</span>
+          <div class="phone-card"><span class="pc-title">Fidelity acct statement</span><span class="pc-sub">fidelity_statement.pdf</span></div>
+          <div class="phone-card"><span class="pc-title">Government issued ID</span><span class="pc-sub">Passport, license, or state ID</span></div>
+          <div class="phone-spacer"></div>
+          <span class="phone-btn">Next</span>
+        </div>
+      </div>
+    </div>
+    <div class="screen-caption">
+      <h4>Document Upload Flow</h4>
+      <p>Moving document upload before submission to prevent NIGOs. Clients upload required documents inline, reducing missing-document rejections.</p>
+      <p class="nda-note">Screens are representative wireframes due to NDA.</p>
+    </div>
+  </div>
+</section>
 
-</div>
+<section class="cs2-results">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Metrics &amp; Quantitative Impact</span>
+  </div>
+  <div class="metrics-row" data-reveal-stagger>
+    <div class="metric-card">
+      <span class="num">30%</span>
+      <span class="m-label">Target NIGO Reduction</span>
+      <span class="m-desc">Projected reduction in "Not In Good Order" transfers by collecting documentation before submission.</span>
+    </div>
+    <div class="metric-card">
+      <span class="num">15%</span>
+      <span class="m-label">Target Completion Rate</span>
+      <span class="m-desc">Expected increase in transfer completion driven by NIGO reduction and reduced form friction.</span>
+    </div>
+    <div class="metric-card">
+      <span class="num">~100K</span>
+      <span class="m-label">Annual Transfers</span>
+      <span class="m-desc">Incoming and outgoing digital asset transfers the redesigned flow will handle annually.</span>
+    </div>
+  </div>
+  <div class="reflection-box" data-reveal>
+    <h4>Reflection</h4>
+    <p>The real risks heading into MVP are full Helix and ADA compliance across every screen, and how much data the API integration actually returns — the designs account for both, but the experience quality depends on how little manual entry clients need. If I were doing this again, I'd spend more time on strategic design direction earlier and less time eager to get into screens — a deliberate shift toward lead-level work.</p>
+  </div>
+</section>
+
+<nav class="cs2-nav-footer" data-reveal>
+  <a class="nav-prev" href="beneficiary.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+    <span class="nav-label-block">
+      <span class="eyebrow">Previous Project</span>
+      <span class="title">Beneficiary Designation</span>
+    </span>
+  </a>
+  <a class="nav-next" href="dap.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <span class="nav-label-block">
+      <span class="eyebrow">Next Project</span>
+      <span class="title">DAP 2.2 Accessibility</span>
+    </span>
+  </a>
+</nav>
 
 <footer class="site-footer">
-  <div class="wrap">
-    <p>&copy; 2026 Michael.</p>
-    <p><a href="index.html">&larr; Back to all work</a></p>
+  <div class="wrap" data-reveal>
+    <div class="foot-left">
+      <p>© 2025 Michael Lee. Built with precision.</p>
+      <span class="foot-divider"></span>
+      <p>Glad you're here!</p>
+    </div>
+    <a class="back-to-top" href="#top">
+      Back to top
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+    </a>
   </div>
 </footer>
 
+<script src="reveal.js"></script>
 </body>
 </html>

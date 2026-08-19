@@ -3,14 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DAP 2.2 — Michael</title>
+<title>DAP 2.2 Accessibility & Rationalization — Michael Lee</title>
+<meta name="description" content="DAP 2.2 Accessibility & Rationalization — a $4.7M legally-driven accessibility remediation program. Case study by Michael Lee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="top">
 
 <header class="site-nav">
-  <div class="wrap">
-    <a class="name" href="index.html">Michael</a>
+  <div class="wrap" data-reveal>
+    <div class="logo-group">
+      <a class="name" href="index.html">Michael Lee</a>
+      <span class="logo-divider"></span>
+      <span class="role-tag">UX &amp; Product</span>
+    </div>
     <nav>
       <a href="index.html#work">Work</a>
       <a href="index.html#contact">Contact</a>
@@ -18,173 +26,306 @@
   </div>
 </header>
 
-<header class="cs-header">
-  <div class="tags">
-    <span class="tag unlaunched">In staged release</span>
-    <span class="tag neutral">Accessibility</span>
+<section class="cs2-hero">
+  <div class="category-header" data-reveal>
+    <span class="category-pill">Accessibility</span>
+    <span class="meta-dot">•</span>
+    <span class="role-label">Design Lead</span>
+    <span class="meta-dot">•</span>
+    <span class="status-staged">Staged Release</span>
   </div>
-  <h1>DAP 2.2 — Accessibility &amp; Rationalization</h1>
-  <p class="lede">
-    Owning the asset allocation portion of a $4.7M, legally-driven accessibility
-    remediation and rationalization program spanning 34 legacy properties — where the hard
-    problem wasn't designing from scratch, but renegotiating an entrenched visual pattern
-    under a compliance deadline.
-  </p>
-  <dl class="meta-grid">
-    <div><dt>Role</dt><dd>Led asset allocation workstream, working alongside an XD Principal as a collaborator</dd></div>
-    <div><dt>Status</dt><dd>All 34 URLs remediated; staged public release in progress</dd></div>
-    <div><dt>Scale</dt><dd>$4.7M program · 34 URLs/properties</dd></div>
-    <div><dt>Driver</dt><dd>ADA / WCAG legal and regulatory exposure</dd></div>
-    <div><dt>Timeframe</dt><dd>Program started Q1 2024 · I joined Q3 2024 · rolled off Q2 2026 · staged release continues into 2026</dd></div>
-  </dl>
-</header>
+  <div data-reveal>
+    <h1>DAP 2.2 Accessibility &amp; Rationalization</h1>
+    <p class="summary">Owning the asset allocation portion of a $4.7M, legally-driven accessibility remediation program — redesigning an entrenched visual pattern under a compliance deadline while keeping it usable and on-brand.</p>
+  </div>
 
-<div class="cs-body">
+  <div class="cs2-hero-visual" data-reveal>
+    <div class="allocation-schematic">
+      <div class="aw-left">
+        <div class="pie-chart-card">
+          <div class="donut-ring">
+            <div class="donut-center">
+              <span class="d-label">Allocation</span>
+              <span class="d-value">$520,000</span>
+            </div>
+          </div>
+        </div>
+        <div class="aw-legend">
+          <div class="aw-legend-header"><span class="lh-label">Legend</span><span class="lh-total">Total: $520,000</span></div>
+          <div class="aw-legend-row"><span class="left"><span class="aw-swatch swatch-equities"></span><span class="name">Equities</span></span><span class="right"><span class="pct">45%</span><span class="val">$234,500</span></span></div>
+          <div class="aw-legend-row"><span class="left"><span class="aw-swatch swatch-fixed"></span><span class="name">Fixed Income</span></span><span class="right"><span class="pct">30%</span><span class="val">$156,000</span></span></div>
+          <div class="aw-legend-row"><span class="left"><span class="aw-swatch swatch-cash"></span><span class="name">Cash</span></span><span class="right"><span class="pct">15%</span><span class="val">$78,000</span></span></div>
+          <div class="aw-legend-row"><span class="left"><span class="aw-swatch swatch-alt"></span><span class="name">Alternative</span></span><span class="right"><span class="pct">10%</span><span class="val">$51,500</span></span></div>
+        </div>
+      </div>
+      <div class="aw-right">
+        <div class="aw-card">
+          <div class="aw-card-top"><span class="left"><span class="aw-swatch swatch-equities"></span><span class="name">Equities</span></span><span class="right"><span class="pct">45%</span><span class="val">$234,500</span></span></div>
+          <div class="aw-bar-track"><div class="aw-bar-fill bar-equities" style="width:45%;"></div></div>
+        </div>
+        <div class="aw-card">
+          <div class="aw-card-top"><span class="left"><span class="aw-swatch swatch-fixed"></span><span class="name">Fixed Income</span></span><span class="right"><span class="pct">30%</span><span class="val">$156,000</span></span></div>
+          <div class="aw-bar-track"><div class="aw-bar-fill bar-fixed" style="width:30%;"></div></div>
+          <div class="divider"></div>
+          <div class="aw-table">
+            <div class="aw-table-head"><span>Name</span><span>Qty</span><span>Price</span><span>Value</span></div>
+            <div class="aw-table-row"><span class="cell-name">Treasury 10Y</span><span class="cell-muted">1,200</span><span class="cell-muted">$102.40</span><span class="cell-value">$122,880</span></div>
+            <div class="aw-table-row"><span class="cell-name">Corp Bond</span><span class="cell-muted">850</span><span class="cell-muted">$105.10</span><span class="cell-value">$89,435</span></div>
+            <div class="aw-table-row"><span class="cell-name">Muni Bond</span><span class="cell-muted">600</span><span class="cell-muted">$98.20</span><span class="cell-value">$58,920</span></div>
+          </div>
+        </div>
+        <div class="aw-card">
+          <div class="aw-card-top"><span class="left"><span class="aw-swatch swatch-cash"></span><span class="name">Cash</span></span><span class="right"><span class="pct">15%</span><span class="val">$78,000</span></span></div>
+          <div class="aw-bar-track"><div class="aw-bar-fill bar-cash" style="width:15%;"></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="caption">Chart and card layout shown are a representative reconstruction — original work is under NDA.</p>
+  </div>
+</section>
 
-  <section id="problem">
-    <h2>Problem framing</h2>
-    <p>
-      This program existed because of legal exposure, not as a discretionary redesign —
-      ADA/WCAG compliance risk was the forcing function across the whole initiative.
-    </p>
-    <p>
-      My portion focused on asset allocation: a full page within the Merrill digital
-      experience that gives clients a breakdown of their portfolio construction — used to
-      assess risk and diversification, validate balance and composition, and do an overall
-      portfolio health check. The original experience carried a high cognitive load: dense,
-      unprioritized data with no clear visual or information hierarchy, split across two
-      tabs — a pie chart for a high-level overview, and a separate data table that dove into
-      each individual security or holding. The chart's specific accessibility failure was
-      color contrast.
-    </p>
-    <p>
-      The core tension: remediating for accessibility meant changing a visual pattern that
-      had been in production and in the brand system for years. This wasn't a blank-canvas
-      design problem — it was renegotiating an existing, entrenched pattern under a legal
-      deadline, in a way that stayed usable and on-brand.
-    </p>
-  </section>
+<section class="cs2-overview">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Project Overview &amp; Context</span>
+  </div>
+  <div class="overview-grid" data-reveal-stagger>
+    <div class="overview-col">
+      <span class="ov-label">Role</span>
+      <span class="ov-value">Led Asset Allocation workstream alongside XD Principal</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Timeframe</span>
+      <span class="ov-value">Q1 2024 – Q2 2026 · Staged release in progress</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Driver</span>
+      <span class="ov-value">ADA / WCAG legal and regulatory exposure</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Scale</span>
+      <span class="ov-value">$4.7M program · 34 URLs/properties remediated</span>
+    </div>
+  </div>
+</section>
 
-  <section id="constraints">
-    <h2>Constraints</h2>
+<section class="cs2-problem-goal">
+  <div class="pg-block" data-reveal>
+    <div class="pg-eyebrow challenge">
+      <span class="dot"></span>
+      <span>The Challenge</span>
+    </div>
+    <h3>The Challenge</h3>
+    <p>The asset allocation page — used by clients to assess portfolio risk, diversification, and composition — carried high cognitive load: dense, unprioritized data split across two tabs with no clear information hierarchy. The chart's specific accessibility failure was color contrast, but remediating it meant changing a visual pattern entrenched in production and the brand system for years.</p>
+  </div>
+  <div class="pg-block" data-reveal>
+    <div class="pg-eyebrow objective">
+      <span class="dot"></span>
+      <span>Strategic Directive</span>
+    </div>
+    <h3>Strategic Objective</h3>
+    <p>Bring the asset allocation experience into full WCAG 2.2 AA compliance while rationalizing its design patterns to align with the broader design system — without breaking the mental models that existing users relied on.</p>
+  </div>
+</section>
 
-    <h3>Accessibility vs. existing brand/visual patterns</h3>
-    <p>We pushed for new visual design colors for the allocation chart, which then became
-      part of the shared design system — now used to denote specific asset classes across
-      Merrill (cash = green, equities = dark blue, fixed income = purple, alternative
-      investments = orange). There was no real pushback from brand or visual stakeholders
-      on this change.</p>
-
-    <h3>Scale and consistency across legacy tech stacks</h3>
-    <p>The properties in scope ran on different platforms and templates, so a pattern that
-      worked on one didn't necessarily ship the same way everywhere. Part of the job was
-      defining a standard that could actually be implemented consistently despite that.</p>
-
-    <h3>Budget and scope pressure</h3>
-    <p>As a high-visibility, high-cost program, decisions were scrutinized closely, which
-      shaped where we could pursue the ideal fix versus a phased or scoped-down one.</p>
-
-    <h3>Regulatory deadline</h3>
-    <p>WCAG conformance isn't negotiable on timeline the way typical feature work is —
-      that urgency changed how decisions got made: faster, more top-down, less room for
-      iteration than a standard design process would allow.</p>
-  </section>
-
-  <section id="decisions">
-    <h2>Decisions</h2>
-
-    <div class="decision-card">
-      <h4>Decision 1 — Restructuring around an "inverse pyramid"</h4>
-      <dl>
-        <dt>The question</dt><dd>The original page split allocation data across two
-          separate tabs — a chart and a data table — with no clear hierarchy and a high
-          cognitive load. How should the page be restructured to fix that, accessibly?</dd>
-        <dt>Options considered</dt><dd>Keep the two-tab structure and remediate each in
-          place, vs. consolidate into a single page with a deliberate information hierarchy.</dd>
-        <dt>The call</dt><dd>Landed on an "inverse pyramid" structure: high-level overview
-          information at the top, with the ability to drill down into individual data
-          points (security quantity, price, value, and so on) further down. The two tabs
-          were consolidated into one page — chart at the top, data table underneath.</dd>
-        <dt>Why</dt><dd>It replaces implicit tab-switching with a natural top-to-bottom
-          scan, giving users the high-level picture first and depth on demand — which
-          reduces cognitive load and establishes the visual/information hierarchy the
-          original page lacked.</dd>
-        <dt>How I led it</dt><dd>I designed this restructuring directly.</dd>
-      </dl>
+<section class="cs2-process">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Process</span>
+  </div>
+  <div class="steps-grid" data-reveal-stagger>
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 01</span>
+      <div>
+        <h4>Restructuring Around an Inverse Pyramid</h4>
+        <ul>
+          <li>The original page split allocation data across two tabs — chart and data table — with no clear hierarchy</li>
+          <li>Consolidated into a single page with a deliberate information hierarchy: high-level overview at top, drill-down into individual data points below</li>
+          <li>Reduces cognitive load and establishes the visual hierarchy the original page lacked</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-tree">
+          <span class="hub">Consolidated Page</span>
+          <div class="branches">
+            <span class="branch">Allocation<br>Overview</span>
+            <span class="branch">Asset Class<br>Breakdown</span>
+            <span class="branch">Holdings Detail<br>→ Security</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="decision-card">
-      <h4>Decision 2 — Atomizing the design system for data-dense pages</h4>
-      <dl>
-        <dt>The question</dt><dd>Keeping a unified feel across 34 URLs running on
-          inconsistent legacy tech stacks, without going off-brand or building a parallel
-          design system from scratch, was a real challenge. How do you standardize
-          something you can't implement identically everywhere?</dd>
-        <dt>Options considered</dt><dd>Apply the existing HELIX design system's components
-          as-is (risk: not flexible enough for how data-dense these pages needed to be) vs.
-          break HELIX down to its atomic level and build a local design language on top of it.</dd>
-        <dt>The call</dt><dd>Broke HELIX down to atoms — its smallest variations — and used
-          that to create a local design language for account-details pages specifically
-          (asset allocation, holdings, activity, and position details).</dd>
-        <dt>Why</dt><dd>This kept a unified feel across related pages without going
-          off-brand, while staying flexible enough to handle screens far more data-dense
-          than most HELIX components were originally built for.</dd>
-        <dt>How I led it</dt><dd>I played a pivotal role designing components with enhanced
-          functionality beyond their original HELIX counterparts — including expandable
-          cards with header areas that scale to data-dense headers, and "billboards" used
-          across these account-details pages to surface high-level overview values.</dd>
-      </dl>
-    </div>  </section>
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 02</span>
+      <div>
+        <h4>Atomizing the Design System</h4>
+        <ul>
+          <li>Keeping a unified feel across 34 URLs on inconsistent legacy tech stacks without going off-brand</li>
+          <li>Broke HELIX design system down to its atomic level and built a local design language for account-details pages specifically</li>
+          <li>Stayed flexible enough to handle screens far more data-dense than most HELIX components were originally built for</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-tree">
+          <span class="hub">HELIX Design System</span>
+          <div class="branches">
+            <span class="branch">Color, Type,<br>Spacing</span>
+            <span class="branch">Grid &amp;<br>Icons</span>
+            <span class="branch">Account-Details<br>Language</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <section id="leadership">
-    <h2>Leadership &amp; collaboration</h2>
-    <p>I worked alongside an XD Principal on the account-details work, as a collaborator —
-      not as their report, and not a title I held myself on this project — owning the asset
-      allocation portion specifically.</p>
-    <p>This is something I repeat to other teams at the bank when the subject comes up.
-      Because I work on the consumer investing side, I regularly deal with digital
-      experiences that are extremely data-dense — the pattern I push for is to keep
-      stretching the boundaries of the existing design system so it scales to hold up to
-      5x the data most components were originally built for. In practice that means
-      adjusting spacing, type hierarchy, and grid layout, then feeding those adaptations
-      back into the shared system so other teams facing the same density problem can use
-      them too.</p>
-  </section>
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 03</span>
+      <div>
+        <h4>Pushing Design System Boundaries</h4>
+        <ul>
+          <li>Pushed for new allocation chart colors that became part of the shared design system — cash = green, equities = dark blue, fixed income = purple, alternatives = orange</li>
+          <li>Designed expandable cards with data-dense headers and "billboard" components for high-level overview values</li>
+          <li>Fed adaptations back into the shared system so other teams facing the same density problem can use them</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-flow">
+          <span class="flow-node"><span class="box">New Chart Colors</span><span class="caption-sm">Equities / Fixed / Cash / Alt</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">Expandable Cards + Billboards</span><span class="caption-sm">New Components</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">Shared Design System</span><span class="caption-sm">Fed Back to Team</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="success">
-    <h2>Success measures</h2>
-    <p>Since this program hasn't launched, success is defined through pre-set conformance
-      targets plus audit and usability evidence, rather than shipped metrics.</p>
-    <p>The target is <strong>WCAG 2.2 Level AA conformance</strong>, audited by our
-      dedicated ADA partners, who we worked closely with throughout the process. All 34
-      URLs have been remediated as of now. Release is staged rather than pushed live all
-      at once, so the team can closely monitor how clients react to what are, in places,
-      major UI and UX changes before expanding further.</p>
-  </section>
+<section class="cs2-screens">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Representative Interface</span>
+  </div>
 
-  <section id="reflection">
-    <h2>Reflection</h2>
-    <p>The biggest open risk is adoption: even though functionality stayed the same,
-      these are major visual changes, and it will take clients time to adjust. I'm
-      confident the changes improve the experience and help modernize the platform against
-      other financial institutions — but that's still playing out as the staged release
-      continues.</p>
-    <p>In hindsight, I'd have thought about component scalability from day one rather than
-      adapting to it as the program grew — given the scale of this project, designing
-      Figma components built to scale from the start would have saved real rework later.
-      That ties to the same broader lesson as the rest of this work: a deeper upfront
-      understanding of how clients actually use the asset allocation page, and the full
-      range of screen variations, would have made the early design decisions stronger.</p>
-  </section>
+  <div class="screens-group" data-reveal>
+    <div class="desktop-frame">
+      <div class="df-header">
+        <div>
+          <p class="df-crumbs">Portfolio / Insights</p>
+          <p class="df-title">Asset Allocation</p>
+        </div>
+        <span class="df-updated">Last updated: Today</span>
+      </div>
+      <div class="df-body">
+        <div class="allocation-schematic">
+          <div class="aw-left">
+            <div class="pie-chart-card">
+              <div class="donut-ring">
+                <div class="donut-center">
+                  <span class="d-label">Allocation</span>
+                  <span class="d-value">$520,000</span>
+                </div>
+              </div>
+            </div>
+            <div class="aw-legend">
+              <div class="aw-legend-header"><span class="lh-label">Legend</span><span class="lh-total">Total: $520,000</span></div>
+              <div class="aw-legend-row"><span class="left"><span class="aw-swatch swatch-equities"></span><span class="name">Equities</span></span><span class="right"><span class="pct">45%</span><span class="val">$234,500</span></span></div>
+              <div class="aw-legend-row"><span class="left"><span class="aw-swatch swatch-fixed"></span><span class="name">Fixed Income</span></span><span class="right"><span class="pct">30%</span><span class="val">$156,000</span></span></div>
+              <div class="aw-legend-row"><span class="left"><span class="aw-swatch swatch-cash"></span><span class="name">Cash</span></span><span class="right"><span class="pct">15%</span><span class="val">$78,000</span></span></div>
+              <div class="aw-legend-row"><span class="left"><span class="aw-swatch swatch-alt"></span><span class="name">Alternative</span></span><span class="right"><span class="pct">10%</span><span class="val">$51,500</span></span></div>
+            </div>
+          </div>
+          <div class="aw-right">
+            <div class="aw-card">
+              <div class="aw-card-top"><span class="left"><span class="aw-swatch swatch-equities"></span><span class="name">Equities</span></span><span class="right"><span class="pct">45%</span><span class="val">$234,500</span></span></div>
+              <div class="aw-bar-track"><div class="aw-bar-fill bar-equities" style="width:45%;"></div></div>
+              <div class="divider"></div>
+              <div class="aw-table">
+                <div class="aw-table-head"><span>Name</span><span>Qty</span><span>Price</span><span>Value</span></div>
+                <div class="aw-table-row"><span class="cell-name">AAPL</span><span class="cell-muted">150</span><span class="cell-muted">$189.50</span><span class="cell-value">$28,425</span></div>
+                <div class="aw-table-row"><span class="cell-name">MSFT</span><span class="cell-muted">120</span><span class="cell-muted">$312.10</span><span class="cell-value">$37,452</span></div>
+                <div class="aw-table-row"><span class="cell-name">TSLA</span><span class="cell-muted">40</span><span class="cell-muted">$185.00</span><span class="cell-value">$7,400</span></div>
+              </div>
+            </div>
+            <div class="aw-card">
+              <div class="aw-card-top"><span class="left"><span class="aw-swatch swatch-fixed"></span><span class="name">Fixed Income</span></span><span class="right"><span class="pct">30%</span><span class="val">$156,000</span></span></div>
+              <div class="aw-bar-track"><div class="aw-bar-fill bar-fixed" style="width:30%;"></div></div>
+            </div>
+            <div class="aw-card">
+              <div class="aw-card-top"><span class="left"><span class="aw-swatch swatch-cash"></span><span class="name">Cash</span></span><span class="right"><span class="pct">15%</span><span class="val">$78,000</span></span></div>
+              <div class="aw-bar-track"><div class="aw-bar-fill bar-cash" style="width:15%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="screen-caption">
+      <h4>Asset Allocation Page</h4>
+      <p>Consolidated single-page layout with allocation chart at top and expandable asset class cards below.</p>
+      <p class="nda-note">Screens are representative sketches — original work is under NDA and has not yet launched.</p>
+    </div>
+  </div>
+</section>
 
-</div>
+<section class="cs2-results">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Metrics &amp; Quantitative Impact</span>
+  </div>
+  <div class="metrics-row" data-reveal-stagger>
+    <div class="metric-card">
+      <span class="num">$4.7M</span>
+      <span class="m-label">Program Scale</span>
+      <span class="m-desc">Legally-driven accessibility remediation and rationalization program across Merrill's digital properties.</span>
+    </div>
+    <div class="metric-card">
+      <span class="num">34</span>
+      <span class="m-label">URLs Remediated</span>
+      <span class="m-desc">All 34 legacy properties brought into conformance. Staged public release in progress.</span>
+    </div>
+    <div class="metric-card">
+      <span class="num">AA</span>
+      <span class="m-label">WCAG 2.2 Compliance</span>
+      <span class="m-desc">Full conformance audited by dedicated ADA partners throughout the process. Release staged to monitor client reaction to major UI changes.</span>
+    </div>
+  </div>
+  <div class="reflection-box" data-reveal>
+    <h4>Reflection</h4>
+    <p>The biggest open risk is adoption: even though functionality stayed the same, these are major visual changes, and it will take clients time to adjust. In hindsight, I'd have thought about component scalability from day one rather than adapting as the program grew — designing Figma components built to scale from the start would have saved real rework later.</p>
+  </div>
+</section>
+
+<nav class="cs2-nav-footer" data-reveal>
+  <a class="nav-prev" href="toa.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+    <span class="nav-label-block">
+      <span class="eyebrow">Previous Project</span>
+      <span class="title">Transfer of Assets</span>
+    </span>
+  </a>
+  <a class="nav-next" href="beneficiary.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <span class="nav-label-block">
+      <span class="eyebrow">Next Project</span>
+      <span class="title">Beneficiary Designation</span>
+    </span>
+  </a>
+</nav>
 
 <footer class="site-footer">
-  <div class="wrap">
-    <p>&copy; 2026 Michael.</p>
-    <p><a href="index.html">&larr; Back to all work</a></p>
+  <div class="wrap" data-reveal>
+    <div class="foot-left">
+      <p>© 2025 Michael Lee. Built with precision.</p>
+      <span class="foot-divider"></span>
+      <p>Glad you're here!</p>
+    </div>
+    <a class="back-to-top" href="#top">
+      Back to top
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+    </a>
   </div>
 </footer>
 
+<script src="reveal.js"></script>
 </body>
 </html>

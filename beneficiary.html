@@ -3,14 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Retirement Beneficiary Designation — Michael</title>
+<title>Beneficiary Designation — Michael Lee</title>
+<meta name="description" content="Beneficiary Designation — digitizing a fully paper-based process into a self-service digital experience. Case study by Michael Lee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="top">
 
 <header class="site-nav">
-  <div class="wrap">
-    <a class="name" href="index.html">Michael</a>
+  <div class="wrap" data-reveal>
+    <div class="logo-group">
+      <a class="name" href="index.html">Michael Lee</a>
+      <span class="logo-divider"></span>
+      <span class="role-tag">UX &amp; Product</span>
+    </div>
     <nav>
       <a href="index.html#work">Work</a>
       <a href="index.html#contact">Contact</a>
@@ -18,208 +26,229 @@
   </div>
 </header>
 
-<header class="cs-header">
-  <div class="tags">
-    <span class="tag shipped">Shipped</span>
-    <span class="tag neutral">New Experience</span>
+<section class="cs2-hero">
+  <div class="category-header" data-reveal>
+    <span class="category-pill">Retirement</span>
+    <span class="meta-dot">•</span>
+    <span class="role-label">Sr. Product Designer</span>
+    <span class="meta-dot">•</span>
+    <span class="status-live">Live</span>
   </div>
-  <h1>Retirement Beneficiary Designation</h1>
-  <p class="lede">
-    Digitizing a process that had always lived on paper — letting clients designate and
-    manage retirement account beneficiaries directly in their digital experience, with no
-    existing pattern to build from and a legal/compliance domain I had to learn from
-    scratch.
-  </p>
-  <dl class="meta-grid">
-    <div><dt>Role</dt><dd>Sr. Product Designer — inherited as lead designer mid-project, directing 1 content strategist, delivered to dev</dd></div>
-    <div><dt>Status</dt><dd>Launched, live (Nov 2024)</dd></div>
-    <div><dt>Scale</dt><dd>$5M project</dd></div>
-    <div><dt>Timeframe</dt><dd>Q4 2023 – Q4 2024 (launched Nov 2024)</dd></div>
-  </dl>
-</header>
+  <div data-reveal>
+    <h1>Beneficiary Designation</h1>
+    <p class="summary">Digitizing a fully paper-based process into a self-service digital experience — a $5M project that launched November 2024, replacing physical forms with an end-to-end flow for retirement beneficiary designation.</p>
+  </div>
 
-<div class="cs-body">
+  <div class="cs2-hero-visual" data-reveal>
+    <div class="hero-photo-row">
+      <div class="hero-photo left"><img src="assets/beneficiary-landing.jpg" alt="Beneficiary designations homepage with account overview and orientation section"></div>
+      <div class="hero-photo center"><img src="assets/beneficiary-validation.jpg" alt="Beneficiary share percentage allocation step with 100% validation"></div>
+      <div class="hero-photo right"><img src="assets/beneficiary-terms.jpg" alt="Terms and electronic signature review before submitting a designation"></div>
+    </div>
+  </div>
+</section>
 
-  <section id="problem">
-    <h2>Problem framing</h2>
-    <p>
-      Before this project, designating a beneficiary on a retirement account was a paper
-      process — clients filled out and submitted a physical form, disconnected entirely
-      from their digital account experience. My job was to digitize it: design a net-new
-      experience with no existing digital pattern in the product to build from.
-    </p>
-    <p>
-      The domain itself was the first real challenge. Beneficiary designation carries a lot
-      of legal and compliance weight, and it was a topic I was largely unfamiliar with
-      going in — data validation rules around beneficiary names and share percentages,
-      how to structure the information architecture for something this legally sensitive,
-      and what "correct" even looks like from a compliance standpoint all had to be learned
-      as part of doing the work.
-    </p>
-  </section>
+<section class="cs2-overview">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Project Overview &amp; Context</span>
+  </div>
+  <div class="overview-grid" data-reveal-stagger>
+    <div class="overview-col">
+      <span class="ov-label">Role</span>
+      <span class="ov-value">Sr. Product Designer — inherited as lead mid-project</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Timeframe</span>
+      <span class="ov-value">Q4 2023 – Q4 2024 · Launched Nov 2024</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Scale</span>
+      <span class="ov-value">$5M project · Delivered to dev</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Status</span>
+      <span class="ov-value">Launched, live (November 2024)</span>
+    </div>
+  </div>
+</section>
 
-  <section id="constraints">
-    <h2>Constraints</h2>
+<section class="cs2-problem-goal">
+  <div class="pg-block" data-reveal>
+    <div class="pg-eyebrow challenge">
+      <span class="dot"></span>
+      <span>The Challenge</span>
+    </div>
+    <h3>The Challenge</h3>
+    <p>Designating a beneficiary on a retirement account was a paper process — clients filled out and submitted a physical form, disconnected from their digital experience. The domain carried significant legal and compliance weight, with data validation rules and information architecture challenges I had to learn as part of doing the work.</p>
+  </div>
+  <div class="pg-block" data-reveal>
+    <div class="pg-eyebrow objective">
+      <span class="dot"></span>
+      <span>Strategic Directive</span>
+    </div>
+    <h3>Strategic Objective</h3>
+    <p>Design a net-new digital beneficiary designation experience from first principles — no existing digital pattern in the product to build from — that handles the full legal complexity of the domain while being intuitive enough for clients doing this for the first time.</p>
+  </div>
+</section>
 
-    <h3>Unfamiliar legal and compliance domain</h3>
-    <p>Beneficiary designations come with real legal weight, and the rules governing them
-      (validation of beneficiary information, how allocations must work) weren't things
-      the design team already had deep expertise in — a meaningful part of the work was
-      learning the domain well enough to design it correctly.</p>
-
-    <h3>No existing pattern to build from</h3>
-    <p>Because this had only ever existed on paper, there was no prior digital IA or
-      interaction pattern to adapt — the structure had to be designed from first
-      principles rather than evolved from something that already existed.</p>
-
-    <h3>Data validation complexity</h3>
-    <p>Beneficiary share percentages across multiple people must sum to exactly 100% for a
-      designation to be valid — a constraint that had to be designed for clearly, so
-      clients could self-correct rather than submit an invalid designation.</p>
-  </section>
-
-  <section id="decisions">
-    <h2>Decisions</h2>
-
-    <div class="decision-card">
-      <h4>Decision 1 — A dedicated beneficiary designations homepage</h4>
-      <dl>
-        <dt>The question</dt><dd>With no existing pattern to build from, what should the
-          entry point into beneficiary management actually contain, given clients often
-          have multiple accounts and may be doing this for the first time?</dd>
-        <dt>Options considered</dt><dd>A minimal, single-flow entry point directly into the
-          designation form, vs. a dedicated homepage that orients clients before they start
-          and gives them visibility across all their accounts.</dd>
-        <dt>The call</dt><dd>Built a dedicated homepage with a "What you'll need" section
-          to prepare clients before they start, plus a card giving an overview of all the
-          client's accounts and their current beneficiaries, with the ability to manage or
-          update from there.</dd>
-        <dt>Why</dt><dd>Beneficiary designation is unfamiliar and legally weighty for most
-          clients — orienting them first, and giving them an at-a-glance view across every
-          account rather than forcing an account-by-account flow, matches how people
-          actually think about this task.</dd>
-        <dt>How I led it</dt><dd>I defined this structure and content as I took over as
-          lead designer on the project.</dd>
-      </dl>
+<section class="cs2-process">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Process</span>
+  </div>
+  <div class="steps-grid" data-reveal-stagger>
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 01</span>
+      <div>
+        <h4>Dedicated Beneficiary Homepage</h4>
+        <ul>
+          <li>No existing pattern to build from — designed a dedicated homepage with a "What you'll need" section to orient clients</li>
+          <li>Added an at-a-glance card showing all accounts and current beneficiaries with the ability to manage from there</li>
+          <li>Matches how clients actually think about this task rather than forcing an account-by-account flow</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-tree">
+          <span class="hub">Beneficiary Hub</span>
+          <div class="branches">
+            <span class="branch">Accounts<br>List</span>
+            <span class="branch">What You'll<br>Need</span>
+            <span class="branch">Manage<br>All</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="decision-card">
-      <h4>Decision 2 — Enforcing exact 100% allocation</h4>
-      <dl>
-        <dt>The question</dt><dd>How do you guide clients to submit a valid, legally
-          correct allocation across multiple beneficiaries without confusion or error?</dd>
-        <dt>Options considered</dt><dd>Freeform percentage entry with validation only at
-          submission, vs. designing the flow to make the 100%-total requirement clear and
-          self-correctable as the client enters allocations.</dd>
-        <dt>The call</dt><dd>Designed the allocation step to enforce that share percentages
-          across all named beneficiaries sum to exactly 100% before a client can proceed.</dd>
-        <dt>Why</dt><dd>This is a hard legal requirement, not a soft validation — catching
-          it clearly during entry prevents clients from submitting a designation that would
-          later be rejected or create downstream compliance issues.</dd>
-        <dt>How I led it</dt><dd>I designed the validation pattern for this step.</dd>
-      </dl>
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 02</span>
+      <div>
+        <h4>Enforcing Exact 100% Allocation</h4>
+        <ul>
+          <li>Beneficiary share percentages must sum to exactly 100% — a hard legal requirement, not a soft validation</li>
+          <li>Designed the allocation step to make this requirement clear and self-correctable as clients enter allocations</li>
+          <li>Prevents clients from submitting designations that would later be rejected or cause compliance issues</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-rows">
+          <div class="row"><span class="node strong">Jane Doe — 60%</span><span class="connector"></span><span class="node muted">Real-Time Feedback</span></div>
+          <div class="row"><span class="node strong">Chris Doe — 40%</span><span class="connector"></span><span class="node muted">Sum Must Equal 100%</span></div>
+          <div class="row"><span class="node strong">Total: 100% ✓</span><span class="connector"></span><span class="node muted">Submit Enabled</span></div>
+        </div>
+      </div>
     </div>
 
-    <div class="decision-card">
-      <h4>Decision 3 — Applying designations across accounts</h4>
-      <dl>
-        <dt>The question</dt><dd>Clients frequently want the same beneficiaries across
-          multiple accounts. Should they have to re-enter the same information for every
-          account?</dd>
-        <dt>Options considered</dt><dd>Require full re-entry per account (the simpler build)
-          vs. letting clients apply an existing account's beneficiary settings to a new
-          account.</dd>
-        <dt>The call</dt><dd>Built the ability for clients to apply beneficiary designation
-          settings from an existing account directly to a new one.</dd>
-        <dt>Why</dt><dd>This was one of the biggest streamlining opportunities in the whole
-          project — it removes repetitive, error-prone re-entry for what's likely the most
-          common real-world case.</dd>
-        <dt>How I led it</dt><dd>I identified and pushed for this as a priority feature
-          rather than a nice-to-have.</dd>
-      </dl>
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 03</span>
+      <div>
+        <h4>Applying Designations Across Accounts</h4>
+        <ul>
+          <li>Clients frequently want the same beneficiaries across multiple accounts — identified this as a priority feature</li>
+          <li>Built the ability to apply an existing account's beneficiary settings directly to a new one</li>
+          <li>Removes repetitive, error-prone re-entry for the most common real-world case</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-flow">
+          <span class="flow-node"><span class="box">Roth IRA</span><span class="caption-sm">Jane 60% + Chris 40%</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">401(k), Brokerage, Trust</span><span class="caption-sm">Apply To</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">Beneficiaries Copied</span><span class="caption-sm">One-Click Replication</span></span>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="screens">
-    <h2>Selected screens</h2>
-    <div class="screens-grid">
-      <figure>
-        <img src="assets/beneficiary-landing.jpg" alt="Beneficiary designations homepage, showing an account card with no beneficiaries added and a &quot;What you'll need&quot; orientation section.">
-        <figcaption>Homepage — account overview + orientation</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/beneficiary-create.jpg" alt="Form for creating a new primary beneficiary, with relationship, name, SSN, and date of birth fields.">
-        <figcaption>Creating a primary beneficiary</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/beneficiary-validation.jpg" alt="Beneficiary share percentage field showing a total of 50% with a warning that total shares must equal 100%.">
-        <figcaption>Enforcing the 100% allocation rule</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/beneficiary-terms.jpg" alt="Beneficiary designation terms and conditions page with an electronic signature checkbox and submit button.">
-        <figcaption>Terms &amp; electronic signature before submit</figcaption>
-      </figure>
+<section class="cs2-screens">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Selected Screens</span>
+  </div>
+
+  <div class="gallery-row" data-reveal-stagger>
+    <div class="gallery-item">
+      <div class="thumb"><img src="assets/beneficiary-landing.jpg" alt="Beneficiary designations homepage, showing an account card with no beneficiaries added and a &quot;What you'll need&quot; orientation section."></div>
+      <p class="caption">Homepage — account overview + orientation</p>
     </div>
-  </section>
-
-  <section id="leadership">
-    <h2>Leadership &amp; team</h2>
-    <p>I started as one of two designers on this project, with an Associate Director as
-      lead. Partway through, I inherited the project and stepped into the lead designer
-      role myself — directing a content strategist and carrying the work through delivery
-      to the development team, while partnering closely with product throughout.</p>
-  </section>
-
-  <section id="results">
-    <h2>Results</h2>
-    <p>This shipped and went live in November 2024 — a $5M project that replaced a fully
-      paper-based process with a self-service digital experience. Figures below compare
-      against a 12-month baseline (April 2024–April 2025).</p>
-
-    <h3>Adoption</h3>
-    <div class="stat-grid">
-      <div><span class="stat-value">7,503</span><span class="stat-label">Avg. monthly visits</span></div>
-      <div><span class="stat-value">80%</span><span class="stat-label">Penetration rate, since inception</span></div>
+    <div class="gallery-item">
+      <div class="thumb"><img src="assets/beneficiary-create.jpg" alt="Form for creating a new primary beneficiary, with relationship, name, SSN, and date of birth fields."></div>
+      <p class="caption">Creating a primary beneficiary</p>
     </div>
-
-    <h3>Engagement</h3>
-    <div class="stat-grid">
-      <div><span class="stat-value">66K+</span><span class="stat-label">Online beneficiary enrollments, since inception</span></div>
-      <div><span class="stat-value">46K</span><span class="stat-label">Enrollments from CI</span></div>
-      <div><span class="stat-value">20K</span><span class="stat-label">Enrollments from Merrill</span></div>
+  </div>
+  <div class="gallery-row" data-reveal-stagger>
+    <div class="gallery-item">
+      <div class="thumb"><img src="assets/beneficiary-validation.jpg" alt="Beneficiary share percentage field showing a total of 50% with a warning that total shares must equal 100%."></div>
+      <p class="caption">Enforcing the 100% allocation rule</p>
     </div>
-
-    <h3>Value</h3>
-    <div class="stat-grid">
-      <div><span class="stat-value">−10%</span><span class="stat-label">CI avg. monthly retirement calls</span></div>
-      <div><span class="stat-value">+22%</span><span class="stat-label">CI total inbound calls</span></div>
+    <div class="gallery-item">
+      <div class="thumb"><img src="assets/beneficiary-terms.jpg" alt="Beneficiary designation terms and conditions page with an electronic signature checkbox and submit button."></div>
+      <p class="caption">Terms &amp; electronic signature before submit</p>
     </div>
-    <p class="stat-note">Retirement-specific call volume from CI dropped even as CI's total
-      inbound call volume rose over the same period — I read this as the feature
-      successfully deflecting a category of call that used to require an agent, independent
-      of what drove the broader increase in overall call volume.</p>
-  </section>
+  </div>
+</section>
 
-  <section id="reflection">
-    <h2>Reflection</h2>
-    <p>Same lesson as the other work on this site: I'd have pushed for broader UX
-      strategy thinking earlier, and a deeper understanding of beneficiary designation's
-      legal implications and constraints, before getting into the detail of individual
-      screens.</p>
-    <p>Across this project and the other two here, there's a consistent throughline in how
-      I'm growing as a designer — moving from strength in execution toward strength in
-      direction: understanding a domain and a product deeply enough to set the strategy,
-      not just design the screens that follow from it.</p>
-  </section>
+<section class="cs2-results">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Metrics &amp; Quantitative Impact</span>
+  </div>
+  <div class="metrics-row" data-reveal-stagger>
+    <div class="metric-card">
+      <span class="num">66K+</span>
+      <span class="m-label">Online Enrollments</span>
+      <span class="m-desc">Beneficiary enrollments since inception — 46K from CI, 20K from Merrill.</span>
+    </div>
+    <div class="metric-card">
+      <span class="num">7,503</span>
+      <span class="m-label">Avg. Monthly Visits</span>
+      <span class="m-desc">80% penetration rate since inception. Replaced a fully paper-based process.</span>
+    </div>
+    <div class="metric-card">
+      <span class="num">−10%</span>
+      <span class="m-label">Retirement Call Volume</span>
+      <span class="m-desc">Average monthly retirement calls down 10%, while total inbound calls up 22% — digital self-service absorbing demand.</span>
+    </div>
+  </div>
+  <div class="reflection-box" data-reveal>
+    <h4>Reflection</h4>
+    <p>I'd have pushed for broader UX strategy thinking earlier, and a deeper understanding of beneficiary designation's legal constraints, before getting into screens. Across all three projects here, there's a consistent throughline — moving from strength in execution toward strength in direction: understanding a domain deeply enough to set the strategy, not just design the screens that follow from it.</p>
+  </div>
+</section>
 
-</div>
+<nav class="cs2-nav-footer" data-reveal>
+  <a class="nav-prev" href="dap.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+    <span class="nav-label-block">
+      <span class="eyebrow">Previous Project</span>
+      <span class="title">DAP 2.2 Accessibility</span>
+    </span>
+  </a>
+  <a class="nav-next" href="toa.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <span class="nav-label-block">
+      <span class="eyebrow">Next Project</span>
+      <span class="title">Transfer of Assets</span>
+    </span>
+  </a>
+</nav>
 
 <footer class="site-footer">
-  <div class="wrap">
-    <p>&copy; 2026 Michael.</p>
-    <p><a href="index.html">&larr; Back to all work</a></p>
+  <div class="wrap" data-reveal>
+    <div class="foot-left">
+      <p>© 2025 Michael Lee. Built with precision.</p>
+      <span class="foot-divider"></span>
+      <p>Glad you're here!</p>
+    </div>
+    <a class="back-to-top" href="#top">
+      Back to top
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+    </a>
   </div>
 </footer>
 
+<script src="reveal.js"></script>
 </body>
 </html>

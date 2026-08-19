@@ -21,8 +21,60 @@ wire them up.
 
 - Your real LinkedIn URL and Read.cv URL — the homepage contact section currently links both to `#`.
 
-## Case studies + new project pages — coming next
+## VideoAmp (videoamp.html) — done
 
-Transfer of Assets, DAP 2.2, Beneficiary Designation, VideoAmp, Nomi Health, Skysafe, and Pixel
-Perfect pages haven't been rebuilt in the v2 style yet. Their image lists will get appended here
-as each one is built.
+| Where | Approx size (px) | Suggested filename |
+|---|---|---|
+| Hero image | 1216 × 600 | `videoamp-hero.jpg` |
+| Gallery — Home (event feed) | 592 × 420 | `videoamp-home.jpg` |
+| Gallery — Event details | 592 × 420 | `videoamp-event-details.jpg` |
+| Gallery — Coachella lifestyle photo | 592 × 460 | `videoamp-coachella.jpg` |
+| Gallery — Dashboard screen 1 | 280 × 460 | `videoamp-dashboard-1.jpg` |
+| Gallery — Dashboard screen 2 | 280 × 460 | `videoamp-dashboard-2.jpg` |
+| Full Screen Gallery — 5 screens | 228 × 494 each | `videoamp-screen-1.jpg` … `videoamp-screen-5.jpg` |
+| Full Screen Gallery — 4 more screens | 290 × 628 each | `videoamp-screen-6.jpg` … `videoamp-screen-9.jpg` |
+| More Work thumbnail (used on other pages) | 349 × 140 | `thumb-videoamp-card.jpg` |
+
+## Nomi Health (nomi-health.html) — done
+
+| Where | Approx size (px) | Suggested filename |
+|---|---|---|
+| Hero image | 1216 × 600 | `nomi-health-hero.jpg` |
+| Gallery — Covid Response landing page | 1216 × 1549 | `nomi-covid.jpg` |
+| Gallery — Homepage | 1216 × 1573 | `nomi-homepage.jpg` |
+| Gallery — Healthcare value prop | 1216 × 720 | `nomi-healthcare.jpg` |
+| More Work thumbnail | 349 × 140 | `thumb-nomi-health-card.jpg` |
+
+## SkySafe (skysafe.html) — done
+
+| Where | Approx size (px) | Suggested filename |
+|---|---|---|
+| Hero image | 1216 × 600 | `skysafe-hero.jpg` |
+| Gallery — About page | 1216 × 500 | `skysafe-about.jpg` |
+| Gallery — Solutions | 596 × 500 | `skysafe-solutions.jpg` |
+| Gallery — Core values | 596 × 500 | `skysafe-values.jpg` |
+| Gallery — Resources | 596 × 420 | `skysafe-resources.jpg` |
+| Gallery — Contact | 596 × 420 | `skysafe-contact.jpg` |
+| More Work thumbnail | 349 × 140 | `thumb-skysafe-card.jpg` |
+
+## Pixel Perfect (pixel-perfect.html) — done
+
+| Where | Approx size (px) | Suggested filename |
+|---|---|---|
+| Hero image | 1216 × 600 | `pixel-perfect-hero.jpg` |
+| Gallery — Homepage | 1216 × 1164 | `pixel-perfect-homepage.jpg` |
+| Gallery — Careers | 596 × 480 | `pixel-perfect-careers.jpg` |
+| Gallery — Contact | 596 × 380 | `pixel-perfect-contact.jpg` |
+| More Work thumbnail | 349 × 140 | `thumb-pixel-perfect-card.jpg` |
+
+## Case studies — done
+
+Transfer of Assets and DAP 2.2 hero/screens visuals were built entirely in CSS (schematic diagram
+for TOA, donut chart + cards for DAP) — no photos needed, since both are unlaunched/NDA work.
+
+Beneficiary Designation reuses your 4 real uploaded screenshots (already in `assets/`) for both
+the hero and the screens gallery — no new images needed there either.
+
+**Every page on the site is now fully built out. Nothing left to rebuild — just upload the
+homepage/archive photos listed above whenever you're ready, plus your real LinkedIn and Read.cv
+URLs.**
