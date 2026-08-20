@@ -20,7 +20,6 @@
   var targetY = window.innerHeight / 2;
   var currentX = targetX;
   var currentY = targetY;
-  var visible = false;
 
   function render() {
     currentX += (targetX - currentX) * 0.2;
@@ -31,15 +30,20 @@
   }
   requestAnimationFrame(render);
 
+  // Opacity is re-asserted on every mousemove/mouseenter rather than
+  // gated behind a one-time flag — a flag that only ever flips true
+  // meant the dot could never come back once mouseleave fired (moving
+  // to browser chrome, another app, or off-window and back), which is
+  // what caused it to "disappear randomly" and never return.
   window.addEventListener("mousemove", function (e) {
     targetX = e.clientX;
     targetY = e.clientY;
-    if (!visible) {
-      visible = true;
-      dot.style.opacity = "1";
-    }
+    dot.style.opacity = "1";
   });
 
+  document.addEventListener("mouseenter", function () {
+    dot.style.opacity = "1";
+  });
   document.addEventListener("mouseleave", function () {
     dot.style.opacity = "0";
   });
@@ -48,6 +52,11 @@
     dot.classList.add("is-active");
   });
   window.addEventListener("mouseup", function () {
+    dot.classList.remove("is-active");
+  });
+  // A drag that ends outside the window (or a click that opens a
+  // native dialog) can eat the mouseup — always release on blur too.
+  window.addEventListener("blur", function () {
     dot.classList.remove("is-active");
   });
 

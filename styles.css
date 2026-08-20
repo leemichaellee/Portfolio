@@ -1816,17 +1816,20 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
 
 /* Native cursor stays hidden only once cursor.js confirms a fine
    pointer and adds this class — inputs/textareas keep the native
-   I-beam so the password-gate field still feels normal to type in. */
+   I-beam so the password-gate field still feels normal to type in.
+   !important is deliberate: without it, any other rule in this file
+   that sets `cursor` on a link/button (e.g. .gate-form button) can
+   win on specificity or source order and bring back the native arrow
+   the moment that element is hovered or clicked. This one rule is
+   meant to always win, site-wide, no exceptions. */
 .has-custom-cursor,
-.has-custom-cursor a,
-.has-custom-cursor button,
-.has-custom-cursor [role="button"] {
-  cursor: none;
+.has-custom-cursor * {
+  cursor: none !important;
 }
 
 .has-custom-cursor input,
 .has-custom-cursor textarea {
-  cursor: text;
+  cursor: text !important;
 }
 
 .cursor-dot {
