@@ -39,34 +39,8 @@
     <p class="summary">Redesigning a flow that handles ~100K annual transfers and targeting a 30% reduction in stalled requests — across legacy systems, cross-org stakeholders, and real ambiguity about what data we'd ultimately have access to.</p>
   </div>
 
-  <div class="cs2-hero-visual" data-reveal>
-    <div class="transfer-schematic">
-      <div class="flow-card source">
-        <div class="flow-card-top">
-          <span class="flow-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
-          <span class="flow-card-label">Source</span>
-        </div>
-        <p class="flow-card-name">Fidelity Growth Fund</p>
-        <div class="flow-card-meta"><span class="acct">••••4821</span><span class="amt">$145,230.00</span></div>
-      </div>
-
-      <span class="flow-arrow right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-      <span class="flow-arrow left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></span>
-
-      <div class="flow-card destination">
-        <div class="flow-card-top">
-          <span class="flow-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
-          <span class="flow-card-label">Destination</span>
-        </div>
-        <p class="flow-card-name">Merrill Brokerage</p>
-        <div class="flow-card-meta"><span class="acct">••••4821</span><span class="amt">$110,800.00</span></div>
-      </div>
-
-      <span class="asset-pill" style="left:calc(50% - 80px); top:calc(50% - 22px);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg><span class="sym">AAPL</span><span class="val">$24,500</span></span>
-      <span class="asset-pill" style="left:calc(50% - 88px); top:calc(50% + 22px);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="sym">Cash</span><span class="val">$12,300</span></span>
-      <span class="asset-pill" style="left:calc(50% + 20px); top:calc(50% + 22px);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="sym">MSFT</span><span class="val">$28,900</span></span>
-      <span class="asset-pill" style="left:calc(50% + 15px); top:calc(50% - 22px);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg><span class="sym">VTI</span><span class="val">$45,100</span></span>
-    </div>
+  <div class="cs2-hero-visual photo-fill" data-reveal>
+    <img src="assets/toa-hero.png" alt="Transfer of Assets — source and destination account schematic with asset breakdown">
     <p class="caption">Screens shown are representative sketches — original work is under NDA and has not yet launched.</p>
   </div>
 </section>
@@ -198,67 +172,8 @@
   </div>
 
   <div class="screens-group" data-reveal>
-    <div class="phone-row">
-      <div class="phone-mock">
-        <span class="notch"></span>
-        <div class="phone-screen">
-          <span class="phone-header">Select receiving account</span>
-          <div class="phone-card">
-            <span class="pc-title">Brokerage ••4821</span>
-            <span class="pc-sub">Total: $145,230.00</span>
-          </div>
-          <div class="phone-card">
-            <span class="pc-title">Trad. IRA ••4821</span>
-            <span class="pc-sub">Total: $145,230.00</span>
-          </div>
-          <div class="phone-spacer"></div>
-          <span class="phone-btn secondary">Back</span>
-        </div>
-      </div>
-      <div class="phone-mock">
-        <span class="notch"></span>
-        <div class="phone-screen">
-          <span class="phone-header">Select institution</span>
-          <div class="phone-card"><span class="pc-title">Fidelity</span><span class="pc-sub">Brokerage &amp; retirement</span></div>
-          <div class="phone-card"><span class="pc-title">Schwab</span><span class="pc-sub">Brokerage &amp; retirement</span></div>
-          <div class="phone-spacer"></div>
-          <span class="phone-btn">Next</span>
-        </div>
-      </div>
-      <div class="phone-mock">
-        <span class="notch"></span>
-        <div class="phone-screen">
-          <span class="phone-header">Select assets</span>
-          <div class="phone-row-line"><span class="k">AAPL · 150 sh</span><span class="v">$24,500</span></div>
-          <div class="phone-row-line"><span class="k">MSFT · 85 sh</span><span class="v">$28,900</span></div>
-          <div class="phone-row-line"><span class="k">VTI · 200 sh</span><span class="v">$45,100</span></div>
-          <div class="phone-row-line"><span class="k">BND · 120 sh</span><span class="v">$12,300</span></div>
-          <div class="phone-spacer"></div>
-          <span class="phone-btn">Next</span>
-        </div>
-      </div>
-      <div class="phone-mock">
-        <span class="notch"></span>
-        <div class="phone-screen">
-          <span class="phone-header">Complete missing info</span>
-          <div class="phone-card"><span class="pc-title">Account holder</span><span class="pc-sub">Required for transfer</span></div>
-          <div class="phone-card"><span class="pc-title">Tax withholding</span><span class="pc-sub">Optional</span></div>
-          <div class="phone-spacer"></div>
-          <span class="phone-btn">Next</span>
-        </div>
-      </div>
-      <div class="phone-mock">
-        <span class="notch"></span>
-        <div class="phone-screen">
-          <span class="phone-header">Review your transfer</span>
-          <div class="phone-row-line"><span class="k">From</span><span class="v">Fidelity Growth Fund</span></div>
-          <div class="phone-row-line"><span class="k">To</span><span class="v">Merrill Brokerage</span></div>
-          <div class="phone-row-line"><span class="k">Assets</span><span class="v">4 positions</span></div>
-          <div class="phone-row-line"><span class="k">Est. value</span><span class="v">$110,800</span></div>
-          <div class="phone-spacer"></div>
-          <span class="phone-btn">Submit Transfer</span>
-        </div>
-      </div>
+    <div class="wireframe-shot">
+      <img src="assets/toa-flow-1.png" alt="Transfer Initiation Flow — select account, select institution, select assets, complete missing info, review transfer">
     </div>
     <div class="screen-caption">
       <h4>Transfer Initiation Flow</h4>
@@ -268,40 +183,8 @@
   </div>
 
   <div class="screens-group" data-reveal>
-    <div class="phone-row">
-      <div class="phone-mock">
-        <span class="notch"></span>
-        <div class="phone-screen">
-          <span class="phone-header">We need additional documentation</span>
-          <span class="phone-sub">Upload multiple files — PDF, JPG, PNG, DOCX. Max size 10MB.</span>
-          <div class="phone-card"><span class="pc-title">Fidelity acct statement</span><span class="pc-sub">Upload a PDF or image</span></div>
-          <div class="phone-card"><span class="pc-title">Government issued ID</span><span class="pc-sub">Passport, license, or state ID</span></div>
-          <div class="phone-spacer"></div>
-          <span class="phone-btn secondary">Back</span>
-        </div>
-      </div>
-      <div class="phone-mock">
-        <span class="notch"></span>
-        <div class="phone-screen">
-          <span class="phone-header">Select a file</span>
-          <div class="phone-card"><span class="pc-title">Documents</span><span class="pc-sub">12 items</span></div>
-          <div class="phone-card"><span class="pc-title">Downloads</span><span class="pc-sub">8 items</span></div>
-          <div class="phone-card"><span class="pc-title">Recent</span><span class="pc-sub">5 items</span></div>
-          <div class="phone-spacer"></div>
-          <span class="phone-btn">Open</span>
-        </div>
-      </div>
-      <div class="phone-mock">
-        <span class="notch"></span>
-        <div class="phone-screen">
-          <span class="phone-header">We need additional documentation</span>
-          <span class="phone-sub">✓ Document uploaded successfully</span>
-          <div class="phone-card"><span class="pc-title">Fidelity acct statement</span><span class="pc-sub">fidelity_statement.pdf</span></div>
-          <div class="phone-card"><span class="pc-title">Government issued ID</span><span class="pc-sub">Passport, license, or state ID</span></div>
-          <div class="phone-spacer"></div>
-          <span class="phone-btn">Next</span>
-        </div>
-      </div>
+    <div class="wireframe-shot">
+      <img src="assets/toa-flow-2.png" alt="Document Upload Flow — upload documentation, select a file, confirmation of successful upload">
     </div>
     <div class="screen-caption">
       <h4>Document Upload Flow</h4>

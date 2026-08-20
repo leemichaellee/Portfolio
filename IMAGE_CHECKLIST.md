@@ -1,9 +1,18 @@
 # Image checklist — v2 redesign
 
-This grows as each page gets rebuilt from the Figma v2 design. Everything below is currently a
-placeholder block on the live site (labeled "Image pending"). Export each from Figma (select the
-layer → right-click → Copy/Export as PNG or JPG at 2x) and send them over — I'll drop them in and
-wire them up.
+**All images are in.** Every page — homepage, all 3 case studies, and all 4 project pages — now
+uses real exported photos from Figma, cross-checked against the Figma layer tree to confirm each
+one landed in the right spot.
+
+Four files from your zip didn't have a matching layer anywhere in the site's Figma frames:
+`tech-placeholder.png`, `tech-placeholder-1.png`, `tech-placeholder-2.png`, `tech-placeholder-3.png`
+(572×320 each). They're sitting unused — let me know what they're for and I'll place them.
+
+Still open: your real LinkedIn and Read.cv URLs (homepage contact section currently links both to `#`).
+
+---
+
+Old notes below, kept for reference.
 
 ## Homepage (index.html) — done
 

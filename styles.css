@@ -1030,6 +1030,31 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   .aw-left { flex: none; }
 }
 
+/* Live Product Screens — 3 groups of 4 real screenshots (Beneficiary) */
+.screens-quad-group { display: flex; flex-direction: column; gap: 20px; }
+.screens-quad-group .group-title { font-size: 1.125rem; margin: 0; color: var(--ink); }
+.screens-quad-group .group-desc { font-size: 0.875rem; color: var(--ink-soft); margin: 0; max-width: 760px; line-height: 1.5; }
+.screens-quad-row { display: flex; gap: 20px; flex-wrap: wrap; }
+.screens-quad-row .gallery-item { flex: 1 1 calc(25% - 15px); min-width: 180px; }
+
+@media (max-width: 900px) {
+  .screens-quad-row .gallery-item { flex: 1 1 calc(50% - 10px); }
+}
+
+/* Real hero/wireframe photo — full-bleed inside cs2-hero-visual, and standalone wireframe shots */
+.cs2-hero-visual.photo-fill { padding: 0; display: block; }
+.cs2-hero-visual.photo-fill img { width: 100%; height: auto; display: block; border-radius: 12px; }
+.cs2-hero-visual.photo-fill .caption { margin: 12px 24px 0; }
+
+.wireframe-shot {
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  background: #fff;
+}
+.wireframe-shot img { width: 100%; height: auto; display: block; }
+
 /* Hero photo trio — real screenshots, slight rotation (Beneficiary hero) */
 .hero-photo-row {
   display: flex;
