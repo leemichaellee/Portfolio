@@ -1182,7 +1182,11 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
 /* Real hero/wireframe photo — full-bleed inside cs2-hero-visual, and standalone wireframe shots */
 .cs2-hero-visual.photo-fill { padding: 0; display: block; }
 .cs2-hero-visual.photo-fill img { width: 100%; height: auto; display: block; border-radius: 12px; }
-.cs2-hero-visual.photo-fill .caption { margin: 12px 24px 0; }
+.cs2-hero-visual.photo-fill .caption {
+  margin: 12px auto 0;
+  text-align: center;
+  max-width: 640px;
+}
 
 .wireframe-shot {
   border: 1px solid var(--line-soft);
@@ -1806,6 +1810,67 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   font-size: 0.82rem;
   color: var(--ink-faint);
   margin-top: 0;
+}
+
+/* ---------- Custom cursor — liquid glass dot ---------- */
+
+/* Native cursor stays hidden only once cursor.js confirms a fine
+   pointer and adds this class — inputs/textareas keep the native
+   I-beam so the password-gate field still feels normal to type in. */
+.has-custom-cursor,
+.has-custom-cursor a,
+.has-custom-cursor button,
+.has-custom-cursor [role="button"] {
+  cursor: none;
+}
+
+.has-custom-cursor input,
+.has-custom-cursor textarea {
+  cursor: text;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -6px 10px rgba(0, 0, 0, 0.03),
+    0 6px 18px rgba(0, 0, 0, 0.05);
+  transition: width 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    height 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.25s ease, border-color 0.25s ease, opacity 0.2s ease;
+  will-change: transform;
+}
+
+.cursor-dot.is-hovering {
+  width: 60px;
+  height: 60px;
+  background: rgba(45, 91, 85, 0.06);
+  border-color: rgba(45, 91, 85, 0.25);
+}
+
+.cursor-dot.is-active {
+  width: 34px;
+  height: 34px;
+}
+
+@media (pointer: coarse) {
+  .cursor-dot { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-dot { transition: opacity 0.2s ease; }
 }
 
 .screens-grid {
