@@ -676,6 +676,18 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
 
 .gallery-row .gallery-item.wide-2 { flex: 2; }
 
+/* Universal fallback — covers .thumb usages not nested under .gallery-item,
+   e.g. .gallery-portrait-row and .gallery-stack .stack-row, which otherwise
+   had no width/object-fit constraint and rendered images at native pixel size. */
+.thumb {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-sm);
+  background: var(--tint-ink);
+  overflow: hidden;
+}
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
 .gallery-item .thumb {
   aspect-ratio: 4 / 3;
   border-radius: var(--radius-sm);
@@ -702,6 +714,7 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   display: flex;
   gap: 16px;
 }
+.gallery-stack .stack-row .thumb { flex: 1 1 0; min-width: 0; }
 
 .gallery-label {
   font-size: 0.875rem;
