@@ -315,6 +315,7 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   padding: 32px;
   text-decoration: none;
   color: inherit;
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .hero-case-study .left-media {
@@ -354,9 +355,15 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
 .case-meta-row .status-staged { color: #3380b2; }
 .case-meta-row .status-live { color: #268c59; }
 
+.hero-case-study .right-content > div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .hero-case-study h3 {
   font-size: 1.75rem;
-  margin: 8px 0 0;
+  margin: 0;
   color: var(--ink);
 }
 
@@ -417,6 +424,9 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   gap: 24px;
   text-decoration: none;
   color: inherit;
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  text-decoration: none;
+  color: inherit;
 }
 
 .case-study-card .thumb {
@@ -428,9 +438,15 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
 
 .case-study-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+.case-study-card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .case-study-card h3 { font-size: 1.375rem; margin: 0; color: var(--ink); }
 .case-study-card .desc { font-size: 0.875rem; line-height: 1.5; color: var(--ink-soft); margin: 0; }
-.case-study-card .view-case-link { padding-top: 8px; font-size: 0.8125rem; }
+.case-study-card .view-case-link { margin-top: -8px; font-size: 0.8125rem; }
 .case-study-card .view-case-link svg { width: 12px; height: 12px; }
 
 @media (max-width: 900px) {
@@ -462,6 +478,7 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   gap: 16px;
   text-decoration: none;
   color: inherit;
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .archive-card .thumb {
@@ -472,6 +489,12 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
 }
 
 .archive-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.archive-card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
 .archive-card h4 { font-size: 0.9375rem; font-weight: 600; margin: 0; color: var(--ink); }
 .archive-card .desc { font-size: 0.8125rem; color: var(--ink-soft); margin: 0; }
@@ -522,7 +545,7 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
 .contact-section h2 {
   font-size: 2.25rem;
   max-width: 600px;
-  margin: 0;
+  margin: 0 0 16px;
   color: var(--ink);
 }
 
@@ -769,6 +792,7 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   flex-direction: column;
   gap: 16px;
   text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   color: inherit;
 }
 
@@ -780,6 +804,11 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
 }
 
 .project-link-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.project-link-card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 .project-link-card h4 { font-size: 0.875rem; margin: 0; color: var(--ink); }
 .project-link-card .desc { font-size: 0.75rem; color: var(--ink-soft); margin: 0; }
 .project-link-card .view-row {
@@ -796,6 +825,95 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   .more-projects-grid { flex-direction: column; }
 }
 
+/* ---------- Card hover states — lift + shadow + image zoom, no text underline ---------- */
+
+.hero-case-study,
+.case-study-card,
+.archive-card,
+.project-link-card {
+  will-change: transform;
+}
+
+.hero-case-study:hover,
+.case-study-card:hover,
+.project-link-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.14);
+  border-color: var(--accent);
+  text-decoration: none;
+}
+
+.archive-card:hover {
+  transform: translateY(-6px);
+  text-decoration: none;
+}
+.archive-card .thumb {
+  transition: box-shadow 0.3s ease;
+}
+.archive-card:hover .thumb {
+  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.18);
+}
+
+.hero-case-study *,
+.case-study-card *,
+.archive-card *,
+.project-link-card * {
+  text-decoration: inherit;
+}
+.hero-case-study:hover *,
+.case-study-card:hover *,
+.archive-card:hover *,
+.project-link-card:hover * {
+  text-decoration: none;
+}
+
+.hero-case-study .thumb img,
+.case-study-card .thumb img,
+.archive-card .thumb img,
+.project-link-card .thumb img {
+  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.hero-case-study:hover .thumb img,
+.case-study-card:hover .thumb img,
+.archive-card:hover .thumb img,
+.project-link-card:hover .thumb img {
+  transform: scale(1.06);
+}
+
+.hero-case-study h3,
+.case-study-card h3,
+.archive-card h4,
+.project-link-card h4 {
+  transition: color 0.25s ease;
+}
+.hero-case-study:hover h3,
+.case-study-card:hover h3,
+.archive-card:hover h4,
+.project-link-card:hover h4 {
+  color: var(--accent);
+}
+
+.view-case-link svg,
+.project-link-card .view-row svg {
+  transition: transform 0.25s ease;
+}
+.hero-case-study:hover .view-case-link svg,
+.case-study-card:hover .view-case-link svg,
+.project-link-card:hover .view-row svg {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-case-study, .case-study-card, .archive-card, .project-link-card,
+  .hero-case-study .thumb img, .case-study-card .thumb img, .archive-card .thumb img, .project-link-card .thumb img,
+  .view-case-link svg, .project-link-card .view-row svg {
+    transition: none;
+  }
+  .hero-case-study:hover, .case-study-card:hover, .archive-card:hover, .project-link-card:hover {
+    transform: none;
+  }
+}
+
 /* ---------- Case study pages (v2) — cs2-* prefix to avoid clashing with legacy .cs-* rules ---------- */
 
 .cs2-hero {
@@ -804,7 +922,13 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   padding: 80px var(--gutter) 60px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 24px;
+}
+
+.cs2-hero > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .cs2-hero .category-header {
@@ -857,6 +981,7 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   min-height: 320px;
   position: relative;
   overflow: hidden;
+  margin-top: 40px;
 }
 
 .cs2-hero-visual .caption {
