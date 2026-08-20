@@ -355,7 +355,7 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
 .case-meta-row .status-staged { color: #3380b2; }
 .case-meta-row .status-live { color: #268c59; }
 
-.hero-case-study .right-content > div {
+.hero-case-study .right-content > div:not([class]) {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -438,7 +438,7 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
 
 .case-study-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.case-study-card > div {
+.case-study-card > div:not([class]) {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -490,7 +490,7 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
 
 .archive-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.archive-card > div {
+.archive-card > div:not([class]) {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -804,7 +804,7 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
 }
 
 .project-link-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.project-link-card > div {
+.project-link-card > div:not([class]) {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -925,7 +925,7 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   gap: 24px;
 }
 
-.cs2-hero > div {
+.cs2-hero > div:not([class]) {
   display: flex;
   flex-direction: column;
   gap: 24px;
