@@ -545,8 +545,9 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
 .contact-section h2 {
   font-size: 2.25rem;
   max-width: 600px;
-  margin: 0 0 16px;
+  margin: 0 auto 16px;
   color: var(--ink);
+  text-align: center;
 }
 
 .contact-section .contact-desc {
@@ -554,7 +555,8 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   line-height: 1.5;
   color: var(--ink-soft);
   max-width: 600px;
-  margin: 0;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .email-cta-button {
