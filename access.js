@@ -84,7 +84,7 @@
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (input.value === correct) {
+      if (input.value.trim() === correct) {
         localStorage.setItem(STORAGE_KEY, "1");
         if (error) error.style.display = "none";
         reveal();

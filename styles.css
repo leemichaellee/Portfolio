@@ -1925,7 +1925,7 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   color: var(--accent);
 }
 
-/* ---------- Site-wide password gate (currently unused, kept for future re-enable) ---------- */
+/* ---------- Site-wide password gate ---------- */
 
 .site-gate-overlay {
   position: fixed;
@@ -1936,6 +1936,15 @@ footer.site-footer .back-to-top:hover svg { transform: translateY(-4px); }
   align-items: center;
   justify-content: center;
   padding: 24px;
+}
+
+/* The [hidden] attribute and the class-based `display: flex` above are the
+   same specificity (0,1,0), so whichever comes later in the cascade wins —
+   which was this rule, meaning setting `.hidden = true` in JS never actually
+   hid the overlay. This selector is more specific than either, so it always
+   wins once the attribute is set. */
+.site-gate-overlay[hidden] {
+  display: none;
 }
 
 .site-gate-box {
