@@ -22,13 +22,23 @@ no framework, no dependencies to install. Any static host works. Two free option
 
 Either option is genuinely free with no time limit for a small static site like this.
 
-## No password gate right now
+## Password gate is on
 
-The site is currently fully open — no password, content renders directly. `gate.js` is
-included in this folder but nothing links to it, so it's safe to upload alongside the
-other files or leave out; it won't affect anything either way.
+Every page is now behind a password prompt — the real content is stored encoded in the
+page and only rendered after the correct password is entered, then remembered in the
+browser (localStorage) so it's not asked again on that device.
 
-If you want to add password-gating back later (recommended before sharing this widely,
-since some content is only lightly genericized rather than fully scrubbed of internal
-detail), let me know and we'll debug why it silently failed to load last time — likely a
-browser extension blocking a script named `gate.js` — before re-enabling it.
+**Current password: `colombiacoferment`**
+
+This is implemented in `access.js`, loaded by every page. It's a light deterrent (keeps
+the site out of search engines and casual link-sharing), not real security — anyone who
+views page source can extract the password and content. Don't rely on it for anything
+you'd be genuinely harmed by someone leaking.
+
+To change the password later: run `echo -n 'yournewpassword' | base64` in a terminal and
+paste the result into `PASSWORD_B64` near the top of `access.js`.
+
+There's a leftover, unused `gate.js` file in this folder (an earlier version of this same
+mechanism, replaced by `access.js` because a filename containing "gate" is a known false
+positive for some ad-blocker filter lists — it silently failed to load last time). Nothing
+references it anymore; it's safe to delete before uploading, or just leave it, either way.

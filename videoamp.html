@@ -17,146 +17,23 @@
 </head>
 <body id="top">
 
-<header class="site-nav">
-  <div class="wrap" data-reveal>
-    <div class="logo-group">
-      <a class="name" href="index.html">Michael Lee</a>
-      <span class="logo-divider"></span>
-      <span class="role-tag">UX &amp; Product</span>
-    </div>
-    <nav>
-      <a href="index.html#work">Work</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
+<div id="site-gate-overlay" class="site-gate-overlay">
+  <div class="site-gate-box">
+    <p class="eyebrow">Private portfolio</p>
+    <h1>Enter password</h1>
+    <p class="gate-note">This portfolio is shared privately. Enter the password you were given to continue.</p>
+    <form class="gate-form" id="site-gate-form">
+      <input type="password" id="site-gate-input" placeholder="Password" required autofocus>
+      <button type="submit">Enter</button>
+    </form>
+    <p class="gate-error" id="site-gate-error">Incorrect password — try again, or reach out for access.</p>
   </div>
-</header>
+</div>
 
-<section class="project-hero">
-  <div class="kicker-block" data-reveal>
-    <h1>VideoAmp</h1>
-    <p class="project-descriptor">Cross-platform measurement &amp; currency</p>
-  </div>
-  <div class="project-hero-media" data-reveal>
-    <div class="thumb" style="aspect-ratio: 2432 / 1144;"><img src="assets/videoamp-hero.png" alt="VideoAmp hero"></div>
-    <p class="caption">AmpSquad — VIP experiences app for VideoAmp clients and partners</p>
-  </div>
-</section>
+<script type="text/plain" id="site-content-payload">Cgo8aGVhZGVyIGNsYXNzPSJzaXRlLW5hdiI+CiAgPGRpdiBjbGFzcz0id3JhcCIgZGF0YS1yZXZlYWw+CiAgICA8ZGl2IGNsYXNzPSJsb2dvLWdyb3VwIj4KICAgICAgPGEgY2xhc3M9Im5hbWUiIGhyZWY9ImluZGV4Lmh0bWwiPk1pY2hhZWwgTGVlPC9hPgogICAgICA8c3BhbiBjbGFzcz0ibG9nby1kaXZpZGVyIj48L3NwYW4+CiAgICAgIDxzcGFuIGNsYXNzPSJyb2xlLXRhZyI+VVggJmFtcDsgUHJvZHVjdDwvc3Bhbj4KICAgIDwvZGl2PgogICAgPG5hdj4KICAgICAgPGEgaHJlZj0iaW5kZXguaHRtbCN3b3JrIj5Xb3JrPC9hPgogICAgICA8YSBocmVmPSJpbmRleC5odG1sI2NvbnRhY3QiPkNvbnRhY3Q8L2E+CiAgICA8L25hdj4KICA8L2Rpdj4KPC9oZWFkZXI+Cgo8c2VjdGlvbiBjbGFzcz0icHJvamVjdC1oZXJvIj4KICA8ZGl2IGNsYXNzPSJraWNrZXItYmxvY2siIGRhdGEtcmV2ZWFsPgogICAgPGgxPlZpZGVvQW1wPC9oMT4KICAgIDxwIGNsYXNzPSJwcm9qZWN0LWRlc2NyaXB0b3IiPkNyb3NzLXBsYXRmb3JtIG1lYXN1cmVtZW50ICZhbXA7IGN1cnJlbmN5PC9wPgogIDwvZGl2PgogIDxkaXYgY2xhc3M9InByb2plY3QtaGVyby1tZWRpYSIgZGF0YS1yZXZlYWw+CiAgICA8ZGl2IGNsYXNzPSJ0aHVtYiIgc3R5bGU9ImFzcGVjdC1yYXRpbzogMjQzMiAvIDExNDQ7Ij48aW1nIHNyYz0iYXNzZXRzL3ZpZGVvYW1wLWhlcm8ucG5nIiBhbHQ9IlZpZGVvQW1wIGhlcm8iPjwvZGl2PgogICAgPHAgY2xhc3M9ImNhcHRpb24iPkFtcFNxdWFkIOKAlCBWSVAgZXhwZXJpZW5jZXMgYXBwIGZvciBWaWRlb0FtcCBjbGllbnRzIGFuZCBwYXJ0bmVyczwvcD4KICA8L2Rpdj4KPC9zZWN0aW9uPgoKPHNlY3Rpb24gY2xhc3M9ImRldGFpbC1zdHJpcCIgZGF0YS1yZXZlYWw+CiAgPGRpdj4KICAgIDxzcGFuIGNsYXNzPSJsYWJlbCI+Q2F0ZWdvcnk8L3NwYW4+CiAgICA8c3BhbiBjbGFzcz0idmFsdWUiPkFkVGVjaDwvc3Bhbj4KICA8L2Rpdj4KICA8ZGl2PgogICAgPHNwYW4gY2xhc3M9ImxhYmVsIj5Sb2xlPC9zcGFuPgogICAgPHNwYW4gY2xhc3M9InZhbHVlIj5WaXN1YWwgRGVzaWduPC9zcGFuPgogIDwvZGl2PgogIDxkaXY+CiAgICA8c3BhbiBjbGFzcz0ibGFiZWwiPlllYXI8L3NwYW4+CiAgICA8c3BhbiBjbGFzcz0idmFsdWUiPjIwMjQ8L3NwYW4+CiAgPC9kaXY+Cjwvc2VjdGlvbj4KCjxzZWN0aW9uIGNsYXNzPSJ2aXN1YWwtZ2FsbGVyeSI+CiAgPGRpdiBjbGFzcz0iZ2FsbGVyeS1yb3ciIGRhdGEtcmV2ZWFsLXN0YWdnZXI+CiAgICA8ZGl2IGNsYXNzPSJnYWxsZXJ5LWl0ZW0iPgogICAgICA8ZGl2IGNsYXNzPSJ0aHVtYiIgc3R5bGU9ImFzcGVjdC1yYXRpbzogMTE4NCAvIDg0MDsiPjxpbWcgc3JjPSJhc3NldHMvdmlkZW9hbXAtaG9tZS5wbmciIGFsdD0iSG9tZSDigJQgcGVyc29uYWxpemVkIGV2ZW50IGZlZWQgd2l0aCBEaWFtb25kIHN0YXR1cyB0aWVyIj48L2Rpdj4KICAgICAgPHAgY2xhc3M9ImNhcHRpb24iPkhvbWUg4oCUIHBlcnNvbmFsaXplZCBldmVudCBmZWVkIHdpdGggRGlhbW9uZCBzdGF0dXMgdGllcjwvcD4KICAgIDwvZGl2PgogICAgPGRpdiBjbGFzcz0iZ2FsbGVyeS1pdGVtIj4KICAgICAgPGRpdiBjbGFzcz0idGh1bWIiIHN0eWxlPSJhc3BlY3QtcmF0aW86IDExODQgLyA4NDA7Ij48aW1nIHNyYz0iYXNzZXRzL3ZpZGVvYW1wLWV2ZW50LWRldGFpbHMucG5nIiBhbHQ9IkV2ZW50IGRldGFpbHMg4oCUIFJTVlAgZmxvdyB3aXRoIGF0dGVuZGVlIHByb2ZpbGVzIj48L2Rpdj4KICAgICAgPHAgY2xhc3M9ImNhcHRpb24iPkV2ZW50IGRldGFpbHMg4oCUIFJTVlAgZmxvdyB3aXRoIGF0dGVuZGVlIHByb2ZpbGVzPC9wPgogICAgPC9kaXY+CiAgPC9kaXY+CgogIDxkaXYgY2xhc3M9ImdhbGxlcnktcm93IiBkYXRhLXJldmVhbC1zdGFnZ2VyPgogICAgPGRpdiBjbGFzcz0iZ2FsbGVyeS1pdGVtIj4KICAgICAgPGRpdiBjbGFzcz0idGh1bWIiIHN0eWxlPSJhc3BlY3QtcmF0aW86IDExODQgLyA5MjA7Ij48aW1nIHNyYz0iYXNzZXRzL3ZpZGVvYW1wLWNvYWNoZWxsYS5wbmciIGFsdD0iVklQIENvYWNoZWxsYSAyMDIzIOKAlCBpbi1jb250ZXh0IHVzYWdlIGF0IGxpdmUgZXZlbnRzIj48L2Rpdj4KICAgICAgPHAgY2xhc3M9ImNhcHRpb24iPlZJUCBDb2FjaGVsbGEgMjAyMyDigJQgaW4tY29udGV4dCB1c2FnZSBhdCBsaXZlIGV2ZW50czwvcD4KICAgIDwvZGl2PgogICAgPGRpdiBjbGFzcz0iZ2FsbGVyeS1pdGVtIj4KICAgICAgPGRpdiBjbGFzcz0iZ2FsbGVyeS1zdGFjayI+CiAgICAgICAgPGRpdiBjbGFzcz0ic3RhY2stcm93Ij4KICAgICAgICAgIDxkaXYgY2xhc3M9InRodW1iIiBzdHlsZT0iYXNwZWN0LXJhdGlvOiA1NjAgLyA5MjA7Ij48aW1nIHNyYz0iYXNzZXRzL3ZpZGVvYW1wLWRhc2hib2FyZC0xLnBuZyIgYWx0PSJEYXNoYm9hcmQgc2NyZWVuIDEiPjwvZGl2PgogICAgICAgICAgPGRpdiBjbGFzcz0idGh1bWIiIHN0eWxlPSJhc3BlY3QtcmF0aW86IDU2MCAvIDkyMDsiPjxpbWcgc3JjPSJhc3NldHMvdmlkZW9hbXAtZGFzaGJvYXJkLTIucG5nIiBhbHQ9IkRhc2hib2FyZCBzY3JlZW4gMiI+PC9kaXY+CiAgICAgICAgPC9kaXY+CiAgICAgIDwvZGl2PgogICAgICA8cCBjbGFzcz0iY2FwdGlvbiI+SG9tZSBkYXNoYm9hcmQgJmFtcDsgZXhwZXJpZW5jZXMgbGlzdGluZzwvcD4KICAgIDwvZGl2PgogIDwvZGl2PgoKICA8cCBjbGFzcz0iZ2FsbGVyeS1sYWJlbCI+RnVsbCBTY3JlZW4gR2FsbGVyeTwvcD4KCiAgPGRpdiBjbGFzcz0iZ2FsbGVyeS1wb3J0cmFpdC1yb3ciIGRhdGEtcmV2ZWFsLXN0YWdnZXI+CiAgICA8ZGl2IGNsYXNzPSJ0aHVtYiI+PGltZyBzcmM9ImFzc2V0cy92aWRlb2FtcC1zY3JlZW4tMS5wbmciIGFsdD0iVmlkZW9BbXAgZnVsbCBzY3JlZW4gMSI+PC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJ0aHVtYiI+PGltZyBzcmM9ImFzc2V0cy92aWRlb2FtcC1zY3JlZW4tMi5wbmciIGFsdD0iVmlkZW9BbXAgZnVsbCBzY3JlZW4gMiI+PC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJ0aHVtYiI+PGltZyBzcmM9ImFzc2V0cy92aWRlb2FtcC1zY3JlZW4tMy5wbmciIGFsdD0iVmlkZW9BbXAgZnVsbCBzY3JlZW4gMyI+PC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJ0aHVtYiI+PGltZyBzcmM9ImFzc2V0cy92aWRlb2FtcC1zY3JlZW4tNC5wbmciIGFsdD0iVmlkZW9BbXAgZnVsbCBzY3JlZW4gNCI+PC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJ0aHVtYiI+PGltZyBzcmM9ImFzc2V0cy92aWRlb2FtcC1zY3JlZW4tNS5wbmciIGFsdD0iVmlkZW9BbXAgZnVsbCBzY3JlZW4gNSI+PC9kaXY+CiAgPC9kaXY+CgogIDxkaXYgY2xhc3M9ImdhbGxlcnktcG9ydHJhaXQtcm93IiBkYXRhLXJldmVhbC1zdGFnZ2VyPgogICAgPGRpdiBjbGFzcz0idGh1bWIiPjxpbWcgc3JjPSJhc3NldHMvdmlkZW9hbXAtc2NyZWVuLTYucG5nIiBhbHQ9IlZpZGVvQW1wIGZ1bGwgc2NyZWVuIDYiPjwvZGl2PgogICAgPGRpdiBjbGFzcz0idGh1bWIiPjxpbWcgc3JjPSJhc3NldHMvdmlkZW9hbXAtc2NyZWVuLTcucG5nIiBhbHQ9IlZpZGVvQW1wIGZ1bGwgc2NyZWVuIDciPjwvZGl2PgogICAgPGRpdiBjbGFzcz0idGh1bWIiPjxpbWcgc3JjPSJhc3NldHMvdmlkZW9hbXAtc2NyZWVuLTgucG5nIiBhbHQ9IlZpZGVvQW1wIGZ1bGwgc2NyZWVuIDgiPjwvZGl2PgogICAgPGRpdiBjbGFzcz0idGh1bWIiPjxpbWcgc3JjPSJhc3NldHMvdmlkZW9hbXAtc2NyZWVuLTkucG5nIiBhbHQ9IlZpZGVvQW1wIGZ1bGwgc2NyZWVuIDkiPjwvZGl2PgogIDwvZGl2Pgo8L3NlY3Rpb24+Cgo8c2VjdGlvbiBjbGFzcz0ibW9yZS13b3JrIj4KICA8aDMgZGF0YS1yZXZlYWw+TW9yZSBXb3JrPC9oMz4KICA8ZGl2IGNsYXNzPSJtb3JlLXByb2plY3RzLWdyaWQiIGRhdGEtcmV2ZWFsLXN0YWdnZXI+CiAgICA8YSBjbGFzcz0icHJvamVjdC1saW5rLWNhcmQiIGhyZWY9Im5vbWktaGVhbHRoLmh0bWwiPgogICAgICA8ZGl2IGNsYXNzPSJ0aHVtYiI+PGltZyBzcmM9ImFzc2V0cy9ub21pLWhlcm8ucG5nIiBhbHQ9Ik5vbWkgSGVhbHRoIj48L2Rpdj4KICAgICAgPGRpdj4KICAgICAgICA8aDQ+Tm9taSBIZWFsdGg8L2g0PgogICAgICAgIDxwIGNsYXNzPSJkZXNjIj5EaXJlY3QgaGVhbHRoY2FyZSBtYXJrZXRwbGFjZTwvcD4KICAgICAgPC9kaXY+CiAgICAgIDxzcGFuIGNsYXNzPSJ2aWV3LXJvdyI+CiAgICAgICAgVmlldyBwcm9qZWN0CiAgICAgICAgPHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTUgMTJoMTQiLz48cGF0aCBkPSJtMTIgNSA3IDctNyA3Ii8+PC9zdmc+CiAgICAgIDwvc3Bhbj4KICAgIDwvYT4KICAgIDxhIGNsYXNzPSJwcm9qZWN0LWxpbmstY2FyZCIgaHJlZj0ic2t5c2FmZS5odG1sIj4KICAgICAgPGRpdiBjbGFzcz0idGh1bWIiPjxpbWcgc3JjPSJhc3NldHMvc2t5c2FmZS1oZXJvLnBuZyIgYWx0PSJTa3lzYWZlIj48L2Rpdj4KICAgICAgPGRpdj4KICAgICAgICA8aDQ+U2t5c2FmZTwvaDQ+CiAgICAgICAgPHAgY2xhc3M9ImRlc2MiPkFpcnNwYWNlIHNlY3VyaXR5ICZhbXA7IGRyb25lIGRlZmVuc2U8L3A+CiAgICAgIDwvZGl2PgogICAgICA8c3BhbiBjbGFzcz0idmlldy1yb3ciPgogICAgICAgIFZpZXcgcHJvamVjdAogICAgICAgIDxzdmcgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik01IDEyaDE0Ii8+PHBhdGggZD0ibTEyIDUgNyA3LTcgNyIvPjwvc3ZnPgogICAgICA8L3NwYW4+CiAgICA8L2E+CiAgICA8YSBjbGFzcz0icHJvamVjdC1saW5rLWNhcmQiIGhyZWY9InBpeGVsLXBlcmZlY3QuaHRtbCI+CiAgICAgIDxkaXYgY2xhc3M9InRodW1iIj48aW1nIHNyYz0iYXNzZXRzL3BpeGVsLXBlcmZlY3QtaGVyby5wbmciIGFsdD0iUGl4ZWwgUGVyZmVjdCI+PC9kaXY+CiAgICAgIDxkaXY+CiAgICAgICAgPGg0PlBpeGVsIFBlcmZlY3Q8L2g0PgogICAgICAgIDxwIGNsYXNzPSJkZXNjIj5EZXNpZ24gdG9vbCBmb3IgcHJlY2lzaW9uIGxheW91dHM8L3A+CiAgICAgIDwvZGl2PgogICAgICA8c3BhbiBjbGFzcz0idmlldy1yb3ciPgogICAgICAgIFZpZXcgcHJvamVjdAogICAgICAgIDxzdmcgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik01IDEyaDE0Ii8+PHBhdGggZD0ibTEyIDUgNyA3LTcgNyIvPjwvc3ZnPgogICAgICA8L3NwYW4+CiAgICA8L2E+CiAgPC9kaXY+Cjwvc2VjdGlvbj4KCjxmb290ZXIgY2xhc3M9InNpdGUtZm9vdGVyIj4KICA8ZGl2IGNsYXNzPSJ3cmFwIiBkYXRhLXJldmVhbD4KICAgIDxkaXYgY2xhc3M9ImZvb3QtbGVmdCI+CiAgICAgIDxwPsKpIDIwMjUgTWljaGFlbCBMZWUuIEJ1aWx0IHdpdGggcHJlY2lzaW9uLjwvcD4KICAgICAgPHNwYW4gY2xhc3M9ImZvb3QtZGl2aWRlciI+PC9zcGFuPgogICAgICA8cD5HbGFkIHlvdSdyZSBoZXJlITwvcD4KICAgIDwvZGl2PgogICAgPGEgY2xhc3M9ImJhY2stdG8tdG9wIiBocmVmPSIjdG9wIj4KICAgICAgQmFjayB0byB0b3AKICAgICAgPHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTUgMTIgNy03IDcgNyIvPjxwYXRoIGQ9Ik0xMiAxOVY1Ii8+PC9zdmc+CiAgICA8L2E+CiAgPC9kaXY+CjwvZm9vdGVyPgoK</script>
+<div id="site-content" hidden></div>
 
-<section class="detail-strip" data-reveal>
-  <div>
-    <span class="label">Category</span>
-    <span class="value">AdTech</span>
-  </div>
-  <div>
-    <span class="label">Role</span>
-    <span class="value">Visual Design</span>
-  </div>
-  <div>
-    <span class="label">Year</span>
-    <span class="value">2024</span>
-  </div>
-</section>
-
-<section class="visual-gallery">
-  <div class="gallery-row" data-reveal-stagger>
-    <div class="gallery-item">
-      <div class="thumb" style="aspect-ratio: 1184 / 840;"><img src="assets/videoamp-home.png" alt="Home — personalized event feed with Diamond status tier"></div>
-      <p class="caption">Home — personalized event feed with Diamond status tier</p>
-    </div>
-    <div class="gallery-item">
-      <div class="thumb" style="aspect-ratio: 1184 / 840;"><img src="assets/videoamp-event-details.png" alt="Event details — RSVP flow with attendee profiles"></div>
-      <p class="caption">Event details — RSVP flow with attendee profiles</p>
-    </div>
-  </div>
-
-  <div class="gallery-row" data-reveal-stagger>
-    <div class="gallery-item">
-      <div class="thumb" style="aspect-ratio: 1184 / 920;"><img src="assets/videoamp-coachella.png" alt="VIP Coachella 2023 — in-context usage at live events"></div>
-      <p class="caption">VIP Coachella 2023 — in-context usage at live events</p>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-stack">
-        <div class="stack-row">
-          <div class="thumb" style="aspect-ratio: 560 / 920;"><img src="assets/videoamp-dashboard-1.png" alt="Dashboard screen 1"></div>
-          <div class="thumb" style="aspect-ratio: 560 / 920;"><img src="assets/videoamp-dashboard-2.png" alt="Dashboard screen 2"></div>
-        </div>
-      </div>
-      <p class="caption">Home dashboard &amp; experiences listing</p>
-    </div>
-  </div>
-
-  <p class="gallery-label">Full Screen Gallery</p>
-
-  <div class="gallery-portrait-row" data-reveal-stagger>
-    <div class="thumb"><img src="assets/videoamp-screen-1.png" alt="VideoAmp full screen 1"></div>
-    <div class="thumb"><img src="assets/videoamp-screen-2.png" alt="VideoAmp full screen 2"></div>
-    <div class="thumb"><img src="assets/videoamp-screen-3.png" alt="VideoAmp full screen 3"></div>
-    <div class="thumb"><img src="assets/videoamp-screen-4.png" alt="VideoAmp full screen 4"></div>
-    <div class="thumb"><img src="assets/videoamp-screen-5.png" alt="VideoAmp full screen 5"></div>
-  </div>
-
-  <div class="gallery-portrait-row" data-reveal-stagger>
-    <div class="thumb"><img src="assets/videoamp-screen-6.png" alt="VideoAmp full screen 6"></div>
-    <div class="thumb"><img src="assets/videoamp-screen-7.png" alt="VideoAmp full screen 7"></div>
-    <div class="thumb"><img src="assets/videoamp-screen-8.png" alt="VideoAmp full screen 8"></div>
-    <div class="thumb"><img src="assets/videoamp-screen-9.png" alt="VideoAmp full screen 9"></div>
-  </div>
-</section>
-
-<section class="more-work">
-  <h3 data-reveal>More Work</h3>
-  <div class="more-projects-grid" data-reveal-stagger>
-    <a class="project-link-card" href="nomi-health.html">
-      <div class="thumb"><img src="assets/nomi-hero.png" alt="Nomi Health"></div>
-      <div>
-        <h4>Nomi Health</h4>
-        <p class="desc">Direct healthcare marketplace</p>
-      </div>
-      <span class="view-row">
-        View project
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </span>
-    </a>
-    <a class="project-link-card" href="skysafe.html">
-      <div class="thumb"><img src="assets/skysafe-hero.png" alt="Skysafe"></div>
-      <div>
-        <h4>Skysafe</h4>
-        <p class="desc">Airspace security &amp; drone defense</p>
-      </div>
-      <span class="view-row">
-        View project
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </span>
-    </a>
-    <a class="project-link-card" href="pixel-perfect.html">
-      <div class="thumb"><img src="assets/pixel-perfect-hero.png" alt="Pixel Perfect"></div>
-      <div>
-        <h4>Pixel Perfect</h4>
-        <p class="desc">Design tool for precision layouts</p>
-      </div>
-      <span class="view-row">
-        View project
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </span>
-    </a>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="wrap" data-reveal>
-    <div class="foot-left">
-      <p>© 2025 Michael Lee. Built with precision.</p>
-      <span class="foot-divider"></span>
-      <p>Glad you're here!</p>
-    </div>
-    <a class="back-to-top" href="#top">
-      Back to top
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
-    </a>
-  </div>
-</footer>
-
-<script src="reveal.js"></script>
 <script src="cursor.js"></script>
+<script src="access.js"></script>
 </body>
 </html>

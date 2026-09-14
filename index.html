@@ -17,196 +17,23 @@
 </head>
 <body id="top">
 
-<header class="site-nav">
-  <div class="wrap" data-reveal>
-    <div class="logo-group">
-      <a class="name" href="index.html">Michael Lee</a>
-      <span class="logo-divider"></span>
-      <span class="role-tag">UX &amp; Product</span>
-    </div>
-    <nav>
-      <a href="index.html#work">Work</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
+<div id="site-gate-overlay" class="site-gate-overlay">
+  <div class="site-gate-box">
+    <p class="eyebrow">Private portfolio</p>
+    <h1>Enter password</h1>
+    <p class="gate-note">This portfolio is shared privately. Enter the password you were given to continue.</p>
+    <form class="gate-form" id="site-gate-form">
+      <input type="password" id="site-gate-input" placeholder="Password" required autofocus>
+      <button type="submit">Enter</button>
+    </form>
+    <p class="gate-error" id="site-gate-error">Incorrect password — try again, or reach out for access.</p>
   </div>
-</header>
+</div>
 
-<section class="hero-section">
-  <div class="hero-typography" data-reveal>
-    <h1>Designing systems that clarify, interfaces that perform.</h1>
-    <p class="subhead">Over the past five years, I've specialized in financial product strategy inside high-risk, high-security, high-scrutiny sectors. That background is what makes me a strong fit for businesses that need someone who understands how to leverage complex data to create meaningful digital experiences, not just design on top of them.</p>
-  </div>
-  <div class="scroll-indicator" data-reveal>
-    <span class="chevron-down">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-    </span>
-    <span>Selected Case Studies</span>
-  </div>
-</section>
+<script type="text/plain" id="site-content-payload">Cgo8aGVhZGVyIGNsYXNzPSJzaXRlLW5hdiI+CiAgPGRpdiBjbGFzcz0id3JhcCIgZGF0YS1yZXZlYWw+CiAgICA8ZGl2IGNsYXNzPSJsb2dvLWdyb3VwIj4KICAgICAgPGEgY2xhc3M9Im5hbWUiIGhyZWY9ImluZGV4Lmh0bWwiPk1pY2hhZWwgTGVlPC9hPgogICAgICA8c3BhbiBjbGFzcz0ibG9nby1kaXZpZGVyIj48L3NwYW4+CiAgICAgIDxzcGFuIGNsYXNzPSJyb2xlLXRhZyI+VVggJmFtcDsgUHJvZHVjdDwvc3Bhbj4KICAgIDwvZGl2PgogICAgPG5hdj4KICAgICAgPGEgaHJlZj0iaW5kZXguaHRtbCN3b3JrIj5Xb3JrPC9hPgogICAgICA8YSBocmVmPSJpbmRleC5odG1sI2NvbnRhY3QiPkNvbnRhY3Q8L2E+CiAgICA8L25hdj4KICA8L2Rpdj4KPC9oZWFkZXI+Cgo8c2VjdGlvbiBjbGFzcz0iaGVyby1zZWN0aW9uIj4KICA8ZGl2IGNsYXNzPSJoZXJvLXR5cG9ncmFwaHkiIGRhdGEtcmV2ZWFsPgogICAgPGgxPkRlc2lnbmluZyBzeXN0ZW1zIHRoYXQgY2xhcmlmeSwgaW50ZXJmYWNlcyB0aGF0IHBlcmZvcm0uPC9oMT4KICAgIDxwIGNsYXNzPSJzdWJoZWFkIj5PdmVyIHRoZSBwYXN0IGZpdmUgeWVhcnMsIEkndmUgc3BlY2lhbGl6ZWQgaW4gZmluYW5jaWFsIHByb2R1Y3Qgc3RyYXRlZ3kgaW5zaWRlIGhpZ2gtcmlzaywgaGlnaC1zZWN1cml0eSwgaGlnaC1zY3J1dGlueSBzZWN0b3JzLiBUaGF0IGJhY2tncm91bmQgaXMgd2hhdCBtYWtlcyBtZSBhIHN0cm9uZyBmaXQgZm9yIGJ1c2luZXNzZXMgdGhhdCBuZWVkIHNvbWVvbmUgd2hvIHVuZGVyc3RhbmRzIGhvdyB0byBsZXZlcmFnZSBjb21wbGV4IGRhdGEgdG8gY3JlYXRlIG1lYW5pbmdmdWwgZGlnaXRhbCBleHBlcmllbmNlcywgbm90IGp1c3QgZGVzaWduIG9uIHRvcCBvZiB0aGVtLjwvcD4KICA8L2Rpdj4KICA8ZGl2IGNsYXNzPSJzY3JvbGwtaW5kaWNhdG9yIiBkYXRhLXJldmVhbD4KICAgIDxzcGFuIGNsYXNzPSJjaGV2cm9uLWRvd24iPgogICAgICA8c3ZnIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJtNiA5IDYgNiA2LTYiLz48L3N2Zz4KICAgIDwvc3Bhbj4KICAgIDxzcGFuPlNlbGVjdGVkIENhc2UgU3R1ZGllczwvc3Bhbj4KICA8L2Rpdj4KPC9zZWN0aW9uPgoKPHNlY3Rpb24gaWQ9IndvcmsiIGNsYXNzPSJmZWF0dXJlZC1zdHVkaWVzIj4KICA8ZGl2IGNsYXNzPSJzZWN0aW9uLWhlYWRlciIgZGF0YS1yZXZlYWw+CiAgICA8ZGl2PgogICAgICA8ZGl2IGNsYXNzPSJzZWN0aW9uLWV5ZWJyb3ciPgogICAgICAgIDxzcGFuIGNsYXNzPSJhY2NlbnQtZG90Ij48L3NwYW4+CiAgICAgICAgPHNwYW4+RmVhdHVyZWQgV29yazwvc3Bhbj4KICAgICAgPC9kaXY+CiAgICAgIDxoMj5DYXNlIFN0dWRpZXM8L2gyPgogICAgPC9kaXY+CiAgICA8cCBjbGFzcz0ic2VjdGlvbi1kZXNjIj5EZWVwIGRpdmVzIGludG8gY29tcGxleCBkaWdpdGFsIGFyY2hpdGVjdHVyZSwgc3lzdGVtYXRpYyBzY2FsaW5nLCBhbmQgaGlnaC1maWRlbGl0eSBpbnRlcmFjdGlvbiBkZXRhaWxzLjwvcD4KICA8L2Rpdj4KCiAgPGEgY2xhc3M9Imhlcm8tY2FzZS1zdHVkeSIgaHJlZj0idG9hLmh0bWwiIGRhdGEtcmV2ZWFsPgogICAgPGRpdiBjbGFzcz0ibGVmdC1tZWRpYSI+CiAgICAgIDxkaXYgY2xhc3M9InRodW1iIj48aW1nIHNyYz0iYXNzZXRzL2hlcm8tdG9hLnBuZyIgYWx0PSJUcmFuc2ZlciBvZiBBc3NldHMgcHJldmlldyI+PC9kaXY+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9InJpZ2h0LWNvbnRlbnQiPgogICAgICA8ZGl2PgogICAgICAgIDxkaXYgY2xhc3M9ImNhc2UtbWV0YS1yb3ciPgogICAgICAgICAgPHNwYW4gY2xhc3M9ImNhdGVnb3J5Ij5XZWFsdGggTWFuYWdlbWVudDwvc3Bhbj4KICAgICAgICAgIDxzcGFuIGNsYXNzPSJkb3QiPuKAojwvc3Bhbj4KICAgICAgICAgIDxzcGFuIGNsYXNzPSJyb2xlIj5TZW5pb3IgRGVzaWduZXI8L3NwYW4+CiAgICAgICAgICA8c3BhbiBjbGFzcz0iZG90Ij7igKI8L3NwYW4+CiAgICAgICAgICA8c3BhbiBjbGFzcz0ic3RhdHVzLXVubGF1bmNoZWQiPlVubGF1bmNoZWQ8L3NwYW4+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGgzPlRyYW5zZmVyIG9mIEFzc2V0czwvaDM+CiAgICAgICAgPHAgY2xhc3M9ImRlc2MiPkxlYWRpbmcgZGVzaWduIG9uIHRoZSBmbG93IHRoYXQgaGFuZGxlcyByb3VnaGx5IDEwMCwwMDAgaW5jb21pbmcgYW5kIG91dGdvaW5nIGRpZ2l0YWwgYXNzZXQgdHJhbnNmZXJzIGFubnVhbGx5IOKAlCBvbmUgb2YgdGhlIGhpZ2hlc3QtYW54aWV0eSBhY3Rpb25zIGEgcGVyc29uIHRha2VzIHdpdGggdGhlaXIgbW9uZXkuPC9wPgogICAgICA8L2Rpdj4KICAgICAgPGRpdiBjbGFzcz0icGlsbC1yb3ciPgogICAgICAgIDxzcGFuIGNsYXNzPSJwaWxsIj5VWCBEZXNpZ248L3NwYW4+CiAgICAgICAgPHNwYW4gY2xhc3M9InBpbGwiPkNyb3NzLU9yZyBDb2xsYWJvcmF0aW9uPC9zcGFuPgogICAgICAgIDxzcGFuIGNsYXNzPSJwaWxsIj5MZWdhY3kgU3lzdGVtczwvc3Bhbj4KICAgICAgPC9kaXY+CiAgICAgIDxzcGFuIGNsYXNzPSJ2aWV3LWNhc2UtbGluayI+CiAgICAgICAgVmlldyBjYXNlIHN0dWR5CiAgICAgICAgPHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTUgMTJoMTQiLz48cGF0aCBkPSJtMTIgNSA3IDctNyA3Ii8+PC9zdmc+CiAgICAgIDwvc3Bhbj4KICAgIDwvZGl2PgogIDwvYT4KCiAgPGRpdiBjbGFzcz0ic3BsaXQtZ3JpZCIgZGF0YS1yZXZlYWwtc3RhZ2dlcj4KICAgIDxhIGNsYXNzPSJjYXNlLXN0dWR5LWNhcmQiIGhyZWY9ImRhcC5odG1sIj4KICAgICAgPGRpdiBjbGFzcz0idGh1bWIiPjxpbWcgc3JjPSJhc3NldHMvdGh1bWItZGFwLnBuZyIgYWx0PSJEQVAgMi4yIEFjY2Vzc2liaWxpdHkgcHJldmlldyI+PC9kaXY+CiAgICAgIDxkaXY+CiAgICAgICAgPGRpdiBjbGFzcz0iY2FzZS1tZXRhLXJvdyI+CiAgICAgICAgICA8c3BhbiBjbGFzcz0iY2F0ZWdvcnkiPkFjY2Vzc2liaWxpdHk8L3NwYW4+CiAgICAgICAgICA8c3BhbiBjbGFzcz0iZG90Ij7igKI8L3NwYW4+CiAgICAgICAgICA8c3BhbiBjbGFzcz0icm9sZSI+TGVhZCBEZXNpZ25lcjwvc3Bhbj4KICAgICAgICAgIDxzcGFuIGNsYXNzPSJkb3QiPuKAojwvc3Bhbj4KICAgICAgICAgIDxzcGFuIGNsYXNzPSJzdGF0dXMtc3RhZ2VkIj5TdGFnZWQgUmVsZWFzZTwvc3Bhbj4KICAgICAgICA8L2Rpdj4KICAgICAgICA8aDM+REFQIDIuMiBBY2Nlc3NpYmlsaXR5ICZhbXA7IFJhdGlvbmFsaXphdGlvbjwvaDM+CiAgICAgICAgPHAgY2xhc3M9ImRlc2MiPk93bmluZyB0aGUgYXNzZXQgYWxsb2NhdGlvbiBwb3J0aW9uIG9mIGEgJDQuN00sIGxlZ2FsbHktZHJpdmVuIGFjY2Vzc2liaWxpdHkgcmVtZWRpYXRpb24gYW5kIHJhdGlvbmFsaXphdGlvbiBwcm9ncmFtIHNwYW5uaW5nIDM0IGxlZ2FjeSBwcm9wZXJ0aWVzLjwvcD4KICAgICAgPC9kaXY+CiAgICAgIDxzcGFuIGNsYXNzPSJ2aWV3LWNhc2UtbGluayI+CiAgICAgICAgVmlldyBjYXNlIHN0dWR5CiAgICAgICAgPHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTUgMTJoMTQiLz48cGF0aCBkPSJtMTIgNSA3IDctNyA3Ii8+PC9zdmc+CiAgICAgIDwvc3Bhbj4KICAgIDwvYT4KCiAgICA8YSBjbGFzcz0iY2FzZS1zdHVkeS1jYXJkIiBocmVmPSJiZW5lZmljaWFyeS5odG1sIj4KICAgICAgPGRpdiBjbGFzcz0idGh1bWIiPjxpbWcgc3JjPSJhc3NldHMvdGh1bWItYmVuZWZpY2lhcnkucG5nIiBhbHQ9IkJlbmVmaWNpYXJ5IERlc2lnbmF0aW9uIHByZXZpZXciPjwvZGl2PgogICAgICA8ZGl2PgogICAgICAgIDxkaXYgY2xhc3M9ImNhc2UtbWV0YS1yb3ciPgogICAgICAgICAgPHNwYW4gY2xhc3M9ImNhdGVnb3J5Ij5SZXRpcmVtZW50PC9zcGFuPgogICAgICAgICAgPHNwYW4gY2xhc3M9ImRvdCI+4oCiPC9zcGFuPgogICAgICAgICAgPHNwYW4gY2xhc3M9InJvbGUiPkxlYWQgRGVzaWduZXI8L3NwYW4+CiAgICAgICAgICA8c3BhbiBjbGFzcz0iZG90Ij7igKI8L3NwYW4+CiAgICAgICAgICA8c3BhbiBjbGFzcz0ic3RhdHVzLWxpdmUiPkxpdmU8L3NwYW4+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGgzPlJldGlyZW1lbnQgQmVuZWZpY2lhcnkgRGVzaWduYXRpb248L2gzPgogICAgICAgIDxwIGNsYXNzPSJkZXNjIj5EaWdpdGl6aW5nIGEgcHJvY2VzcyB0aGF0IGhhZCBhbHdheXMgbGl2ZWQgb24gcGFwZXIg4oCUIGxldHRpbmcgY2xpZW50cyBkZXNpZ25hdGUgYW5kIG1hbmFnZSByZXRpcmVtZW50IGFjY291bnQgYmVuZWZpY2lhcmllcyBkaXJlY3RseSBpbiB0aGVpciBkaWdpdGFsIGV4cGVyaWVuY2UuPC9wPgogICAgICA8L2Rpdj4KICAgICAgPHNwYW4gY2xhc3M9InZpZXctY2FzZS1saW5rIj4KICAgICAgICBWaWV3IGNhc2Ugc3R1ZHkKICAgICAgICA8c3ZnIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNSAxMmgxNCIvPjxwYXRoIGQ9Im0xMiA1IDcgNy03IDciLz48L3N2Zz4KICAgICAgPC9zcGFuPgogICAgPC9hPgogIDwvZGl2Pgo8L3NlY3Rpb24+Cgo8c2VjdGlvbiBjbGFzcz0iYWRkaXRpb25hbC13b3JrIj4KICA8ZGl2IGRhdGEtcmV2ZWFsPgogICAgPGRpdiBjbGFzcz0ic2VjdGlvbi1leWVicm93Ij4KICAgICAgPHNwYW4gY2xhc3M9ImFjY2VudC1kb3QiPjwvc3Bhbj4KICAgICAgPHNwYW4+U2Vjb25kYXJ5IEdhbGxlcnk8L3NwYW4+CiAgICA8L2Rpdj4KICAgIDxoMj5BZGRpdGlvbmFsIHdvcms8L2gyPgogIDwvZGl2PgoKICA8ZGl2IGNsYXNzPSJhcmNoaXZlLWdyaWQiIGRhdGEtcmV2ZWFsLXN0YWdnZXI+CiAgICA8YSBjbGFzcz0iYXJjaGl2ZS1jYXJkIiBocmVmPSJ2aWRlb2FtcC5odG1sIj4KICAgICAgPGRpdiBjbGFzcz0idGh1bWIiPjxpbWcgc3JjPSJhc3NldHMvdmlkZW9hbXAtaGVyby5wbmciIGFsdD0iVmlkZW9BbXAgcHJldmlldyI+PC9kaXY+CiAgICAgIDxkaXY+CiAgICAgICAgPGg0PlZpZGVvQW1wPC9oND4KICAgICAgICA8cCBjbGFzcz0iZGVzYyI+Q3Jvc3MtcGxhdGZvcm0gbWVhc3VyZW1lbnQgJmFtcDsgY3VycmVuY3k8L3A+CiAgICAgIDwvZGl2PgogICAgPC9hPgogICAgPGEgY2xhc3M9ImFyY2hpdmUtY2FyZCIgaHJlZj0ibm9taS1oZWFsdGguaHRtbCI+CiAgICAgIDxkaXYgY2xhc3M9InRodW1iIj48aW1nIHNyYz0iYXNzZXRzL25vbWktaGVyby5wbmciIGFsdD0iTm9taSBIZWFsdGggcHJldmlldyI+PC9kaXY+CiAgICAgIDxkaXY+CiAgICAgICAgPGg0Pk5vbWkgSGVhbHRoPC9oND4KICAgICAgICA8cCBjbGFzcz0iZGVzYyI+RGlyZWN0IGhlYWx0aGNhcmUgbWFya2V0cGxhY2U8L3A+CiAgICAgIDwvZGl2PgogICAgPC9hPgogICAgPGEgY2xhc3M9ImFyY2hpdmUtY2FyZCIgaHJlZj0ic2t5c2FmZS5odG1sIj4KICAgICAgPGRpdiBjbGFzcz0idGh1bWIiPjxpbWcgc3JjPSJhc3NldHMvc2t5c2FmZS1oZXJvLnBuZyIgYWx0PSJTa3lzYWZlIHByZXZpZXciPjwvZGl2PgogICAgICA8ZGl2PgogICAgICAgIDxoND5Ta3lzYWZlPC9oND4KICAgICAgICA8cCBjbGFzcz0iZGVzYyI+QWlyc3BhY2Ugc2VjdXJpdHkgJmFtcDsgZHJvbmUgZGVmZW5zZTwvcD4KICAgICAgPC9kaXY+CiAgICA8L2E+CiAgICA8YSBjbGFzcz0iYXJjaGl2ZS1jYXJkIiBocmVmPSJwaXhlbC1wZXJmZWN0Lmh0bWwiPgogICAgICA8ZGl2IGNsYXNzPSJ0aHVtYiI+PGltZyBzcmM9ImFzc2V0cy9waXhlbC1wZXJmZWN0LWhlcm8ucG5nIiBhbHQ9IlBpeGVsIFBlcmZlY3QgcHJldmlldyI+PC9kaXY+CiAgICAgIDxkaXY+CiAgICAgICAgPGg0PlBpeGVsIFBlcmZlY3Q8L2g0PgogICAgICAgIDxwIGNsYXNzPSJkZXNjIj5EZXNpZ24gdG9vbCBmb3IgcHJlY2lzaW9uIGxheW91dHM8L3A+CiAgICAgIDwvZGl2PgogICAgPC9hPgogIDwvZGl2Pgo8L3NlY3Rpb24+Cgo8c2VjdGlvbiBpZD0iY29udGFjdCIgY2xhc3M9ImNvbnRhY3Qtc2VjdGlvbiI+CiAgPGRpdiBkYXRhLXJldmVhbD4KICAgIDxkaXYgY2xhc3M9InNlY3Rpb24tZXllYnJvdyI+CiAgICAgIDxzcGFuIGNsYXNzPSJhY2NlbnQtZG90Ij48L3NwYW4+CiAgICAgIDxzcGFuPkdldCBJbiBUb3VjaDwvc3Bhbj4KICAgIDwvZGl2PgogICAgPGgyPkxldCdzIGRlc2lnbiBjb2hlc2l2ZSBwbGF0Zm9ybXMgdG9nZXRoZXIuPC9oMj4KICA8L2Rpdj4KCiAgPGEgY2xhc3M9ImVtYWlsLWN0YS1idXR0b24iIGhyZWY9Im1haWx0bzpsZWVsZWUubWljaGFlbC5sZWVsZWVAZ21haWwuY29tIiBkYXRhLXJldmVhbD4KICAgIEVtYWlsOiBsZWVsZWUubWljaGFlbC5sZWVsZWVAZ21haWwuY29tCiAgICA8c3ZnIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNyA3aDEwdjEwIi8+PHBhdGggZD0iTTcgMTcgMTcgNyIvPjwvc3ZnPgogIDwvYT4KCiAgPGRpdiBjbGFzcz0ic29jaWFsLWxpbmtzIiBkYXRhLXJldmVhbD4KICAgIDxhIGhyZWY9Imh0dHBzOi8vd3d3LmxpbmtlZGluLmNvbS9pbi9sZWVtaWNoYWVsbGVlLz9za2lwUmVkaXJlY3Q9dHJ1ZSIgdGFyZ2V0PSJfYmxhbmsiIHJlbD0ibm9vcGVuZXIiPgogICAgICA8c3ZnIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIi8+PHBhdGggZD0iTTggMTF2NSIvPjxwYXRoIGQ9Ik04IDh2LjAxIi8+PHBhdGggZD0iTTEyIDE2di01Ii8+PHBhdGggZD0iTTE2IDE2di0zYTIgMiAwIDAgMC00IDAiLz48L3N2Zz4KICAgICAgTGlua2VkSW4KICAgIDwvYT4KICAgIDxhIGhyZWY9ImFzc2V0cy9taWNoYWVsLWxlZS1yZXN1bWUucGRmIiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+CiAgICAgIDxzdmcgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xNSAySDZhMiAyIDAgMCAwLTIgMnYxNmEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWN1oiLz48cGF0aCBkPSJNMTQgMnY0YTIgMiAwIDAgMCAyIDJoNCIvPjxwYXRoIGQ9Ik0xMCA5SDgiLz48cGF0aCBkPSJNMTYgMTNIOCIvPjxwYXRoIGQ9Ik0xNiAxN0g4Ii8+PC9zdmc+CiAgICAgIFJlc3VtZQogICAgPC9hPgogIDwvZGl2Pgo8L3NlY3Rpb24+Cgo8Zm9vdGVyIGNsYXNzPSJzaXRlLWZvb3RlciI+CiAgPGRpdiBjbGFzcz0id3JhcCIgZGF0YS1yZXZlYWw+CiAgICA8ZGl2IGNsYXNzPSJmb290LWxlZnQiPgogICAgICA8cD7CqSAyMDI1IE1pY2hhZWwgTGVlLiBCdWlsdCB3aXRoIHByZWNpc2lvbi48L3A+CiAgICAgIDxzcGFuIGNsYXNzPSJmb290LWRpdmlkZXIiPjwvc3Bhbj4KICAgICAgPHA+R2xhZCB5b3UncmUgaGVyZSE8L3A+CiAgICA8L2Rpdj4KICAgIDxhIGNsYXNzPSJiYWNrLXRvLXRvcCIgaHJlZj0iI3RvcCI+CiAgICAgIEJhY2sgdG8gdG9wCiAgICAgIDxzdmcgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Im01IDEyIDctNyA3IDciLz48cGF0aCBkPSJNMTIgMTlWNSIvPjwvc3ZnPgogICAgPC9hPgogIDwvZGl2Pgo8L2Zvb3Rlcj4KCg==</script>
+<div id="site-content" hidden></div>
 
-<section id="work" class="featured-studies">
-  <div class="section-header" data-reveal>
-    <div>
-      <div class="section-eyebrow">
-        <span class="accent-dot"></span>
-        <span>Featured Work</span>
-      </div>
-      <h2>Case Studies</h2>
-    </div>
-    <p class="section-desc">Deep dives into complex digital architecture, systematic scaling, and high-fidelity interaction details.</p>
-  </div>
-
-  <a class="hero-case-study" href="toa.html" data-reveal>
-    <div class="left-media">
-      <div class="thumb"><img src="assets/hero-toa.png" alt="Transfer of Assets preview"></div>
-    </div>
-    <div class="right-content">
-      <div>
-        <div class="case-meta-row">
-          <span class="category">Wealth Management</span>
-          <span class="dot">•</span>
-          <span class="role">Senior Designer</span>
-          <span class="dot">•</span>
-          <span class="status-unlaunched">Unlaunched</span>
-        </div>
-        <h3>Transfer of Assets</h3>
-        <p class="desc">Leading design on the flow that handles roughly 100,000 incoming and outgoing digital asset transfers annually — one of the highest-anxiety actions a person takes with their money.</p>
-      </div>
-      <div class="pill-row">
-        <span class="pill">UX Design</span>
-        <span class="pill">Cross-Org Collaboration</span>
-        <span class="pill">Legacy Systems</span>
-      </div>
-      <span class="view-case-link">
-        View case study
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </span>
-    </div>
-  </a>
-
-  <div class="split-grid" data-reveal-stagger>
-    <a class="case-study-card" href="dap.html">
-      <div class="thumb"><img src="assets/thumb-dap.png" alt="DAP 2.2 Accessibility preview"></div>
-      <div>
-        <div class="case-meta-row">
-          <span class="category">Accessibility</span>
-          <span class="dot">•</span>
-          <span class="role">Lead Designer</span>
-          <span class="dot">•</span>
-          <span class="status-staged">Staged Release</span>
-        </div>
-        <h3>DAP 2.2 Accessibility &amp; Rationalization</h3>
-        <p class="desc">Owning the asset allocation portion of a $4.7M, legally-driven accessibility remediation and rationalization program spanning 34 legacy properties.</p>
-      </div>
-      <span class="view-case-link">
-        View case study
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </span>
-    </a>
-
-    <a class="case-study-card" href="beneficiary.html">
-      <div class="thumb"><img src="assets/thumb-beneficiary.png" alt="Beneficiary Designation preview"></div>
-      <div>
-        <div class="case-meta-row">
-          <span class="category">Retirement</span>
-          <span class="dot">•</span>
-          <span class="role">Lead Designer</span>
-          <span class="dot">•</span>
-          <span class="status-live">Live</span>
-        </div>
-        <h3>Retirement Beneficiary Designation</h3>
-        <p class="desc">Digitizing a process that had always lived on paper — letting clients designate and manage retirement account beneficiaries directly in their digital experience.</p>
-      </div>
-      <span class="view-case-link">
-        View case study
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </span>
-    </a>
-  </div>
-</section>
-
-<section class="additional-work">
-  <div data-reveal>
-    <div class="section-eyebrow">
-      <span class="accent-dot"></span>
-      <span>Secondary Gallery</span>
-    </div>
-    <h2>Additional work</h2>
-  </div>
-
-  <div class="archive-grid" data-reveal-stagger>
-    <a class="archive-card" href="videoamp.html">
-      <div class="thumb"><img src="assets/videoamp-hero.png" alt="VideoAmp preview"></div>
-      <div>
-        <h4>VideoAmp</h4>
-        <p class="desc">Cross-platform measurement &amp; currency</p>
-      </div>
-    </a>
-    <a class="archive-card" href="nomi-health.html">
-      <div class="thumb"><img src="assets/nomi-hero.png" alt="Nomi Health preview"></div>
-      <div>
-        <h4>Nomi Health</h4>
-        <p class="desc">Direct healthcare marketplace</p>
-      </div>
-    </a>
-    <a class="archive-card" href="skysafe.html">
-      <div class="thumb"><img src="assets/skysafe-hero.png" alt="Skysafe preview"></div>
-      <div>
-        <h4>Skysafe</h4>
-        <p class="desc">Airspace security &amp; drone defense</p>
-      </div>
-    </a>
-    <a class="archive-card" href="pixel-perfect.html">
-      <div class="thumb"><img src="assets/pixel-perfect-hero.png" alt="Pixel Perfect preview"></div>
-      <div>
-        <h4>Pixel Perfect</h4>
-        <p class="desc">Design tool for precision layouts</p>
-      </div>
-    </a>
-  </div>
-</section>
-
-<section id="contact" class="contact-section">
-  <div data-reveal>
-    <div class="section-eyebrow">
-      <span class="accent-dot"></span>
-      <span>Get In Touch</span>
-    </div>
-    <h2>Let's design cohesive platforms together.</h2>
-  </div>
-
-  <a class="email-cta-button" href="mailto:leelee.michael.leelee@gmail.com" data-reveal>
-    Email: leelee.michael.leelee@gmail.com
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-  </a>
-
-  <div class="social-links" data-reveal>
-    <a href="https://www.linkedin.com/in/leemichaellee/?skipRedirect=true" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 0 0-4 0"/></svg>
-      LinkedIn
-    </a>
-    <a href="assets/michael-lee-resume.pdf" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
-      Resume
-    </a>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="wrap" data-reveal>
-    <div class="foot-left">
-      <p>© 2025 Michael Lee. Built with precision.</p>
-      <span class="foot-divider"></span>
-      <p>Glad you're here!</p>
-    </div>
-    <a class="back-to-top" href="#top">
-      Back to top
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
-    </a>
-  </div>
-</footer>
-
-<script src="reveal.js"></script>
 <script src="cursor.js"></script>
+<script src="access.js"></script>
 </body>
 </html>
