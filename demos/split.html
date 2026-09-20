@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Split</title>
+<meta name="description" content="Shoot the receipt, tap who had what. Right to the cent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0d0c; --card:#161816; --card-2:#1e211e; --ink:#f4f6f3; --ink-2:#9aa39a; --ink-3:#69736a;
+  --line:#262a26; --line-2:#343a34;
+  --accent:#b9f227; --accent-ink:#0c0d0c; --warn:#ffb020; --bad:#ff6b52;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f2f3f0; --card:#ffffff; --card-2:#f7f8f5; --ink:#12140f; --ink-2:#5d645c; --ink-3:#8b9289;
+    --line:#e4e6e0; --line-2:#d2d6cd;
+    --accent:#4d7c0f; --accent-ink:#ffffff; --warn:#a96a00; --bad:#c0341d;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;font-size:15px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;padding-bottom:140px}
+.app{max-width:440px;margin:0 auto;padding:0 18px}
+
+/* ---- header ---- */
+.top{display:flex;align-items:center;gap:12px;padding:20px 0 16px}
+.logo{font-weight:800;font-size:19px;letter-spacing:-.04em;display:flex;align-items:center;gap:8px}
+.logo b{width:9px;height:19px;background:var(--accent);border-radius:2px;display:inline-block}
+.place{margin-left:auto;text-align:right}
+.place .n{font-size:13px;font-weight:600}
+.place .d{font-size:11px;color:var(--ink-3)}
+
+/* ---- receipt card ---- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+.chead{display:flex;align-items:center;gap:9px;padding:13px 16px;border-bottom:1px solid var(--line)}
+.chead h2{margin:0;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);font-weight:700}
+.chead .r{margin-left:auto;font-size:11px;color:var(--ink-3);font-family:var(--mono)}
+
+/* ---- people ---- */
+.people{display:flex;gap:7px;flex-wrap:wrap;padding:13px 16px}
+.pchip{display:flex;align-items:center;gap:7px;background:var(--card-2);border:1.5px solid var(--line-2);
+  border-radius:99px;padding:5px 12px 5px 5px;cursor:pointer;font-size:13px;font-weight:600;
+  color:var(--ink-2);font-family:inherit;transition:.12s}
+.pchip .av{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  font-size:10px;font-weight:800;color:#0c0d0c}
+.pchip[aria-pressed="true"]{border-color:var(--accent);color:var(--ink);background:var(--card)}
+.pchip.add{border-style:dashed;color:var(--ink-3);padding:5px 13px}
+
+/* ---- items ---- */
+.item{display:flex;align-items:center;gap:11px;padding:11px 16px;border-top:1px solid var(--line);cursor:pointer}
+.item:hover{background:var(--card-2)}
+.item.unassigned{background:rgba(255,176,32,.06)}
+.iname{flex:1;min-width:0}
+.iname .t{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.iname .q{font-size:11px;color:var(--ink-3)}
+.avs{display:flex}
+.avs .av{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:9.5px;
+  font-weight:800;color:#0c0d0c;border:2px solid var(--card);margin-left:-7px}
+.avs .av:first-child{margin-left:0}
+.avs .none{width:22px;height:22px;border-radius:50%;border:1.5px dashed var(--warn);
+  display:grid;place-items:center;font-size:11px;color:var(--warn);font-weight:700}
+.price{font-family:var(--mono);font-size:13.5px;font-weight:600;min-width:62px;text-align:right}
+.everyone{background:none;border:1px solid var(--line-2);border-radius:6px;color:var(--ink-3);
+  font-family:inherit;font-size:10.5px;font-weight:700;padding:3px 7px;cursor:pointer;text-transform:uppercase;
+  letter-spacing:.05em}
+.everyone:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---- totals block ---- */
+.trow{display:flex;padding:8px 16px;font-size:13.5px;color:var(--ink-2)}
+.trow .v{margin-left:auto;font-family:var(--mono);font-weight:600;color:var(--ink)}
+.trow.grand{border-top:1px solid var(--line);margin-top:4px;padding-top:12px;padding-bottom:14px;
+  font-size:16px;font-weight:700;color:var(--ink)}
+.trow.grand .v{font-size:17px;font-weight:700}
+
+/* ---- delta warning ---- */
+.delta{margin:0 16px 14px;background:rgba(255,176,32,.1);border:1px solid var(--warn);border-radius:10px;padding:12px 13px}
+.delta h4{margin:0 0 4px;font-size:12.5px;color:var(--warn)}
+.delta p{margin:0 0 9px;font-size:12px;color:var(--ink-2);line-height:1.45}
+.delta .acts{display:flex;gap:6px;flex-wrap:wrap}
+.delta button{background:var(--card);border:1px solid var(--line-2);color:var(--ink-2);font-family:inherit;
+  font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:7px;cursor:pointer}
+.delta button:hover{border-color:var(--warn);color:var(--ink)}
+
+/* ---- tip ---- */
+.tipbar{display:flex;gap:6px;padding:12px 16px;flex-wrap:wrap;align-items:center}
+.tbtn{background:var(--card-2);border:1.5px solid var(--line-2);border-radius:9px;color:var(--ink-2);
+  font-family:inherit;font-size:13px;font-weight:700;padding:7px 12px;cursor:pointer;flex:1;min-width:52px}
+.tbtn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.toggle{display:flex;gap:0;border:1px solid var(--line-2);border-radius:9px;overflow:hidden;margin:0 16px 14px}
+.toggle button{flex:1;background:none;border:none;color:var(--ink-3);font-family:inherit;font-size:11.5px;
+  font-weight:600;padding:8px 6px;cursor:pointer}
+.toggle button[aria-pressed="true"]{background:var(--card-2);color:var(--ink)}
+.note{font-size:11.5px;color:var(--ink-3);padding:0 16px 13px;line-height:1.45}
+
+/* ---- results ---- */
+.pcard{border-top:1px solid var(--line)}
+.psum{display:flex;align-items:center;gap:11px;padding:13px 16px;cursor:pointer}
+.psum .av{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;color:#0c0d0c}
+.psum .nm{font-weight:600;font-size:14.5px}
+.psum .amt{margin-left:auto;font-family:var(--mono);font-size:16px;font-weight:600}
+.penny{font-size:9.5px;font-weight:700;color:var(--accent);border:1px solid var(--accent);
+  border-radius:4px;padding:1px 4px;margin-left:5px;vertical-align:middle}
+.pdetail{padding:0 16px 13px 55px;font-size:12px;color:var(--ink-2);display:none}
+.pcard.open .pdetail{display:block}
+.pdetail .l{display:flex;padding:3px 0;border-top:1px solid var(--line)}
+.pdetail .l span:last-child{margin-left:auto;font-family:var(--mono)}
+.chev{color:var(--ink-3);transition:transform .15s}
+.pcard.open .chev{transform:rotate(180deg)}
+
+/* ---- invariant ---- */
+.check{display:flex;align-items:center;gap:9px;margin:14px 0 0;padding:11px 14px;border-radius:10px;
+  background:rgba(185,242,39,.07);border:1px solid var(--accent);font-size:12px;color:var(--ink-2)}
+.check.bad{background:rgba(255,107,82,.09);border-color:var(--bad)}
+.check svg{color:var(--accent);flex:none}
+.check.bad svg{color:var(--bad)}
+.check code{font-family:var(--mono);color:var(--ink);font-size:11.5px}
+
+/* ---- bottom bar ---- */
+.bottom{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);
+  padding:13px 18px calc(13px + env(safe-area-inset-bottom));z-index:20}
+.binner{max-width:440px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.binner .lbl{font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.07em;font-weight:700}
+.binner .big{font-family:var(--mono);font-size:21px;font-weight:600;letter-spacing:-.02em}
+.cta{margin-left:auto;background:var(--accent);color:var(--accent-ink);border:none;font-family:inherit;
+  font-size:14px;font-weight:700;padding:12px 20px;border-radius:11px;cursor:pointer}
+.cta:disabled{background:var(--line-2);color:var(--ink-3);cursor:not-allowed}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="top">
+    <div class="logo"><b></b>Split</div>
+    <div class="place">
+      <div class="n">Kura Sushi · Rancho Bernardo</div>
+      <div class="d">Sat, Sep 19 · 5 people</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="chead"><h2>Who's here</h2><span class="r" id="whocount">5 people</span></div>
+    <div class="people" id="people"></div>
+  </div>
+
+  <div class="card">
+    <div class="chead">
+      <h2>Receipt</h2>
+      <span class="r" id="parsed">12 items · OCR 94%</span>
+    </div>
+    <div id="items"></div>
+    <div id="deltaslot"></div>
+    <div class="trow"><span>Items</span><span class="v" id="t-items">—</span></div>
+    <div class="trow"><span>Printed subtotal</span><span class="v" id="t-sub">—</span></div>
+    <div class="trow"><span>Tax</span><span class="v" id="t-tax">—</span></div>
+    <div class="trow"><span id="tiplabel">Tip</span><span class="v" id="t-tip">—</span></div>
+    <div class="trow grand"><span>Total</span><span class="v" id="t-total">—</span></div>
+  </div>
+
+  <div class="card">
+    <div class="chead"><h2>Tip</h2><span class="r" id="tippct">20%</span></div>
+    <div class="tipbar" id="tipbar">
+      <button class="tbtn" data-tip="15">15%</button>
+      <button class="tbtn" data-tip="18">18%</button>
+      <button class="tbtn" data-tip="20" aria-pressed="true">20%</button>
+      <button class="tbtn" data-tip="25">25%</button>
+    </div>
+    <div class="toggle" id="basis">
+      <button data-basis="pretax" aria-pressed="true">Tip on subtotal</button>
+      <button data-basis="posttax">Tip on total incl. tax</button>
+    </div>
+    <p class="note" id="basisnote"></p>
+    <div class="toggle" id="feemode" style="margin-top:0">
+      <button data-fee="proportional" aria-pressed="true">Tax &amp; tip follow the items</button>
+      <button data-fee="even">Split evenly</button>
+    </div>
+    <p class="note" id="feenote"></p>
+  </div>
+
+  <div class="card">
+    <div class="chead"><h2>Everyone owes</h2><span class="r" id="unassigned"></span></div>
+    <div id="results"></div>
+  </div>
+
+  <div class="check" id="check">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+    <span id="checktext"></span>
+  </div>
+</div>
+
+<div class="bottom">
+  <div class="binner">
+    <div><div class="lbl">Bill total</div><div class="big" id="bigtotal">—</div></div>
+    <button class="cta" id="cta">Send requests</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   Split — all money is integer cents. No floats in the
+   calculation path. The invariant that sum(person totals)
+   equals the bill total exactly is asserted on every recompute
+   and shown in the UI.
+   ============================================================ */
+
+const c = n => "$" + (n / 100).toFixed(2);
+
+const PEOPLE = [
+  { id:"p1", name:"Michael", color:"#b9f227" },
+  { id:"p2", name:"Dana",    color:"#7fd4ff" },
+  { id:"p3", name:"Sam",     color:"#ffb020" },
+  { id:"p4", name:"Priya",   color:"#ff8fb1" },
+  { id:"p5", name:"Jordan",  color:"#c4a3ff" }
+];
+
+const ITEMS = [
+  { id:"i1",  name:"Edamame",                qty:2, cents:1100, shares:["p1","p2","p3","p4","p5"] },
+  { id:"i2",  name:"Salmon nigiri",          qty:4, cents:1560, shares:["p1","p2"] },
+  { id:"i3",  name:"Spicy tuna roll",        qty:3, cents:1485, shares:["p3"] },
+  { id:"i4",  name:"Chicken karaage",        qty:1, cents:895,  shares:["p4","p5"] },
+  { id:"i5",  name:"Unagi don",              qty:1, cents:2450, shares:["p2"] },
+  { id:"i6",  name:"Dragon roll",            qty:2, cents:2790, shares:["p1","p5"] },
+  { id:"i7",  name:"Miso soup",              qty:5, cents:1475, shares:["p1","p2","p3","p4","p5"] },
+  { id:"i8",  name:"Hokkaido scallop",       qty:2, cents:1680, shares:["p4"] },
+  { id:"i9",  name:"Asahi draft (pitcher)",  qty:2, cents:3200, shares:["p1","p3","p5"] },
+  { id:"i10", name:"Matcha ice cream",       qty:3, cents:1350, shares:["p2","p4","p5"] },
+  { id:"i11", name:"Agedashi tofu",          qty:1, cents:845,  shares:[] },
+  { id:"i12", name:"Green tea (bottomless)", qty:2, cents:700,  shares:["p3","p4"] }
+];
+
+// printed on the receipt — deliberately 218¢ above the item sum (a service charge OCR missed)
+const PRINTED_SUBTOTAL = 19748;
+const TAX_RATE = 0.0775;
+
+let tipPct = 20, basis = "pretax", feeMode = "proportional";
+let deltaMode = null;              // null | 'proportional' | 'item'
+let activePerson = null;
+const seed = 7;
+
+/* ---------- largest-remainder splitter ---------- */
+function splitCents(amount, weights) {
+  const raw = weights.map(w => amount * w);
+  const floors = raw.map(Math.floor);
+  let short = amount - floors.reduce((a, b) => a + b, 0);
+  const order = raw
+    .map((r, i) => ({ i, frac: r - Math.floor(r), tie: (i + seed) % weights.length }))
+    .sort((a, b) => b.frac - a.frac || a.tie - b.tie);
+  const bumped = new Set();
+  for (let k = 0; k < short; k++) { floors[order[k].i]++; bumped.add(order[k].i); }
+  return { parts: floors, bumped };
+}
+
+/* ---------- compute ---------- */
+function compute() {
+  const itemSum = ITEMS.reduce((a, i) => a + i.cents, 0);
+  const delta = PRINTED_SUBTOTAL - itemSum;
+
+  const sub = {}; PEOPLE.forEach(p => sub[p.id] = 0);
+  const pennies = {}; PEOPLE.forEach(p => pennies[p.id] = 0);
+
+  ITEMS.forEach(it => {
+    if (!it.shares.length) return;
+    const w = it.shares.map(() => 1 / it.shares.length);
+    const { parts, bumped } = splitCents(it.cents, w);
+    it.shares.forEach((pid, k) => { sub[pid] += parts[k]; if (bumped.has(k)) pennies[pid]++; });
+  });
+
+  const assignedSum = Object.values(sub).reduce((a, b) => a + b, 0);
+
+  // reconcile the printed-subtotal delta
+  if (deltaMode === "proportional" && assignedSum > 0) {
+    const w = PEOPLE.map(p => sub[p.id] / assignedSum);
+    const { parts } = splitCents(delta, w);
+    PEOPLE.forEach((p, k) => sub[p.id] += parts[k]);
+  }
+
+  const effSubtotal = Object.values(sub).reduce((a, b) => a + b, 0);
+  const tax = Math.round(effSubtotal * TAX_RATE);
+  const tipBase = basis === "pretax" ? effSubtotal : effSubtotal + tax;
+  const tip = Math.round(tipBase * tipPct / 100);
+
+  const weights = feeMode === "proportional" && effSubtotal > 0
+    ? PEOPLE.map(p => sub[p.id] / effSubtotal)
+    : PEOPLE.map(() => 1 / PEOPLE.length);
+
+  const taxSplit = splitCents(tax, weights);
+  const tipSplit = splitCents(tip, weights);
+
+  const rows = PEOPLE.map((p, k) => ({
+    ...p,
+    sub: sub[p.id],
+    tax: taxSplit.parts[k],
+    tip: tipSplit.parts[k],
+    total: sub[p.id] + taxSplit.parts[k] + tipSplit.parts[k],
+    // Only bill-level rounding is worth disclosing. Per-item remainders wash
+    // out across a dozen items and would badge everybody, which says nothing.
+    penny: taxSplit.bumped.has(k) || tipSplit.bumped.has(k)
+  }));
+
+  const grand = effSubtotal + tax + tip;
+  const ok = rows.reduce((a, r) => a + r.total, 0) === grand
+          && taxSplit.parts.reduce((a, b) => a + b, 0) === tax
+          && tipSplit.parts.reduce((a, b) => a + b, 0) === tip;
+
+  return { itemSum, delta, effSubtotal, tax, tip, grand, rows, ok };
+}
+
+/* ---------- render ---------- */
+function avatar(p, cls) {
+  return `<span class="av ${cls || ""}" style="background:${p.color}">${p.name[0]}</span>`;
+}
+
+function render() {
+  const m = compute();
+
+  // people
+  document.getElementById("people").innerHTML = PEOPLE.map(p => `
+    <button class="pchip" data-p="${p.id}" aria-pressed="${activePerson === p.id}">
+      ${avatar(p)}${p.name}</button>`).join("") +
+    `<button class="pchip add">+ Add</button>`;
+
+  // items
+  const unassigned = ITEMS.filter(i => !i.shares.length);
+  document.getElementById("items").innerHTML = ITEMS.map(it => {
+    const owners = it.shares.map(id => PEOPLE.find(p => p.id === id));
+    return `<div class="item ${it.shares.length ? "" : "unassigned"}" data-i="${it.id}">
+      <div class="iname"><div class="t">${it.name}</div>
+        <div class="q">${it.qty}× · ${c(Math.round(it.cents / it.qty))} each${
+          it.shares.length > 1 ? ` · split ${it.shares.length} ways` : ""}</div></div>
+      ${it.shares.length
+        ? `<div class="avs">${owners.map(p => avatar(p)).join("")}</div>`
+        : `<button class="everyone" data-all="${it.id}">Everyone</button>
+           <span class="avs"><span class="none">!</span></span>`}
+      <span class="price">${c(it.cents)}</span></div>`;
+  }).join("");
+
+  // delta
+  document.getElementById("deltaslot").innerHTML = (m.delta !== 0 && deltaMode === null) ? `
+    <div class="delta">
+      <h4>${c(Math.abs(m.delta))} unaccounted for</h4>
+      <p>The items add up to ${c(m.itemSum)}, but the receipt says ${c(PRINTED_SUBTOTAL)}.
+         Usually a service charge or something OCR missed. It won't be silently absorbed.</p>
+      <div class="acts">
+        <button data-delta="proportional">Split it proportionally</button>
+        <button data-delta="item">Add as a line item</button>
+        <button data-delta="fix">Let me fix the items</button>
+      </div>
+    </div>` : "";
+
+  // totals
+  document.getElementById("t-items").textContent = c(m.itemSum);
+  document.getElementById("t-sub").textContent = c(PRINTED_SUBTOTAL);
+  document.getElementById("t-tax").textContent = c(m.tax);
+  document.getElementById("t-tip").textContent = c(m.tip);
+  document.getElementById("t-total").textContent = c(m.grand);
+  document.getElementById("bigtotal").textContent = c(m.grand);
+  document.getElementById("tiplabel").textContent =
+    `Tip (${tipPct}% of ${basis === "pretax" ? "subtotal" : "subtotal + tax"})`;
+  document.getElementById("tippct").textContent = tipPct + "%";
+
+  // basis note
+  const onTax = Math.round((m.effSubtotal + m.tax) * tipPct / 100) - Math.round(m.effSubtotal * tipPct / 100);
+  document.getElementById("basisnote").textContent =
+    `Tipping on the tax as well adds ${c(onTax)} to the bill. Most people don't realize they're doing it.`;
+  document.getElementById("feenote").textContent = feeMode === "proportional"
+    ? "Sam ordered $14.85 of food; Dana ordered $46.90. Proportional means Sam isn't subsidizing Dana's tip."
+    : "Everyone pays the same tax and tip regardless of what they ordered.";
+
+  // results
+  document.getElementById("unassigned").textContent =
+    unassigned.length ? `${unassigned.length} item unassigned` : "all assigned";
+  document.getElementById("results").innerHTML = m.rows.map(r => `
+    <div class="pcard" data-pc="${r.id}">
+      <div class="psum">${avatar(r)}
+        <span class="nm">${r.name}</span>
+        <span class="amt">${c(r.total)}${r.penny ? '<span class="penny">+1¢</span>' : ""}</span>
+        <svg class="chev" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="pdetail">
+        <div class="l"><span>Food &amp; drink</span><span>${c(r.sub)}</span></div>
+        <div class="l"><span>Tax share (${(r.sub / m.effSubtotal * 100).toFixed(1)}%)</span><span>${c(r.tax)}</span></div>
+        <div class="l"><span>Tip share</span><span>${c(r.tip)}</span></div>
+        <div class="l" style="font-weight:700;color:var(--ink)"><span>Total</span><span>${c(r.total)}</span></div>
+      </div>
+    </div>`).join("");
+
+  // invariant
+  const chk = document.getElementById("check");
+  chk.classList.toggle("bad", !m.ok);
+  document.getElementById("checktext").innerHTML = m.ok
+    ? `Everyone's totals add to exactly <code>${c(m.grand)}</code>. Tax and tip are fully allocated, no cents lost.`
+    : `Reconciliation failed — showing nothing rather than wrong numbers.`;
+
+  document.getElementById("cta").disabled = unassigned.length > 0;
+  document.getElementById("cta").textContent =
+    unassigned.length ? `${unassigned.length} item left` : "Send requests";
+}
+
+/* ---------- interaction ---------- */
+document.addEventListener("click", e => {
+  const chip = e.target.closest(".pchip[data-p]");
+  if (chip) { activePerson = activePerson === chip.dataset.p ? null : chip.dataset.p; return render(); }
+
+  const all = e.target.closest("[data-all]");
+  if (all) {
+    const it = ITEMS.find(i => i.id === all.dataset.all);
+    it.shares = PEOPLE.map(p => p.id);
+    return render();
+  }
+
+  const item = e.target.closest(".item");
+  if (item && activePerson) {
+    const it = ITEMS.find(i => i.id === item.dataset.i);
+    it.shares = it.shares.includes(activePerson)
+      ? it.shares.filter(x => x !== activePerson)
+      : [...it.shares, activePerson].sort((a, b) =>
+          PEOPLE.findIndex(p => p.id === a) - PEOPLE.findIndex(p => p.id === b));
+    return render();
+  }
+
+  const d = e.target.closest("[data-delta]");
+  if (d) {
+    if (d.dataset.delta === "fix") { deltaMode = "fix"; }
+    else deltaMode = d.dataset.delta;
+    return render();
+  }
+
+  const pc = e.target.closest(".pcard");
+  if (pc) pc.classList.toggle("open");
+});
+
+document.getElementById("tipbar").addEventListener("click", e => {
+  const b = e.target.closest("[data-tip]"); if (!b) return;
+  tipPct = +b.dataset.tip;
+  document.querySelectorAll("[data-tip]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  render();
+});
+document.getElementById("basis").addEventListener("click", e => {
+  const b = e.target.closest("[data-basis]"); if (!b) return;
+  basis = b.dataset.basis;
+  document.querySelectorAll("[data-basis]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  render();
+});
+document.getElementById("feemode").addEventListener("click", e => {
+  const b = e.target.closest("[data-fee]"); if (!b) return;
+  feeMode = b.dataset.fee;
+  document.querySelectorAll("[data-fee]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  render();
+});
+
+render();
+</script>
+</body>
+</html>

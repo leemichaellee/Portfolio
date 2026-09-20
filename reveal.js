@@ -24,3 +24,16 @@
 
   els.forEach(function (el) { io.observe(el); });
 })();
+
+// Autoplaying a hero video at someone who asked for less motion is rude.
+// Runs here because reveal.js is loaded right after the gated content is
+// injected, which is the first moment these elements exist.
+(function () {
+  if (!window.matchMedia || !matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var vids = document.querySelectorAll("video[autoplay]");
+  for (var i = 0; i < vids.length; i++) {
+    vids[i].removeAttribute("autoplay");
+    vids[i].setAttribute("controls", "");
+    vids[i].pause();
+  }
+})();

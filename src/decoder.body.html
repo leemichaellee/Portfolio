@@ -27,8 +27,14 @@
     <p class="summary">A reader for documents written to protect someone else — leases, terms of service, loan disclosures. The design problem wasn't summarizing them. It was making a summary you'd be willing to act on.</p>
   </div>
 
-  <div class="cs2-hero-visual photo-fill" data-reveal>
-    <img src="assets/decoder-hero.png" alt="Plain-English Decoder — original lease text on the left, plain-language cards on the right, with the selected clause highlighted in both panes">
+  <div class="cs2-hero-visual video-fill" data-reveal>
+    <video autoplay muted loop playsinline controls preload="metadata"
+           poster="assets/decoder-poster.jpg"
+           aria-label="Screen recording: clicking a risk flag jumps to its clause, hovering a card highlights its source, and one clause renders as unresolved.">
+      <source src="assets/decoder-demo.mp4" type="video/mp4">
+      <source src="assets/decoder-demo.webm" type="video/webm">
+      <img src="assets/decoder-hero.png" alt="Plain-English Decoder — original lease text on the left, plain-language cards on the right">
+    </video>
     <p class="caption">Every plain sentence on the right is anchored to the exact clause on the left. Selecting either side highlights the other.</p>
   </div>
 </section>
@@ -175,6 +181,26 @@
       <p class="caption">Dark mode — severity colors re-tuned rather than inverted, so contrast holds</p>
     </div>
   </div>
+</section>
+
+<section class="live-demo" data-reveal>
+  <div class="section-eyebrow">
+    <span class="accent-dot"></span>
+    <span>Try It</span>
+  </div>
+  <div class="live-demo-head">
+    <h3>The real thing, running here</h3>
+    <p>Not a prototype recording — the actual app. Click a risk flag to jump to its clause, hover a card to light up its source, and scroll to clause 10.3 for the one it refuses to translate.</p>
+  </div>
+  <div class="demo-frame tall">
+    <div class="demo-chrome">
+      <span class="dots"><i></i><i></i><i></i></span>
+      <span class="addr">decoder — residential lease agreement.pdf</span>
+      <a class="open-full" href="demos/decoder.html" target="_blank" rel="noopener">Open full size ↗</a>
+    </div>
+    <iframe src="demos/decoder.html" title="Plain-English Decoder — live demo" loading="lazy"></iframe>
+  </div>
+  <p class="demo-note">Runs on a sample residential lease. The decode is pre-computed for the demo; the live pipeline batches clauses to a model behind a serverless route and streams cards back in document order.</p>
 </section>
 
 <section class="cs2-results">

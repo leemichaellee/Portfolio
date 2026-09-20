@@ -27,9 +27,15 @@
     <p class="summary">Gmail makes you delete email one message at a time. Nobody has 40,000 email problems — they have 200 sender problems. This inverts the unit of work, and then spends the whole design budget on making bulk destruction feel safe.</p>
   </div>
 
-  <div class="cs2-hero-visual photo-fill" data-reveal>
-    <img src="assets/cleaner-hero.png" alt="Inbox Cleaner — a sortable table where each row is a sender, showing message count, unread count, read rate, size, and last seen">
-    <p class="caption">One row per sender, sorted by volume. The biggest decisions are the first thing on screen.</p>
+  <div class="cs2-hero-visual video-fill" data-reveal>
+    <video autoplay muted loop playsinline controls preload="metadata"
+           poster="assets/cleaner-poster.jpg"
+           aria-label="Screen recording: filtering to senders that support one-click unsubscribe, selecting five, previewing the action, and unsubscribing — with a 60-second undo.">
+      <source src="assets/cleaner-demo.mp4" type="video/mp4">
+      <source src="assets/cleaner-demo.webm" type="video/webm">
+      <img src="assets/cleaner-hero.png" alt="Inbox Cleaner — a sortable table where each row is a sender">
+    </video>
+    <p class="caption">Filter to senders you can actually unsubscribe from, select five, and stop 11,235 messages at the source.</p>
   </div>
 </section>
 
@@ -111,7 +117,8 @@
         <h4>Choosing Metrics That Earn Their Column</h4>
         <ul>
           <li>Read rate turned out to be the single best signal of whether a sender matters — a high count paired with 2% read is an instant, confident decision</li>
-          <li>The List-Unsubscribe header is free in metadata, so senders that can be unsubscribed from are marked — offering to stop the flow, not just delete the backlog</li>
+          <li>The List-Unsubscribe header is free in metadata, so it became a bulk action of its own — stopping the flow at the source instead of only clearing the backlog, which is the difference between cleaning an inbox once and keeping it clean</li>
+          <li>It's the only action offered on senders that don't support it — the button disables rather than hides, so the reason stays visible instead of the control silently vanishing</li>
           <li>Sort defaults to message count descending, because the biggest wins should require no interaction at all to find</li>
         </ul>
       </div>
@@ -134,7 +141,7 @@
         <ul>
           <li>The app requests modify permission but never delete permission — it can move mail to Trash, where it's recoverable for 30 days, and cannot permanently destroy anything. A ceiling on damage that a bug can't exceed</li>
           <li>Before every batch, an operation record captures the prior label state of every message id, so undo is an exact inverse rather than a guess. A 60-second countdown toast holds it, and the last 20 operations stay individually undoable</li>
-          <li>Friction scales with blast radius: a preview panel always, the count as the button's own label past 500 messages, and type-to-confirm past 5,000 or for anything going to Trash</li>
+          <li>Friction scales with blast radius: a preview panel always, the count as the button's own label past 500 messages, and type-to-confirm past 5,000 or for anything going to Trash — but never for unsubscribe or mark-read, where nothing is removed and a typed confirmation would be theatre</li>
         </ul>
       </div>
       <div class="mini-diagram">
@@ -178,6 +185,26 @@
       <p class="caption">Dark mode driven entirely by semantic tokens — sender brand colors stay fixed</p>
     </div>
   </div>
+</section>
+
+<section class="live-demo" data-reveal>
+  <div class="section-eyebrow">
+    <span class="accent-dot"></span>
+    <span>Try It</span>
+  </div>
+  <div class="live-demo-head">
+    <h3>Clean an inbox, right here</h3>
+    <p>Filter to <em>Has unsubscribe</em>, select a few senders, and unsubscribe. Or select six and hit Trash to meet the type-to-confirm gate. Every action gets a 60-second undo you can actually use.</p>
+  </div>
+  <div class="demo-frame tall">
+    <div class="demo-chrome">
+      <span class="dots"><i></i><i></i><i></i></span>
+      <span class="addr">inbox cleaner — 31,906 messages, 42 senders</span>
+      <a class="open-full" href="demos/inbox-cleaner.html" target="_blank" rel="noopener">Open full size ↗</a>
+    </div>
+    <iframe src="demos/inbox-cleaner.html" title="Inbox Cleaner — live demo" loading="lazy"></iframe>
+  </div>
+  <p class="demo-note">Runs on a generated corpus with the shape of a real Gmail index, so sorting, filtering, chunked execution and undo all exercise the same code paths as the live version. No Google account is touched.</p>
 </section>
 
 <section class="cs2-results">

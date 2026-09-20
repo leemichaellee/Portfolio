@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plain-English Decoder</title>
+<meta name="description" content="Read what you're actually signing. Every plain sentence traced back to the clause it came from.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#faf8f4; --surface:#fffefb; --ink:#14110f; --ink-2:#5d564f; --ink-3:#928a80;
+  --line:#e8e2d8; --line-2:#d6cec1;
+  --accent:#1d4e4a; --accent-tint:#e4efed;
+  --s0:#9aa0a6; --s1:#3f7f6d; --s2:#b8761f; --s3:#b23b26;
+  --s2-tint:#fdf3e2; --s3-tint:#fceeea; --s1-tint:#eaf3f0;
+  --r:12px;
+}
+:root[data-theme="dark"]{
+  --paper:#12110f; --surface:#1a1816; --ink:#f3efe9; --ink-2:#a8a098; --ink-3:#756d64;
+  --line:#2a2724; --line-2:#3a3530;
+  --accent:#63b3a6; --accent-tint:#16302c;
+  --s1:#63b3a6; --s2:#dda94a; --s3:#e8795f;
+  --s1-tint:#152925; --s2-tint:#2d2410; --s3-tint:#2e1a15;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#12110f; --surface:#1a1816; --ink:#f3efe9; --ink-2:#a8a098; --ink-3:#756d64;
+    --line:#2a2724; --line-2:#3a3530;
+    --accent:#63b3a6; --accent-tint:#16302c;
+    --s1:#63b3a6; --s2:#dda94a; --s3:#e8795f;
+    --s1-tint:#152925; --s2-tint:#2d2410; --s3-tint:#2e1a15;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  display:flex; flex-direction:column; height:100vh; overflow:hidden;
+}
+
+/* ---------- top bar ---------- */
+header{border-bottom:1px solid var(--line);background:var(--paper);flex:none}
+.hrow{display:flex;align-items:center;gap:14px;padding:14px 22px}
+.mark{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:-.02em;font-size:15px}
+.glyph{width:17px;height:17px;border:2px solid var(--accent);border-radius:4px;position:relative;flex:none}
+.glyph::after{content:"";position:absolute;left:2px;top:6px;width:9px;height:2px;background:var(--accent);
+  box-shadow:0 4px 0 var(--accent)}
+.doc-chip{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line-2);
+  border-radius:99px;padding:5px 13px;font-size:12.5px;color:var(--ink-2)}
+.tools{margin-left:auto;display:flex;align-items:center;gap:8px}
+.tbtn{font-family:inherit;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:8px;
+  border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);cursor:pointer}
+.tbtn:hover{color:var(--ink);border-color:var(--ink-3)}
+.tbtn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* ---------- summary strip ---------- */
+.summary{border-bottom:1px solid var(--line);background:var(--surface);flex:none}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+.scell{background:var(--surface);padding:13px 22px;cursor:pointer}
+.scell:hover{background:var(--accent-tint)}
+.scell .q{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);font-weight:700}
+.scell .a{font-size:13px;margin-top:4px;font-weight:500;line-height:1.35}
+.scell .n{font-family:Newsreader,serif;font-size:22px;font-weight:600;letter-spacing:-.02em}
+.flags{display:flex;gap:6px;flex-wrap:wrap;padding:10px 22px;border-top:1px solid var(--line)}
+.flag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:5px;
+  background:var(--s3-tint);color:var(--s3);border:1px solid currentColor;cursor:pointer}
+.flag.med{background:var(--s2-tint);color:var(--s2)}
+
+/* ---------- panes ---------- */
+.panes{flex:1;display:grid;grid-template-columns:1fr 1fr;min-height:0;gap:1px;background:var(--line)}
+.pane{background:var(--surface);display:flex;flex-direction:column;min-height:0}
+.phead{padding:11px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;flex:none}
+.plabel{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;font-weight:700;color:var(--ink-3)}
+.pcount{margin-left:auto;font-size:11.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.pbody{overflow-y:auto;padding:22px;flex:1;scroll-behavior:smooth}
+
+/* left: source */
+.src{font-family:Newsreader,Georgia,serif;font-size:15px;line-height:1.72;color:var(--ink-2);max-width:60ch}
+.src h3{font-family:Inter,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--ink-3);margin:26px 0 10px;font-weight:700}
+.src h3:first-child{margin-top:0}
+.cl{display:block;padding:3px 6px;margin:0 -6px 12px;border-radius:5px;cursor:pointer;
+  border-left:2px solid transparent;transition:background .15s}
+.cl:hover{background:var(--accent-tint)}
+.cl[data-sev="2"]{border-left-color:var(--s2)}
+.cl[data-sev="3"]{border-left-color:var(--s3)}
+.cl.on{background:var(--accent-tint);color:var(--ink)}
+.cl[data-sev="3"].on{background:var(--s3-tint)}
+.cl[data-sev="2"].on{background:var(--s2-tint)}
+.cl .num{font-family:Inter,sans-serif;font-size:11px;font-weight:700;color:var(--ink-3);margin-right:7px}
+
+/* right: cards */
+.card{border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-bottom:11px;
+  cursor:pointer;background:var(--surface);transition:border-color .15s,box-shadow .15s}
+.card:hover{border-color:var(--line-2)}
+.card.on{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-tint)}
+.card[data-sev="3"]{border-left:3px solid var(--s3)}
+.card[data-sev="2"]{border-left:3px solid var(--s2)}
+.ctop{display:flex;align-items:center;gap:7px;margin-bottom:8px;flex-wrap:wrap}
+.cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+  padding:2px 7px;border-radius:4px;background:var(--s1-tint);color:var(--s1)}
+.card[data-sev="2"] .cat{background:var(--s2-tint);color:var(--s2)}
+.card[data-sev="3"] .cat{background:var(--s3-tint);color:var(--s3)}
+.ref{font-size:11px;color:var(--ink-3);font-weight:600}
+.conf{margin-left:auto;font-size:10.5px;color:var(--ink-3);font-variant-numeric:tabular-nums;
+  display:flex;align-items:center;gap:5px}
+.cbar{width:26px;height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+.cbar i{display:block;height:100%;background:var(--s1)}
+.plain{font-size:14.5px;line-height:1.5;margin:0;color:var(--ink);font-weight:450}
+.card.unres{background:repeating-linear-gradient(-45deg,transparent,transparent 8px,var(--line) 8px,var(--line) 9px);
+  border-style:dashed}
+.unres-note{font-size:12px;color:var(--ink-2);font-style:italic;margin-top:9px;padding-top:9px;
+  border-top:1px dashed var(--line-2);display:flex;gap:7px;align-items:flex-start}
+.quote{font-family:Newsreader,serif;font-size:13.5px;color:var(--ink-2);line-height:1.6;margin:0}
+.terms{margin-top:10px;padding-top:9px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px}
+.term{font-size:11px;border-bottom:1px dotted var(--ink-3);color:var(--ink-2);cursor:help}
+.badge{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;background:var(--s3);color:#fff}
+.clear{font-size:10.5px;font-weight:600;color:var(--ink-3);border:1px solid var(--line-2);
+  padding:2px 7px;border-radius:4px}
+
+@media(max-width:900px){
+  .panes{grid-template-columns:1fr;grid-template-rows:40% 60%}
+  .sgrid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hrow">
+    <div class="mark"><span class="glyph"></span> Plain-English Decoder</div>
+    <div class="doc-chip">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+      Residential Lease Agreement.pdf · 14 pages
+    </div>
+    <div class="tools">
+      <button class="tbtn" id="theme">Theme</button>
+      <button class="tbtn">Export</button>
+      <button class="tbtn primary">New document</button>
+    </div>
+  </div>
+</header>
+
+<section class="summary">
+  <div class="sgrid">
+    <div class="scell" data-jump="c07">
+      <div class="q">What this costs you</div>
+      <div class="a"><span class="n">$4,180</span> up front, <span class="n">$2,090</span>/mo</div>
+    </div>
+    <div class="scell" data-jump="c04">
+      <div class="q">What you have to do</div>
+      <div class="a"><span class="n">6</span> obligations · 2 with deadlines</div>
+    </div>
+    <div class="scell" data-jump="c11">
+      <div class="q">What you give up</div>
+      <div class="a"><span class="n">3</span> rights — jury trial, class action, some repairs</div>
+    </div>
+    <div class="scell" data-jump="c09">
+      <div class="q">How you get out</div>
+      <div class="a"><span class="n">2 months</span> rent penalty before month 12</div>
+    </div>
+  </div>
+  <div class="flags">
+    <span class="flag" data-jump="c09">Early termination fee</span>
+    <span class="flag" data-jump="c11">Binding arbitration</span>
+    <span class="flag" data-jump="c11">Class action waiver</span>
+    <span class="flag med" data-jump="c12">Auto-renewal</span>
+    <span class="flag med" data-jump="c08">Unilateral change</span>
+    <span class="flag med" data-jump="c10">Entry with 12h notice</span>
+  </div>
+</section>
+
+<div class="panes">
+  <div class="pane">
+    <div class="phead">
+      <span class="plabel">Original</span>
+      <span class="pcount">14 pages · 6,412 words</span>
+    </div>
+    <div class="pbody" id="left"><div class="src" id="srcbody"></div></div>
+  </div>
+  <div class="pane">
+    <div class="phead">
+      <span class="plabel">Plain English</span>
+      <span class="pcount" id="rcount">12 of 12 clauses decoded</span>
+    </div>
+    <div class="pbody" id="right"></div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   Every card is anchored to a clause id. The plain-English pane
+   is never shown on its own — selecting either side scrolls and
+   highlights the other. That binding is the product.
+   ============================================================ */
+
+const CLAUSES = [
+  { id:"c01", heading:"1. Parties and Premises", ref:"1.1",
+    src:"This Residential Lease Agreement (the “Agreement”) is entered into by and between the Landlord and the Tenant(s) identified in Schedule A hereto, with respect to the residential dwelling unit located at the address set forth in Schedule A (the “Premises”), and shall be governed by the laws of the State without regard to conflict of laws principles.",
+    plain:"This is the lease for the apartment listed in Schedule A. State law applies.",
+    cat:"boilerplate", sev:0, conf:.97 },
+
+  { id:"c02", heading:"", ref:"1.4",
+    src:"Occupancy of the Premises shall be limited to those persons expressly named in Schedule A. Any person residing at the Premises in excess of fourteen (14) consecutive days or twenty-one (21) days in any calendar year shall be deemed an unauthorized occupant, and Landlord may, at its election, treat such occupancy as a material breach of this Agreement.",
+    plain:"Only the people named on the lease can live here. A guest staying more than 14 days in a row — or 21 days total in a year — counts as moving in, and the landlord can treat that as breaking the lease.",
+    cat:"obligation", sev:2, conf:.93, terms:[["material breach","A violation serious enough to let the other side end the contract and sue."]] },
+
+  { id:"c03", heading:"2. Term", ref:"2.1",
+    src:"The initial term of this Agreement shall commence on the Commencement Date and shall continue for a period of twelve (12) consecutive calendar months, unless sooner terminated in accordance with the provisions hereof.",
+    plain:"The lease runs 12 months from your move-in date.",
+    cat:"deadline", sev:1, conf:.96 },
+
+  { id:"c04", heading:"3. Rent and Charges", ref:"3.1",
+    src:"Tenant shall pay to Landlord as base rent the monthly sum set forth in Schedule A, due and payable in advance on or before the first (1st) day of each calendar month, without demand, deduction, offset, or counterclaim of any kind whatsoever.",
+    plain:"Rent is $2,090, due on the 1st. You have to pay it in full even if you think the landlord owes you money.",
+    cat:"cost", sev:2, conf:.91,
+    terms:[["without offset","You can't subtract what you think you're owed from your rent, even for unmade repairs."]] },
+
+  { id:"c05", heading:"", ref:"3.2",
+    src:"In the event any installment of rent is not received by Landlord within five (5) days after the date on which it is due, Tenant shall pay a late charge equal to the greater of seventy-five dollars ($75.00) or five percent (5%) of the delinquent installment, together with interest at the rate of eighteen percent (18%) per annum accruing from the original due date.",
+    plain:"Pay more than 5 days late and you owe $104.50 (5% of rent, since that beats $75), plus 18% annual interest counted from the 1st — not from day 6.",
+    cat:"penalty", sev:3, conf:.89 },
+
+  { id:"c06", heading:"", ref:"3.4",
+    src:"All payments received shall be applied first to outstanding late charges, interest, and other charges, and thereafter to base rent, notwithstanding any designation or instruction by Tenant to the contrary.",
+    plain:"Money you send gets applied to fees first, rent second — so one late payment can leave your rent short and trigger another late fee on top. You can't tell them to apply it differently.",
+    cat:"penalty", sev:3, conf:.87 },
+
+  { id:"c07", heading:"4. Security Deposit", ref:"4.1",
+    src:"Upon execution hereof, Tenant shall deposit with Landlord the sum set forth in Schedule A as security for the faithful performance of Tenant's obligations. Landlord shall not be obligated to hold such funds in a segregated or interest-bearing account except to the extent required by applicable law, and Tenant shall not be entitled to apply the deposit toward any installment of rent, including the final month of the Term.",
+    plain:"You pay a $2,090 deposit on top of first month's rent — $4,180 before you get keys. It doesn't earn you interest, and you can't use it as your last month's rent.",
+    cat:"cost", sev:2, conf:.94 },
+
+  { id:"c08", heading:"5. Rules and Regulations", ref:"5.2",
+    src:"Landlord reserves the right to adopt, modify, amend, or rescind rules and regulations governing the use of the Premises and common areas from time to time, in its sole and absolute discretion, and such rules shall be binding upon Tenant upon posting or delivery, and shall be deemed incorporated herein by reference as though fully set forth.",
+    plain:"The landlord can add or change the building rules whenever they want, and the new rules bind you as soon as they're posted — you don't have to agree or even be told directly.",
+    cat:"right", sev:2, conf:.92, flag:"Unilateral change" },
+
+  { id:"c09", heading:"6. Early Termination", ref:"6.1",
+    src:"Should Tenant vacate the Premises prior to the expiration of the initial Term, whether or not notice is given, Tenant shall remain liable for an early termination fee equal to two (2) months' base rent, which the parties agree constitutes liquidated damages and not a penalty, in addition to all rent accruing through the date on which the Premises are relet.",
+    plain:"Leaving before month 12 costs you $4,180, plus rent until they find a new tenant. Calling it “liquidated damages” is what makes it hard to fight in court.",
+    cat:"termination", sev:3, conf:.9, flag:"Early termination fee",
+    terms:[["liquidated damages","A penalty amount agreed up front. Courts enforce these more readily than penalties they consider punitive."]] },
+
+  { id:"c10", heading:"7. Access", ref:"7.1",
+    src:"Landlord and its agents shall have the right to enter the Premises at reasonable times upon twelve (12) hours' notice, which notice may be given orally, by electronic mail, or by posting upon the entry door, for the purposes of inspection, maintenance, or exhibition to prospective tenants or purchasers; provided, however, that no notice shall be required in the event of an emergency or suspected abandonment.",
+    plain:"They can come in with 12 hours' notice — including a note taped to your door — to inspect or show the place. No notice at all if they call it an emergency or think you've moved out.",
+    cat:"right", sev:2, conf:.93 },
+
+  { id:"c11", heading:"8. Dispute Resolution", ref:"8.1",
+    src:"ANY CONTROVERSY OR CLAIM ARISING OUT OF OR RELATING TO THIS AGREEMENT SHALL BE SETTLED BY BINDING ARBITRATION ADMINISTERED BY A NATIONALLY RECOGNIZED ARBITRATION PROVIDER IN THE COUNTY IN WHICH THE PREMISES ARE LOCATED. THE PARTIES HEREBY KNOWINGLY AND VOLUNTARILY WAIVE ANY RIGHT TO TRIAL BY JURY AND ANY RIGHT TO PARTICIPATE IN A CLASS, COLLECTIVE, OR REPRESENTATIVE ACTION.",
+    plain:"Any dispute goes to a private arbitrator instead of court. You're giving up a jury trial and the right to join other tenants in a class action — which matters most when the problem affects the whole building.",
+    cat:"dispute", sev:3, conf:.95, flag:"Binding arbitration" },
+
+  { id:"c12", heading:"9. Holdover and Renewal", ref:"9.1",
+    src:"Unless either party delivers written notice of non-renewal not less than sixty (60) days prior to the expiration of the then-current Term, this Agreement shall automatically renew for successive periods of twelve (12) months each upon the same terms and conditions, except that base rent shall increase by the greater of five percent (5%) or the change in the applicable regional Consumer Price Index.",
+    plain:"It renews itself for another year unless you give written notice 60 days before the end. Rent goes up at least 5% each renewal — more if inflation runs higher.",
+    cat:"termination", sev:3, conf:.88, flag:"Auto-renewal" },
+
+  { id:"c13", heading:"10. Maintenance", ref:"10.3",
+    src:"Tenant shall be responsible for the repair and replacement of any fixture, appliance, or system component the failure of which is attributable, in Landlord's reasonable determination, to Tenant's misuse, negligence, or failure to report a condition in a timely manner, and Landlord's determination in such regard shall be presumptively correct absent clear and convincing evidence to the contrary.",
+    plain:null, unres:true, conf:.44,
+    cat:"liability", sev:2,
+    why:"This makes the landlord the judge of whether you caused a problem, and puts a high burden on you to disprove it — but “reasonable determination” and “clear and convincing evidence” mean different things in different states. I'd be guessing. Read this one yourself, or ask a local tenant's rights line." },
+
+  { id:"c14", heading:"11. Notices", ref:"11.1",
+    src:"All notices required under this Agreement shall be in writing and delivered to the addresses set forth in Schedule A.",
+    plain:null, unchanged:true, cat:"boilerplate", sev:0, conf:.99 }
+];
+
+// ---------- render left ----------
+document.getElementById("srcbody").innerHTML = CLAUSES.map(c =>
+  (c.heading ? `<h3>${c.heading}</h3>` : "") +
+  `<span class="cl" id="src-${c.id}" data-id="${c.id}" data-sev="${c.sev}">
+     <span class="num">${c.ref}</span>${c.src}</span>`
+).join("");
+
+// ---------- render right ----------
+const CATS = { boilerplate:"Boilerplate", obligation:"You must", right:"They may", cost:"Cost",
+  deadline:"Deadline", penalty:"Penalty", termination:"Getting out", data:"Your data",
+  liability:"Liability", dispute:"Disputes" };
+
+document.getElementById("right").innerHTML = CLAUSES.map(c => {
+  const conf = `<span class="conf"><span class="cbar"><i style="width:${c.conf*100}%"></i></span>${Math.round(c.conf*100)}%</span>`;
+  if (c.unres) return `
+    <div class="card unres" id="card-${c.id}" data-id="${c.id}" data-sev="${c.sev}">
+      <div class="ctop"><span class="cat">${CATS[c.cat]}</span><span class="ref">${c.ref}</span>${conf}</div>
+      <p class="quote">${c.src.slice(0,150)}…</p>
+      <div class="unres-note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex:none;margin-top:2px"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <span><strong>I'm not confident enough to restate this.</strong> ${c.why}</span>
+      </div>
+    </div>`;
+  if (c.unchanged) return `
+    <div class="card" id="card-${c.id}" data-id="${c.id}" data-sev="0">
+      <div class="ctop"><span class="cat">${CATS[c.cat]}</span><span class="ref">${c.ref}</span>
+        <span class="clear">already clear</span>${conf}</div>
+      <p class="quote">${c.src}</p>
+    </div>`;
+  return `
+    <div class="card" id="card-${c.id}" data-id="${c.id}" data-sev="${c.sev}">
+      <div class="ctop"><span class="cat">${CATS[c.cat]}</span><span class="ref">${c.ref}</span>
+        ${c.flag ? `<span class="badge">${c.flag}</span>` : ""}${conf}</div>
+      <p class="plain">${c.plain}</p>
+      ${c.terms ? `<div class="terms">${c.terms.map(([t,g]) =>
+        `<span class="term" title="${g}">${t}</span>`).join("")}</div>` : ""}
+    </div>`;
+}).join("");
+
+// ---------- binding ----------
+let active = null;
+function focusClause(id, from) {
+  if (active) {
+    document.getElementById("src-" + active)?.classList.remove("on");
+    document.getElementById("card-" + active)?.classList.remove("on");
+  }
+  active = id;
+  const s = document.getElementById("src-" + id), c = document.getElementById("card-" + id);
+  s?.classList.add("on"); c?.classList.add("on");
+  if (from !== "left") s?.scrollIntoView({ block:"center", behavior:"smooth" });
+  if (from !== "right") c?.scrollIntoView({ block:"center", behavior:"smooth" });
+}
+
+document.getElementById("left").addEventListener("click", e => {
+  const el = e.target.closest(".cl"); if (el) focusClause(el.dataset.id, "left");
+});
+document.getElementById("right").addEventListener("click", e => {
+  const el = e.target.closest(".card"); if (el) focusClause(el.dataset.id, "right");
+});
+document.getElementById("left").addEventListener("mouseover", e => {
+  const el = e.target.closest(".cl");
+  if (el && el.dataset.id !== active) document.getElementById("card-" + el.dataset.id)?.classList.add("on");
+});
+document.getElementById("left").addEventListener("mouseout", e => {
+  const el = e.target.closest(".cl");
+  if (el && el.dataset.id !== active) document.getElementById("card-" + el.dataset.id)?.classList.remove("on");
+});
+document.getElementById("right").addEventListener("mouseover", e => {
+  const el = e.target.closest(".card");
+  if (el && el.dataset.id !== active) document.getElementById("src-" + el.dataset.id)?.classList.add("on");
+});
+document.getElementById("right").addEventListener("mouseout", e => {
+  const el = e.target.closest(".card");
+  if (el && el.dataset.id !== active) document.getElementById("src-" + el.dataset.id)?.classList.remove("on");
+});
+document.querySelectorAll("[data-jump]").forEach(el =>
+  el.addEventListener("click", () => focusClause(el.dataset.jump)));
+
+document.getElementById("theme").addEventListener("click", () => {
+  const cur = document.documentElement.getAttribute("data-theme");
+  document.documentElement.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+});
+
+document.getElementById("rcount").textContent =
+  `${CLAUSES.filter(c => !c.unres).length} of ${CLAUSES.length} clauses decoded · 1 unresolved`;
+
+focusClause("c09");
+</script>
+</body>
+</html>

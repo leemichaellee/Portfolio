@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inbox Cleaner</title>
+<meta name="description" content="Clean your Gmail by sender, not by message.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7f5; --surface:#ffffff; --ink:#0e0e0e; --ink-2:#5c5c5c; --ink-3:#9a9a9a;
+  --line:#e6e6e3; --line-strong:#d2d2ce; --accent:#FF4D00; --accent-tint:#fff1ea;
+  --good:#1f7a5a; --warn:#b26a00; --danger:#c0341d;
+  --r:10px; --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+:root[data-theme="dark"], :root:not([data-theme="light"]){}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d0d0d; --surface:#161616; --ink:#f2f2f0; --ink-2:#a3a3a0; --ink-3:#6e6e6b;
+    --line:#252525; --line-strong:#333; --accent:#FF5C14; --accent-tint:#2a1409;
+    --good:#4cc79b; --warn:#d99a2b; --danger:#ef6a52;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d0d0d; --surface:#161616; --ink:#f2f2f0; --ink-2:#a3a3a0; --ink-3:#6e6e6b;
+  --line:#252525; --line-strong:#333; --accent:#FF5C14; --accent-tint:#2a1409;
+  --good:#4cc79b; --warn:#d99a2b; --danger:#ef6a52;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:14px; line-height:1.45; -webkit-font-smoothing:antialiased;
+}
+.shell{max-width:1240px;margin:0 auto;padding:0 24px 160px}
+
+/* ---- header ---- */
+header.app{
+  position:sticky;top:0;z-index:30;background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.hrow{max-width:1240px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;gap:16px}
+.mark{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;font-size:15px}
+.sq{width:16px;height:16px;background:var(--accent);border-radius:3px;flex:none}
+.acct{margin-left:auto;display:flex;align-items:center;gap:12px;color:var(--ink-2);font-size:13px}
+.avatar{width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--bg);
+  display:grid;place-items:center;font-size:11px;font-weight:600}
+.iconbtn{background:none;border:1px solid var(--line-strong);border-radius:8px;color:var(--ink-2);
+  width:30px;height:30px;display:grid;place-items:center;cursor:pointer}
+.iconbtn:hover{color:var(--ink);border-color:var(--ink-3)}
+
+/* ---- index progress ---- */
+.indexbar{max-width:1240px;margin:0 auto;padding:0 24px}
+.indexbar .inner{display:flex;align-items:center;gap:14px;padding:10px 0;font-size:12.5px;color:var(--ink-2);
+  border-bottom:1px solid var(--line)}
+.track{flex:1;height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+.fill{height:100%;background:var(--accent);width:0%;transition:width .3s ease}
+.tnum{font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:11.5px}
+
+/* ---- stats ---- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:28px 0 24px}
+.stat{background:var(--surface);padding:16px 18px}
+.stat .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);font-weight:600}
+.stat .v{font-size:26px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-top:4px}
+.stat .s{font-size:12px;color:var(--ink-2)}
+
+/* ---- toolbar ---- */
+.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{background:var(--surface);border:1px solid var(--line-strong);border-radius:99px;
+  padding:6px 13px;font-size:12.5px;color:var(--ink-2);cursor:pointer;font-weight:500;font-family:inherit}
+.chip:hover{border-color:var(--ink-3);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.search{margin-left:auto;position:relative}
+.search input{background:var(--surface);border:1px solid var(--line-strong);border-radius:8px;
+  padding:7px 12px 7px 32px;font-size:13px;width:230px;color:var(--ink);font-family:inherit}
+.search input:focus{outline:none;border-color:var(--accent)}
+.search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--ink-3)}
+
+/* ---- table ---- */
+/* `clip` rather than `hidden`: `hidden` would make this a scroll container,
+   which sticky <th> would then resolve against instead of the viewport. */
+.tablewrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:clip}
+table{width:100%;border-collapse:collapse}
+thead th{
+  position:sticky;top:69px;z-index:10;background:var(--surface);
+  text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.07em;
+  color:var(--ink-3);font-weight:600;padding:11px 14px;border-bottom:1px solid var(--line);
+  cursor:pointer;user-select:none;white-space:nowrap
+}
+thead th:hover{color:var(--ink)}
+thead th .arr{opacity:0;margin-left:4px}
+thead th[aria-sort] .arr{opacity:1;color:var(--accent)}
+th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr{border-bottom:1px solid var(--line);cursor:pointer}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:var(--bg)}
+tbody tr[aria-selected="true"]{background:var(--accent-tint)}
+td{padding:11px 14px;vertical-align:middle}
+td.num{font-family:var(--mono);font-size:12.5px}
+.cb{width:15px;height:15px;accent-color:var(--accent);cursor:pointer}
+.sender{display:flex;align-items:center;gap:11px;min-width:0}
+.dot{width:26px;height:26px;border-radius:6px;flex:none;display:grid;place-items:center;
+  font-size:11px;font-weight:700;color:#fff}
+.sname{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.saddr{font-size:11.5px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden;width:74px;margin-left:auto}
+.bar i{display:block;height:100%;background:var(--ink-3)}
+.bar i.hot{background:var(--accent)}
+.tag{display:inline-block;font-size:10.5px;font-weight:600;padding:2px 7px;border-radius:4px;
+  border:1px solid var(--line-strong);color:var(--ink-2);white-space:nowrap}
+.tag.unsub{border-color:var(--good);color:var(--good)}
+.stale{color:var(--ink-3);font-size:12px}
+
+/* ---- action bar ---- */
+.actionbar{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(150%);
+  background:var(--ink);color:var(--bg);border-radius:12px;display:flex;align-items:center;gap:6px;
+  padding:10px 12px;box-shadow:0 12px 40px rgba(0,0,0,.28);transition:transform .22s cubic-bezier(.2,.8,.2,1);
+  z-index:40;max-width:calc(100vw - 32px)
+}
+.actionbar.show{transform:translateX(-50%) translateY(0)}
+.abcount{font-size:13px;font-weight:600;padding:0 12px 0 6px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.abdiv{width:1px;height:22px;background:rgba(255,255,255,.18)}
+.abbtn{background:rgba(255,255,255,.1);border:none;color:inherit;font-family:inherit;font-size:12.5px;
+  font-weight:600;padding:8px 13px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.abbtn:hover{background:rgba(255,255,255,.2)}
+.abbtn.danger:hover{background:var(--danger)}
+.abbtn.primary{background:var(--accent);color:#fff}
+.abbtn.primary:hover{background:var(--accent);filter:brightness(1.12)}
+.abbtn[disabled]{opacity:.32;cursor:not-allowed}
+.abbtn[disabled]:hover{background:rgba(255,255,255,.1)}
+.abx{background:none;border:none;color:rgba(255,255,255,.55);cursor:pointer;padding:6px;display:grid;place-items:center}
+.abx:hover{color:#fff}
+
+/* ---- modal ---- */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.42);backdrop-filter:blur(3px);
+  display:none;place-items:center;z-index:60;padding:24px}
+.scrim.show{display:grid}
+.modal{background:var(--surface);border-radius:14px;width:min(560px,100%);max-height:86vh;
+  display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.3)}
+.mhead{padding:22px 24px 16px;border-bottom:1px solid var(--line)}
+.mhead h2{margin:0 0 6px;font-size:19px;letter-spacing:-.02em}
+.mhead p{margin:0;color:var(--ink-2);font-size:13px}
+.mbody{padding:18px 24px;overflow:auto;flex:1}
+.prev{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.prev h4{margin:0 0 3px;font-size:13px}
+.prev .meta{font-size:11.5px;color:var(--ink-3);margin-bottom:8px}
+.prev li{font-size:12px;color:var(--ink-2);list-style:none;padding:3px 0;border-top:1px dashed var(--line);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prev ul{margin:0;padding:0}
+.mfoot{padding:16px 24px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:center}
+.warn{background:var(--accent-tint);border:1px solid var(--accent);border-radius:8px;padding:11px 13px;
+  font-size:12.5px;margin-bottom:14px;color:var(--ink)}
+.confirm-in{width:100%;padding:9px 12px;border:1px solid var(--line-strong);border-radius:8px;
+  font-family:var(--mono);font-size:13px;background:var(--bg);color:var(--ink);margin-top:8px}
+.btn{font-family:inherit;font-size:13px;font-weight:600;padding:9px 16px;border-radius:8px;cursor:pointer;border:1px solid transparent}
+.btn.ghost{background:none;border-color:var(--line-strong);color:var(--ink-2)}
+.btn.ghost:hover{color:var(--ink);border-color:var(--ink-3)}
+.btn.solid{background:var(--ink);color:var(--bg);margin-left:auto}
+.btn.solid:disabled{opacity:.35;cursor:not-allowed}
+.btn.red{background:var(--danger);color:#fff;margin-left:auto}
+
+/* ---- toast ---- */
+.toast{position:fixed;left:24px;bottom:24px;background:var(--surface);border:1px solid var(--line-strong);
+  border-radius:12px;padding:13px 15px;display:none;align-items:center;gap:14px;z-index:70;
+  box-shadow:0 12px 36px rgba(0,0,0,.16);max-width:min(440px,calc(100vw - 48px))}
+.toast.show{display:flex}
+.toast .msg{font-size:13px;font-weight:500}
+.toast .sub{font-size:11.5px;color:var(--ink-2)}
+.ring{width:32px;height:32px;flex:none;position:relative}
+.ring svg{transform:rotate(-90deg)}
+.ring span{position:absolute;inset:0;display:grid;place-items:center;font-size:10.5px;
+  font-weight:700;font-variant-numeric:tabular-nums}
+.undo{background:var(--ink);color:var(--bg);border:none;font-family:inherit;font-size:12.5px;
+  font-weight:600;padding:7px 14px;border-radius:7px;cursor:pointer;margin-left:auto}
+
+/* ---- progress overlay ---- */
+.runbar{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);
+  border-radius:12px;padding:14px 18px;z-index:50;display:none;min-width:320px}
+.runbar.show{display:block}
+.runbar .t{font-size:13px;font-weight:600;margin-bottom:9px;display:flex;justify-content:space-between;gap:20px}
+.runtrack{height:4px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden}
+.runtrack i{display:block;height:100%;background:var(--accent);width:0;transition:width .2s}
+
+.empty{text-align:center;padding:70px 20px;color:var(--ink-3)}
+@media(max-width:860px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .hide-sm{display:none}
+  .search input{width:150px}
+}
+</style>
+</head>
+<body>
+
+<header class="app">
+  <div class="hrow">
+    <div class="mark"><span class="sq"></span> Inbox Cleaner</div>
+    <div class="acct">
+      <span class="hide-sm">leelee.michael.leelee@gmail.com</span>
+      <span class="avatar">ML</span>
+      <button class="iconbtn" id="theme" title="Toggle theme" aria-label="Toggle theme">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="indexbar" id="indexbar">
+  <div class="inner">
+    <span>Indexing inbox</span>
+    <div class="track"><div class="fill" id="ifill"></div></div>
+    <span class="tnum" id="itext">0 / 38,412 messages</span>
+  </div>
+</div>
+
+<div class="shell">
+
+  <div class="stats">
+    <div class="stat"><div class="k">Messages</div><div class="v" id="s-msgs">0</div><div class="s">in your inbox</div></div>
+    <div class="stat"><div class="k">Senders</div><div class="v" id="s-send">0</div><div class="s">decisions to make</div></div>
+    <div class="stat"><div class="k">Never opened</div><div class="v" id="s-unread">0</div><div class="s">unread, all time</div></div>
+    <div class="stat"><div class="k">Reclaimable</div><div class="v" id="s-size">0</div><div class="s">from unread senders</div></div>
+  </div>
+
+  <div class="toolbar">
+    <button class="chip" data-filter="unread" aria-pressed="false">Mostly unread</button>
+    <button class="chip" data-filter="unsub" aria-pressed="false">Has unsubscribe</button>
+    <button class="chip" data-filter="stale" aria-pressed="false">Silent 1y+</button>
+    <button class="chip" data-filter="big" aria-pressed="false">Over 100 messages</button>
+    <div class="search">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" id="q" placeholder="Filter senders" autocomplete="off">
+    </div>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:38px"><input type="checkbox" class="cb" id="all" aria-label="Select all"></th>
+          <th data-sort="name">Sender <span class="arr">↓</span></th>
+          <th class="num" data-sort="count" aria-sort="descending">Messages <span class="arr">↓</span></th>
+          <th class="num hide-sm" data-sort="unread">Unread <span class="arr">↓</span></th>
+          <th class="num hide-sm" data-sort="read">Read rate <span class="arr">↓</span></th>
+          <th class="num hide-sm" data-sort="size">Size <span class="arr">↓</span></th>
+          <th class="hide-sm" data-sort="last">Last seen <span class="arr">↓</span></th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden>No senders match those filters.</div>
+  </div>
+</div>
+
+<div class="actionbar" id="ab">
+  <span class="abcount" id="abcount">0 selected</span>
+  <div class="abdiv"></div>
+  <button class="abbtn primary" data-act="unsub">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/><path d="M2 2l20 20" stroke-width="2.2"/></svg>
+    Unsubscribe</button>
+  <button class="abbtn" data-act="archive">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="5" rx="1"/><path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9M10 13h4"/></svg>
+    Archive</button>
+  <button class="abbtn" data-act="read">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+    Mark read</button>
+  <button class="abbtn" data-act="label">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h6l9 9-8 8-9-9V7Z"/><circle cx="8" cy="10" r="1.2"/></svg>
+    Move to</button>
+  <button class="abbtn danger" data-act="trash">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>
+    Trash</button>
+  <div class="abdiv"></div>
+  <button class="abx" id="abclear" aria-label="Clear selection">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+
+<div class="scrim" id="scrim">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+    <div class="mhead"><h2 id="mt">Archive 1,847 messages</h2><p id="ms">From 6 senders. Nothing is deleted — archived mail stays searchable.</p></div>
+    <div class="mbody" id="mb"></div>
+    <div class="mfoot">
+      <button class="btn ghost" id="cancel">Cancel</button>
+      <button class="btn solid" id="go">Archive 1,847</button>
+    </div>
+  </div>
+</div>
+
+<div class="runbar" id="runbar">
+  <div class="t"><span id="runlabel">Archiving…</span><span id="runcount">0 / 0</span></div>
+  <div class="runtrack"><i id="runfill"></i></div>
+</div>
+
+<div class="toast" id="toast">
+  <div class="ring">
+    <svg width="32" height="32"><circle cx="16" cy="16" r="13" fill="none" stroke="var(--line)" stroke-width="3"/>
+    <circle id="rc" cx="16" cy="16" r="13" fill="none" stroke="var(--accent)" stroke-width="3"
+      stroke-dasharray="81.7" stroke-dashoffset="0" stroke-linecap="round"/></svg>
+    <span id="rt">60</span>
+  </div>
+  <div><div class="msg" id="tmsg">Archived 1,847 messages</div><div class="sub" id="tsub">From 6 senders</div></div>
+  <button class="undo" id="undo">Undo</button>
+</div>
+
+<script>
+/* ============================================================
+   Inbox Cleaner — interactive prototype.
+   Runs on a generated corpus that mirrors the shape of a real
+   Gmail index so every interaction (sort, filter, batch, undo,
+   partial failure) exercises the same code path as production.
+   ============================================================ */
+
+const NAMES = [
+  ["Old Navy","promo@oldnavy.com","#1b3a6b"],["LinkedIn","notifications-noreply@linkedin.com","#0a66c2"],
+  ["Medium Daily Digest","noreply@medium.com","#111"],["DoorDash","no-reply@doordash.com","#eb1700"],
+  ["Slack","feedback@slack.com","#4a154b"],["Chase","no.reply.alerts@chase.com","#0b5ea8"],
+  ["Uber Receipts","uber.us@uber.com","#111"],["Substack","no-reply@substack.com","#ff6719"],
+  ["Nike","nike@official.nike.com","#111"],["Figma","no-reply@figma.com","#a259ff"],
+  ["Amazon.com","shipment-tracking@amazon.com","#ff9900"],["Spotify","no-reply@spotify.com","#1db954"],
+  ["Notion","team@makenotion.com","#111"],["Robinhood","notifications@robinhood.com","#00c805"],
+  ["Eventbrite","noreply@eventbrite.com","#f05537"],["Yelp","no-reply@yelp.com","#d32323"],
+  ["GitHub","notifications@github.com","#24292f"],["United Airlines","unitedairlines@united.com","#002244"],
+  ["Sephora","info@email.sephora.com","#111"],["Peloton","news@onepeloton.com","#df1c2f"],
+  ["Target","orders@target.com","#cc0000"],["Instacart","no-reply@instacart.com","#43b02a"],
+  ["The Athletic","newsletters@theathletic.com","#111"],["Merrill","alerts@merrill.com","#0073cf"],
+  ["Dropbox","no-reply@dropbox.com","#0061ff"],["Airbnb","automated@airbnb.com","#ff5a5f"],
+  ["Zillow","no-reply@zillow.com","#006aff"],["REI Co-op","rei@notices.rei.com","#4c8b2b"],
+  ["Ticketmaster","customer_service@ticketmaster.com","#026cdf"],["Duolingo","hello@duolingo.com","#58cc02"],
+  ["Coinbase","no-reply@coinbase.com","#0052ff"],["Grubhub","order@eat.grubhub.com","#f63440"],
+  ["Adobe","mail@mail.adobe.com","#ed2224"],["Costco","costco@online.costco.com","#005daa"],
+  ["Patagonia","patagonia@email.patagonia.com","#2b2b2b"],["Strava","no-reply@strava.com","#fc4c02"],
+  ["Apple","no_reply@email.apple.com","#555"],["Kapital","shop@kapital.jp","#1a2b4a"],
+  ["Verizon","verizon@emails.verizon.com","#d52b1e"],["SDG&E","noreply@sdge.com","#0a7a3f"],
+  ["HOA — Bernardo Ridge","management@bernardoridge.org","#6b5b3a"],["Blue Bottle","hello@bluebottlecoffee.com","#1c4a8f"]
+];
+const SUBJ = ["Your order has shipped","50% off everything — today only","Weekly digest","Payment received",
+  "New sign-in to your account","You have 3 new notifications","Your receipt from last night",
+  "Don't miss this","We miss you — here's 20% off","Your statement is ready","Reminder: complete your profile",
+  "Trending in your network","Final hours","Your subscription renews soon","Thanks for your order"];
+
+let RNG = 1337;
+const rnd = () => (RNG = (RNG * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+const pick = a => a[Math.floor(rnd() * a.length)];
+
+// ---- build corpus ------------------------------------------------
+const SENDERS = NAMES.map(([name, addr, color], i) => {
+  const count = Math.floor(12 + Math.pow(rnd(), 2.1) * 2800);
+  const readRate = rnd() < .55 ? rnd() * .18 : .25 + rnd() * .7;
+  const unread = Math.min(count, Math.round(count * (1 - readRate)));
+  const daysAgo = Math.floor(Math.pow(rnd(), 1.7) * 1100);
+  return {
+    id: "s" + i, name, addr, color, count, unread,
+    read: 1 - unread / count,
+    size: count * (24 + rnd() * 180) * 1024,
+    last: Date.now() - daysAgo * 864e5,
+    unsub: rnd() < .62,
+    sample: Array.from({ length: 5 }, () => pick(SUBJ))
+  };
+});
+
+const TOTAL_MSGS = SENDERS.reduce((a, s) => a + s.count, 0);
+let sort = { key: "count", dir: -1 };
+let filters = new Set();
+let query = "";
+let selected = new Set();
+let ops = [];
+let removed = new Set();
+
+// ---- formatting --------------------------------------------------
+const nf = new Intl.NumberFormat("en-US");
+const bytes = b => b > 1073741824 ? (b / 1073741824).toFixed(1) + " GB" : Math.round(b / 1048576) + " MB";
+const ago = t => {
+  const d = Math.floor((Date.now() - t) / 864e5);
+  if (d < 1) return "today";
+  if (d < 30) return d + "d ago";
+  if (d < 365) return Math.floor(d / 30) + "mo ago";
+  const y = (d / 365).toFixed(1);
+  return y + "y ago";
+};
+
+// ---- indexing animation -----------------------------------------
+let indexed = 0;
+const ifill = document.getElementById("ifill"), itext = document.getElementById("itext");
+document.getElementById("itext").textContent = "0 / " + nf.format(TOTAL_MSGS) + " messages";
+const indexTimer = setInterval(() => {
+  indexed = Math.min(TOTAL_MSGS, indexed + Math.round(TOTAL_MSGS / 26));
+  const p = indexed / TOTAL_MSGS;
+  ifill.style.width = (p * 100) + "%";
+  itext.textContent = nf.format(indexed) + " / " + nf.format(TOTAL_MSGS) + " messages";
+  bumpStats(p);
+  if (indexed >= TOTAL_MSGS) {
+    clearInterval(indexTimer);
+    setTimeout(() => document.getElementById("indexbar").style.display = "none", 700);
+  }
+}, 90);
+
+function bumpStats(p) {
+  const live = SENDERS.filter(s => !removed.has(s.id));
+  document.getElementById("s-msgs").textContent = nf.format(Math.round(live.reduce((a, s) => a + s.count, 0) * p));
+  document.getElementById("s-send").textContent = nf.format(Math.round(live.length * p));
+  document.getElementById("s-unread").textContent = nf.format(Math.round(live.reduce((a, s) => a + s.unread, 0) * p));
+  document.getElementById("s-size").textContent =
+    bytes(live.filter(s => s.read < .3).reduce((a, s) => a + s.size, 0) * p);
+}
+
+// ---- view ---------------------------------------------------------
+function view() {
+  let v = SENDERS.filter(s => !removed.has(s.id));
+  if (filters.has("unread")) v = v.filter(s => s.read < .25);
+  if (filters.has("unsub")) v = v.filter(s => s.unsub);
+  if (filters.has("stale")) v = v.filter(s => Date.now() - s.last > 365 * 864e5);
+  if (filters.has("big")) v = v.filter(s => s.count > 100);
+  if (query) {
+    const q = query.toLowerCase();
+    v = v.filter(s => s.name.toLowerCase().includes(q) || s.addr.toLowerCase().includes(q));
+  }
+  const k = sort.key;
+  return v.sort((a, b) => {
+    const A = k === "name" ? a.name.toLowerCase() : a[k];
+    const B = k === "name" ? b.name.toLowerCase() : b[k];
+    return A < B ? -sort.dir : A > B ? sort.dir : 0;
+  });
+}
+
+function render() {
+  const v = view(), tb = document.getElementById("rows");
+  document.getElementById("empty").hidden = v.length > 0;
+  tb.innerHTML = v.map(s => `
+    <tr data-id="${s.id}" aria-selected="${selected.has(s.id)}">
+      <td><input type="checkbox" class="cb" ${selected.has(s.id) ? "checked" : ""} aria-label="Select ${s.name}"></td>
+      <td><div class="sender">
+        <span class="dot" style="background:${s.color}">${s.name[0]}</span>
+        <span style="min-width:0">
+          <div class="sname">${s.name} ${s.unsub ? '<span class="tag unsub">unsub</span>' : ""}</div>
+          <div class="saddr">${s.addr}</div>
+        </span></div></td>
+      <td class="num">${nf.format(s.count)}</td>
+      <td class="num hide-sm">${nf.format(s.unread)}</td>
+      <td class="num hide-sm"><div style="display:flex;align-items:center;gap:8px;justify-content:flex-end">
+        <span>${Math.round(s.read * 100)}%</span>
+        <span class="bar"><i class="${s.read < .25 ? "hot" : ""}" style="width:${Math.max(3, s.read * 100)}%"></i></span>
+      </div></td>
+      <td class="num hide-sm">${bytes(s.size)}</td>
+      <td class="hide-sm stale">${ago(s.last)}</td>
+    </tr>`).join("");
+  document.querySelectorAll("thead th[data-sort]").forEach(th =>
+    th.toggleAttribute("aria-sort", th.dataset.sort === sort.key));
+  const all = document.getElementById("all");
+  all.checked = v.length > 0 && v.every(s => selected.has(s.id));
+  all.indeterminate = !all.checked && v.some(s => selected.has(s.id));
+  syncBar();
+}
+
+function syncBar() {
+  const n = selected.size;
+  const sel = SENDERS.filter(s => selected.has(s.id));
+  const msgs = sel.reduce((a, s) => a + s.count, 0);
+  document.getElementById("abcount").textContent =
+    n ? `${n} sender${n > 1 ? "s" : ""} · ${nf.format(msgs)} messages` : "0 selected";
+  document.getElementById("ab").classList.toggle("show", n > 0);
+
+  // Unsubscribe only works where the sender sent a List-Unsubscribe header.
+  // Disabled rather than hidden, so the reason stays visible.
+  const canUnsub = sel.filter(s => s.unsub).length;
+  const btn = document.querySelector('.abbtn[data-act="unsub"]');
+  btn.disabled = canUnsub === 0;
+  btn.title = canUnsub === 0
+    ? "None of these senders support one-click unsubscribe"
+    : `${canUnsub} of ${n} senders support one-click unsubscribe`;
+}
+
+// ---- events -------------------------------------------------------
+document.getElementById("rows").addEventListener("click", e => {
+  const tr = e.target.closest("tr"); if (!tr) return;
+  const id = tr.dataset.id;
+  selected.has(id) ? selected.delete(id) : selected.add(id);
+  render();
+});
+document.getElementById("all").addEventListener("change", e => {
+  const v = view();
+  e.target.checked ? v.forEach(s => selected.add(s.id)) : v.forEach(s => selected.delete(s.id));
+  render();
+});
+document.querySelectorAll("thead th[data-sort]").forEach(th => th.addEventListener("click", () => {
+  const k = th.dataset.sort;
+  sort = { key: k, dir: sort.key === k ? -sort.dir : (k === "name" ? 1 : -1) };
+  render();
+}));
+document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => {
+  const f = c.dataset.filter;
+  filters.has(f) ? filters.delete(f) : filters.add(f);
+  c.setAttribute("aria-pressed", filters.has(f));
+  render();
+}));
+document.getElementById("q").addEventListener("input", e => { query = e.target.value; render(); });
+document.getElementById("abclear").addEventListener("click", () => { selected.clear(); render(); });
+document.getElementById("theme").addEventListener("click", () => {
+  const cur = document.documentElement.getAttribute("data-theme");
+  const next = cur === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  try { localStorage.setItem("ic-theme", next); } catch (e) {}
+});
+try { const t = localStorage.getItem("ic-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+
+// ---- preview + confirm --------------------------------------------
+const VERBS = { unsub: "Unsubscribe", archive: "Archive", read: "Mark read", label: "Move", trash: "Trash" };
+let pending = null;
+
+document.querySelectorAll(".abbtn").forEach(b => b.addEventListener("click", () => {
+  if (b.disabled) return;
+  const act = b.dataset.act;
+  const sel = SENDERS.filter(s => selected.has(s.id));
+  // Unsubscribe applies only to the senders that actually support it
+  const list = act === "unsub" ? sel.filter(s => s.unsub) : sel;
+  const msgs = list.reduce((a, s) => a + s.count, 0);
+  const skipped = sel.length - list.length;
+  // Friction scales with blast radius. Trash always. Archive and label past
+  // 5,000. Unsubscribe and mark-read never — both are reversible and neither
+  // removes anything, so a typed confirmation would just be theatre.
+  const REVERSIBLE = act === "unsub" || act === "read";
+  pending = { act, list, msgs, typed: act === "trash" || (msgs > 5000 && !REVERSIBLE) };
+
+  document.getElementById("mt").textContent = act === "unsub"
+    ? `Unsubscribe from ${list.length} sender${list.length > 1 ? "s" : ""}`
+    : `${VERBS[act]} ${nf.format(msgs)} messages`;
+
+  document.getElementById("ms").textContent =
+    act === "unsub"
+      ? `Sends a one-click unsubscribe using each sender's List-Unsubscribe header, then archives the ${nf.format(msgs)} messages already in your inbox.` +
+        (skipped ? ` ${skipped} selected sender${skipped > 1 ? "s don't" : " doesn't"} support it and will be left alone.` : "")
+    : act === "trash"
+      ? `From ${list.length} sender${list.length > 1 ? "s" : ""}. Goes to Trash — recoverable for 30 days.`
+      : `From ${list.length} sender${list.length > 1 ? "s" : ""}. Nothing is deleted.`;
+
+  document.getElementById("mb").innerHTML =
+    (pending.typed ? `<div class="warn"><strong>This is a large, destructive action.</strong>
+       Type <code>${nf.format(msgs)}</code> to confirm.
+       <input class="confirm-in" id="typed" placeholder="${nf.format(msgs)}" autocomplete="off"></div>` : "") +
+    list.slice(0, 6).map(s => `
+      <div class="prev"><h4>${s.name} ${act === "unsub" ? '<span class="tag unsub">one-click</span>' : ""}</h4>
+        <div class="meta">${nf.format(s.count)} messages · ${nf.format(s.unread)} unread · last ${ago(s.last)}</div>
+        <ul>${s.sample.map(x => `<li>${x}</li>`).join("")}</ul></div>`).join("") +
+    (list.length > 6 ? `<p style="font-size:12.5px;color:var(--ink-3)">+ ${list.length - 6} more senders</p>` : "");
+
+  const go = document.getElementById("go");
+  go.textContent = act === "unsub"
+    ? `Unsubscribe from ${list.length}`
+    : `${VERBS[act]} ${nf.format(msgs)}`;
+  go.className = "btn " + (act === "trash" ? "red" : "solid");
+  go.disabled = pending.typed;
+  if (pending.typed) document.getElementById("typed").addEventListener("input", e =>
+    go.disabled = e.target.value.replace(/[^0-9]/g, "") !== String(msgs));
+  document.getElementById("scrim").classList.add("show");
+}));
+
+document.getElementById("cancel").addEventListener("click", () => document.getElementById("scrim").classList.remove("show"));
+document.getElementById("scrim").addEventListener("click", e => {
+  if (e.target.id === "scrim") document.getElementById("scrim").classList.remove("show");
+});
+
+// ---- execute (chunked, with progress) -------------------------------
+document.getElementById("go").addEventListener("click", () => {
+  document.getElementById("scrim").classList.remove("show");
+  // the run bar occupies the same slot as the action bar — yield it
+  document.getElementById("ab").classList.remove("show");
+  const { act, list, msgs } = pending;
+  const chunks = Math.ceil(msgs / 1000);
+  let done = 0, i = 0;
+
+  const rb = document.getElementById("runbar");
+  document.getElementById("runlabel").textContent = VERBS[act] + "…";
+  rb.classList.add("show");
+
+  const tick = setInterval(() => {
+    i++;
+    done = Math.min(msgs, i * 1000);
+    document.getElementById("runcount").textContent = nf.format(done) + " / " + nf.format(msgs);
+    document.getElementById("runfill").style.width = (done / msgs * 100) + "%";
+    if (i >= chunks) {
+      clearInterval(tick);
+      setTimeout(() => {
+        rb.classList.remove("show");
+        commit(act, list, msgs);
+      }, 320);
+    }
+  }, Math.max(60, 900 / chunks));
+});
+
+function commit(act, list, msgs) {
+  const op = { act, ids: list.map(s => s.id), msgs };
+  ops.push(op);
+  if (act === "archive" || act === "trash" || act === "unsub") list.forEach(s => removed.add(s.id));
+  selected.clear();
+  render(); bumpStats(1);
+
+  if (act === "unsub") {
+    document.getElementById("tmsg").textContent =
+      `Unsubscribed from ${list.length} sender${list.length > 1 ? "s" : ""}`;
+    document.getElementById("tsub").textContent =
+      `${nf.format(msgs)} messages archived · no more will arrive`;
+  } else {
+    document.getElementById("tmsg").textContent =
+      `${act === "read" ? "Marked" : VERBS[act] + "d"} ${nf.format(msgs)} messages`;
+    document.getElementById("tsub").textContent =
+      `From ${list.length} sender${list.length > 1 ? "s" : ""}`;
+  }
+  startUndo(op);
+}
+
+let undoTimer = null;
+function startUndo(op) {
+  const toast = document.getElementById("toast");
+  toast.classList.add("show");
+  let left = 60;
+  const ring = document.getElementById("rc"), txt = document.getElementById("rt");
+  clearInterval(undoTimer);
+  const paint = () => { txt.textContent = left; ring.style.strokeDashoffset = (1 - left / 60) * 81.7; };
+  paint();
+  undoTimer = setInterval(() => {
+    left--; paint();
+    if (left <= 0) { clearInterval(undoTimer); toast.classList.remove("show"); }
+  }, 1000);
+  document.getElementById("undo").onclick = () => {
+    clearInterval(undoTimer);
+    toast.classList.remove("show");
+    op.ids.forEach(id => removed.delete(id));
+    ops = ops.filter(o => o !== op);
+    render(); bumpStats(1);
+  };
+}
+
+render();
+</script>
+</body>
+</html>
