@@ -1,0 +1,230 @@
+
+
+<header class="site-nav">
+  <div class="wrap" data-reveal>
+    <div class="logo-group">
+      <a class="name" href="index.html">Michael Lee</a>
+      <span class="logo-divider"></span>
+      <span class="role-tag">UX &amp; Product</span>
+    </div>
+    <nav>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="cs2-hero">
+  <div class="category-header" data-reveal>
+    <span class="category-pill">Consumer Mobile</span>
+    <span class="meta-dot">•</span>
+    <span class="role-label">Solo — Design &amp; Build</span>
+    <span class="meta-dot">•</span>
+    <span class="status-unlaunched">Working Prototype</span>
+  </div>
+  <div data-reveal>
+    <h1>Split</h1>
+    <p class="summary">A dinner bill splitter built around the parts every other splitter gets wrong: shared items, proportional tax and tip, and the leftover penny that stops the numbers from reconciling.</p>
+  </div>
+
+  <div class="cs2-hero-visual photo-fill" data-reveal>
+    <img src="assets/split-hero.png" alt="Three phone screens — itemized receipt with per-person assignment, reconciliation of the printed subtotal, and the final per-person breakdown">
+    <p class="caption">Assign, reconcile, settle. The running total is visible at every step, and it always equals the bill.</p>
+  </div>
+</section>
+
+<section class="cs2-overview">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Project Overview &amp; Context</span>
+  </div>
+  <div class="overview-grid" data-reveal-stagger>
+    <div class="overview-col">
+      <span class="ov-label">Role</span>
+      <span class="ov-value">Everything — product logic, interaction design, front end</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Timeframe</span>
+      <span class="ov-value">2026 · Self-directed</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Driver</span>
+      <span class="ov-value">A real recurring annoyance with a group of ~60 dancers</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Constraint</span>
+      <span class="ov-value">No accounts, no server, no payment rails</span>
+    </div>
+  </div>
+</section>
+
+<section class="cs2-problem-goal">
+  <div class="pg-block" data-reveal>
+    <div class="pg-eyebrow challenge">
+      <span class="dot"></span>
+      <span>The Challenge</span>
+    </div>
+    <h3>The Challenge</h3>
+    <p>Every bill splitter nails the easy case and fumbles three hard ones. Splitting tip evenly taxes the person who ordered a salad to subsidize the person who ordered a steak. Shared items — the wine, the appetizers — are treated as an edge case when they're the common case. And $100 split three ways is $33.33 three times, which is $99.99: somebody has to absorb that cent, and if nobody does, the totals stop reconciling. Once your app hands a table five numbers that don't add up to the bill, nobody at that table opens it again.</p>
+  </div>
+  <div class="pg-block" data-reveal>
+    <div class="pg-eyebrow objective">
+      <span class="dot"></span>
+      <span>Strategic Directive</span>
+    </div>
+    <h3>Strategic Objective</h3>
+    <p>Make the arithmetic provably correct and then make it invisible. The sum of what everyone owes must equal the bill total exactly, every time, asserted in code rather than hoped for — and the interaction on top of it has to be fast enough to finish before the server comes back for the card.</p>
+  </div>
+</section>
+
+<section class="cs2-process">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Process</span>
+  </div>
+  <div class="steps-grid" data-reveal-stagger>
+
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 01</span>
+      <div>
+        <h4>Integer Cents and the Largest-Remainder Rule</h4>
+        <ul>
+          <li>All money is stored as integer cents — no floating point anywhere in the calculation path, which removes an entire category of drift</li>
+          <li>Proportional allocation uses the largest-remainder method: floor every share, then hand the leftover cents to the largest fractional remainders</li>
+          <li>Tie-breaking is seeded from the bill id, so reopening or resharing the same bill always produces the same assignment — not random, not always the first person</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-flow">
+          <span class="flow-node"><span class="box">Floor Each Share</span><span class="caption-sm">Integer Cents</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">Rank Remainders</span><span class="caption-sm">Seeded Tie-Break</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">Sum = Total</span><span class="caption-sm">Asserted</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 02</span>
+      <div>
+        <h4>Refusing to Absorb the Difference</h4>
+        <ul>
+          <li>Receipts carry things the line items don't — service charges, corkage, a discount, an OCR miss — so the item sum rarely matches the printed subtotal exactly</li>
+          <li>Most apps quietly swallow that gap. This one surfaces it: <em>"$2.18 unaccounted for"</em>, with three ways to resolve it and no way to proceed by ignoring it</li>
+          <li>The same reconciliation step is the backstop that catches bad OCR, which is why the parsed receipt is always shown as an editable draft rather than committed straight to the split</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-tree">
+          <span class="hub">Delta Detected</span>
+          <div class="branches">
+            <span class="branch">Split it<br>proportionally</span>
+            <span class="branch">Add as a<br>line item</span>
+            <span class="branch">Go fix<br>the items</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 03</span>
+      <div>
+        <h4>Disclosing the Penny</h4>
+        <ul>
+          <li>Whoever absorbs an extra cent gets a small <em>+1¢</em> marker on their row — it costs nothing to disclose and it's what makes the rest of the math believable</li>
+          <li>Only bill-level rounding is marked. Per-item remainders wash out across a dozen items and would badge everybody, which communicates nothing</li>
+          <li>A persistent footer asserts the invariant in plain language: everyone's totals add to exactly the bill total, no cents lost</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-tree">
+          <span class="hub">Trust Signals</span>
+          <div class="branches">
+            <span class="branch">+1¢ marker<br>on the row</span>
+            <span class="branch">Invariant<br>stated</span>
+            <span class="branch">Tip basis<br>shown inline</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cs2-screens">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Interface</span>
+  </div>
+
+  <div class="gallery-row" data-reveal-stagger>
+    <div class="gallery-item">
+      <div class="thumb" style="aspect-ratio: 960 / 1320;"><img src="assets/split-delta.png" alt="The receipt view with an unassigned item flagged in amber and the reconciliation warning below"></div>
+      <p class="caption">The unassigned item blocks completion, and the delta refuses to be absorbed</p>
+    </div>
+    <div class="gallery-item">
+      <div class="thumb" style="aspect-ratio: 960 / 2360;"><img src="assets/split-totals.png" alt="Per-person totals with expandable breakdowns showing food, tax share, and tip share"></div>
+      <p class="caption">Each person's number opens into the three components that produced it</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs2-results">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Outcomes</span>
+  </div>
+  <div class="metrics-row" data-reveal-stagger>
+    <div class="metric-card">
+      <span class="num">0¢</span>
+      <span class="m-label">Rounding Drift</span>
+      <span class="m-desc">Per-person totals sum to the bill total exactly on every recalculation. The invariant is asserted after each change; if it ever failed, the app would show a reconciliation banner instead of wrong numbers.</span>
+    </div>
+    <div class="metric-card">
+      <span class="num">1 tap</span>
+      <span class="m-label">To Split an Item</span>
+      <span class="m-desc">An "Everyone" control on each row handles appetizers and drinks — the majority of shared items — without opening a share sheet.</span>
+    </div>
+    <div class="metric-card">
+      <span class="num">No server</span>
+      <span class="m-label">Architecture</span>
+      <span class="m-desc">OCR runs in the browser and the full bill state encodes into the share link, so there's no account, no backend, and nothing to host beyond static files.</span>
+    </div>
+  </div>
+  <div class="reflection-box" data-reveal>
+    <h4>Reflection</h4>
+    <p>The interesting design work turned out to be in the disclosures, not the flow. Showing the <em>+1¢</em> marker, naming the unaccounted delta, and putting "tipping on the tax adds $3.06" inline next to the toggle — none of those make the app easier to use, and all of them make it easier to believe, which is the thing that actually decides whether a group uses it twice. What I'd change: I designed assignment before reconciliation, and reconciliation is the harder problem. Starting from "the receipt is wrong and the items are wrong" would have produced a better editing model than the one I retrofitted.</p>
+  </div>
+</section>
+
+<nav class="cs2-nav-footer" data-reveal>
+  <a class="nav-prev" href="decoder.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+    <span class="nav-label-block">
+      <span class="eyebrow">Previous Project</span>
+      <span class="title">Plain-English Decoder</span>
+    </span>
+  </a>
+  <a class="nav-next" href="inbox-cleaner.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <span class="nav-label-block">
+      <span class="eyebrow">Next Project</span>
+      <span class="title">Inbox Cleaner</span>
+    </span>
+  </a>
+</nav>
+
+<footer class="site-footer">
+  <div class="wrap" data-reveal>
+    <div class="foot-left">
+      <p>© 2025 Michael Lee. Built with precision.</p>
+      <span class="foot-divider"></span>
+      <p>Glad you're here!</p>
+    </div>
+    <a class="back-to-top" href="#top">
+      Back to top
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+    </a>
+  </div>
+</footer>

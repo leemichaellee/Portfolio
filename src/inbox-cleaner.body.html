@@ -1,0 +1,240 @@
+
+
+<header class="site-nav">
+  <div class="wrap" data-reveal>
+    <div class="logo-group">
+      <a class="name" href="index.html">Michael Lee</a>
+      <span class="logo-divider"></span>
+      <span class="role-tag">UX &amp; Product</span>
+    </div>
+    <nav>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="cs2-hero">
+  <div class="category-header" data-reveal>
+    <span class="category-pill">Productivity Tool</span>
+    <span class="meta-dot">•</span>
+    <span class="role-label">Solo — Design &amp; Build</span>
+    <span class="meta-dot">•</span>
+    <span class="status-unlaunched">Working Prototype</span>
+  </div>
+  <div data-reveal>
+    <h1>Inbox Cleaner</h1>
+    <p class="summary">Gmail makes you delete email one message at a time. Nobody has 40,000 email problems — they have 200 sender problems. This inverts the unit of work, and then spends the whole design budget on making bulk destruction feel safe.</p>
+  </div>
+
+  <div class="cs2-hero-visual photo-fill" data-reveal>
+    <img src="assets/cleaner-hero.png" alt="Inbox Cleaner — a sortable table where each row is a sender, showing message count, unread count, read rate, size, and last seen">
+    <p class="caption">One row per sender, sorted by volume. The biggest decisions are the first thing on screen.</p>
+  </div>
+</section>
+
+<section class="cs2-overview">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Project Overview &amp; Context</span>
+  </div>
+  <div class="overview-grid" data-reveal-stagger>
+    <div class="overview-col">
+      <span class="ov-label">Role</span>
+      <span class="ov-value">Everything — product logic, interaction design, front end</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Timeframe</span>
+      <span class="ov-value">2026 · Self-directed</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Scale</span>
+      <span class="ov-value">~32,000 messages · 42 senders · 2.3 GB</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Constraint</span>
+      <span class="ov-value">Gmail restricted scopes · 250 quota units/sec</span>
+    </div>
+  </div>
+</section>
+
+<section class="cs2-problem-goal">
+  <div class="pg-block" data-reveal>
+    <div class="pg-eyebrow challenge">
+      <span class="dot"></span>
+      <span>The Challenge</span>
+    </div>
+    <h3>The Challenge</h3>
+    <p>Gmail's interface is built around the message and the thread. Search-select-all-delete technically exists, but it's hostile: you can't see what you're about to destroy, the selection silently caps at the visible page, and there's no undo worth the name. So people don't use it, and the inbox grows forever. Inverting to senders makes the decisions tractable — but it also means every action now operates on thousands of irreversible items at once, against an API that rate-limits hard and can fail halfway through.</p>
+  </div>
+  <div class="pg-block" data-reveal>
+    <div class="pg-eyebrow objective">
+      <span class="dot"></span>
+      <span>Strategic Directive</span>
+    </div>
+    <h3>Strategic Objective</h3>
+    <p>Make the sender the unit of work, then earn the right to act at that scale — by making every action reversible, every partial failure legible, and the blast radius of any single click visible before it's taken. The ceiling on damage should be structural, not procedural.</p>
+  </div>
+</section>
+
+<section class="cs2-process">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Process</span>
+  </div>
+  <div class="steps-grid" data-reveal-stagger>
+
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 01</span>
+      <div>
+        <h4>Indexing 32,000 Messages Inside Quota</h4>
+        <ul>
+          <li>Fetching full messages is impossible within quota; fetching header metadata is not — so the index pulls only From, Subject, Date, and List-Unsubscribe, batched 50 per request</li>
+          <li>Gmail allows 250 quota units per second, which puts a large inbox at roughly 13 minutes of continuous fetching — far too long for a blocking spinner</li>
+          <li>Senders appear and their counts climb as pages land, newest-first, so the table is usable at 500 messages and complete at 32,000. Throttling is adaptive and says so: <em>"Gmail is throttling — still working"</em> rather than appearing frozen</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-flow">
+          <span class="flow-node"><span class="box">Metadata Only</span><span class="caption-sm">4 Headers</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">Group by Sender</span><span class="caption-sm">Client-Side</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">Progressive Table</span><span class="caption-sm">Usable at 500</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 02</span>
+      <div>
+        <h4>Choosing Metrics That Earn Their Column</h4>
+        <ul>
+          <li>Read rate turned out to be the single best signal of whether a sender matters — a high count paired with 2% read is an instant, confident decision</li>
+          <li>The List-Unsubscribe header is free in metadata, so senders that can be unsubscribed from are marked — offering to stop the flow, not just delete the backlog</li>
+          <li>Sort defaults to message count descending, because the biggest wins should require no interaction at all to find</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-tree">
+          <span class="hub">Per Sender</span>
+          <div class="branches">
+            <span class="branch">Read rate<br>decides</span>
+            <span class="branch">Unsubscribe<br>available</span>
+            <span class="branch">Size &amp;<br>staleness</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 03</span>
+      <div>
+        <h4>Making Bulk Action Survivable</h4>
+        <ul>
+          <li>The app requests modify permission but never delete permission — it can move mail to Trash, where it's recoverable for 30 days, and cannot permanently destroy anything. A ceiling on damage that a bug can't exceed</li>
+          <li>Before every batch, an operation record captures the prior label state of every message id, so undo is an exact inverse rather than a guess. A 60-second countdown toast holds it, and the last 20 operations stay individually undoable</li>
+          <li>Friction scales with blast radius: a preview panel always, the count as the button's own label past 500 messages, and type-to-confirm past 5,000 or for anything going to Trash</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-flow">
+          <span class="flow-node"><span class="box">Record Prior State</span><span class="caption-sm">Before Acting</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">Chunked Execute</span><span class="caption-sm">1,000 per Call</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">60s Undo</span><span class="caption-sm">Exact Inverse</span></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cs2-screens">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Interface</span>
+  </div>
+
+  <div class="gallery-row" data-reveal-stagger>
+    <div class="gallery-item">
+      <div class="thumb" style="aspect-ratio: 2880 / 1800;"><img src="assets/cleaner-actionbar.png" alt="Six senders selected, with a floating action bar showing the combined message count and four actions"></div>
+      <p class="caption">The action bar doesn't exist at rest — it appears with the selection and carries the real number</p>
+    </div>
+    <div class="gallery-item">
+      <div class="thumb" style="aspect-ratio: 2880 / 1800;"><img src="assets/cleaner-confirm.png" alt="A confirmation dialog requiring the message count to be typed, above a preview of the affected senders and sample subject lines"></div>
+      <p class="caption">Type-to-confirm, above a preview of exactly what's about to move</p>
+    </div>
+  </div>
+
+  <div class="gallery-row" data-reveal-stagger>
+    <div class="gallery-item">
+      <div class="thumb" style="aspect-ratio: 2880 / 1800;"><img src="assets/cleaner-undo.png" alt="A toast with a 60-second countdown ring and an undo button after an archive operation"></div>
+      <p class="caption">The undo window is a countdown you can watch, not a promise in a help doc</p>
+    </div>
+    <div class="gallery-item">
+      <div class="thumb" style="aspect-ratio: 2880 / 1800;"><img src="assets/cleaner-dark.png" alt="The sender table in dark mode"></div>
+      <p class="caption">Dark mode driven entirely by semantic tokens — sender brand colors stay fixed</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs2-results">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Outcomes</span>
+  </div>
+  <div class="metrics-row" data-reveal-stagger>
+    <div class="metric-card">
+      <span class="num">200 → 1</span>
+      <span class="m-label">Decisions per Sender</span>
+      <span class="m-desc">A 32,000-message inbox reduces to 42 sender-level decisions. One answer about a sender applies to every message they ever sent.</span>
+    </div>
+    <div class="metric-card">
+      <span class="num">60s</span>
+      <span class="m-label">Undo Window</span>
+      <span class="m-desc">Every batch writes an operation record first, so undo replays the exact prior label state. The last 20 operations remain individually reversible.</span>
+    </div>
+    <div class="metric-card">
+      <span class="num">0</span>
+      <span class="m-label">Permanent Deletes</span>
+      <span class="m-desc">The app never requests delete permission. Trash is the floor — a ceiling on damage enforced by the scope, not by the code being careful.</span>
+    </div>
+  </div>
+  <div class="reflection-box" data-reveal>
+    <h4>Reflection</h4>
+    <p>The most useful constraint came from outside the product. Reading Gmail metadata requires restricted scopes, which means an annual third-party security assessment before an app can be published publicly — thousands of dollars a year, forever, for a free tool. Rather than water down the product, it pushed the architecture somewhere better: no server at all, browser-side auth, and each user bringing their own OAuth client so they sit inside Google's personal-use exemption. The privacy claim stopped being a promise and became structural — there's nothing for me to leak because I never hold anything. What I'd do differently: I designed the happy path first and retrofitted partial-failure handling, when "chunk 3 of 7 failed and 3,000 messages moved" is the state that actually decides whether someone trusts the tool again.</p>
+  </div>
+</section>
+
+<nav class="cs2-nav-footer" data-reveal>
+  <a class="nav-prev" href="split.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+    <span class="nav-label-block">
+      <span class="eyebrow">Previous Project</span>
+      <span class="title">Split</span>
+    </span>
+  </a>
+  <a class="nav-next" href="toa.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <span class="nav-label-block">
+      <span class="eyebrow">Next Project</span>
+      <span class="title">Transfer of Assets</span>
+    </span>
+  </a>
+</nav>
+
+<footer class="site-footer">
+  <div class="wrap" data-reveal>
+    <div class="foot-left">
+      <p>© 2025 Michael Lee. Built with precision.</p>
+      <span class="foot-divider"></span>
+      <p>Glad you're here!</p>
+    </div>
+    <a class="back-to-top" href="#top">
+      Back to top
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+    </a>
+  </div>
+</footer>

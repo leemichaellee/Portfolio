@@ -1,0 +1,237 @@
+
+
+<header class="site-nav">
+  <div class="wrap" data-reveal>
+    <div class="logo-group">
+      <a class="name" href="index.html">Michael Lee</a>
+      <span class="logo-divider"></span>
+      <span class="role-tag">UX &amp; Product</span>
+    </div>
+    <nav>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="cs2-hero">
+  <div class="category-header" data-reveal>
+    <span class="category-pill">AI Product</span>
+    <span class="meta-dot">•</span>
+    <span class="role-label">Solo — Design &amp; Build</span>
+    <span class="meta-dot">•</span>
+    <span class="status-unlaunched">Working Prototype</span>
+  </div>
+  <div data-reveal>
+    <h1>Plain-English Decoder</h1>
+    <p class="summary">A reader for documents written to protect someone else — leases, terms of service, loan disclosures. The design problem wasn't summarizing them. It was making a summary you'd be willing to act on.</p>
+  </div>
+
+  <div class="cs2-hero-visual photo-fill" data-reveal>
+    <img src="assets/decoder-hero.png" alt="Plain-English Decoder — original lease text on the left, plain-language cards on the right, with the selected clause highlighted in both panes">
+    <p class="caption">Every plain sentence on the right is anchored to the exact clause on the left. Selecting either side highlights the other.</p>
+  </div>
+</section>
+
+<section class="cs2-overview">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Project Overview &amp; Context</span>
+  </div>
+  <div class="overview-grid" data-reveal-stagger>
+    <div class="overview-col">
+      <span class="ov-label">Role</span>
+      <span class="ov-value">Everything — product logic, interaction design, front end</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Timeframe</span>
+      <span class="ov-value">2026 · Self-directed</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Driver</span>
+      <span class="ov-value">Learning to design around model uncertainty</span>
+    </div>
+    <div class="overview-col">
+      <span class="ov-label">Stack</span>
+      <span class="ov-value">Structured JSON output · client-side reconciliation · static host + one function</span>
+    </div>
+  </div>
+</section>
+
+<section class="cs2-problem-goal">
+  <div class="pg-block" data-reveal>
+    <div class="pg-eyebrow challenge">
+      <span class="dot"></span>
+      <span>The Challenge</span>
+    </div>
+    <h3>The Challenge</h3>
+    <p>Asking a language model to explain a lease is a five-minute build. The problem is what happens next: the model smooths a hostile clause into something that sounds reasonable, the reader relaxes, and the reader is wrong. In this category a confident summary is worse than no summary, because it replaces a document the person would have read carefully with a paraphrase they trust completely. Every design decision had to answer the same question — why should someone believe this?</p>
+  </div>
+  <div class="pg-block" data-reveal>
+    <div class="pg-eyebrow objective">
+      <span class="dot"></span>
+      <span>Strategic Directive</span>
+    </div>
+    <h3>Strategic Objective</h3>
+    <p>Build a reader where the plain-English output can't outrun its evidence. Anchor every sentence to the clause it came from, make verification a one-second glance rather than a re-read, and design an explicit state for the clauses the model can't handle — so that the system's limits are visible in the interface instead of hidden inside confident prose.</p>
+  </div>
+</section>
+
+<section class="cs2-process">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Process</span>
+  </div>
+  <div class="steps-grid" data-reveal-stagger>
+
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 01</span>
+      <div>
+        <h4>Making the Output Structural, Not Prose</h4>
+        <ul>
+          <li>Split the document into clauses — the smallest unit carrying a complete obligation, cost, or condition — rather than paragraphs or sentences</li>
+          <li>Each clause returns a typed object: plain text, category, severity, a confidence score, and the exact character range it covers</li>
+          <li>Because the output is structured, the interface can reason about it — sort by severity, roll up risk flags, and refuse to render a card whose span doesn't validate</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-tree">
+          <span class="hub">One Clause</span>
+          <div class="branches">
+            <span class="branch">Plain text<br>+ category</span>
+            <span class="branch">Severity<br>+ confidence</span>
+            <span class="branch">Source span<br>[start, end]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 02</span>
+      <div>
+        <h4>Designing the Verification View</h4>
+        <ul>
+          <li>Two panes, permanently bound — hovering a card highlights its source, clicking scrolls the original to it, selecting original text scrolls to the card that owns it</li>
+          <li>There is deliberately no view that shows the plain English alone, because alone it is just a claim</li>
+          <li>The four fixed summary questions — what this costs you, what you must do, what you give up, how you get out — are assembled from clause data, never from a second pass over the document, so the summary can't assert something no clause supports</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-flow">
+          <span class="flow-node"><span class="box">Original Clause</span><span class="caption-sm">Left Pane</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">Anchored Card</span><span class="caption-sm">Right Pane</span></span>
+          <svg class="flow-arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="flow-node"><span class="box">Summary</span><span class="caption-sm">Derived Only</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <span class="step-phase-badge">PHASE 03</span>
+      <div>
+        <h4>Designing the Admission of Doubt</h4>
+        <ul>
+          <li>Below 60% confidence the card stops answering: it shows the original text and says plainly that it isn't confident enough to restate it</li>
+          <li>Clauses that are already clear get a third state — the original, tagged "already clear" — instead of being paraphrased into different clear text</li>
+          <li>Treating "I don't know" as a designed success state rather than an error is what makes the confident cards worth believing</li>
+        </ul>
+      </div>
+      <div class="mini-diagram">
+        <div class="diagram-tree">
+          <span class="hub">Card States</span>
+          <div class="branches">
+            <span class="branch">Resolved<br>≥ 60%</span>
+            <span class="branch">Unresolved<br>shows original</span>
+            <span class="branch">Already clear<br>no rewrite</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cs2-screens">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Interface</span>
+  </div>
+
+  <div class="screens-group" data-reveal>
+    <div class="wireframe-shot">
+      <img src="assets/decoder-summary.png" alt="The four fixed summary questions — what this costs you, what you have to do, what you give up, how you get out — above a row of risk flags">
+    </div>
+    <p class="caption">The same four questions in the same order on every document. Comparability across documents is worth more than structure tailored to each one.</p>
+  </div>
+
+  <div class="gallery-row" data-reveal-stagger>
+    <div class="gallery-item">
+      <div class="thumb" style="aspect-ratio: 1440 / 1120;"><img src="assets/decoder-unresolved.png" alt="An unresolved card showing the original clause text and an explanation of why the model declined to restate it"></div>
+      <p class="caption">The unresolved state — the clause the system refuses to translate, and why</p>
+    </div>
+    <div class="gallery-item">
+      <div class="thumb" style="aspect-ratio: 2880 / 1800;"><img src="assets/decoder-dark.png" alt="The verification view in dark mode, with severity colors adjusted for a dark surface"></div>
+      <p class="caption">Dark mode — severity colors re-tuned rather than inverted, so contrast holds</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs2-results">
+  <div class="section-eyebrow" data-reveal>
+    <span class="accent-dot"></span>
+    <span>Outcomes</span>
+  </div>
+  <div class="metrics-row" data-reveal-stagger>
+    <div class="metric-card">
+      <span class="num">100%</span>
+      <span class="m-label">Anchored Output</span>
+      <span class="m-desc">Every plain-English sentence resolves to a character range in the source. Spans that fail validation are demoted to unresolved rather than shown.</span>
+    </div>
+    <div class="metric-card">
+      <span class="num">~2s</span>
+      <span class="m-label">To First Sentence</span>
+      <span class="m-desc">Cards stream in document order as they resolve, so a 40-page lease starts being readable immediately instead of after a 90-second blank wait.</span>
+    </div>
+    <div class="metric-card">
+      <span class="num">3</span>
+      <span class="m-label">Card States</span>
+      <span class="m-desc">Resolved, unresolved, already clear. The second and third exist so the first one means something.</span>
+    </div>
+  </div>
+  <div class="reflection-box" data-reveal>
+    <h4>Reflection</h4>
+    <p>The thing I'd carry into any AI feature is that confidence is an interface problem before it's a model problem. The version of this that only showed plain English tested worse with me than the two-pane version, even though the text was identical — because I couldn't check it, so I didn't trust it, so I re-read the lease anyway and the tool had saved me nothing. What I'd do differently: I built the unresolved state last, and it should have been first. Designing the failure case early would have forced the structured output format sooner instead of my retrofitting spans onto prose I'd already shipped.</p>
+  </div>
+</section>
+
+<nav class="cs2-nav-footer" data-reveal>
+  <a class="nav-prev" href="beneficiary.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+    <span class="nav-label-block">
+      <span class="eyebrow">Previous Project</span>
+      <span class="title">Beneficiary Designation</span>
+    </span>
+  </a>
+  <a class="nav-next" href="split.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <span class="nav-label-block">
+      <span class="eyebrow">Next Project</span>
+      <span class="title">Split</span>
+    </span>
+  </a>
+</nav>
+
+<footer class="site-footer">
+  <div class="wrap" data-reveal>
+    <div class="foot-left">
+      <p>© 2025 Michael Lee. Built with precision.</p>
+      <span class="foot-divider"></span>
+      <p>Glad you're here!</p>
+    </div>
+    <a class="back-to-top" href="#top">
+      Back to top
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+    </a>
+  </div>
+</footer>
